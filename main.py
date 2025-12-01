@@ -1,15 +1,11 @@
 from engine.utils import BitBoard
+from engine.fen_parser import load_from_fen
 
-board = 0x0000000000000000 # empty board initialisation for testing
+state = load_from_fen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
 
-A2 = BitBoard.algebraic_to_bit("A2") # number representation for square 'a2'
-A1 = BitBoard.algebraic_to_bit("A1") # number representation for square 'a1'
-H6 = BitBoard.algebraic_to_bit("H6") # number representation for square 'h6'
+print(state)
 
-board = BitBoard.set_bit(board, A2) # sets square 'a2'
-board = BitBoard.set_bit(board, A1) # sets square 'a1'
+"""
+Console Output:
 
-print("Y\n" if BitBoard.check_bit(board, A1) else "N\n") # checks if square 'a1' has been set
-print("Y\n" if BitBoard.check_bit(board, H6) else "N\n") # checks if square 'h6' has been set
-
-BitBoard.pprint(board) # debug print of board
+State(bitboards={'K': 16, 'k': 1152921504606846976, 'Q': 8, 'q': 576460752303423488, 'R': 129, 'r': 9295429630892703744, 'B': 36, 'b': 2594073385365405696, 'N': 66, 'n': 4755801206503243776, 'P': 65280, 'p': 71776119061217280, 'white': 65535, 'black': 18446462598732840960, 'all': 18446462598732906495}, player=1, castling=15, en_passant=-1, halfmove_clock=0, fullmove_number=1, history=[])"""
