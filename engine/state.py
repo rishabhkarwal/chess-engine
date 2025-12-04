@@ -1,17 +1,14 @@
 from dataclasses import dataclass
+from typing import Dict, List, Tuple, Any
 
-@dataclass(frozen=False)
+from .constants import ALL_PIECES, WHITE_PIECES, BLACK_PIECES
+
+@dataclass(frozen=False, slots=True)
 class State:
-    """A data container for the current game position"""
-
-    bitboards: dict[str, int]
-
-    player: int # 0 or 1
-
-    castling: int # 4 bit integer
-    en_passant: int # en passant target square
-
+    bitboards: Dict[str, int]
+    player: int
+    castling: int
+    en_passant: int
     halfmove_clock: int
     fullmove_number: int
-
-    history: list[tuple[any]] # to make & un-make moves
+    history: List[Tuple[Any, ...]]

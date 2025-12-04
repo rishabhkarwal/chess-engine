@@ -1,6 +1,6 @@
 from .utils import BitBoard
 from .state import State
-from .constants import NO_SQUARE, WHITE, BLACK, CASTLE_BK, CASTLE_BQ, CASTLE_WK, CASTLE_WQ
+from .constants import NO_SQUARE, WHITE, BLACK, CASTLE_BK, CASTLE_BQ, CASTLE_WK, CASTLE_WQ, WHITE_PIECES, BLACK_PIECES
 
 def load_from_fen(fen_string : str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'):
     state = State(
@@ -30,7 +30,7 @@ def load_from_fen(fen_string : str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBN
     return state
 
 def _parse_pieces(pieces_fen, state):
-    state.bitboards = {piece : 0 for piece in list('KkQqRrBbNnPp') + ['white', 'black', 'all']}
+    state.bitboards = {piece : 0 for piece in WHITE_PIECES + BLACK_PIECES + ('white', 'black', 'all')}
 
     count = 0
     for rank in pieces_fen.split()[0].split('/'):
