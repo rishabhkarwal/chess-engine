@@ -63,10 +63,15 @@ class Game:
         def reset():
             self.state = load_from_fen(self.fen)
 
-        def format_results(results, percentage=False):
+        def format_results(results, final=False):
             lines = []
-            for metric, result in {"White" : WHITE, "Black" : BLACK, "Draw" : None}.items():
-                lines.append(f'{metric}: {results[result] if not percentage else str(round(results[result] / (i + 1) * 100, 2)) + "%"}')
+            
+            for result, value in {"White" : WHITE, "Black" : BLACK, "Draw" : None}.items():
+                player = result
+
+                players = {WHITE : str(self.white_player), BLACK : str(self.black_player), None : ''}
+                if value != None: player += f' ({players.get(value)})'
+                lines.append(f'{player}: {results[value] if not final else str(round(results[value] / (i + 1) * 100, 2)) + "%"}')
 
             return "\n".join(lines)
 
@@ -84,4 +89,4 @@ class Game:
 
         print()
 
-        return format_results(results, percentage=True)
+        return format_results(results, final=True)

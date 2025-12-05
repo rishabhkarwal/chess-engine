@@ -1,6 +1,7 @@
 from .move_exec import get_legal_moves, make_move
 from .precomputed import init_tables
 from .constants import ALL_PIECES, WHITE, BLACK
+from .utils import BitBoard
 
 import random
 
@@ -9,6 +10,9 @@ init_tables() #initialises lookup tables
 class Bot:
     def __init__(self, colour):
         self.colour = colour
+
+    def __repr__(self):
+        return self.__class__.__name__
 
     def get_best_move(state):
         raise NotImplementedError("")
@@ -56,3 +60,110 @@ class MaterialBot(Bot):
                 best_move = move
         
         return best_move
+
+class PositionalBot(MaterialBot): # as best move return is the same
+    # Pawn: encourage advancing
+    PSQT_PAWN = [
+        0,  0,  0,  0,  0,  0,  0,  0,
+        50, 50, 50, 50, 50, 50, 50, 50,
+        10, 10, 20, 30, 30, 20, 10, 10,
+        5,  5, 10, 25, 25, 10,  5,  5,
+        0,  0,  0, 20, 20,  0,  0,  0,
+        5, -5,-10,  0,  0,-10, -5,  5,
+        5, 10, 10,-20,-20, 10, 10,  5,
+        0,  0,  0,  0,  0,  0,  0,  0
+    ]
+
+    # Knight: strong centre, weak corners
+    PSQT_KNIGHT = [
+        -50,-40,-30,-30,-30,-30,-40,-50,
+        -40,-20,  0,  0,  0,  0,-20,-40,
+        -30,  0, 10, 15, 15, 10,  0,-30,
+        -30,  5, 15, 20, 20, 15,  5,-30,
+        -30,  0, 15, 20, 20, 15,  0,-30,
+        -30,  5, 10, 15, 15, 10,  5,-30,
+        -40,-20,  0,  5,  5,  0,-20,-40,
+        -50,-40,-30,-30,-30,-30,-40,-50
+    ]
+
+    # Bishop: good on long diagonals, avoid corners
+    PSQT_BISHOP = [
+        -20,-10,-10,-10,-10,-10,-10,-20,
+        -10,  0,  0,  0,  0,  0,  0,-10,
+        -10,  0,  5, 10, 10,  5,  0,-10,
+        -10,  5,  5, 10, 10,  5,  5,-10,
+        -10,  0, 10, 10, 10, 10,  0,-10,
+        -10, 10, 10, 10, 10, 10, 10,-10,
+        -10,  5,  0,  0,  0,  0,  5,-10,
+        -20,-10,-10,-10,-10,-10,-10,-20
+    ]
+
+    # Rook: 7th rank is good, centre files okay
+    PSQT_ROOK = [
+        0,  0,  0,  0,  0,  0,  0,  0,
+        5, 10, 10, 10, 10, 10, 10,  5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        0,  0,  0,  5,  5,  0,  0,  0
+    ]
+
+    # Queen: generally good everywhere, slightly better in centre
+    PSQT_QUEEN = [
+        -20,-10,-10, -5, -5,-10,-10,-20,
+        -10,  0,  0,  0,  0,  0,  0,-10,
+        -10,  0,  5,  5,  5,  5,  0,-10,
+        -5,  0,  5,  5,  5,  5,  0, -5,
+        0,  0,  5,  5,  5,  5,  0, -5,
+        -10,  5,  5,  5,  5,  5,  0,-10,
+        -10,  0,  5,  0,  0,  0,  0,-10,
+        -20,-10,-10, -5, -5,-10,-10,-20
+    ]
+
+    # King: encourage castling, stay in corners / behind pawns (middlegame)
+    PSQT_KING = [
+        -30,-40,-40,-50,-50,-40,-40,-30,
+        -30,-40,-40,-50,-50,-40,-40,-30,
+        -30,-40,-40,-50,-50,-40,-40,-30,
+        -30,-40,-40,-50,-50,-40,-40,-30,
+        -20,-30,-30,-40,-40,-30,-30,-20,
+        -10,-20,-20,-20,-20,-20,-20,-10,
+        20, 20,  0,  0,  0,  0, 20, 20,
+        20, 30, 10,  0,  0, 10, 30, 20
+    ]
+
+    TABLES = {
+        'P': PSQT_PAWN, 'N': PSQT_KNIGHT, 'B': PSQT_BISHOP, 
+        'R': PSQT_ROOK, 'Q': PSQT_QUEEN, 'K': PSQT_KING
+    }
+
+    def evaluate(self, state):
+        score = 0
+        
+        for piece in ALL_PIECES:
+            bb = state.bitboards.get(piece, 0)
+            if not bb: continue
+            
+            is_white = piece.isupper()
+            piece_type = piece.upper()
+            
+            # material
+            material = self.VALUES[piece.upper()]
+            # PSQT
+            table = self.TABLES[piece_type]
+            
+            for sq in BitBoard.bit_scan(bb): # bit scan needed as we need position
+                if is_white:
+                    table_idx = (7 - (sq // 8)) * 8 + (sq % 8) 
+                    
+                    pos_score = table[table_idx]
+                    score += material + pos_score
+                else:
+                    table_idx = (sq // 8) * 8 + (sq % 8) # perspective ...
+                    
+                    pos_score = table[table_idx]
+                    score -= (material + pos_score)
+
+        return score if self.colour == WHITE else -score
