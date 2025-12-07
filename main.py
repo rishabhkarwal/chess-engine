@@ -3,14 +3,25 @@ from engine.bot import *
 from engine.constants import WHITE, BLACK
 
 if __name__ == "__main__":
-    game = Game(white_player=QuiescenceBot(WHITE, depth=3), black_player=AlphaBetaBot(BLACK, depth=3))
-    results = game.test(100)
+    game = Game(white_player=IterativeDeepeningBot(WHITE, time_limit=5), black_player=QuiescenceBot(BLACK, depth=3))
+    results = game.test(20)
     print(results)
 
-    #game.run(delay=0)
+    #game.run(debug=True)
 
 """
-Testing:  35%|---                                | 35/100 [5:30:59<10:14:42, 567.42s/game, => White (QuiescenceBot): 35, Black (AlphaBetaBot): 0, Draw: 0]
 
-Continues searching a 'noisy' position until it becomes 'quiet' -> helps tactics from being missed
+Testing: 100%|---| 20/20 [2:37:54<00:00, 473.73s/game, => White (IterativeDeepeningBot): 0, Black (QuiescenceBot): 1, Draw: 19]
+Testing:  20%|--- | 4/20 [32:34<2:10:47, 490.45s/game, => White (IterativeDeepeningBot): 0, Black (QuiescenceBot): 0, Draw: 4]
+
+White (IterativeDeepeningBot): 0.0%
+Black (QuiescenceBot): 4.0%
+Draw: 96.0%
+    
+    Uses iterative deepening to search as deep as possible within a time limit
+    checks the best move from previous depth first to optimise pruning
+    
+    good for end-game when there are less moves; can look deeper
+
+However results aren't as expected
 """

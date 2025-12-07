@@ -23,9 +23,15 @@ def load_from_fen(fen_string : str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBN
 
     _parse_en_passant(fields[3], state)
 
-    state.halfmove_clock = int(fields[4])
+    try:
+        state.halfmove_clock = int(fields[4])
+    except:
+        state.halfmove_clock = 0
     
-    state.fullmove_number = int(fields[5])
+    try:
+        state.fullmove_number = int(fields[5])
+    except: 
+        state.fullmove_number = 1
 
     return state
 

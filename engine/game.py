@@ -16,11 +16,11 @@ class Game:
 
         self.fen = fen
 
-    def run(self, delay=0.0, silent=False):
+    def run(self, delay=0.0, silent=False, debug=False):
         winner = None
         reason = None
         while 1:
-            if not silent: self.gui.clear_screen()
+            if not silent and not debug: self.gui.clear_screen()
 
             legal_moves = get_legal_moves(self.state)
             is_check = is_in_check(self.state, self.state.player)

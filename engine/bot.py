@@ -4,6 +4,7 @@ from .constants import ALL_PIECES, WHITE, BLACK
 from .utils import BitBoard
 
 import random
+import time
 
 init_tables() #initialises lookup tables
 
@@ -172,9 +173,10 @@ class SearchTreeBot(PositionalBot): # will evaluate material and position
     def __init__(self, colour, depth=3):
         super().__init__(colour)
         self.depth = depth
+        self.nodes_searched = 0
 
     def get_best_move(self, state):
-        
+        self.nodes_searched = 0
         
         moves = get_legal_moves(state)
         random.shuffle(moves) 
@@ -195,6 +197,8 @@ class SearchTreeBot(PositionalBot): # will evaluate material and position
         return best_move
 
     def negamax(self, state, depth):
+        self.nodes_searched += 1
+
         if depth == 0:
             score = self.evaluate(state)
             if state.player != self.colour: # fix !
@@ -222,8 +226,10 @@ class AlphaBetaBot(PositionalBot):
     def __init__(self, colour, depth=4):
         super().__init__(colour)
         self.depth = depth
+        self.nodes_searched = 0
 
     def get_best_move(self, state):
+        self.nodes_searched = 0
         moves = get_legal_moves(state)
         if not moves: return None
         
@@ -250,6 +256,7 @@ class AlphaBetaBot(PositionalBot):
         return best_move
 
     def alpha_beta(self, state, depth, alpha, beta):
+        self.nodes_searched += 1
         if depth == 0:
             score = self.evaluate(state)
             if state.player != self.colour:
@@ -285,7 +292,8 @@ class AlphaBetaBot(PositionalBot):
         return best_value
 
 class QuiescenceBot(AlphaBetaBot):
-    def alpha_beta(self, state, depth, alpha, beta):    
+    def alpha_beta(self, state, depth, alpha, beta):   
+        self.nodes_searched += 1 
         if depth == 0:
             return self.quiescence(state, alpha, beta)
         
@@ -310,6 +318,8 @@ class QuiescenceBot(AlphaBetaBot):
         return alpha
 
     def quiescence(self, state, alpha, beta):
+        self.nodes_searched += 1
+
         base_eval = self.evaluate(state)
         if state.player != self.colour:
             base_eval = -base_eval
@@ -330,5 +340,106 @@ class QuiescenceBot(AlphaBetaBot):
                 return beta
             if score > alpha:
                 alpha = score
+                
+        return alpha
+
+class IterativeDeepeningBot(QuiescenceBot):
+    def __init__(self, colour, time_limit=2.0):
+        super().__init__(colour)
+        self.time_limit = time_limit
+        self.start_time = 0.0
+
+    def get_best_move(self, state, debug=False):
+        self.nodes_searched = 0
+        self.start_time = time.time()
+        
+        moves = get_legal_moves(state)
+        if not moves: return None
+        
+        #initial move ordering
+        moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
+        
+        best_move_so_far = moves[0]
+        current_depth = 1
+        
+        while True:
+            try:
+                # optimisation: if we have a best move from the previous depth, search it first
+                if best_move_so_far in moves:
+                    moves.remove(best_move_so_far)
+                    moves.insert(0, best_move_so_far)
+                
+                # search for this depth
+                best_move, score = self.search_root(state, current_depth, moves)
+                best_move_so_far = best_move
+                
+                if debug: print(f"Info: Depth {current_depth} | Score: {score} | Nodes: {self.nodes_searched} | Time: {time.time() - self.start_time:.3f}s") #debug print
+                
+                # check if we have time for next depth
+                elapsed = time.time() - self.start_time
+                if elapsed > self.time_limit / 2:
+                    break
+                    
+                current_depth += 1
+
+                if current_depth > 100: break
+                
+            except TimeoutError:
+                if debug: print(f"Info: Time limit reached at Depth {current_depth}")
+                break
+                
+        return best_move_so_far
+
+    def search_root(self, state, depth, sorted_moves):
+        best_move = sorted_moves[0]
+        best_value = -float('inf')
+        alpha = -float('inf')
+        beta = float('inf')
+        
+        for move in sorted_moves:
+            if time.time() - self.start_time > self.time_limit:
+                raise TimeoutError()
+                
+            next_state = make_move(state, move)
+            value = -self.alpha_beta_timed(next_state, depth - 1, -beta, -alpha)
+            
+            if value > best_value:
+                best_value = value
+                best_move = move
+            
+            if value > alpha:
+                alpha = value
+                
+        return best_move, best_value
+
+    def alpha_beta_timed(self, state, depth, alpha, beta):
+        """Alpha-beta with periodic time checks"""
+        self.nodes_searched += 1
+        
+        # check time every 2048 nodes
+        if self.nodes_searched & 2047 == 0:
+            if time.time() - self.start_time > self.time_limit:
+                raise TimeoutError()
+
+        if depth == 0:
+            return self.quiescence(state, alpha, beta)
+        
+        moves = get_legal_moves(state)
+        
+        if not moves:
+            if is_in_check(state, state.player):
+                return -100000 + depth
+            return 0
+
+        moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
+        
+        for move in moves:
+            next_state = make_move(state, move)
+            value = -self.alpha_beta_timed(next_state, depth - 1, -beta, -alpha)
+            
+            if value >= beta:
+                return beta
+            if value > alpha:
+                alpha = value
                 
         return alpha
