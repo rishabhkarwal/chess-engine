@@ -4,24 +4,24 @@ from engine.constants import WHITE, BLACK
 
 if __name__ == "__main__":
     game = Game(white_player=IterativeDeepeningBot(WHITE, time_limit=5), black_player=QuiescenceBot(BLACK, depth=3))
-    results = game.test(20)
-    print(results)
+    #results = game.test(50)
+    #print(results)
 
-    #game.run(debug=True)
+    game.run()
 
 """
+Testing: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [7:26:59<00:00, 536.39s/game, => White (IterativeDeepeningBot): 6, Black (QuiescenceBot): 3, Draw: 41]
 
-Testing: 100%|---| 20/20 [2:37:54<00:00, 473.73s/game, => White (IterativeDeepeningBot): 0, Black (QuiescenceBot): 1, Draw: 19]
-Testing:  20%|--- | 4/20 [32:34<2:10:47, 490.45s/game, => White (IterativeDeepeningBot): 0, Black (QuiescenceBot): 0, Draw: 4]
+White (IterativeDeepeningBot): 12.0%
+Black (QuiescenceBot): 6.0%
+Draw: 82.0%
+        50-move rule: 41
+        Stalemate: 0
 
-White (IterativeDeepeningBot): 0.0%
-Black (QuiescenceBot): 4.0%
-Draw: 96.0%
-    
-    Uses iterative deepening to search as deep as possible within a time limit
-    checks the best move from previous depth first to optimise pruning
-    
-    good for end-game when there are less moves; can look deeper
+Through debugging, have found that all games were the EXACT same as its a deterministic process so results weren't accurate
+and so have sourced a collection of positions that are roughly equal (evaluated by stockfish) 
+also noticed that games end in a draw by 50 move rule a lot
 
-However results aren't as expected
+I believe this is because quiescence is still stronger as it searches deeper in middlegame scenarios;
+and so although iterative deepening can search deeper in endgame; it has already lost
 """

@@ -7,8 +7,12 @@ from .constants import WHITE, BLACK
 
 from .gui import GUI
 
+from book import start_positions
+from random import choice
+
 class Game:
     def __init__(self, white_player, black_player, fen='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'):
+        fen = choice(start_positions)
         self.state = load_from_fen(fen)
         self.gui = GUI()
 
@@ -61,9 +65,10 @@ class Game:
     def test(self, n):
 
         def reset():
+            self.fen = choice(start_positions)
             self.state = load_from_fen(self.fen)
 
-        def format_results(results, final=False):
+        def format_results(results, draws={}, final=False):
             lines = []
             
             for result, value in {"White" : WHITE, "Black" : BLACK, "Draw" : None}.items():
@@ -73,20 +78,32 @@ class Game:
                 if value != None: player += f' ({players.get(value)})'
                 lines.append(f'{player}: {results[value] if not final else str(round(results[value] / (i + 1) * 100, 2)) + "%"}')
 
+            if draws:
+                for reason, count in draws.items():
+                    lines.append(f'\t{reason}: {count}')
+
             return "\n".join(lines)
 
         results = {state : 0 for state in [WHITE, BLACK, None]}
+        draws = {reason : 0 for reason in ['50-move rule', 'Stalemate']}
 
         with tqdm(total=n, desc=f"Testing", unit="game") as pbar:
-            for i in range(n):
-                result, _ = self.run(silent=True)
-                results[result] += 1
+            try:
+                for i in range(n):
+                    result, reason = self.run(silent=True)
+                    results[result] += 1
 
-                pbar.set_postfix({"": f'> {format_results(results).replace("\n", ", ")}'})
-                pbar.update(1)
+                    if reason in draws.keys():
+                        draws[reason] += 1
 
-                reset()
+                    pbar.set_postfix({"": f'> {format_results(results).replace("\n", ", ")}'})
+                    pbar.update(1)
+
+                    reset()
+
+            except KeyboardInterrupt:
+                pass
 
         print()
 
-        return format_results(results, final=True)
+        return format_results(results, draws, final=True)
