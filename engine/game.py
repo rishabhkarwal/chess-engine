@@ -11,12 +11,11 @@ from book import start_positions
 from random import choice
 
 class Game:
-    def __init__(self, white_player, black_player, fen='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'):
-        fen = choice(start_positions)
+    def __init__(self, player_1, player_2, fen='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'):
         self.state = load_from_fen(fen)
         self.gui = GUI()
 
-        self.white_player, self.black_player = white_player, black_player
+        self.white_player, self.black_player = player_1, player_2
 
         self.fen = fen
 
@@ -90,7 +89,12 @@ class Game:
         with tqdm(total=n, desc=f"Testing", unit="game") as pbar:
             try:
                 for i in range(n):
+                    if i and not(i & 1): # even iteration
+                        reset() # start a new game
+
                     result, reason = self.run(silent=True)
+                    self.white_player, self.black_player = self.black_player, self.white_player # switch black and white
+
                     results[result] += 1
 
                     if reason in draws.keys():
@@ -98,8 +102,6 @@ class Game:
 
                     pbar.set_postfix({"": f'> {format_results(results).replace("\n", ", ")}'})
                     pbar.update(1)
-
-                    reset()
 
             except KeyboardInterrupt:
                 pass
