@@ -77,12 +77,10 @@ class Game:
 
         def format_results(results, draws={}, final=False):
             lines = []
-            
-            for result, value in {"White" : WHITE, "Black" : BLACK, "Draw" : None}.items():
-                player = result
-
-                players = {WHITE : str(self.white_player), BLACK : str(self.black_player), None : ''}
-                if value != None: player += f' ({players.get(value)})'
+            for value, result in {self.white_player : 'White', self.black_player : 'Black', None : 'Draw'}.items():
+                player = str(value)
+                if value != None: player += f' ({result})'
+                else: player = result
                 lines.append(f'{player}: {results[value] if not final else str(round(results[value] / (i + 1) * 100, 2)) + "%"}')
 
             if draws:
@@ -91,7 +89,7 @@ class Game:
 
             return "\n".join(lines)
 
-        results = {state : 0 for state in [WHITE, BLACK, None]}
+        results = {state : 0 for state in [self.white_player, self.black_player, None]}
         draws = {reason : 0 for reason in ['50-Move Rule', 'Stalemate', 'Threefold Repetition']}
 
         with tqdm(total=n, desc=f"Testing", unit="game") as pbar:
@@ -105,10 +103,14 @@ class Game:
                     else:
                         reload()
 
+                    self.white_player.colour, self.black_player.colour = WHITE, BLACK
                     result, reason = self.run(silent=True)
-                    self.white_player, self.black_player = self.black_player, self.white_player # switch black and white
+
+                    result = self.white_player if result == WHITE else self.black_player if result == BLACK else None
 
                     results[result] += 1
+
+                    self.white_player, self.black_player = self.black_player, self.white_player # switch black and white
 
                     if reason in draws.keys():
                         draws[reason] += 1
