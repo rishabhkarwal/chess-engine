@@ -4,7 +4,7 @@ from .move import Move, CAPTURE, PROMOTION, EP_CAPTURE, CASTLE
 from .constants import (
     WHITE, BLACK, NO_SQUARE,
     CASTLE_WK, CASTLE_WQ, CASTLE_BK, CASTLE_BQ,
-    WHITE_PIECES, BLACK_PIECES,
+    WHITE_PIECES, BLACK_PIECES, ALL_PIECES,
     A1, H1, A8, H8, E1, C1, G1, E8, C8, G8,
     F1, D1, F8, D8
 )
@@ -118,8 +118,12 @@ def make_move(state: State, move: Move) -> State:
     
     # fullmove number increments after black's turn
     new_fullmove = state.fullmove_number + (1 if state.player == BLACK else 0)
+
+    position_id = get_position_id(new_bitboards, not(state.player), new_castling, new_ep)
+
+    history_entry = f"{move}#{position_id}"
     
-    return State(new_bitboards, not(state.player), new_castling, new_ep, new_halfmove, new_fullmove, state.history + [str(move)])
+    return State(new_bitboards, not(state.player), new_castling, new_ep, new_halfmove, new_fullmove, state.history + [history_entry])
 
 def is_in_check(state: State, colour: int) -> int:
     """Check if the king of the specified colour is under attack"""
@@ -172,3 +176,34 @@ def is_stalemate(state: State) -> bool:
     # must have no legal moves
     legal_moves = generate_legal_moves(state)
     return len(legal_moves) == 0
+
+def get_position_id(bitboards, player, castling, ep) -> str:
+    """Generate a unique string identifier for the current position (for draw detection)"""
+    pieces_str = ""
+    for piece in ALL_PIECES:
+        pieces_str += f"{piece}:{bitboards[piece]}|"
+    
+    return f"{pieces_str}T:{player}C:{castling}EP:{ep}"
+
+def is_threefold_repetition(state: State) -> bool:
+    """Check if the current position has occurred 3 times"""
+    if not state.history:
+        return False
+
+    # Get the ID of the current position (the last one in history)
+    last_entry = state.history[-1]
+    if '#' not in last_entry:
+        return False
+        
+    current_id = last_entry.split('#')[1]
+    
+    count = 0
+    # Iterate backwards through history to count occurrences; will be faster
+    for entry in reversed(state.history):
+        if '#' in entry:
+            if entry.split('#')[1] == current_id:
+                count += 1
+
+        if count >= 3: return True
+    # If the count is 3 or more, it's a draw
+    return False

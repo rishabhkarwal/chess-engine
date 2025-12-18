@@ -2,7 +2,7 @@ import time
 from tqdm import tqdm
 
 from .fen_parser import load_from_fen
-from .move_exec import make_move, is_in_check, get_legal_moves
+from .move_exec import make_move, is_in_check, get_legal_moves, is_threefold_repetition
 from .constants import WHITE, BLACK
 
 from .gui import GUI
@@ -49,8 +49,13 @@ class Game:
                 break
                 
             if self.state.halfmove_clock >= 100:
-                if not silent: print("Draw | 50-move rule")
-                reason = "50-move rule"
+                if not silent: print("Draw | 50-Move Rule")
+                reason = "50-Move Rule"
+                break
+
+            if is_threefold_repetition(self.state):
+                if not silent: print("Draw | Threefold Repetition")
+                reason = "Threefold Repetition"
                 break
 
             if not silent: time.sleep(delay) # so the game is watchable
@@ -65,6 +70,9 @@ class Game:
 
         def reset():
             self.fen = choice(start_positions)
+            reload()
+
+        def reload():
             self.state = load_from_fen(self.fen)
 
         def format_results(results, draws={}, final=False):
@@ -84,13 +92,18 @@ class Game:
             return "\n".join(lines)
 
         results = {state : 0 for state in [WHITE, BLACK, None]}
-        draws = {reason : 0 for reason in ['50-move rule', 'Stalemate']}
+        draws = {reason : 0 for reason in ['50-Move Rule', 'Stalemate', 'Threefold Repetition']}
 
         with tqdm(total=n, desc=f"Testing", unit="game") as pbar:
             try:
                 for i in range(n):
-                    if i and not(i & 1): # even iteration
-                        reset() # start a new game
+                    if not(i & 1): # even iteration
+                        if i: # i > 0
+                            reset() # start a new game
+                        else:
+                            reload()
+                    else:
+                        reload()
 
                     result, reason = self.run(silent=True)
                     self.white_player, self.black_player = self.black_player, self.white_player # switch black and white

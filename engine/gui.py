@@ -37,8 +37,8 @@ class GUI:
         width = max(3, len(str((len(moves) + 1) // 2)))
         for i in range(0, len(moves), 2):
             move_number = i // 2 + 1
-            white = moves[i]
-            black = moves[i + 1] if i + 1 < len(moves) else ""
+            white = moves[i].split('#')[0]
+            black = moves[i + 1].split('#')[0] if i + 1 < len(moves) else ""
             lines.append(f"{move_number:>{width}}. {white:<6} {black}".rstrip())
 
         return "\n".join(lines)

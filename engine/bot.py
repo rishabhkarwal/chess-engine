@@ -1,4 +1,4 @@
-from .move_exec import get_legal_moves, make_move, is_in_check
+from .move_exec import get_legal_moves, make_move, is_in_check, is_threefold_repetition
 from .precomputed import init_tables
 from .constants import ALL_PIECES, WHITE, BLACK
 from .utils import BitBoard
@@ -56,7 +56,10 @@ class MaterialBot(Bot):
         for move in legal_moves:
             next_state = make_move(state, move)
             
-            score = self.evaluate(next_state)
+            if is_threefold_repetition(next_state):
+                score = 0
+            else:
+                score = self.evaluate(next_state)
             
             if score > best_eval:
                 best_eval = score
@@ -201,6 +204,9 @@ class SearchTreeBot(PositionalBot): # will evaluate material and position
     def negamax(self, state, depth):
         self.nodes_searched += 1
 
+        if is_threefold_repetition(state):
+            return 0
+
         if depth == 0:
             score = self.evaluate(state)
             if state.player != self.colour: # fix !
@@ -259,6 +265,10 @@ class AlphaBetaBot(PositionalBot):
 
     def alpha_beta(self, state, depth, alpha, beta):
         self.nodes_searched += 1
+        
+        if is_threefold_repetition(state):
+            return 0
+
         if depth == 0:
             score = self.evaluate(state)
             if state.player != self.colour:
@@ -339,6 +349,9 @@ class AlphaBetaTTBot(PositionalBot):
     def alpha_beta(self, state, depth, alpha, beta):
         self.nodes_searched += 1
 
+        if is_threefold_repetition(state):
+            return 0
+
         tt_entry = self.tt.probe(state.hash)
         if tt_entry and tt_entry.depth >= depth:
 
@@ -405,6 +418,10 @@ class AlphaBetaTTBot(PositionalBot):
 class QuiescenceBot(AlphaBetaBot):
     def alpha_beta(self, state, depth, alpha, beta):   
         self.nodes_searched += 1 
+        
+        if is_threefold_repetition(state):
+            return 0
+
         if depth == 0:
             return self.quiescence(state, alpha, beta)
         
@@ -532,6 +549,9 @@ class IterativeDeepeningBot(QuiescenceBot):
             if time.time() - self.start_time > self.time_limit:
                 raise TimeoutError()
 
+        if is_threefold_repetition(state):
+            return 0
+
         if depth == 0:
             return self.quiescence(state, alpha, beta)
         
@@ -636,6 +656,9 @@ class TranspositionBot(PositionalBot):
             if time.time() - self.start_time > self.time_limit:
                 raise TimeoutError()
 
+        if is_threefold_repetition(state):
+            return 0
+
         # transposition Table Lookup
         tt_entry = self.tt.probe(state.hash)
         if tt_entry and tt_entry.depth >= depth:
@@ -694,6 +717,206 @@ class TranspositionBot(PositionalBot):
                 alpha = value
 
         # store result in TT
+        flag = FLAG_EXACT
+        if best_value <= original_alpha:
+            flag = FLAG_UPPERBOUND
+        
+        self.tt.store(state.hash, depth, best_value, flag, best_move)
+        
+        return best_value
+
+    def quiescence(self, state, alpha, beta):
+        self.nodes_searched += 1
+        
+        base_eval = self.evaluate(state)
+        if state.player != self.colour:
+            base_eval = -base_eval
+
+        if base_eval >= beta:
+            return beta
+        
+        if base_eval > alpha:
+            alpha = base_eval
+            
+        capture_moves = get_legal_moves(state, captures_only=True)
+
+        capture_moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
+    
+        for move in capture_moves:
+            next_state = make_move(state, move)
+            score = -self.quiescence(next_state, -beta, -alpha)
+            
+            if score >= beta:
+                return beta
+            if score > alpha:
+                alpha = score
+                
+        return alpha
+
+class KillerBot(PositionalBot):
+    """
+    Iterative Deepening
+    Transposition Table (Zobrist Hashing)
+    Killer Heuristic (Move Ordering)
+    Quiescence Search
+    """
+    def __init__(self, colour, time_limit=2.0, tt_size_mb=64):
+        super().__init__(colour)
+        self.time_limit = time_limit
+        self.tt = TranspositionTable(tt_size_mb)
+        self.start_time = 0.0
+        self.nodes_searched = 0
+        
+        # Killer Moves: [Depth][Slot] -> 2 slots per depth
+        # Assume max depth 100
+        self.killer_moves = [[None] * 2 for _ in range(102)]
+
+    def store_killer(self, depth, move):
+        """Stores a quiet move that caused a beta cutoff"""
+        if move.is_capture: return # Only track quiet killer moves
+
+        # If move is already the primary killer, do nothing
+        if self.killer_moves[depth][0] == move:
+            return
+
+        # Shift old primary to secondary, save new move as primary
+        self.killer_moves[depth][1] = self.killer_moves[depth][0]
+        self.killer_moves[depth][0] = move
+
+    def get_best_move(self, state, debug=False):
+        self.nodes_searched = 0
+        self.start_time = time.time()
+        
+        moves = get_legal_moves(state)
+        if not moves: return None
+        
+        moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
+        
+        best_move_so_far = moves[0]
+        current_depth = 1
+        
+        while True:
+            try:
+                if debug: print(f"Searching Depth {current_depth}...")
+                
+                best_move, score = self.search_root(state, current_depth, moves)
+                best_move_so_far = best_move
+                
+                if debug: 
+                    elapsed = time.time() - self.start_time
+                    nps = int(self.nodes_searched / elapsed) if elapsed > 0 else 0
+                    print(f"Info: Depth {current_depth} | Score: {score} | Move: {best_move} | NPS: {nps:,}")
+
+                elapsed = time.time() - self.start_time
+                if elapsed > self.time_limit / 2:
+                    break
+                    
+                current_depth += 1
+                if current_depth > 100: break
+                
+            except TimeoutError:
+                if debug: print(f"Timeout at Depth {current_depth}")
+                break
+                
+        return best_move_so_far
+
+    def search_root(self, state, depth, moves):
+        best_move = moves[0]
+        best_value = -float('inf')
+        alpha = -float('inf')
+        beta = float('inf')
+
+        tt_entry = self.tt.probe(state.hash)
+        tt_move = tt_entry.best_move if tt_entry else None
+        
+        if tt_move and tt_move in moves:
+            moves.remove(tt_move)
+            moves.insert(0, tt_move)
+            
+        for move in moves:
+            if time.time() - self.start_time > self.time_limit:
+                raise TimeoutError()
+                
+            next_state = make_move(state, move)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
+            
+            if value > best_value:
+                best_value = value
+                best_move = move
+            
+            if value > alpha:
+                alpha = value
+                
+        self.tt.store(state.hash, depth, best_value, FLAG_EXACT, best_move)
+        return best_move, best_value
+
+    def alpha_beta(self, state, depth, alpha, beta):
+        self.nodes_searched += 1
+        if (self.nodes_searched & 2047) == 0:
+            if time.time() - self.start_time > self.time_limit:
+                raise TimeoutError()
+        
+        if is_threefold_repetition(state):
+            return 0
+
+        tt_entry = self.tt.probe(state.hash)
+        if tt_entry and tt_entry.depth >= depth:
+            if tt_entry.flag == FLAG_EXACT:
+                return tt_entry.score
+            elif tt_entry.flag == FLAG_LOWERBOUND:
+                alpha = max(alpha, tt_entry.score)
+            elif tt_entry.flag == FLAG_UPPERBOUND:
+                beta = min(beta, tt_entry.score)
+            
+            if alpha >= beta:
+                return tt_entry.score
+
+        if depth == 0:
+            return self.quiescence(state, alpha, beta)
+
+        moves = get_legal_moves(state)
+        
+        if not moves:
+            if is_in_check(state, state.player):
+                return -100000 + depth
+            return 0 
+
+        tt_move = tt_entry.best_move if tt_entry else None
+        
+        # Grab Killer moves for this depth
+        killer_1 = self.killer_moves[depth][0]
+        killer_2 = self.killer_moves[depth][1]
+
+        # Sort Logic: TT -> Captures -> Killers -> Promotions -> Quiet
+        moves.sort(key=lambda m: (
+            m == tt_move,      # 1. TT Move
+            m.is_capture,      # 2. Captures
+            m == killer_1,     # 3. Killer Move 1
+            m == killer_2,     # 4. Killer Move 2
+            m.is_promotion     # 5. Promotions
+        ), reverse=True)
+
+        best_value = -float('inf')
+        best_move = None
+        original_alpha = alpha
+        
+        for move in moves:
+            next_state = make_move(state, move)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
+            
+            if value >= beta:
+                # Update TT and Killer Moves
+                self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
+                self.store_killer(depth, move) # Killer heuristic store
+                return beta
+            
+            if value > best_value:
+                best_value = value
+                best_move = move
+                
+            if value > alpha:
+                alpha = value
+
         flag = FLAG_EXACT
         if best_value <= original_alpha:
             flag = FLAG_UPPERBOUND
