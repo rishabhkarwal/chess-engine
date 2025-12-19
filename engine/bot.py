@@ -1170,3 +1170,154 @@ class LMRBot(PVSBot):
         self.tt.store(state.hash, depth, best_value, flag, best_move)
         
         return best_value
+
+class NMPBot(LMRBot):
+    """
+    Null Move Pruning (NMP)
+    If our position is strong enough that passing the move (doing nothing) still results in a beta-cutoff, we assume the position is winning and cut the search short
+    """
+    def alpha_beta(self, state, depth, alpha, beta, allow_null=True):
+        self.nodes_searched += 1
+        if (self.nodes_searched & 2047) == 0:
+            if time.time() - self.start_time > self.time_limit:
+                raise TimeoutError()
+        
+        if is_threefold_repetition(state):
+            return 0
+
+        tt_entry = self.tt.probe(state.hash)
+        if tt_entry and tt_entry.depth >= depth:
+            if tt_entry.flag == FLAG_EXACT:
+                return tt_entry.score
+            elif tt_entry.flag == FLAG_LOWERBOUND:
+                alpha = max(alpha, tt_entry.score)
+            elif tt_entry.flag == FLAG_UPPERBOUND:
+                beta = min(beta, tt_entry.score)
+            
+            if alpha >= beta:
+                return tt_entry.score
+
+        if depth <= 0:
+            return self.quiescence(state, alpha, beta)
+
+        # Null move pruning
+        if allow_null and depth >= 3 and not is_in_check(state, state.player):
+            # Zugzwang check: Do we have major pieces
+            # Null move pruning is succeptible to zugzwang positions as it will count a losing position; like zugzwang - a winning as it doesn't move
+            has_pieces = False
+            side_pieces = ['N','B','R','Q'] if state.player == WHITE else ['n','b','r','q']
+            for p in side_pieces:
+                if state.bitboards.get(p, 0) != 0:
+                    has_pieces = True
+                    break
+            
+            if has_pieces:
+                # Create Null Move state
+                try:
+                    null_state = type(state)(
+                        state.bitboards,
+                        not state.player,
+                        state.castling,
+                        None, # En passant reset
+                        state.halfmove_clock + 1,
+                        state.fullmove_number, # Full move typically only increment on black
+                        state.history
+                    )
+                    
+                    R = 2
+                    if depth > 6: R = 3
+                    
+                    # Search with reduced depth and zero window around beta
+                    # We pass allow_null=False to prevent double null moves
+                    val = -self.alpha_beta(null_state, depth - 1 - R, -beta, -beta + 1, allow_null=False)
+                    
+                    if val >= beta:
+                        return beta
+                except:
+                    # Fallback
+                    pass
+
+        # Fall through to standard LMR search
+        moves = get_legal_moves(state)
+        
+        if not moves:
+            if is_in_check(state, state.player):
+                return -100000 + depth
+            return 0 
+
+        tt_move = tt_entry.best_move if tt_entry else None
+        
+        killer_1 = self.killer_moves[depth][0]
+        killer_2 = self.killer_moves[depth][1]
+
+        def move_score(m):
+            if m == tt_move: return 10000000
+            if m.is_capture: return 1000000 + self.get_mvv_lva_score(state, m)
+            if m == killer_1: return 900000
+            if m == killer_2: return 800000
+            return self.history_table[m.start][m.target]
+
+        moves.sort(key=move_score, reverse=True)
+
+        best_value = -float('inf')
+        best_move = None
+        original_alpha = alpha
+        
+        in_check = is_in_check(state, state.player)
+
+        for i, move in enumerate(moves):
+            next_state = make_move(state, move)
+
+            # Check Extension
+            extension = 0
+            if depth > 0 and is_in_check(next_state, next_state.player):
+                extension = 1
+
+            # LMR Logic conditions
+            needs_full_search = True
+            
+            if depth >= 3 and i >= 3 and not move.is_capture and not move.is_promotion and not in_check and extension == 0:
+                reduction = 1
+                if i >= 10: reduction = 2
+                if depth >= 6 and i >= 10: reduction = 3
+                
+                reduced_depth = max(1, depth - 1 - reduction)
+                
+                value = -self.alpha_beta(next_state, reduced_depth, -(alpha + 1), -alpha, allow_null=True)
+                
+                if value <= alpha:
+                    needs_full_search = False
+                else:
+                    needs_full_search = True 
+
+            if needs_full_search:
+                if i == 0:
+                    # PV Move: Full Window
+                    value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha, allow_null=True)
+                else:
+                    # PVS Zero Window Search
+                    value = -self.alpha_beta(next_state, depth - 1 + extension, -(alpha + 1), -alpha, allow_null=True)
+                    
+                    if alpha < value < beta:
+                        value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha, allow_null=True)
+            
+            if value >= beta:
+                self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
+                self.store_killer(depth, move)
+                self.store_history(move, depth)
+                return beta
+            
+            if value > best_value:
+                best_value = value
+                best_move = move
+                
+            if value > alpha:
+                alpha = value
+
+        flag = FLAG_EXACT
+        if best_value <= original_alpha:
+            flag = FLAG_UPPERBOUND
+        
+        self.tt.store(state.hash, depth, best_value, flag, best_move)
+        
+        return best_value
