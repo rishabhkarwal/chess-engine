@@ -3,8 +3,8 @@ from engine.bot import *
 from engine.constants import WHITE, BLACK
 
 if __name__ == "__main__":
-    player_1 = HistoryBot(WHITE, time_limit=2, tt_size_mb=32)
-    player_2 = PVSBot(BLACK, time_limit=2, tt_size_mb=32)
+    player_1 = LMRBot(WHITE, time_limit=3, tt_size_mb=32)
+    player_2 = PVSBot(BLACK, time_limit=3, tt_size_mb=32)
     game = Game(player_1, player_2)
     
     results = game.test(10)
@@ -13,14 +13,16 @@ if __name__ == "__main__":
     #game.run(debug=True)
 
 """
-Testing:  100%|---| 10/10 [42:19<0:00, 163.98s/game, => HistoryBot (White): 2, PVSBot (Black): 3, Draw: 5] 
+Testing: 100%|---| 10/10 [57:18<00:00, 343.88s/game, => LMRBot (White): 1, PVSBot (Black): 0, Draw: 9]
 
-HistoryBot (White): 20.0%
-PVSBot (Black): 30.0%
-Draw: 50.0%
+LMRBot (White): 10.0%
+PVSBot (Black): 0.0%
+Draw: 90.0%
         50-Move Rule: 0
         Stalemate: 0
-        Threefold Repetition: 5
+        Threefold Repetition: 9
 
-Principal-Variation ASSUMES first ordered move is best and so searches it completely and searches subsequent to a reduced depth until proven wrong
+Late Move Reduction assumes move-ordering is perfect: if a move is sorted late in the list it implies it is likely bad
+
+So search to a lower depth; unless the lower depth search says that its a good move - then search fully
 """

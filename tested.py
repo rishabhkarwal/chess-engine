@@ -1,6 +1,6 @@
 from engine.fen_parser import load_from_fen
 
-from engine.bot import PVSBot as Bot
+from engine.bot import LMRBot as Bot
 
 position = "8/4B3/8/4p2P/5k2/1K5p/8/8 w - - 0 1"
 state = load_from_fen(position)
@@ -11,6 +11,15 @@ engine = Bot(colour, time_limit=5)
 engine.get_best_move(state, debug=True)
 
 """
+LMR:
+Depth 1 | Eval: 265 | Move: b3a2 | Nodes: 37
+Depth 2 | Eval: 225 | Move: b3a2 | Nodes: 109
+Depth 3 | Eval: 235 | Move: b3a2 | Nodes: 761
+Depth 4 | Eval: 190 | Move: e7a3 | Nodes: 2,248
+Depth 5 | Eval: -510 | Move: b3a2 | Nodes: 5,957
+Depth 6 | Eval: -510 | Move: b3a2 | Nodes: 11,020
+Depth 7 | Eval: -535 | Move: b3a2 | Nodes: 25,941
+
 PVS:
 Depth 1 | Eval: 265 | Move: b3a2 | Nodes: 37
 Depth 2 | Eval: 225 | Move: b3a2 | Nodes: 109

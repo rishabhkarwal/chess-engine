@@ -1043,3 +1043,130 @@ class PVSBot(HistoryBot):
         self.tt.store(state.hash, depth, best_value, flag, best_move)
         
         return best_value
+
+class LMRBot(PVSBot):
+    """
+    Late Move Reductions (LMR)
+    Extends PVS: If a move is sorted late in the list (implying it's likely bad),
+    and it is a 'quiet' move (no capture/promotion), search it with reduced depth
+    If the reduced search creates a beta-cutoff, saves lots of time
+    If it raises alpha, trust it and re-search properly
+    """
+    def alpha_beta(self, state, depth, alpha, beta):
+        self.nodes_searched += 1
+        if (self.nodes_searched & 2047) == 0:
+            if time.time() - self.start_time > self.time_limit:
+                raise TimeoutError()
+        
+        if is_threefold_repetition(state):
+            return 0
+
+        tt_entry = self.tt.probe(state.hash)
+        if tt_entry and tt_entry.depth >= depth:
+            if tt_entry.flag == FLAG_EXACT:
+                return tt_entry.score
+            elif tt_entry.flag == FLAG_LOWERBOUND:
+                alpha = max(alpha, tt_entry.score)
+            elif tt_entry.flag == FLAG_UPPERBOUND:
+                beta = min(beta, tt_entry.score)
+            
+            if alpha >= beta:
+                return tt_entry.score
+
+        if depth <= 0:
+            return self.quiescence(state, alpha, beta)
+
+        moves = get_legal_moves(state)
+        
+        if not moves:
+            if is_in_check(state, state.player):
+                return -100000 + depth
+            return 0 
+
+        tt_move = tt_entry.best_move if tt_entry else None
+        
+        killer_1 = self.killer_moves[depth][0]
+        killer_2 = self.killer_moves[depth][1]
+
+        def move_score(m):
+            if m == tt_move: return 10000000
+            if m.is_capture: return 1000000 + self.get_mvv_lva_score(state, m)
+            if m == killer_1: return 900000
+            if m == killer_2: return 800000
+            return self.history_table[m.start][m.target]
+
+        moves.sort(key=move_score, reverse=True)
+
+        best_value = -float('inf')
+        best_move = None
+        original_alpha = alpha
+        
+        in_check = is_in_check(state, state.player)
+
+        for i, move in enumerate(moves):
+            next_state = make_move(state, move)
+
+            extension = 0
+            if depth > 0 and is_in_check(next_state, next_state.player):
+                extension = 1
+
+            # LMR Logic conditions:
+            # 1. Depth must be decent (>= 3)
+            # 2. Move index must be late (>= 3 or 4)
+            # 3. Not a tactical move (capture / promotion)
+            # 4. Not in check (don't reduce escapes)
+            # 5. Do not give check (extensions handle this, but don't reduce attacking moves)
+            needs_full_search = True
+            
+            if depth >= 3 and i >= 3 and not move.is_capture and not move.is_promotion and not in_check and extension == 0:
+                # Calculate reduction
+                reduction = 1
+                if i >= 10: reduction = 2
+                if depth >= 6 and i >= 10: reduction = 3
+                
+                # Ensure we don't reduce below depth 1 !
+                reduced_depth = max(1, depth - 1 - reduction)
+                
+                # Search with reduced depth and zero window
+                value = -self.alpha_beta(next_state, reduced_depth, -(alpha + 1), -alpha)
+                
+                # If the reduced search returns valid score <= alpha, we are done (it failed low)
+                # But if value > alpha, it means this move is actually better than expected
+                # Must re-search fully
+                if value <= alpha:
+                    needs_full_search = False
+                else:
+                    needs_full_search = True # Result was too good, verify it
+
+            if needs_full_search:
+                if i == 0:
+                    # PV Move: Full Window
+                    value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+                else:
+                    # PVS Zero Window Search
+                    value = -self.alpha_beta(next_state, depth - 1 + extension, -(alpha + 1), -alpha)
+                    
+                    # If failed high in zero window, re-search full window
+                    if alpha < value < beta:
+                        value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+            
+            if value >= beta:
+                self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
+                self.store_killer(depth, move)
+                self.store_history(move, depth)
+                return beta
+            
+            if value > best_value:
+                best_value = value
+                best_move = move
+                
+            if value > alpha:
+                alpha = value
+
+        flag = FLAG_EXACT
+        if best_value <= original_alpha:
+            flag = FLAG_UPPERBOUND
+        
+        self.tt.store(state.hash, depth, best_value, flag, best_move)
+        
+        return best_value
