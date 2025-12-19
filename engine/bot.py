@@ -67,7 +67,7 @@ class MaterialBot(Bot):
         
         return best_move
 
-class PositionalBot(MaterialBot): # as best move return is the same
+class PositionalBot(MaterialBot):
     # Pawn: encourage advancing
     PSQT_PAWN = [
         0,  0,  0,  0,  0,  0,  0,  0,
@@ -163,7 +163,6 @@ class PositionalBot(MaterialBot): # as best move return is the same
             for sq in BitBoard.bit_scan(bb): # bit scan needed as we need position
                 if is_white:
                     table_idx = (7 - (sq // 8)) * 8 + (sq % 8) 
-                    
                     pos_score = table[table_idx]
                     score += material + pos_score
                 else:
@@ -191,8 +190,6 @@ class SearchTreeBot(PositionalBot): # will evaluate material and position
 
         for move in moves:
             next_state = make_move(state, move)
-            # start the recursive search
-            # -search because the opponent tries to minimise OUR score | max(a, b) = -min(-a, -b)
             value = -self.negamax(next_state, self.depth - 1)
             
             if value > best_value:
@@ -251,12 +248,7 @@ class AlphaBetaBot(PositionalBot):
         for move in moves:
             next_state = make_move(state, move)
             
-            # Check extension: If we give check, extend search by 1 ply
-            extension = 0
-            if is_in_check(next_state, next_state.player):
-                extension = 1
-
-            value = -self.alpha_beta(next_state, self.depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, self.depth - 1, -beta, -alpha)
             
             if value > best_value:
                 best_value = value
@@ -273,11 +265,8 @@ class AlphaBetaBot(PositionalBot):
         if is_threefold_repetition(state):
             return 0
 
-        if depth == 0:
-            score = self.evaluate(state)
-            if state.player != self.colour:
-                return -score
-            return score
+        if depth <= 0:
+            return self.quiescence(state, alpha, beta)
         
         moves = get_legal_moves(state)
         
@@ -294,13 +283,7 @@ class AlphaBetaBot(PositionalBot):
         for move in moves:
             next_state = make_move(state, move)
 
-            # Check extension
-            extension = 0
-            if depth > 0: # Only extend if we aren't already at horizon to prevent explosion
-                if is_in_check(next_state, next_state.player):
-                    extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
             
             if value >= beta:
                 # beta cutoff: opponent has a better move elsewhere, so they won't allow this
@@ -344,12 +327,7 @@ class AlphaBetaTTBot(PositionalBot):
         for move in moves:
             next_state = make_move(state, move)
             
-            # Check extension
-            extension = 0
-            if is_in_check(next_state, next_state.player):
-                extension = 1
-                
-            value = -self.alpha_beta(next_state, self.depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, self.depth - 1, -beta, -alpha)
             
             if value > best_value:
                 best_value = value
@@ -381,12 +359,8 @@ class AlphaBetaTTBot(PositionalBot):
             if alpha >= beta:
                 return tt_entry.score
 
-        if depth == 0:
-            score = self.evaluate(state)
-
-            if state.player != self.colour:
-                return -score
-            return score
+        if depth <= 0:
+            return self.quiescence(state, alpha, beta)
         
         moves = get_legal_moves(state)
         
@@ -410,13 +384,7 @@ class AlphaBetaTTBot(PositionalBot):
         for move in moves:
             next_state = make_move(state, move)
             
-            # Check extension
-            extension = 0
-            if depth > 0:
-                 if is_in_check(next_state, next_state.player):
-                    extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
             
             if value >= beta:
                 self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
@@ -445,7 +413,7 @@ class QuiescenceBot(AlphaBetaBot):
         if is_threefold_repetition(state):
             return 0
 
-        if depth == 0:
+        if depth <= 0:
             return self.quiescence(state, alpha, beta)
         
         moves = get_legal_moves(state)
@@ -460,13 +428,7 @@ class QuiescenceBot(AlphaBetaBot):
         for move in moves:
             next_state = make_move(state, move)
             
-            # Check extension
-            extension = 0
-            if depth > 0: # Only extend if we aren't at the leaf
-                if is_in_check(next_state, next_state.player):
-                    extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
             
             if value >= beta:
                 return beta
@@ -478,19 +440,29 @@ class QuiescenceBot(AlphaBetaBot):
     def quiescence(self, state, alpha, beta):
         self.nodes_searched += 1
 
-        base_eval = self.evaluate(state)
-        if state.player != self.colour:
-            base_eval = -base_eval
+        in_check = is_in_check(state, state.player)
 
-        if base_eval >= beta:
-            return beta
-        
-        if base_eval > alpha:
-            alpha = base_eval
+        if not in_check:
+            base_eval = self.evaluate(state)
+            if state.player != self.colour:
+                base_eval = -base_eval
+
+            if base_eval >= beta:
+                return beta
             
-        capture_moves = get_legal_moves(state, captures_only=True)
+            if base_eval > alpha:
+                alpha = base_eval
+        
+        if in_check:
+            moves = get_legal_moves(state)
+            if not moves: 
+                return -100000 
+        else:
+            moves = get_legal_moves(state, captures_only=True)
+
+        moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
     
-        for move in capture_moves:
+        for move in moves:
             next_state = make_move(state, move)
             score = -self.quiescence(next_state, -beta, -alpha)
             
@@ -531,7 +503,7 @@ class IterativeDeepeningBot(QuiescenceBot):
                 best_move, score = self.search_root(state, current_depth, moves)
                 best_move_so_far = best_move
                 
-                if debug: print(f"Info: Depth {current_depth} | Move: {best_move_so_far} | Score: {score} | Nodes: {self.nodes_searched} | Time: {time.time() - self.start_time:.3f}s") # debug print
+                if debug: print(f"Info: Depth {current_depth} | Move: {best_move_so_far} | Score: {score} | Nodes: {self.nodes_searched} | Time: {time.time() - self.start_time:.3f}s")
                 
                 # check if we have time for next depth
                 elapsed = time.time() - self.start_time
@@ -555,17 +527,13 @@ class IterativeDeepeningBot(QuiescenceBot):
         beta = float('inf')
         
         for move in sorted_moves:
+            # Reverted: Checking timeout here at depth=1 could cause us to miss mates
             if time.time() - self.start_time > self.time_limit:
                 raise TimeoutError()
                 
             next_state = make_move(state, move)
 
-            # Check extension
-            extension = 0
-            if is_in_check(next_state, next_state.player):
-                extension = 1
-
-            value = -self.alpha_beta_timed(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta_timed(next_state, depth - 1, -beta, -alpha)
             
             if value > best_value:
                 best_value = value
@@ -588,7 +556,7 @@ class IterativeDeepeningBot(QuiescenceBot):
         if is_threefold_repetition(state):
             return 0
 
-        if depth == 0:
+        if depth <= 0:
             return self.quiescence(state, alpha, beta)
         
         moves = get_legal_moves(state)
@@ -603,209 +571,12 @@ class IterativeDeepeningBot(QuiescenceBot):
         for move in moves:
             next_state = make_move(state, move)
 
-            # Check extension
-            extension = 0
-            if depth > 0:
-                if is_in_check(next_state, next_state.player):
-                    extension = 1
-
-            value = -self.alpha_beta_timed(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta_timed(next_state, depth - 1, -beta, -alpha)
             
             if value >= beta:
                 return beta
             if value > alpha:
                 alpha = value
-                
-        return alpha
-
-class TranspositionBot(PositionalBot):
-    def __init__(self, colour, time_limit=2.0, tt_size_mb=64):
-        super().__init__(colour)
-        self.time_limit = time_limit
-        self.tt = TranspositionTable(tt_size_mb)
-        self.start_time = 0.0
-        self.nodes_searched = 0
-
-    def get_best_move(self, state, debug=False):
-        self.nodes_searched = 0
-        self.start_time = time.time()
-        #self.tt.clear() # clear TT between moves or keep it (better performance)
-        
-        moves = get_legal_moves(state)
-        if not moves: return None
-
-        moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
-        
-        best_move_so_far = moves[0]
-        current_depth = 1
-        
-        while True:
-            try:
-                best_move, score = self.search_root(state, current_depth, moves)
-                best_move_so_far = best_move
-                
-                if debug: print(f"Info: Depth {current_depth} | Move: {best_move} | Score: {score} | Nodes: {self.nodes_searched} | Time: {time.time() - self.start_time:.3f}s") # debug print
-
-                elapsed = time.time() - self.start_time
-                if elapsed > self.time_limit / 2:
-                    break
-                    
-                current_depth += 1
-                if current_depth > 100: break
-                
-            except TimeoutError:
-                if debug: print(f"Info: Time limit reached at Depth {current_depth}")
-                break
-
-        return best_move_so_far
-
-    def search_root(self, state, depth, moves):
-        """Root search is special because we need to return the move, not just score"""
-        best_move = moves[0]
-        best_value = -float('inf')
-        alpha = -float('inf')
-        beta = float('inf')
-        
-        # retrieve TT entry for the root to improve sorting
-        tt_entry = self.tt.probe(state.hash)
-        tt_move = tt_entry.best_move if tt_entry else None
-        
-        # sort: TT move first, then captures
-        if tt_move and tt_move in moves:
-            moves.remove(tt_move)
-            moves.insert(0, tt_move)
-            
-        for move in moves:
-            if time.time() - self.start_time > self.time_limit:
-                raise TimeoutError()
-                
-            next_state = make_move(state, move)
-
-            # Check extension
-            extension = 0
-            if is_in_check(next_state, next_state.player):
-                extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
-            
-            if value > best_value:
-                best_value = value
-                best_move = move
-            
-            if value > alpha:
-                alpha = value
-                
-        # store root result
-        self.tt.store(state.hash, depth, best_value, FLAG_EXACT, best_move)
-        return best_move, best_value
-
-    def alpha_beta(self, state, depth, alpha, beta):
-        self.nodes_searched += 1
-        if (self.nodes_searched & 2047) == 0:
-            if time.time() - self.start_time > self.time_limit:
-                raise TimeoutError()
-
-        if is_threefold_repetition(state):
-            return 0
-
-        # transposition table lookup
-        tt_entry = self.tt.probe(state.hash)
-        if tt_entry and tt_entry.depth >= depth:
-            if tt_entry.flag == FLAG_EXACT:
-                return tt_entry.score
-            elif tt_entry.flag == FLAG_LOWERBOUND:
-                alpha = max(alpha, tt_entry.score)
-            elif tt_entry.flag == FLAG_UPPERBOUND:
-                beta = min(beta, tt_entry.score)
-            
-            if alpha >= beta:
-                return tt_entry.score
-
-        if depth == 0:
-            return self.quiescence(state, alpha, beta)
-
-        moves = get_legal_moves(state)
-        
-        if not moves:
-            if is_in_check(state, state.player):
-                return -100000 + depth # checkmate
-            return 0 # stalemate
-
-        # move prdering
-        # if we had a TT hit, use that move first
-        tt_move = tt_entry.best_move if tt_entry else None
-        
-        if tt_move:
-            pass 
-
-        # TT move prioritization
-        moves.sort(key=lambda m: (
-            m == tt_move,
-            m.is_capture, 
-            m.is_promotion
-        ), reverse=True)
-
-        best_value = -float('inf')
-        best_move = None
-        original_alpha = alpha
-        
-        for move in moves:
-            next_state = make_move(state, move)
-            
-            # Check extension
-            extension = 0
-            if depth > 0:
-                 if is_in_check(next_state, next_state.player):
-                    extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
-            
-            if value >= beta:
-                # store LOWERBOUND (beta cutoff)
-                self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
-                return beta
-            
-            if value > best_value:
-                best_value = value
-                best_move = move
-                
-            if value > alpha:
-                alpha = value
-
-        # store result in TT
-        flag = FLAG_EXACT
-        if best_value <= original_alpha:
-            flag = FLAG_UPPERBOUND
-        
-        self.tt.store(state.hash, depth, best_value, flag, best_move)
-        
-        return best_value
-
-    def quiescence(self, state, alpha, beta):
-        self.nodes_searched += 1
-        
-        base_eval = self.evaluate(state)
-        if state.player != self.colour:
-            base_eval = -base_eval
-
-        if base_eval >= beta:
-            return beta
-        
-        if base_eval > alpha:
-            alpha = base_eval
-            
-        capture_moves = get_legal_moves(state, captures_only=True)
-
-        capture_moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
-    
-        for move in capture_moves:
-            next_state = make_move(state, move)
-            score = -self.quiescence(next_state, -beta, -alpha)
-            
-            if score >= beta:
-                return beta
-            if score > alpha:
-                alpha = score
                 
         return alpha
 
@@ -890,17 +661,13 @@ class KillerBot(PositionalBot):
             moves.insert(0, tt_move)
             
         for move in moves:
+            # Reverted: timeout check here is risky if depth 1 contains critical info
             if time.time() - self.start_time > self.time_limit:
                 raise TimeoutError()
                 
             next_state = make_move(state, move)
 
-            # Check extension
-            extension = 0
-            if is_in_check(next_state, next_state.player):
-                extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
             
             if value > best_value:
                 best_value = value
@@ -933,7 +700,7 @@ class KillerBot(PositionalBot):
             if alpha >= beta:
                 return tt_entry.score
 
-        if depth == 0:
+        if depth <= 0:
             return self.quiescence(state, alpha, beta)
 
         moves = get_legal_moves(state)
@@ -965,18 +732,12 @@ class KillerBot(PositionalBot):
         for move in moves:
             next_state = make_move(state, move)
 
-            # Check extension
-            extension = 0
-            if depth > 0:
-                if is_in_check(next_state, next_state.player):
-                    extension = 1
-
-            value = -self.alpha_beta(next_state, depth - 1 + extension, -beta, -alpha)
+            value = -self.alpha_beta(next_state, depth - 1, -beta, -alpha)
             
             if value >= beta:
                 # Update TT and Killer Moves
                 self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
-                self.store_killer(depth, move) # Killer heuristic store
+                self.store_killer(depth, move) # KILLER HEURISTIC STORE
                 return beta
             
             if value > best_value:
@@ -997,21 +758,29 @@ class KillerBot(PositionalBot):
     def quiescence(self, state, alpha, beta):
         self.nodes_searched += 1
         
-        base_eval = self.evaluate(state)
-        if state.player != self.colour:
-            base_eval = -base_eval
+        in_check = is_in_check(state, state.player)
 
-        if base_eval >= beta:
-            return beta
-        
-        if base_eval > alpha:
-            alpha = base_eval
+        if not in_check:
+            base_eval = self.evaluate(state)
+            if state.player != self.colour:
+                base_eval = -base_eval
+
+            if base_eval >= beta:
+                return beta
             
-        capture_moves = get_legal_moves(state, captures_only=True)
+            if base_eval > alpha:
+                alpha = base_eval
+            
+        if in_check:
+            moves = get_legal_moves(state)
+            if not moves:
+                return -100000 
+        else:
+            moves = get_legal_moves(state, captures_only=True)
 
-        capture_moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
+        moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
     
-        for move in capture_moves:
+        for move in moves:
             next_state = make_move(state, move)
             score = -self.quiescence(next_state, -beta, -alpha)
             
