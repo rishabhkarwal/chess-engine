@@ -41,13 +41,17 @@ class Move:
 
     def __str__(self):
         """Convert move object to string e.g. 'e2e4'"""
+
+        # Removed for UCI format
+        """
         # Handle Castling Notation
         if self.flag & CASTLE:
-            # If target file > start file (e.g., e1->g1), it's Kingside
+            # If target file > start file (e.g., e1 -> g1), it's Kingside
             if (self.target % 8) > (self.start % 8):
                 return "O-O"
             else:
                 return "O-O-O"
+        """
 
         files = "abcdefgh"
         
