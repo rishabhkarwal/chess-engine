@@ -1,38 +1,35 @@
 import time
-from engine.core.constants import WHITE, BLACK
-from engine.movegen.generator import get_legal_moves
+from engine.core.constants import WHITE, BLACK, INFINITY
+from engine.moves.generator import get_legal_moves
 from engine.board.move_exec import make_move, is_threefold_repetition
-from engine.movegen.legality import is_in_check
+from engine.moves.legality import is_in_check
 from engine.search.transposition import TranspositionTable, FLAG_EXACT, FLAG_LOWERBOUND, FLAG_UPPERBOUND
 from engine.search.evaluation import evaluate
 from engine.search.ordering import MoveOrdering
 
+def seconds_to_ms(seconds) -> int:
+    return int(seconds * 1000)
+
 class SearchEngine:
-    def __init__(self, time_limit=1.0, tt_size_mb=64, debug=False):
+    def __init__(self, time_limit=2000, tt_size_mb=32, debug=False):
         self.time_limit = time_limit
         self.tt = TranspositionTable(tt_size_mb)
         self.ordering = MoveOrdering()
         self.nodes_searched = 0
-        self.sel_depth = 0  # Track max depth (selective depth)
         self.start_time = 0.0
         self.root_colour = WHITE
-        self.delta_margin = 1000 
+        self.aspiration_window = 50
         self.debug = debug
 
     def get_best_move(self, state):
-        """
-        Iterative Deepening with Aspiration Windows.
-        Returns the best move found within the time limit.
-        """
+        """Iterative Deepening with Aspiration Windows: returns the best move found within the time limit"""
         self.nodes_searched = 0
-        self.sel_depth = 0
         self.start_time = time.time()
         self.root_colour = state.player
         
         moves = get_legal_moves(state)
         if not moves: return None
         
-        # Initial rough sort
         moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
         
         best_move_so_far = moves[0]
@@ -45,11 +42,10 @@ class SearchEngine:
                     moves.remove(best_move_so_far)
                     moves.insert(0, best_move_so_far)
                 
-                alpha = -float('inf')
-                beta = float('inf')
-                window = 50
+                alpha = -INFINITY * 10
+                beta = INFINITY * 10
+                window = self.aspiration_window
                 
-                # Aspiration Windows logic
                 if current_depth > 1:
                     alpha = current_score - window
                     beta = current_score + window
@@ -57,8 +53,8 @@ class SearchEngine:
                     best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                     
                     if score <= alpha or score >= beta:
-                        alpha = -float('inf')
-                        beta = float('inf')
+                        alpha = -INFINITY * 10
+                        beta = INFINITY * 10
                         best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                 else:
                     best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
@@ -67,22 +63,14 @@ class SearchEngine:
                 current_score = score
                 
                 elapsed = time.time() - self.start_time
-                time_ms = int(elapsed * 1000)
                 nps = int(self.nodes_searched / elapsed) if elapsed > 0 else 0
                 
-                if abs(score) > 90000:
-                    if score > 0:
-                        mate_in = (100000 - score + 1) // 2
-                        score_str = f"mate {mate_in}"
-                    else:
-                        mate_in = (100000 + score + 1) // 2
-                        score_str = f"mate -{mate_in}"
-                else:
-                    score_str = f"cp {score}"
+                score_str = f"cp {score:.1f}"
 
-                if self.debug: print(f"info depth {current_depth} seldepth {self.sel_depth} score {score_str} nodes {self.nodes_searched} nps {nps} time {time_ms}", flush=True)
+                if self.debug: print(f"info depth {current_depth} score {score_str} nodes {self.nodes_searched:,} nps {nps:,} time {elapsed:.4f}", flush=True)
                 
                 elapsed = time.time() - self.start_time
+                elapsed = elapsed * 1000
                 if elapsed > self.time_limit / 2:
                     break
                     
@@ -104,13 +92,12 @@ class SearchEngine:
         moves.sort(key=lambda m: self.ordering.get_move_score(m, tt_move, state, depth, k1, k2), reverse=True)
 
         best_move = moves[0]
-        best_value = -float('inf')
+        best_value = -INFINITY * 10
         
-        # Current Ply is 0 at root
         ply = 0
         
         for i, move in enumerate(moves):
-            #if self.debug: print(f"info currmovenumber {i+1}", flush=True)
+            #if self.debug: print(f"info currmovenumber {i + 1}", flush=True)
 
             next_state = make_move(state, move)
             
@@ -135,16 +122,11 @@ class SearchEngine:
 
     def _alpha_beta(self, state, depth, alpha, beta, ply, allow_null=True):
         self.nodes_searched += 1
-        if (self.nodes_searched & 2047) == 0:
+        if (self.nodes_searched & 2047) == 0: # time condition checked every 2048 nodes searched
             if time.time() - self.start_time > self.time_limit:
                 raise TimeoutError()
         
-        # Update Selective Depth
-        if ply > self.sel_depth:
-            self.sel_depth = ply
-        
-        if is_threefold_repetition(state):
-            return 0
+        if is_threefold_repetition(state): return 0 # draw by repetition
 
         tt_entry = self.tt.probe(state.hash)
         if tt_entry and tt_entry.depth >= depth:
@@ -164,15 +146,15 @@ class SearchEngine:
                     state.bitboards, not state.player, state.castling, 
                     None, state.halfmove_clock + 1, state.fullmove_number, state.history
                 )
-                R = 2
-                val = -self._alpha_beta(null_state, depth - 1 - R, -beta, -beta + 1, ply + 1, allow_null=False)
+                reduction = 2 # depth reduction
+                val = -self._alpha_beta(null_state, depth - 1 - reduction, -beta, -beta + 1, ply + 1, allow_null=False)
                 if val >= beta: return beta
             except: pass
 
         moves = get_legal_moves(state)
         
         if not moves:
-            if in_check: return -100000 + ply # Checkmate
+            if in_check: return -INFINITY + ply # checkmate
             return 0 
 
         tt_move = tt_entry.best_move if tt_entry else None
@@ -181,16 +163,16 @@ class SearchEngine:
 
         moves.sort(key=lambda m: self.ordering.get_move_score(m, tt_move, state, depth, k1, k2), reverse=True)
         
-        best_value = -float('inf')
+        best_value = -INFINITY * 10
         best_move = None
         original_alpha = alpha
         
         for i, move in enumerate(moves):
             next_state = make_move(state, move)
             
-            needs_full = True
+            needs_full = True # full search
             if depth >= 3 and i >= 3 and not move.is_capture and not move.is_promotion and not in_check:
-                reduction = 1
+                reduction = 1 # depth reduction
                 if i >= 10: reduction = 2
                 reduced_depth = max(1, depth - 1 - reduction)
                 val = -self._alpha_beta(next_state, reduced_depth, -(alpha+1), -alpha, ply + 1, allow_null=True)
@@ -228,24 +210,18 @@ class SearchEngine:
     def _quiescence(self, state, alpha, beta, ply):
         self.nodes_searched += 1
         
-        # Update Selective Depth in Quiescence
-        if ply > self.sel_depth:
-            self.sel_depth = ply
-        
         in_check = is_in_check(state, state.player)
         
         if not in_check:
-            stand_pat = evaluate(state)
-            if stand_pat >= beta: return beta
-            if stand_pat > alpha: alpha = stand_pat
-            
-            if stand_pat + self.delta_margin < alpha: 
-                return alpha
-            
+            evaluation = evaluate(state)
+            if evaluation >= beta: return beta
+            if evaluation > alpha: alpha = evaluation
+
             moves = get_legal_moves(state, captures_only=True)
+
         else:
             moves = get_legal_moves(state, captures_only=False)
-            if not moves: return -100000 + ply
+            if not moves: return -INFINITY + ply
 
         moves.sort(key=lambda m: (m.is_capture, m.is_promotion), reverse=True)
         

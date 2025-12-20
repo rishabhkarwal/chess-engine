@@ -7,47 +7,41 @@ from engine.core.constants import (
     A1, H1, A8, H8, E1, C1, G1, E8, C8, G8,
     F1, D1, F8, D8
 )
-from engine.core.bitboard_utils import BitBoard
+from engine.core.utils import BitBoard
 from engine.core.zobrist import compute_hash
 
 def get_position_id(bitboards, player, castling, ep) -> str:
-    """Generate a unique string identifier for the current position (for draw detection)"""
-    pieces_str = ""
-    for piece in ALL_PIECES:
-        pieces_str += f"{piece}:{bitboards[piece]}|"
-    
+    """Generate a unique ID for the current position (for draw detection)"""
+    pieces_str = ''.join(f"{piece}:{bitboards[piece]}|" for piece in ALL_PIECES)
     return f"{pieces_str}T:{player}C:{castling}EP:{ep}"
 
 def is_threefold_repetition(state: State) -> bool:
-    """Check if the current position has occurred 3 times"""
-    if not state.history:
-        return False
+    """Check if the current position has occurred 3 times (draw by repetition)"""
+    if not state.history: return False
 
     last_entry = state.history[-1]
-    if '#' not in last_entry:
-        return False
+
+    if '#' not in last_entry: return False
         
     current_id = last_entry.split('#')[1]
     
     count = 0
     for entry in reversed(state.history):
         if '#' in entry:
-            if entry.split('#')[1] == current_id:
-                count += 1
+            if entry.split('#')[1] == current_id: count += 1
 
         if count >= 3: return True
+
     return False
 
 def make_move(state: State, move: Move) -> State:
     """Apply a move and return a new game state"""
     new_bitboards = state.bitboards.copy()
     
-    if state.player == WHITE:
-        active = WHITE_PIECES
-        opponent = BLACK_PIECES
-    else:
-        active = BLACK_PIECES
-        opponent = WHITE_PIECES
+    active = WHITE_PIECES
+    opponent = BLACK_PIECES
+
+    if state.player == BLACK: opponent, active = active, opponent
     
     start_mask = 1 << move.start
     target_mask = 1 << move.target
@@ -117,8 +111,7 @@ def make_move(state: State, move: Move) -> State:
     new_ep = NO_SQUARE
     is_pawn = moving_piece.lower() == 'p'
     
-    if is_pawn and abs(move.start - move.target) == 16:
-        new_ep = (move.start + move.target) // 2
+    if is_pawn and abs(move.start - move.target) == 16: new_ep = (move.start + move.target) // 2
     
     if is_pawn or (move.flag & CAPTURE): new_halfmove = 0
     else: new_halfmove = state.halfmove_clock + 1
@@ -128,5 +121,4 @@ def make_move(state: State, move: Move) -> State:
     position_id = get_position_id(new_bitboards, not(state.player), new_castling, new_ep)
     history_entry = f"{move}#{position_id}"
     
-    # Create new state (Post init will calculate Zobrist hash automatically)
     return State(new_bitboards, not(state.player), new_castling, new_ep, new_halfmove, new_fullmove, state.history + [history_entry])

@@ -6,25 +6,23 @@ from engine.core.constants import (
 )
 from engine.board.state import State
 from engine.core.move import Move, QUIET, CAPTURE, EP_CAPTURE, CASTLE, PROMOTION
-from engine.movegen.precomputed import (
+from engine.moves.precomputed import (
     KNIGHT_ATTACKS, KING_ATTACKS,
     ROOK_TABLE, ROOK_MASKS,
     BISHOP_TABLE, BISHOP_MASKS,
     WHITE_PAWN_ATTACKS, BLACK_PAWN_ATTACKS
 )
-from engine.core.bitboard_utils import BitBoard
-from engine.movegen.legality import is_legal, is_square_attacked
+from engine.core.utils import BitBoard
+from engine.moves.legality import is_legal, is_square_attacked
 
 def get_legal_moves(state: State, captures_only=False) -> List[Move]:
-    """Generate all LEGAL moves (filters pseudo-legal)"""
-    pseudo_legal = generate_moves(state, captures_only)
-    legal = []
-    for move in pseudo_legal:
-        if is_legal(state, move):
-            legal.append(move)
+    """Generate all legal moves"""
+    pseudo_legal = generate_pseudo_legal_moves(state, captures_only)
+    legal = [move for move in pseudo_legal if is_legal(state, move)]
     return legal
 
-def generate_moves(state: State, captures_only=False) -> List[Move]:
+def generate_pseudo_legal_moves(state: State, captures_only=False) -> List[Move]:
+    """Generate all pseudo-legal moves"""
     moves: List[Move] = []
     all_pieces = state.bitboards["all"]
     
@@ -42,7 +40,7 @@ def generate_moves(state: State, captures_only=False) -> List[Move]:
     _gen_pawn_moves(state, moves, P, state.player, all_pieces, opponent, pawn_attacks, captures_only)
     _gen_knight_moves(state.bitboards[N], moves, active, opponent, captures_only)
     _gen_king_moves(state.bitboards[K], moves, active, opponent, captures_only)
-    if not captures_only: _gen_castling_moves(state, moves, all_pieces)
+    if not captures_only: _gen_castling_moves(state, moves, all_pieces) # castling is never a capture
     _gen_bishop_moves(state.bitboards[B], moves, all_pieces, active, opponent, captures_only)
     _gen_rook_moves(state.bitboards[R], moves, all_pieces, active, opponent, captures_only)
     _gen_queen_moves(state.bitboards[Q], moves, all_pieces, active, opponent, captures_only)
@@ -51,13 +49,12 @@ def generate_moves(state: State, captures_only=False) -> List[Move]:
 
 def _gen_pawn_moves(state: State, moves: List[Move], pawn_key: str, colour: int, all_pieces: int, enemy: int, attack_table: List[int], captures_only: bool):
     pawns = state.bitboards[pawn_key]
-    
     if colour == WHITE:
-        direction = 8
-        start_rank_mask = RANK_3
-        promotion_rank = A8
-        single_push = (pawns << 8) & ~all_pieces
-        double_push = ((single_push & start_rank_mask) << 8) & ~all_pieces
+            direction = 8
+            start_rank_mask = RANK_3
+            promotion_rank = A8
+            single_push = (pawns << 8) & ~all_pieces
+            double_push = ((single_push & start_rank_mask) << 8) & ~all_pieces
     else:
         direction = -8
         start_rank_mask = RANK_6
@@ -65,18 +62,22 @@ def _gen_pawn_moves(state: State, moves: List[Move], pawn_key: str, colour: int,
         single_push = (pawns >> 8) & ~all_pieces
         double_push = ((single_push & start_rank_mask) >> 8) & ~all_pieces
     
-    if not captures_only:
-        for to_sq in BitBoard.bit_scan(single_push):
-            from_sq = to_sq - direction
-            if (colour == WHITE and to_sq >= promotion_rank) or (colour == BLACK and to_sq <= promotion_rank):
-                _add_promotions(moves, from_sq, to_sq, QUIET)
-            else:
-                moves.append(Move(from_sq, to_sq, QUIET))
+    # single pushes
+    for to_sq in BitBoard.bit_scan(single_push):
+        from_sq = to_sq - direction
         
+        is_promo = (colour == WHITE and to_sq >= promotion_rank) or (colour == BLACK and to_sq <= promotion_rank)
+        
+        if is_promo: _add_promotions(moves, from_sq, to_sq, QUIET)
+        elif not captures_only: moves.append(Move(from_sq, to_sq, QUIET))
+            
+    # double pushes
+    if not captures_only:
         for to_sq in BitBoard.bit_scan(double_push):
             from_sq = to_sq - (2 * direction)
             moves.append(Move(from_sq, to_sq, QUIET))
-    
+
+    # captures
     for from_sq in BitBoard.bit_scan(pawns):
         attacks = attack_table[from_sq] & enemy
         for to_sq in BitBoard.bit_scan(attacks):

@@ -4,7 +4,7 @@ from engine.core.constants import (
     FILE_A, FILE_H, FILE_AB, FILE_GH,
     FULL_BOARD
 )
-from engine.core.bitboard_utils import BitBoard
+from engine.core.utils import BitBoard
 
 KNIGHT_ATTACKS: List[int] = [0] * 64
 KING_ATTACKS: List[int]   = [0] * 64

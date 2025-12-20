@@ -1,12 +1,12 @@
 from engine.core.constants import WHITE, BLACK, WHITE_PIECES, BLACK_PIECES
 from engine.board.state import State
-from engine.movegen.precomputed import (
+from engine.moves.precomputed import (
     KNIGHT_ATTACKS, KING_ATTACKS,
     ROOK_TABLE, ROOK_MASKS,
     BISHOP_TABLE, BISHOP_MASKS,
     WHITE_PAWN_ATTACKS, BLACK_PAWN_ATTACKS
 )
-from engine.core.bitboard_utils import BitBoard
+from engine.core.utils import BitBoard
 from engine.board.move_exec import make_move
 
 def is_square_attacked(state: State, sq: int, colour: int) -> bool:
@@ -48,14 +48,11 @@ def get_attackers(state: State, sq: int, colour: int) -> int:
         P, N, B, R, Q, K = BLACK_PIECES
         pawn_attacks = WHITE_PAWN_ATTACKS[sq]
     
-    if pawn_attacks & state.bitboards.get(P, 0):
-        attackers |= pawn_attacks & state.bitboards[P]
+    if pawn_attacks & state.bitboards.get(P, 0): attackers |= pawn_attacks & state.bitboards[P]
     
-    if KNIGHT_ATTACKS[sq] & state.bitboards.get(N, 0):
-        attackers |= KNIGHT_ATTACKS[sq] & state.bitboards[N]
+    if KNIGHT_ATTACKS[sq] & state.bitboards.get(N, 0): attackers |= KNIGHT_ATTACKS[sq] & state.bitboards[N]
     
-    if KING_ATTACKS[sq] & state.bitboards.get(K, 0):
-        attackers |= KING_ATTACKS[sq] & state.bitboards[K]
+    if KING_ATTACKS[sq] & state.bitboards.get(K, 0): attackers |= KING_ATTACKS[sq] & state.bitboards[K]
     
     b_mask = BISHOP_MASKS[sq]
     b_pattern = all_pieces & b_mask

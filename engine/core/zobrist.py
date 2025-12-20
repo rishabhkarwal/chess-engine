@@ -1,5 +1,5 @@
 import random
-from .constants import ALL_PIECES, NO_SQUARE
+from engine.core.constants import ALL_PIECES, NO_SQUARE, BLACK
 
 def init_zobrist_keys():
     """Initialises random 64-bit integers for Zobrist hashing"""
@@ -34,13 +34,10 @@ def compute_hash(state) -> int:
     h ^= ZOBRIST_KEYS['castling'][state.castling]
     
     # en passant
-    if state.en_passant != NO_SQUARE:
-        file = state.en_passant % 8
-        h ^= ZOBRIST_KEYS['ep'][file]
-    else:
-        h ^= ZOBRIST_KEYS['ep'][8]
+    file = state.en_passant % 8 if state.en_passant != NO_SQUARE else 8
+    h ^= ZOBRIST_KEYS['ep'][file]
         
     # side to move (if black)
-    if state.player == 0: h ^= ZOBRIST_KEYS['black_to_move']
+    if state.player == BLACK: h ^= ZOBRIST_KEYS['black_to_move']
         
     return h
