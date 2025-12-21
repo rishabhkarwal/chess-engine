@@ -156,7 +156,7 @@ def make_move(state: State, move: int) -> tuple:
     if is_pawn and abs(start_sq - target_sq) == 16:
         state.en_passant = (start_sq + target_sq) // 2
         
-    state.hash ^= ZOBRIST_KEYS['ep'][state.en_passant % 8]
+    state.hash ^= ZOBRIST_KEYS['ep'][state.en_passant % 8 if state.en_passant != NO_SQUARE else 8]
 
     if is_pawn or (flag == CAPTURE or flag >= PROMO_CAP_N): state.halfmove_clock = 0
     else: state.halfmove_clock += 1
