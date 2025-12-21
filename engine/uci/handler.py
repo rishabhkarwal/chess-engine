@@ -7,6 +7,7 @@ from engine.moves.generator import get_legal_moves
 from engine.core.constants import WHITE, BLACK, NAME, AUTHOR
 from engine.search.search import SearchEngine
 from engine.uci.utils import send_command
+from engine.core.move import move_to_uci
 
 class UCI:
     def __init__(self, debug=False):
@@ -61,10 +62,11 @@ class UCI:
             for move_str in moves:
                 legal_moves = get_legal_moves(self.state)
                 for legal_move in legal_moves:
-                    s_move = str(legal_move).lower()
+                    
+                    s_move = move_to_uci(legal_move)
                     
                     if s_move == move_str.lower():
-                        self.state = make_move(self.state, legal_move)
+                        make_move(self.state, legal_move)
                         break
 
     def handle_go(self, args):
@@ -88,11 +90,8 @@ class UCI:
         if move_time: time_limit = move_time
 
         elif w_time is not None and b_time is not None:
-            # rule of 30
             if self.state.player == WHITE: time_limit = (w_time / 30.0 + w_inc)
             else: time_limit = (b_time / 30.0 + b_inc)
-            
-            # safety
             time_limit = max(50, time_limit - 50)
 
         self.engine.time_limit = time_limit
@@ -100,7 +99,7 @@ class UCI:
         try:
             best_move = self.engine.get_best_move(self.state)
             
-            move_str = str(best_move) if best_move else '0000'
+            move_str = move_to_uci(best_move) if best_move else '0000'
             send_command(f'bestmove {move_str}')
 
         except:

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Dict, List, Tuple, Any, Optional
+from typing import Dict, List, Any, Optional
 
 from engine.core.constants import ALL_PIECES
 from engine.core.zobrist import compute_hash
@@ -12,7 +12,7 @@ class State:
     en_passant: int
     halfmove_clock: int
     fullmove_number: int
-    history: List[Tuple[Any, ...]]
+    history: List[int]
     hash: Optional[int] = None 
 
     def __post_init__(self):

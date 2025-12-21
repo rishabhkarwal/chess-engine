@@ -1,15 +1,18 @@
 class BitBoard:
     @staticmethod
-    def pprint(bitboard, piece = '1'):
-        [print(''.join([f'{piece}  ' if (bitboard & (1 << rank * 8 + file)) else '·  ' for file in range(8)])) for rank in range(7, -1, -1)], print()
-    
-    @staticmethod
     def bit_scan(bitboard):
+        """Returns a list of square indices where bits are set to 1"""
+        squares = []
         while bitboard:
-            lsb = bitboard & -bitboard  # isolate the least significant bit
-            yield lsb.bit_length() - 1  # return the index of the bit
-            bitboard &= bitboard - 1  # clear the least significant bit
+            lsb = bitboard & -bitboard # isolate lsb
+            squares.append(lsb.bit_length() - 1) # get index
+            bitboard &= bitboard - 1 # reset lsb
+        return squares
 
+    @staticmethod
+    def pprint(bitboard, piece = '1'):
+        [print(''.join([f'{piece}  ' if (bitboard & (1 << rank * 8 + file)) else '.  ' for file in range(8)])) for rank in range(7, -1, -1)], print()
+    
     @staticmethod
     def set_bit(bitboard, square):
         """Sets bit at 'square' to 1"""

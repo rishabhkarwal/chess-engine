@@ -23,11 +23,11 @@ def compute_hash(state) -> int:
     h = 0
     # piece positions
     for piece, bb in state.bitboards.items():
+        if piece not in ZOBRIST_KEYS: continue
         temp_bb = bb
         while temp_bb:
             sq = (temp_bb & -temp_bb).bit_length() - 1
-            if piece in ZOBRIST_KEYS:
-                h ^= ZOBRIST_KEYS[piece][sq]
+            h ^= ZOBRIST_KEYS[piece][sq]
             temp_bb &= temp_bb - 1
             
     # castling rights
@@ -41,3 +41,16 @@ def compute_hash(state) -> int:
     if state.player == BLACK: h ^= ZOBRIST_KEYS['black_to_move']
         
     return h
+
+def z_piece(piece, square):
+    return ZOBRIST_KEYS[piece][square]
+
+def z_castle(rights):
+    return ZOBRIST_KEYS['castling'][rights]
+
+def z_ep(square):
+    if square == NO_SQUARE: return ZOBRIST_KEYS['ep'][8]
+    return ZOBRIST_KEYS['ep'][square % 8]
+
+def z_black_move():
+    return ZOBRIST_KEYS['black_to_move']

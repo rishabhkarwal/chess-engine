@@ -32,7 +32,6 @@ RANK_8 = 0xFF00000000000000
 FULL_BOARD = 0xFFFFFFFFFFFFFFFF
 EMPTY_BOARD = 0x0000000000000000
 
-# Rank 1 - Rank 8
 A1, B1, C1, D1, E1, F1, G1, H1 = 0, 1, 2, 3, 4, 5, 6, 7
 A2, B2, C2, D2, E2, F2, G2, H2 = 8, 9, 10, 11, 12, 13, 14, 15
 A3, B3, C3, D3, E3, F3, G3, H3 = 16, 17, 18, 19, 20, 21, 22, 23
@@ -45,3 +44,8 @@ A8, B8, C8, D8, E8, F8, G8, H8 = 56, 57, 58, 59, 60, 61, 62, 63
 WHITE_PIECES = ('P', 'N', 'B', 'R', 'Q', 'K')
 BLACK_PIECES = ('p', 'n', 'b', 'r', 'q', 'k')
 ALL_PIECES = WHITE_PIECES + BLACK_PIECES
+
+# Masks used to extract information from the 16-bit move integer
+MASK_SOURCE = 0x3F      # 0000 0000 0011 1111 (6 bits)
+MASK_TARGET = 0xFC0     # 0000 1111 1100 0000 (6 bits, shifted)
+MASK_FLAG   = 0xF000    # 1111 0000 0000 0000 (4 bits)

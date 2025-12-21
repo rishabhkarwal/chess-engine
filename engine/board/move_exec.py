@@ -1,124 +1,264 @@
 from engine.board.state import State
-from engine.core.move import Move, CAPTURE, PROMOTION, EP_CAPTURE, CASTLE
+from engine.core.move import (
+    QUIET, CAPTURE, EP_CAPTURE, 
+    CASTLE_KS, CASTLE_QS,
+    PROMOTION_N, PROMOTION_B, PROMOTION_R, PROMOTION_Q,
+    PROMO_CAP_N, PROMO_CAP_B, PROMO_CAP_R, PROMO_CAP_Q
+)
 from engine.core.constants import (
     WHITE, BLACK, NO_SQUARE,
     CASTLE_WK, CASTLE_WQ, CASTLE_BK, CASTLE_BQ,
     WHITE_PIECES, BLACK_PIECES, ALL_PIECES,
-    A1, H1, A8, H8, E1, C1, G1, E8, C8, G8,
-    F1, D1, F8, D8
+    A1, H1, A8, H8, E1, C1, G1, E8, C8, G8, F1, D1, F8, D8,
+    MASK_SOURCE, MASK_TARGET, MASK_FLAG
 )
 from engine.core.utils import BitBoard
-from engine.core.zobrist import compute_hash
+from engine.core.zobrist import ZOBRIST_KEYS
 
-def get_position_id(bitboards, player, castling, ep) -> str:
-    """Generate a unique ID for the current position (for draw detection)"""
-    pieces_str = ''.join(f"{piece}:{bitboards[piece]}|" for piece in ALL_PIECES)
-    return f"{pieces_str}T:{player}C:{castling}EP:{ep}"
+# Helper mapping for promotion flags to piece characters
+# Q=11, R=10, B=9, N=8
+PROMO_MAP = {
+    PROMOTION_Q: 'q', PROMOTION_R: 'r', PROMOTION_B: 'b', PROMOTION_N: 'n',
+    PROMO_CAP_Q: 'q', PROMO_CAP_R: 'r', PROMO_CAP_B: 'b', PROMO_CAP_N: 'n'
+}
 
 def is_threefold_repetition(state: State) -> bool:
-    """Check if the current position has occurred 3 times (draw by repetition)"""
     if not state.history: return False
-
-    last_entry = state.history[-1]
-
-    if '#' not in last_entry: return False
-        
-    current_id = last_entry.split('#')[1]
-    
+    current_hash = state.hash
     count = 0
-    for entry in reversed(state.history):
-        if '#' in entry:
-            if entry.split('#')[1] == current_id: count += 1
-
-        if count >= 3: return True
-
+    for i in range(len(state.history) - 2, -1, -2):
+        if state.history[i] == current_hash:
+            count += 1
+            if count >= 2: return True 
     return False
 
-def make_move(state: State, move: Move) -> State:
-    """Apply a move and return a new game state"""
-    new_bitboards = state.bitboards.copy()
-    
-    active = WHITE_PIECES
-    opponent = BLACK_PIECES
+def make_null_move(state: State):
+    old_ep = state.en_passant
+    old_hash = state.hash
+    if old_ep != NO_SQUARE:
+        state.hash ^= ZOBRIST_KEYS['ep'][old_ep % 8]
+    state.en_passant = NO_SQUARE
+    state.hash ^= ZOBRIST_KEYS['ep'][8]
+    state.player = not state.player
+    state.hash ^= ZOBRIST_KEYS['black_to_move']
+    return (old_ep, old_hash)
 
-    if state.player == BLACK: opponent, active = active, opponent
+def unmake_null_move(state: State, undo_info):
+    old_ep, old_hash = undo_info
+    state.en_passant = old_ep
+    state.hash = old_hash
+    state.player = not state.player
+
+def make_move(state: State, move: int) -> tuple:
+    """Apply a move IN-PLACE. 'move' is now a 16-bit integer."""
     
-    start_mask = 1 << move.start
-    target_mask = 1 << move.target
+    # 1. Decode Move
+    start_sq = move & MASK_SOURCE
+    target_sq = (move & MASK_TARGET) >> 6
+    flag = (move & MASK_FLAG) >> 12
     
+    # 2. Save Irreversible State
+    old_hash = state.hash
+    old_castling = state.castling
+    old_ep = state.en_passant
+    old_halfmove = state.halfmove_clock
+    captured_piece = None
+
+    bitboards = state.bitboards 
+    
+    if state.player == WHITE:
+        active_pieces = WHITE_PIECES
+        opponent_pieces = BLACK_PIECES
+        active_colour = 'white'
+        opponent_colour = 'black'
+        ep_offset = -8
+        my_pawn = 'P'
+        enemy_pawn = 'p'
+    else:
+        active_pieces = BLACK_PIECES
+        opponent_pieces = WHITE_PIECES
+        active_colour = 'black'
+        opponent_colour = 'white'
+        ep_offset = 8
+        my_pawn = 'p'
+        enemy_pawn = 'P'
+    
+    start_mask = 1 << start_sq
+    target_mask = 1 << target_sq
+    
+    # 3. Identify Moving Piece
     moving_piece = None
-    for piece in active:
-        if new_bitboards.get(piece, 0) & start_mask:
+    for piece in active_pieces:
+        if bitboards[piece] & start_mask:
             moving_piece = piece
             break
     
-    # handle captures
-    if move.flag & CAPTURE:
-        if move.flag & EP_CAPTURE:
-            ep_offset = -8 if state.player == WHITE else 8
-            capture_sq = move.target + ep_offset
-            enemy_pawn = 'p' if state.player == WHITE else 'P'
-            new_bitboards[enemy_pawn] = BitBoard.clear_bit(new_bitboards[enemy_pawn], capture_sq)
+    # Remove from start
+    bitboards[moving_piece] &= ~start_mask
+    bitboards[active_colour] &= ~start_mask
+    state.hash ^= ZOBRIST_KEYS[moving_piece][start_sq]
+
+    # 4. Handle Captures
+    # Logic: CAPTURE=4, EP=5, PROMO_CAPs >= 12
+    if flag == CAPTURE or flag == EP_CAPTURE or flag >= PROMO_CAP_N:
+        if flag == EP_CAPTURE:
+            capture_sq = target_sq + ep_offset
+            captured_piece = enemy_pawn
+            cap_mask = 1 << capture_sq
+            
+            bitboards[captured_piece] &= ~cap_mask
+            bitboards[opponent_colour] &= ~cap_mask
+            state.hash ^= ZOBRIST_KEYS[captured_piece][capture_sq]
         else:
-            for piece in opponent:
-                if new_bitboards.get(piece, 0) & target_mask:
-                    new_bitboards[piece] = BitBoard.clear_bit(new_bitboards[piece], move.target)
+            for piece in opponent_pieces:
+                if bitboards[piece] & target_mask:
+                    captured_piece = piece
+                    bitboards[piece] &= ~target_mask
+                    bitboards[opponent_colour] &= ~target_mask
+                    state.hash ^= ZOBRIST_KEYS[piece][target_sq]
                     break
     
-    new_bitboards[moving_piece] = BitBoard.clear_bit(new_bitboards[moving_piece], move.start)
-    
-    if move.flag & PROMOTION:
-        promo_char = move.promo_type if move.promo_type else 'q'
+    # 5. Place Piece at Target
+    if flag >= PROMOTION_N: # Any promotion (8-15)
+        promo_char = PROMO_MAP[flag]
         target_piece = promo_char.upper() if state.player == WHITE else promo_char.lower()
     else:
         target_piece = moving_piece
     
-    new_bitboards[target_piece] = BitBoard.set_bit(new_bitboards.get(target_piece, 0), move.target)
+    bitboards[target_piece] |= target_mask
+    bitboards[active_colour] |= target_mask
+    state.hash ^= ZOBRIST_KEYS[target_piece][target_sq]
     
-    # handle castling
-    if move.flag & CASTLE:
+    # 6. Handle Castling (Rook Move)
+    if flag == CASTLE_KS or flag == CASTLE_QS:
         rook_key = 'R' if state.player == WHITE else 'r'
-        if move.target == G1:
-            new_bitboards[rook_key] = BitBoard.clear_bit(new_bitboards[rook_key], H1)
-            new_bitboards[rook_key] = BitBoard.set_bit(new_bitboards[rook_key], F1)
-        elif move.target == C1:
-            new_bitboards[rook_key] = BitBoard.clear_bit(new_bitboards[rook_key], A1)
-            new_bitboards[rook_key] = BitBoard.set_bit(new_bitboards[rook_key], D1)
-        elif move.target == G8:
-            new_bitboards[rook_key] = BitBoard.clear_bit(new_bitboards[rook_key], H8)
-            new_bitboards[rook_key] = BitBoard.set_bit(new_bitboards[rook_key], F8)
-        elif move.target == C8:
-            new_bitboards[rook_key] = BitBoard.clear_bit(new_bitboards[rook_key], A8)
-            new_bitboards[rook_key] = BitBoard.set_bit(new_bitboards[rook_key], D8)
+        r_from, r_to = 0, 0
+        
+        if target_sq == G1: r_from, r_to = H1, F1
+        elif target_sq == C1: r_from, r_to = A1, D1
+        elif target_sq == G8: r_from, r_to = H8, F8
+        elif target_sq == C8: r_from, r_to = A8, D8
+        
+        bitboards[rook_key] &= ~(1 << r_from)
+        bitboards[rook_key] |= (1 << r_to)
+        bitboards[active_colour] &= ~(1 << r_from)
+        bitboards[active_colour] |= (1 << r_to)
+        
+        state.hash ^= ZOBRIST_KEYS[rook_key][r_from]
+        state.hash ^= ZOBRIST_KEYS[rook_key][r_to]
+        
+    # 7. Update Castling Rights
+    state.hash ^= ZOBRIST_KEYS['castling'][state.castling]
     
-    new_bitboards['white'] = 0
-    for piece in WHITE_PIECES: new_bitboards['white'] |= new_bitboards.get(piece, 0)
+    if moving_piece == 'K': state.castling &= ~(CASTLE_WK | CASTLE_WQ)
+    elif moving_piece == 'k': state.castling &= ~(CASTLE_BK | CASTLE_BQ)
     
-    new_bitboards['black'] = 0
-    for piece in BLACK_PIECES: new_bitboards['black'] |= new_bitboards.get(piece, 0)
-    
-    new_bitboards['all'] = new_bitboards['white'] | new_bitboards['black']
-    
-    new_castling = state.castling
-    
-    if moving_piece == 'K': new_castling &= ~(CASTLE_WK | CASTLE_WQ)
-    elif moving_piece == 'k': new_castling &= ~(CASTLE_BK | CASTLE_BQ)
-    
-    rook_rights = {A1: CASTLE_WQ, H1: CASTLE_WK, A8: CASTLE_BQ, H8: CASTLE_BK}
-    if move.start in rook_rights: new_castling &= ~rook_rights[move.start]
-    if move.target in rook_rights: new_castling &= ~rook_rights[move.target]
-    
-    new_ep = NO_SQUARE
-    is_pawn = moving_piece.lower() == 'p'
-    
-    if is_pawn and abs(move.start - move.target) == 16: new_ep = (move.start + move.target) // 2
-    
-    if is_pawn or (move.flag & CAPTURE): new_halfmove = 0
-    else: new_halfmove = state.halfmove_clock + 1
-    
-    new_fullmove = state.fullmove_number + (1 if state.player == BLACK else 0)
+    if start_sq == A1 or target_sq == A1: state.castling &= ~CASTLE_WQ
+    if start_sq == H1 or target_sq == H1: state.castling &= ~CASTLE_WK
+    if start_sq == A8 or target_sq == A8: state.castling &= ~CASTLE_BQ
+    if start_sq == H8 or target_sq == H8: state.castling &= ~CASTLE_BK
 
-    position_id = get_position_id(new_bitboards, not(state.player), new_castling, new_ep)
-    history_entry = f"{move}#{position_id}"
+    state.hash ^= ZOBRIST_KEYS['castling'][state.castling]
+
+    # 8. Update En Passant
+    state.hash ^= ZOBRIST_KEYS['ep'][state.en_passant % 8 if state.en_passant != NO_SQUARE else 8]
+    state.en_passant = NO_SQUARE
     
-    return State(new_bitboards, not(state.player), new_castling, new_ep, new_halfmove, new_fullmove, state.history + [history_entry])
+    is_pawn = moving_piece.lower() == 'p'
+    if is_pawn and abs(start_sq - target_sq) == 16:
+        state.en_passant = (start_sq + target_sq) // 2
+        
+    state.hash ^= ZOBRIST_KEYS['ep'][state.en_passant % 8]
+
+    # 9. Update Clocks & Sides
+    if is_pawn or (flag == CAPTURE or flag >= PROMO_CAP_N): state.halfmove_clock = 0
+    else: state.halfmove_clock += 1
+    
+    if state.player == BLACK: state.fullmove_number += 1
+    
+    state.player = not state.player
+    state.hash ^= ZOBRIST_KEYS['black_to_move']
+    
+    # 10. Finalise
+    bitboards['all'] = bitboards['white'] | bitboards['black']
+    state.history.append(old_hash)
+    
+    return (captured_piece, old_castling, old_ep, old_halfmove, old_hash)
+
+def unmake_move(state: State, move: int, undo_info: tuple):
+    captured_piece, old_castling, old_ep, old_halfmove, old_hash = undo_info
+    bitboards = state.bitboards
+    
+    # Decode
+    start_sq = move & MASK_SOURCE
+    target_sq = (move & MASK_TARGET) >> 6
+    flag = (move & MASK_FLAG) >> 12
+    
+    state.history.pop()
+    state.hash = old_hash
+    state.castling = old_castling
+    state.en_passant = old_ep
+    state.halfmove_clock = old_halfmove
+    state.player = not state.player
+    if state.player == BLACK: state.fullmove_number -= 1
+    
+    if state.player == WHITE:
+        active_colour, active_pieces = 'white', WHITE_PIECES
+        opponent_colour = 'black'
+    else:
+        active_colour, active_pieces = 'black', BLACK_PIECES
+        opponent_colour = 'white'
+    
+    start_mask = 1 << start_sq
+    target_mask = 1 << target_sq
+    
+    # Revert Move
+    if flag >= PROMOTION_N:
+        # Remove promoted piece
+        promo_char = PROMO_MAP[flag]
+        promoted_piece = promo_char.upper() if state.player == WHITE else promo_char.lower()
+        bitboards[promoted_piece] &= ~target_mask
+        bitboards[active_colour] &= ~target_mask
+        
+        # Restore pawn
+        pawn = 'P' if state.player == WHITE else 'p'
+        bitboards[pawn] |= start_mask
+        bitboards[active_colour] |= start_mask
+    else:
+        moving_piece = None
+        for piece in active_pieces:
+            if bitboards[piece] & target_mask:
+                moving_piece = piece
+                break
+        
+        bitboards[moving_piece] &= ~target_mask
+        bitboards[moving_piece] |= start_mask
+        bitboards[active_colour] &= ~target_mask
+        bitboards[active_colour] |= start_mask
+        
+    # Restore Captured
+    if captured_piece:
+        if flag == EP_CAPTURE:
+            ep_offset = -8 if state.player == WHITE else 8
+            capture_sq = target_sq + ep_offset
+            bitboards[captured_piece] |= (1 << capture_sq)
+            bitboards[opponent_colour] |= (1 << capture_sq)
+        else:
+            bitboards[captured_piece] |= target_mask
+            bitboards[opponent_colour] |= target_mask
+            
+    # Revert Castling
+    if flag == CASTLE_KS or flag == CASTLE_QS:
+        rook_key = 'R' if state.player == WHITE else 'r'
+        r_from, r_to = 0, 0
+        if target_sq == G1: r_from, r_to = H1, F1
+        elif target_sq == C1: r_from, r_to = A1, D1
+        elif target_sq == G8: r_from, r_to = H8, F8
+        elif target_sq == C8: r_from, r_to = A8, D8
+        
+        bitboards[rook_key] &= ~(1 << r_to)
+        bitboards[rook_key] |= (1 << r_from)
+        bitboards[active_colour] &= ~(1 << r_to)
+        bitboards[active_colour] |= (1 << r_from)
+
+    bitboards['all'] = bitboards['white'] | bitboards['black']

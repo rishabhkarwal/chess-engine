@@ -7,12 +7,9 @@ from engine.core.utils import BitBoard
 MG_VALUES = {'P': 82, 'N': 337, 'B': 365, 'R': 477, 'Q': 1025, 'K': 0}
 EG_VALUES = {'P': 94, 'N': 281, 'B': 297, 'R': 512, 'Q': 936, 'K': 0}
 
-
-# game phase increments (used to calculate the game stage)
+# game phase increments
 PHASE_INC = {'P': 0, 'N': 1, 'B': 1, 'R': 2, 'Q': 4, 'K': 0}
 MAX_PHASE = 4 * PHASE_INC['N'] + 4 * PHASE_INC['B'] + 4 * PHASE_INC['R'] + 2 * PHASE_INC['Q']
-
-# PSQTs
 
 MG_PAWN = [
       0,   0,   0,   0,   0,   0,   0,   0,
@@ -37,14 +34,14 @@ EG_PAWN = [
 ]
 
 MG_KNIGHT = [
-    -167, -89, -34, -49,  61, -97, -15, -107,
-     -73, -41,  72,  36,  23,  62,   7,  -17,
-     -47,  60,  37,  65,  84, 129,  73,   44,
-      -9,  17,  19,  53,  37,  69,  18,   22,
-     -13,   4,  16,  13,  28,  19,  21,   -8,
-     -23,  -9,  12,  10,  19,  17,  25,  -16,
-     -29, -53, -12,  -3,  -1,  18, -14,  -19,
-    -105, -21, -58, -33, -17, -28, -19,  -23,
+   -167, -89, -34, -49,  61, -97, -15, -107,
+    -73, -41,  72,  36,  23,  62,   7, -17,
+    -47,  60,  37,  65,  84, 129,  73,  44,
+     -9,  17,  19,  53,  37,  69,  18,  22,
+    -13,   4,  16,  13,  28,  19,  21,  -8,
+    -23,  -9,  12,  10,  19,  17,  25, -16,
+    -29, -53, -12,  -3,  -1,  18, -14, -19,
+   -105, -21, -58, -33, -17, -28, -19, -23,
 ]
 
 EG_KNIGHT = [
@@ -70,36 +67,36 @@ MG_BISHOP = [
 ]
 
 EG_BISHOP = [
-    -14, -21, -11,  -8, -7,  -9, -17, -24,
-     -8,  -4,   7, -12, -3, -13,  -4, -14,
-      2,  -8,   0,  -1, -2,   6,   0,   4,
-     -3,   9,  12,   9, 14,  10,   3,   2,
-     -6,   3,  13,  19,  7,  10,  -3,  -9,
-    -12,  -3,   8,  10, 13,   3,  -7, -15,
-    -14, -18,  -7,  -1,  4,  -9, -15, -27,
-    -23,  -9, -23,  -5, -9, -16,  -5, -17,
+    -14, -21, -11,  -8,  -7,  -9, -17, -24,
+     -8,  -4,   7, -12,  -3, -13,  -4, -14,
+      2,  -8,   0,  -1,  -2,   6,   0,   4,
+     -3,   9,  12,   9,  14,  10,   3,   2,
+     -6,   3,  13,  19,   7,  10,  -3,  -9,
+    -12,  -3,   8,  10,  13,   3,  -7, -15,
+    -14, -18,  -7,  -1,   4,  -9, -15, -27,
+    -23,  -9, -23,  -5,  -9, -16,  -5, -17,
 ]
 
 MG_ROOK = [
-     32,  42,  32,  51, 63,  9,  31,  43,
-     27,  32,  58,  62, 80, 67,  26,  44,
-     -5,  19,  26,  36, 17, 45,  61,  16,
-    -24, -11,   7,  26, 24, 35,  -8, -20,
-    -36, -26, -12,  -1,  9, -7,   6, -23,
-    -45, -25, -16, -17,  3,  0,  -5, -33,
-    -44, -16, -20,  -9, -1, 11,  -6, -71,
-    -19, -13,   1,  17, 16,  7, -37, -26,
+     32,  42,  32,  51,  63,   9,  31,  43,
+     27,  32,  58,  62,  80,  67,  26,  44,
+     -5,  19,  26,  36,  17,  45,  61,  16,
+    -24, -11,   7,  26,  24,  35,  -8, -20,
+    -36, -26, -12,  -1,   9,  -7,   6, -23,
+    -45, -25, -16, -17,   3,   0,  -5, -33,
+    -44, -16, -20,  -9,  -1,  11,  -6, -71,
+    -19, -13,   1,  17,  16,   7, -37, -26,
 ]
 
 EG_ROOK = [
-    13, 10, 18, 15, 12,  12,   8,   5,
-    11, 13, 13, 11, -3,   3,   8,   3,
-     7,  7,  7,  5,  4,  -3,  -5,  -3,
-     4,  3, 13,  1,  2,   1,  -1,   2,
-     3,  5,  8,  4, -5,  -6,  -8, -11,
-    -4,  0, -5, -1, -7, -12,  -8, -16,
-    -6, -6,  0,  2, -9,  -9, -11,  -3,
-    -9,  2,  3, -1, -5, -13,   4, -20,
+     13,  10,  18,  15,  12,  12,   8,   5,
+     11,  13,  13,  11,  -3,   3,   8,   3,
+      7,   7,   7,   5,   4,  -3,  -5,  -3,
+      4,   3,  13,   1,   2,   1,  -1,   2,
+      3,   5,   8,   4,  -5,  -6,  -8, -11,
+     -4,   0,  -5,  -1,  -7, -12,  -8, -16,
+     -6,  -6,   0,   2,  -9,  -9, -11,  -3,
+     -9,   2,   3,  -1,  -5, -13,   4, -20,
 ]
 
 MG_QUEEN = [
@@ -143,9 +140,8 @@ EG_KING = [
     -18,  -4,  21,  24,  27,  23,   9, -11,
     -19,  -3,  11,  21,  23,  16,   7,  -9,
     -27, -11,   4,  13,  14,   4,  -5, -17,
-    -53, -34, -21, -11, -28, -14, -24, -43
+    -53, -34, -21, -11, -28, -14, -24, -43,
 ]
-
 
 PSQTs = {
     'P': (MG_PAWN, EG_PAWN),
@@ -161,7 +157,6 @@ EG_TABLES = {}
 
 def init_eval_tables():
     """Initialises the pre-calculated tables for both colors"""
-    
     # white pieces
     for piece, (mg_val, eg_val) in PSQTs.items():
         MG_TABLES[piece] = [MG_VALUES[piece] + val for val in mg_val]
@@ -170,12 +165,9 @@ def init_eval_tables():
     # black pieces
     for piece, (mg_val, eg_val) in PSQTs.items():
         black_piece = piece.lower()
-        
         MG_TABLES[black_piece] = [0] * 64
         EG_TABLES[black_piece] = [0] * 64
-        
         for sq in range(64):
-            # black tables are mirrored: sq => sq ^ 56
             flipped_sq = sq ^ 56 
             MG_TABLES[black_piece][sq] = MG_VALUES[piece] + mg_val[flipped_sq]
             EG_TABLES[black_piece][sq] = EG_VALUES[piece] + eg_val[flipped_sq]
@@ -189,33 +181,26 @@ def evaluate(state):
     eg_score = 0
     game_phase = 0
     
-    for piece, bb in state.bitboards.items():
+    bitboards = state.bitboards
+    
+    for piece in ALL_PIECES:
+        bb = bitboards[piece]
+        is_white = piece.isupper()
+        if bb:
+            game_phase += PHASE_INC[piece.upper()] * bb.bit_count()
+            while bb:
+                lsb = bb & -bb
+                sq = lsb.bit_length() - 1
+                mg_score -= MG_TABLES[piece][sq]
+                eg_score -= EG_TABLES[piece][sq]
+                bb &= bb - 1
 
-        if piece not in ALL_PIECES: continue
-        if not bb: continue
-            
-        p_type = piece.upper()
-        p_count = bb.bit_count()
-        p_colour = piece.isupper()
-
-        game_phase += PHASE_INC[p_type] * p_count
-        
-        mg_table = MG_TABLES[piece]
-        eg_table = EG_TABLES[piece]
-        
-        # white is positive, black is negative
-        sign = 1 if p_colour else -1
-        
-        for sq in BitBoard.bit_scan(bb):
-            mg_score += sign * mg_table[sq]
-            eg_score += sign * eg_table[sq]
-
-    # calculate phase (0 = endgame, max = opening)
+    # calculate phase
     if game_phase > MAX_PHASE: game_phase = MAX_PHASE
     
     mg_phase = game_phase
-    eg_phase = 24 - mg_phase
+    eg_phase = MAX_PHASE - mg_phase
     
-    evaluation = (mg_score * mg_phase + eg_score * eg_phase) / 24
+    evaluation = (mg_score * mg_phase + eg_score * eg_phase) / MAX_PHASE
     
     return evaluation if state.player == WHITE else -evaluation
