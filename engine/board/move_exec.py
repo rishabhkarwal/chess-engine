@@ -15,8 +15,6 @@ from engine.core.constants import (
 from engine.core.utils import BitBoard
 from engine.core.zobrist import ZOBRIST_KEYS
 
-# Helper mapping for promotion flags to piece characters
-# Q=11, R=10, B=9, N=8
 PROMO_MAP = {
     PROMOTION_Q: 'q', PROMOTION_R: 'r', PROMOTION_B: 'b', PROMOTION_N: 'n',
     PROMO_CAP_Q: 'q', PROMO_CAP_R: 'r', PROMO_CAP_B: 'b', PROMO_CAP_N: 'n'
@@ -50,14 +48,12 @@ def unmake_null_move(state: State, undo_info):
     state.player = not state.player
 
 def make_move(state: State, move: int) -> tuple:
-    """Apply a move IN-PLACE. 'move' is now a 16-bit integer."""
-    
-    # 1. Decode Move
+    """Apply a move IN-PLACE; move is now a 16-bit integer"""
+
     start_sq = move & MASK_SOURCE
     target_sq = (move & MASK_TARGET) >> 6
     flag = (move & MASK_FLAG) >> 12
     
-    # 2. Save Irreversible State
     old_hash = state.hash
     old_castling = state.castling
     old_ep = state.en_passant
@@ -86,20 +82,16 @@ def make_move(state: State, move: int) -> tuple:
     start_mask = 1 << start_sq
     target_mask = 1 << target_sq
     
-    # 3. Identify Moving Piece
     moving_piece = None
     for piece in active_pieces:
         if bitboards[piece] & start_mask:
             moving_piece = piece
             break
-    
-    # Remove from start
+
     bitboards[moving_piece] &= ~start_mask
     bitboards[active_colour] &= ~start_mask
     state.hash ^= ZOBRIST_KEYS[moving_piece][start_sq]
 
-    # 4. Handle Captures
-    # Logic: CAPTURE=4, EP=5, PROMO_CAPs >= 12
     if flag == CAPTURE or flag == EP_CAPTURE or flag >= PROMO_CAP_N:
         if flag == EP_CAPTURE:
             capture_sq = target_sq + ep_offset
@@ -117,9 +109,8 @@ def make_move(state: State, move: int) -> tuple:
                     bitboards[opponent_colour] &= ~target_mask
                     state.hash ^= ZOBRIST_KEYS[piece][target_sq]
                     break
-    
-    # 5. Place Piece at Target
-    if flag >= PROMOTION_N: # Any promotion (8-15)
+
+    if flag >= PROMOTION_N: # any promotion (8-15)
         promo_char = PROMO_MAP[flag]
         target_piece = promo_char.upper() if state.player == WHITE else promo_char.lower()
     else:
@@ -129,7 +120,6 @@ def make_move(state: State, move: int) -> tuple:
     bitboards[active_colour] |= target_mask
     state.hash ^= ZOBRIST_KEYS[target_piece][target_sq]
     
-    # 6. Handle Castling (Rook Move)
     if flag == CASTLE_KS or flag == CASTLE_QS:
         rook_key = 'R' if state.player == WHITE else 'r'
         r_from, r_to = 0, 0
@@ -147,7 +137,6 @@ def make_move(state: State, move: int) -> tuple:
         state.hash ^= ZOBRIST_KEYS[rook_key][r_from]
         state.hash ^= ZOBRIST_KEYS[rook_key][r_to]
         
-    # 7. Update Castling Rights
     state.hash ^= ZOBRIST_KEYS['castling'][state.castling]
     
     if moving_piece == 'K': state.castling &= ~(CASTLE_WK | CASTLE_WQ)
@@ -160,7 +149,6 @@ def make_move(state: State, move: int) -> tuple:
 
     state.hash ^= ZOBRIST_KEYS['castling'][state.castling]
 
-    # 8. Update En Passant
     state.hash ^= ZOBRIST_KEYS['ep'][state.en_passant % 8 if state.en_passant != NO_SQUARE else 8]
     state.en_passant = NO_SQUARE
     
@@ -170,7 +158,6 @@ def make_move(state: State, move: int) -> tuple:
         
     state.hash ^= ZOBRIST_KEYS['ep'][state.en_passant % 8]
 
-    # 9. Update Clocks & Sides
     if is_pawn or (flag == CAPTURE or flag >= PROMO_CAP_N): state.halfmove_clock = 0
     else: state.halfmove_clock += 1
     
@@ -179,7 +166,6 @@ def make_move(state: State, move: int) -> tuple:
     state.player = not state.player
     state.hash ^= ZOBRIST_KEYS['black_to_move']
     
-    # 10. Finalise
     bitboards['all'] = bitboards['white'] | bitboards['black']
     state.history.append(old_hash)
     
@@ -189,7 +175,6 @@ def unmake_move(state: State, move: int, undo_info: tuple):
     captured_piece, old_castling, old_ep, old_halfmove, old_hash = undo_info
     bitboards = state.bitboards
     
-    # Decode
     start_sq = move & MASK_SOURCE
     target_sq = (move & MASK_TARGET) >> 6
     flag = (move & MASK_FLAG) >> 12
@@ -211,16 +196,13 @@ def unmake_move(state: State, move: int, undo_info: tuple):
     
     start_mask = 1 << start_sq
     target_mask = 1 << target_sq
-    
-    # Revert Move
+
     if flag >= PROMOTION_N:
-        # Remove promoted piece
         promo_char = PROMO_MAP[flag]
         promoted_piece = promo_char.upper() if state.player == WHITE else promo_char.lower()
         bitboards[promoted_piece] &= ~target_mask
         bitboards[active_colour] &= ~target_mask
         
-        # Restore pawn
         pawn = 'P' if state.player == WHITE else 'p'
         bitboards[pawn] |= start_mask
         bitboards[active_colour] |= start_mask
@@ -235,8 +217,7 @@ def unmake_move(state: State, move: int, undo_info: tuple):
         bitboards[moving_piece] |= start_mask
         bitboards[active_colour] &= ~target_mask
         bitboards[active_colour] |= start_mask
-        
-    # Restore Captured
+
     if captured_piece:
         if flag == EP_CAPTURE:
             ep_offset = -8 if state.player == WHITE else 8
@@ -247,7 +228,6 @@ def unmake_move(state: State, move: int, undo_info: tuple):
             bitboards[captured_piece] |= target_mask
             bitboards[opponent_colour] |= target_mask
             
-    # Revert Castling
     if flag == CASTLE_KS or flag == CASTLE_QS:
         rook_key = 'R' if state.player == WHITE else 'r'
         r_from, r_to = 0, 0

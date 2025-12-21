@@ -4,6 +4,7 @@ from engine.core.constants import (
     FILE_A, FILE_H, FILE_AB, FILE_GH,
     FULL_BOARD
 )
+from engine.uci.utils import send_info_string
 
 KNIGHT_ATTACKS: List[int] = [0] * 64
 KING_ATTACKS: List[int]   = [0] * 64
@@ -104,4 +105,6 @@ def init_tables():
     rook_deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     init_sliders(ROOK_TABLE, ROOK_MASKS, rook_deltas)
 
+send_info_string('initialising lookup tables...')
 init_tables()
+send_info_string('successfully initialised lookup tables')

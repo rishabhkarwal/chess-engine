@@ -40,7 +40,7 @@ def _parse_pieces(pieces_fen, state):
             if square.isnumeric(): square_count += int(square)
             
             if square.isalpha(): # piece
-                index = 56 - ((square_count // 8) * 8) + (square_count % 8) # converts to bitboard-friendly index
+                index = square_count ^ 56
                 state.bitboards[square] = BitBoard.set_bit(state.bitboards[square], index) # updates the appropriate bitboard
                 colour = 'white' if square.isupper() else 'black'
                 state.bitboards[colour] = BitBoard.set_bit(state.bitboards[colour], index)
