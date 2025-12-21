@@ -185,14 +185,14 @@ def evaluate(state):
     
     for piece in ALL_PIECES:
         bb = bitboards[piece]
-        is_white = piece.isupper()
+        is_white = 1 if piece.isupper() else -1
         if bb:
             game_phase += PHASE_INC[piece.upper()] * bb.bit_count()
             while bb:
                 lsb = bb & -bb
                 sq = lsb.bit_length() - 1
-                mg_score -= MG_TABLES[piece][sq]
-                eg_score -= EG_TABLES[piece][sq]
+                mg_score += MG_TABLES[piece][sq] * is_white
+                eg_score += EG_TABLES[piece][sq] * is_white
                 bb &= bb - 1
 
     # calculate phase
