@@ -44,7 +44,7 @@ def benchmark(position='startpos', time_limit=5.0, engine_path='engine.bat'):
             if not line: break
             if line.strip() == 'uciok': break
 
-        warmup(process, 60) # 'warms-up' pypy JIT compiler to simulate how it'd be compiled in a real game
+        warmup(process, 1) # 'warms-up' pypy JIT compiler to simulate how it'd be compiled in a real game
 
         if position == 'startpos': 
             process.stdin.write('position startpos\n') # gui -> engine
@@ -95,9 +95,15 @@ def benchmark(position='startpos', time_limit=5.0, engine_path='engine.bat'):
         print(f'An error occurred: {e}')
     
     finally:
-        process.stdin.write('quit\n') # gui -> engine
-        process.stdin.flush()
+        if process.poll() is None:
+            try:
+                process.stdin.write('quit\n') # gui -> engine
+                process.stdin.flush()
+            except OSError:
+                pass
+        
         process.terminate()
+        process.wait()
 
 if __name__ == '__main__':
     fen = '5B2/1P2P2P/2P1r3/2b1p3/6p1/2K2P1k/p7/nN5B w - - 0 1'
@@ -105,24 +111,5 @@ if __name__ == '__main__':
     benchmark(position=fen, time_limit=time_limit)
 
 """
-Testing Position: 5B2/1P2P2P/2P1r3/2b1p3/6p1/2K2P1k/p7/nN5B w - - 0 1
-Time Limit: 60s
 
-        info depth 1 currmove h7h8q score cp 1664 nodes 4528 nps 7385 time 613 hashfull 534
-        info depth 2 currmove h7h8q score cp 1664 nodes 6829 nps 7225 time 945 hashfull 534
-        info depth 3 currmove h7h8q score cp 1664 nodes 9290 nps 8489 time 1094 hashfull 534
-        info depth 4 currmove h7h8q score cp 1664 nodes 23028 nps 11887 time 1937 hashfull 534
-        info depth 5 currmove h7h8q score cp 1594 nodes 115351 nps 17542 time 6575 hashfull 536
-        info depth 6 currmove h7h8q score cp 1594 nodes 175539 nps 20208 time 8686 hashfull 538
-        info depth 7 currmove h7h8q score cp 1594 nodes 254026 nps 22839 time 11122 hashfull 540
-        info depth 8 currmove h7h8q score cp 1594 nodes 605114 nps 26832 time 22551 hashfull 554
-        info depth 9 currmove h7h8q score cp 1717 nodes 1200605 nps 32417 time 37036 hashfull 572
-        info depth 10 currmove h7h8q score cp 1729 nodes 1898586 nps 36559 time 51931 hashfull 599
-        info nodes 2048000 nps 34126 time 60012 hashfull 602
-        bestmove h7h8q
-
-    Best Move: h7h8q
-    Time: 60.0196 seconds
-    Nodes: 2,048,000
-    NPS: 34,122 nodes/sec
 """

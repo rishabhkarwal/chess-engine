@@ -10,7 +10,7 @@ from engine.uci.utils import send_command
 from engine.core.move import CAPTURE, PROMOTION_N, EP_CAPTURE, PROMO_CAP_N, move_to_uci
 
 class SearchEngine:
-    def __init__(self, time_limit=2000, tt_size_mb=32, debug=False):
+    def __init__(self, time_limit=2000, tt_size_mb=32):
         self.time_limit = time_limit
         self.tt = TranspositionTable(tt_size_mb)
         self.ordering = MoveOrdering()
@@ -18,7 +18,31 @@ class SearchEngine:
         self.start_time = 0.0
         self.root_colour = WHITE
         self.aspiration_window = 50
-        self.debug = debug
+    
+    def _get_pv_line(self, state, max_depth=20):
+        """Retrieves the principal variation line from the TT by walking the best moves found so far"""
+        pv_moves = []
+        undo_stack = []
+        seen_hashes = {state.hash}
+
+        for _ in range(max_depth):
+            tt_entry = self.tt.probe(state.hash)
+
+            if not tt_entry or tt_entry.best_move is None: break
+
+            move = tt_entry.best_move
+            pv_moves.append(move)
+
+            undo_info = make_move(state, move)
+            undo_stack.append((move, undo_info))
+
+            if state.hash in seen_hashes: break
+            seen_hashes.add(state.hash)
+
+        for move, undo_info in reversed(undo_stack):
+            unmake_move(state, move, undo_info)
+
+        return ' '.join(move_to_uci(m) for m in pv_moves)
 
     def get_best_move(self, state):
         self.nodes_searched = 0
@@ -85,9 +109,9 @@ class SearchEngine:
                     score_str = f"cp {int(score)}"
 
                 hashfull = self.tt.get_hashfull()
-                
-                if self.debug: 
-                    send_command(f"info depth {current_depth} currmove {move_to_uci(best_move_so_far)} score {score_str} nodes {self.nodes_searched} nps {nps} time {int(elapsed * 1000)} hashfull {hashfull}")
+                pv_string = self._get_pv_line(state, current_depth)
+
+                send_command(f"info depth {current_depth} currmove {move_to_uci(best_move_so_far)} score {score_str} nodes {self.nodes_searched} nps {nps} time {int(elapsed * 1000)} hashfull {hashfull} pv {pv_string}")
                 
                 elapsed = time.time() - self.start_time
                 elapsed = elapsed * 1000

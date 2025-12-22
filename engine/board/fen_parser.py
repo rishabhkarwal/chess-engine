@@ -2,6 +2,7 @@ from engine.core.utils import BitBoard
 from engine.board.state import State
 from engine.core.constants import NO_SQUARE, WHITE, BLACK, CASTLE_BK, CASTLE_BQ, CASTLE_WK, CASTLE_WQ, ALL_PIECES
 from engine.search.evaluation import calculate_initial_score
+from engine.core.zobrist import compute_hash
 
 def load_from_fen(fen_string : str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'):
     state = State(
@@ -17,18 +18,16 @@ def load_from_fen(fen_string : str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBN
     fields = fen_string.split(' ')
     
     _parse_pieces(fields[0], state)
-
     _parse_active_colour(fields[1], state)
-
     _parse_castling_rights(fields[2], state)
-
     _parse_en_passant(fields[3], state)
 
     state.halfmove_clock = int(fields[4])
-
     state.fullmove_number = int(fields[5])
-    # initialise incremental scores
+
     calculate_initial_score(state)
+    
+    state.hash = compute_hash(state)
 
     return state
 
