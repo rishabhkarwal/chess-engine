@@ -14,6 +14,7 @@ from engine.core.constants import (
 )
 from engine.core.utils import BitBoard
 from engine.core.zobrist import ZOBRIST_KEYS
+from engine.search.evaluation import PIECE_INDICES, MG_TABLE, EG_TABLE, PHASE_WEIGHTS
 
 PROMO_MAP = {
     PROMOTION_Q: 'q', PROMOTION_R: 'r', PROMOTION_B: 'b', PROMOTION_N: 'n',
@@ -54,6 +55,12 @@ def make_move(state: State, move: int) -> tuple:
     old_castling = state.castling
     old_ep = state.en_passant
     old_halfmove = state.halfmove_clock
+    
+    # store old scores for undo
+    old_mg = state.mg_score
+    old_eg = state.eg_score
+    old_phase = state.phase
+
     captured_piece = None
 
     bitboards = state.bitboards 
@@ -86,7 +93,12 @@ def make_move(state: State, move: int) -> tuple:
             
     # if piece not found, return dummy data to prevent crash
     if moving_piece is None:
-        return (None, old_castling, old_ep, old_halfmove, None)
+        return (None, old_castling, old_ep, old_halfmove, None, 0, 0, 0)
+
+    # remove moving piece from score
+    pt_idx = PIECE_INDICES[moving_piece]
+    state.mg_score -= MG_TABLE[pt_idx][start_sq]
+    state.eg_score -= EG_TABLE[pt_idx][start_sq]
 
     bitboards[moving_piece] &= ~start_mask
     bitboards[active_colour] &= ~start_mask
@@ -101,6 +113,13 @@ def make_move(state: State, move: int) -> tuple:
             bitboards[captured_piece] &= ~cap_mask
             bitboards[opponent_colour] &= ~cap_mask
             state.hash ^= ZOBRIST_KEYS[captured_piece][capture_sq]
+            
+            # remove captured piece score (EP)
+            cap_idx = PIECE_INDICES[captured_piece]
+            state.mg_score -= MG_TABLE[cap_idx][capture_sq]
+            state.eg_score -= EG_TABLE[cap_idx][capture_sq]
+            state.phase -= PHASE_WEIGHTS[cap_idx]
+            
         else:
             for piece in opponent_pieces:
                 if bitboards[piece] & target_mask:
@@ -108,14 +127,30 @@ def make_move(state: State, move: int) -> tuple:
                     bitboards[piece] &= ~target_mask
                     bitboards[opponent_colour] &= ~target_mask
                     state.hash ^= ZOBRIST_KEYS[piece][target_sq]
+                    
+                    # remove captured piece score
+                    cap_idx = PIECE_INDICES[captured_piece]
+                    state.mg_score -= MG_TABLE[cap_idx][target_sq]
+                    state.eg_score -= EG_TABLE[cap_idx][target_sq]
+                    state.phase -= PHASE_WEIGHTS[cap_idx]
                     break
 
     if flag >= PROMOTION_N: # any promotion (8-15)
         promo_char = PROMO_MAP[flag]
         target_piece = promo_char.upper() if state.player == WHITE else promo_char.lower()
+        
+        # promotion phase update
+        state.phase -= PHASE_WEIGHTS[pt_idx] # remove pawn
+        pt_idx = PIECE_INDICES[target_piece] # switch index to new piece
+        state.phase += PHASE_WEIGHTS[pt_idx] # add new piece
+        
     else:
         target_piece = moving_piece
     
+    # add piece score at target
+    state.mg_score += MG_TABLE[pt_idx][target_sq]
+    state.eg_score += EG_TABLE[pt_idx][target_sq]
+
     bitboards[target_piece] |= target_mask
     bitboards[active_colour] |= target_mask
     state.hash ^= ZOBRIST_KEYS[target_piece][target_sq]
@@ -136,6 +171,13 @@ def make_move(state: State, move: int) -> tuple:
         
         state.hash ^= ZOBRIST_KEYS[rook_key][r_from]
         state.hash ^= ZOBRIST_KEYS[rook_key][r_to]
+        
+        # update rook score
+        r_idx = PIECE_INDICES[rook_key]
+        state.mg_score -= MG_TABLE[r_idx][r_from]
+        state.eg_score -= EG_TABLE[r_idx][r_from]
+        state.mg_score += MG_TABLE[r_idx][r_to]
+        state.eg_score += EG_TABLE[r_idx][r_to]
         
     state.hash ^= ZOBRIST_KEYS['castling'][state.castling]
     
@@ -169,10 +211,10 @@ def make_move(state: State, move: int) -> tuple:
     bitboards['all'] = bitboards['white'] | bitboards['black']
     state.history.append(old_hash)
     
-    return (captured_piece, old_castling, old_ep, old_halfmove, old_hash)
+    return (captured_piece, old_castling, old_ep, old_halfmove, old_hash, old_mg, old_eg, old_phase)
 
 def unmake_move(state: State, move: int, undo_info: tuple):
-    captured_piece, old_castling, old_ep, old_halfmove, old_hash = undo_info
+    captured_piece, old_castling, old_ep, old_halfmove, old_hash, old_mg, old_eg, old_phase = undo_info
     
     if old_hash is None: return
 
@@ -188,6 +230,12 @@ def unmake_move(state: State, move: int, undo_info: tuple):
     state.en_passant = old_ep
     state.halfmove_clock = old_halfmove
     state.player = not state.player
+    
+    # restore scores
+    state.mg_score = old_mg
+    state.eg_score = old_eg
+    state.phase = old_phase
+
     if state.player == BLACK: state.fullmove_number -= 1
     
     if state.player == WHITE:

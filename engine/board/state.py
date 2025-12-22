@@ -14,6 +14,10 @@ class State:
     fullmove_number: int
     history: List[int]
     hash: Optional[int] = None 
+    # incremental evaluation fields
+    mg_score: int = 0
+    eg_score: int = 0
+    phase: int = 0
 
     def __post_init__(self):
         """Automatically compute hash if it wasn't provided during initialisation"""

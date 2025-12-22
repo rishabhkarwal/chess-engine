@@ -152,55 +152,72 @@ PSQTs = {
     'K': (MG_KING, EG_KING)
 }
 
-MG_TABLES = {}
-EG_TABLES = {}
+# piece mappings for fast list indexing
+PIECE_INDICES = {
+    'P': 0, 'N': 1, 'B': 2, 'R': 3, 'Q': 4, 'K': 5,
+    'p': 6, 'n': 7, 'b': 8, 'r': 9, 'q': 10, 'k': 11
+}
+
+# 12 piece types, 64 squares each
+MG_TABLE = [[0] * 64 for _ in range(12)]
+EG_TABLE = [[0] * 64 for _ in range(12)]
+PHASE_WEIGHTS = [0] * 12
 
 def init_eval_tables():
-    """Initialises the pre-calculated tables for both colors"""
+    """Initialises the pre-calculated tables for both colours"""
     # white pieces
     for piece, (mg_val, eg_val) in PSQTs.items():
-        MG_TABLES[piece] = [MG_VALUES[piece] + val for val in mg_val]
-        EG_TABLES[piece] = [EG_VALUES[piece] + val for val in eg_val]
+        idx = PIECE_INDICES[piece]
+        PHASE_WEIGHTS[idx] = PHASE_INC[piece]
+        
+        MG_TABLE[idx] = [MG_VALUES[piece] + val for val in mg_val]
+        EG_TABLE[idx] = [EG_VALUES[piece] + val for val in eg_val]
 
     # black pieces
     for piece, (mg_val, eg_val) in PSQTs.items():
         black_piece = piece.lower()
-        MG_TABLES[black_piece] = [0] * 64
-        EG_TABLES[black_piece] = [0] * 64
+        idx = PIECE_INDICES[black_piece]
+        PHASE_WEIGHTS[idx] = PHASE_INC[piece]
+        
         for sq in range(64):
             flipped_sq = sq ^ 56 
-            MG_TABLES[black_piece][sq] = MG_VALUES[piece] + mg_val[flipped_sq]
-            EG_TABLES[black_piece][sq] = EG_VALUES[piece] + eg_val[flipped_sq]
+            # negate values for black so that positive score = white advantage
+            MG_TABLE[idx][sq] = -(MG_VALUES[piece] + mg_val[flipped_sq])
+            EG_TABLE[idx][sq] = -(EG_VALUES[piece] + eg_val[flipped_sq])
 
 init_eval_tables()
 
-def evaluate(state):
-    """Calculates the score based on the current game phase"""
+def calculate_initial_score(state):
+    """Calculates the score and phase from scratch"""
+    mg, eg, phase = 0, 0, 0
     
-    mg_score = 0
-    eg_score = 0
-    game_phase = 0
-    
-    bitboards = state.bitboards
-    
-    for piece in ALL_PIECES:
-        bb = bitboards[piece]
-        is_white = 1 if piece.isupper() else -1
-        if bb:
-            game_phase += PHASE_INC[piece.upper()] * bb.bit_count()
-            while bb:
-                lsb = bb & -bb
-                sq = lsb.bit_length() - 1
-                mg_score += MG_TABLES[piece][sq] * is_white
-                eg_score += EG_TABLES[piece][sq] * is_white
-                bb &= bb - 1
+    for piece_char, bb in state.bitboards.items():
+        if piece_char not in PIECE_INDICES: continue
+        p_idx = PIECE_INDICES[piece_char]
+        
+        # add phase
+        count = bb.bit_count()
+        phase += PHASE_WEIGHTS[p_idx] * count
+        
+        # add scores
+        while bb:
+            lsb = bb & -bb
+            sq = lsb.bit_length() - 1
+            mg += MG_TABLE[p_idx][sq]
+            eg += EG_TABLE[p_idx][sq]
+            bb &= bb - 1
+            
+    state.mg_score = mg
+    state.eg_score = eg
+    state.phase = phase
 
-    # calculate phase
-    if game_phase > MAX_PHASE: game_phase = MAX_PHASE
+def evaluate(state):
+    """Calculates the score based on the current game phase in O(1)"""
+    mg_phase = state.phase
+    if mg_phase > MAX_PHASE: mg_phase = MAX_PHASE
     
-    mg_phase = game_phase
     eg_phase = MAX_PHASE - mg_phase
     
-    evaluation = (mg_score * mg_phase + eg_score * eg_phase) / MAX_PHASE
+    evaluation = (state.mg_score * mg_phase + state.eg_score * eg_phase) // MAX_PHASE
     
     return evaluation if state.player == WHITE else -evaluation

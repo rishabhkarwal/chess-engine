@@ -97,7 +97,7 @@ class SearchEngine:
                 current_depth += 1
                 if current_depth > 100: break
                 
-            except TimeoutError: # when run out of time - send a final debug print
+            except TimeoutError: # when run ou t
                 elapsed = time.time() - self.start_time
                 nps = int(self.nodes_searched / elapsed) if elapsed > 0 else 0
                 hashfull = self.tt.get_hashfull()
