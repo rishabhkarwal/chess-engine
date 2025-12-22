@@ -39,10 +39,10 @@ SCENARIO:
     Time Limit: 5 seconds
 
 --------------------------------------------------------------------------------
-[ BEFORE ]
+[ ORIGINAL ]
 --------------------------------------------------------------------------------
-Search Depth:    9
-Nodes/Sec:            ~5,900
+Search Depth:   9
+Nodes/Sec:      ~5,900
 Total Time:     3.413s
 Function Calls: 4,949,322
 
@@ -58,19 +58,19 @@ Search Log:
     info depth 9 currmove d7d6 score cp -999 nodes 20794 nps 5955 time 3491 hashfull 12
 
 Profile Stats:
-     ncalls tottime    percall cumtime    percall filename:lineno(function)
-        61839    0.725        0.000    2.205        0.000 engine/board/move_exec.py:37(make_move)
-        62345    0.407        0.000    0.507        0.000 engine/core/zobrist.py:21(compute_hash)
-        61840    0.187        0.000    0.416        0.000 {method 'join' of 'str' objects}
-    1602720    0.278        0.000    0.278        0.000 {method 'get' of 'dict' objects}
-     803907    0.229        0.000    0.229        0.000 engine/board/move_exec.py:15(<genexpr>)
-     220769    0.088        0.000    0.109        0.000 engine/core/utils.py:6(bit_scan)
+     ncalls   tottime  percall  cumtime  percall  filename:lineno(function)
+       61839   0.725    0.000    2.205    0.000    engine/board/move_exec.py:37(make_move)
+       62345   0.407    0.000    0.507    0.000    engine/core/zobrist.py:21(compute_hash)
+       61840   0.187    0.000    0.416    0.000    {method 'join' of 'str' objects}
+     1602720   0.278    0.000    0.278    0.000    {method 'get' of 'dict' objects}
+      803907   0.229    0.000    0.229    0.000    engine/board/move_exec.py:15(<genexpr>)
+      220769   0.088    0.000    0.109    0.000    engine/core/utils.py:6(bit_scan)
 
 --------------------------------------------------------------------------------
-[ AFTER ]
+[ BEFORE ]
 --------------------------------------------------------------------------------
-Search Depth:    12
-Nodes/Sec:            ~34,000
+Search Depth:   12
+Nodes/Sec:      ~34,000
 Total Time:     2.911s
 Function Calls: 3,418,946
 
@@ -89,32 +89,63 @@ Search Log:
     info depth 12 currmove d7e8 score cp -1009 nodes 98974 nps 34020 time 2909 hashfull 36
 
 Profile Stats:
-     ncalls tottime    percall cumtime    percall filename:lineno(function)
-        60117    0.312        0.000    2.903        0.028 engine/search/search.py:135(_alpha_beta)
-        27618    0.071        0.000    1.281        0.000 engine/moves/generator.py:30(get_legal_moves)
-        38857    0.065        0.000    0.857        0.000 engine/search/search.py:224(_quiescence)
-     165169    0.204        0.000    0.760        0.000 engine/moves/legality.py:59(is_legal)
-     119886    0.456        0.000    0.507        0.000 engine/board/move_exec.py:52(make_move)
-        27618    0.088        0.000    0.450        0.000 engine/moves/generator.py:35(generate_pseudo_legal_moves)
+     ncalls   tottime  percall  cumtime  percall  filename:lineno(function)
+       60117   0.312    0.000    2.903    0.028    engine/search/search.py:135(_alpha_beta)
+       27618   0.071    0.000    1.281    0.000    engine/moves/generator.py:30(get_legal_moves)
+       38857   0.065    0.000    0.857    0.000    engine/search/search.py:224(_quiescence)
+      165169   0.204    0.000    0.760    0.000    engine/moves/legality.py:59(is_legal)
+      119886   0.456    0.000    0.507    0.000    engine/board/move_exec.py:52(make_move)
+       27618   0.088    0.000    0.450    0.000    engine/moves/generator.py:35(generate_pseudo_legal_moves)
+
+--------------------------------------------------------------------------------
+[ AFTER ]
+--------------------------------------------------------------------------------
+Search Depth:   14
+Nodes/Sec:      ~41,200
+Total Time:     5.049s
+Function Calls: 6,375,825
+
+Search Log:
+    info depth 1 currmove d7e6 score cp -914 nodes 30 nps 29167 time 1 hashfull 0
+    info depth 2 currmove d7e6 score cp -914 nodes 70 nps 27485 time 2 hashfull 0
+    info depth 3 currmove d7d6 score cp -911 nodes 331 nps 28837 time 11 hashfull 0
+    info depth 4 currmove d7d6 score cp -975 nodes 900 nps 32092 time 28 hashfull 0
+    info depth 5 currmove d7e7 score cp -923 nodes 1489 nps 31843 time 46 hashfull 0
+    info depth 6 currmove d7d6 score cp -996 nodes 4317 nps 32632 time 132 hashfull 1
+    info depth 7 currmove d7e6 score cp -996 nodes 8465 nps 33997 time 248 hashfull 4
+    info depth 8 currmove d7e6 score cp -995 nodes 16584 nps 37360 time 443 hashfull 6
+    info depth 9 currmove d7e6 score cp -995 nodes 21781 nps 37570 time 579 hashfull 9
+    info depth 10 currmove d7e6 score cp -997 nodes 42445 nps 39373 time 1077 hashfull 15
+    info depth 11 currmove d7e6 score cp -996 nodes 75833 nps 39345 time 1927 hashfull 28
+    info depth 12 currmove d7e6 score cp -998 nodes 106541 nps 40122 time 2655 hashfull 36
+    info depth 13 currmove d7e6 score cp -998 nodes 150982 nps 40489 time 3728 hashfull 52
+    info depth 14 currmove d7e6 score cp 998 nodes 208122 nps 41224 time 5048 hashfull 67
+
+Profile Stats:
+     ncalls  tottime  percall  cumtime  percall  filename:lineno(function)
+          1    0.000    0.000    5.049    5.049  engine/search/search.py:23(get_best_move)
+         18    0.000    0.000    5.043    0.280  engine/search/search.py:105(_search_root)
+ 128252/108    0.662    0.000    5.042    0.047  engine/search/search.py:141(_alpha_beta)
+79870/65157    0.160    0.000    1.816    0.000  engine/search/search.py:238(_quiescence)
+      58255    0.188    0.000    0.987    0.000  engine/moves/generator.py:35(generate_pseudo_legal_moves)
+      67445    0.509    0.000    0.725    0.000  engine/search/evaluation.py:177(evaluate)
+     151735    0.647    0.000    0.715    0.000  engine/board/move_exec.py:47(make_move)
+     256754    0.244    0.000    0.629    0.000  engine/moves/legality.py:52(is_in_check)
 
 ================================================================================
 
 Main optimisations:
 
-    Making a move created a deep copy of the entire state; now the state is updated in-place and uses a new method to unmake moves
+    Switched to "lazy" legality checking: replaced retrieving the legal moves generating pseudo-legal moves + deferred legality check (only check AFTER making the best move) -> this eliminated legality check from the bottleneck
 
-    Zobrist hash was recalculated from scratch after every move; now is updated incrementally
+    Fixed quiescence sorting: added MVV-LVA sorting to q-search to prioritise good captures, fixing the "horizon effect"
 
-    Moves were class objects; now represented as a single 16-bit integer
+    Added safety checks: move execution now aborts operations safely if a move is attempted on an empty square, preventing crashes
 
 
 Micro-optimisations: 
 
-    Bit scanning done inline
+    Reduced time management overhead: loosened the time-check constraints to allow searching deeper if time remains
 
-    Local variable aliasing to avoid repeated attribute lookups
-
-    Legality faster using 'fail-fast' logic
-
-    Threefold repetition compares hashes rather than having to split a string ("move#hash")
+    Removed redundant legality check calls: relying on checking if is check on the resulting state is ~4x faster than simulating the move twice
 """

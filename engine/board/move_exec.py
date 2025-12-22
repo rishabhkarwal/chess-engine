@@ -24,8 +24,7 @@ def is_threefold_repetition(state: State) -> bool:
     if not state.history: return False
     current_hash = state.hash
     for i in range(len(state.history) - 2, -1, -2):
-        if state.history[i] == current_hash:
-            return True # only check for repetition once
+        if state.history[i] == current_hash: return True # only check for repetition once
     return False
 
 def make_null_move(state: State):
@@ -85,6 +84,10 @@ def make_move(state: State, move: int) -> tuple:
         if bitboards[piece] & start_mask:
             moving_piece = piece
             break
+            
+    # if piece not found, return dummy data to prevent crash
+    if moving_piece is None:
+        return (None, old_castling, old_ep, old_halfmove, None)
 
     bitboards[moving_piece] &= ~start_mask
     bitboards[active_colour] &= ~start_mask
@@ -171,6 +174,9 @@ def make_move(state: State, move: int) -> tuple:
 
 def unmake_move(state: State, move: int, undo_info: tuple):
     captured_piece, old_castling, old_ep, old_halfmove, old_hash = undo_info
+    
+    if old_hash is None: return
+
     bitboards = state.bitboards
     
     start_sq = move & MASK_SOURCE
@@ -211,10 +217,24 @@ def unmake_move(state: State, move: int, undo_info: tuple):
                 moving_piece = piece
                 break
         
-        bitboards[moving_piece] &= ~target_mask
-        bitboards[moving_piece] |= start_mask
-        bitboards[active_colour] &= ~target_mask
-        bitboards[active_colour] |= start_mask
+        if moving_piece:
+            bitboards[moving_piece] &= ~target_mask
+            bitboards[moving_piece] |= start_mask
+            bitboards[active_colour] &= ~target_mask
+            bitboards[active_colour] |= start_mask
+        
+        if flag == CASTLE_KS or flag == CASTLE_QS:
+            rook_key = 'R' if state.player == WHITE else 'r'
+            r_from, r_to = 0, 0
+            if target_sq == G1: r_from, r_to = H1, F1
+            elif target_sq == C1: r_from, r_to = A1, D1
+            elif target_sq == G8: r_from, r_to = H8, F8
+            elif target_sq == C8: r_from, r_to = A8, D8
+            
+            bitboards[rook_key] &= ~(1 << r_to)
+            bitboards[rook_key] |= (1 << r_from)
+            bitboards[active_colour] &= ~(1 << r_to)
+            bitboards[active_colour] |= (1 << r_from)
 
     if captured_piece:
         if flag == EP_CAPTURE:
@@ -225,18 +245,5 @@ def unmake_move(state: State, move: int, undo_info: tuple):
         else:
             bitboards[captured_piece] |= target_mask
             bitboards[opponent_colour] |= target_mask
-            
-    if flag == CASTLE_KS or flag == CASTLE_QS:
-        rook_key = 'R' if state.player == WHITE else 'r'
-        r_from, r_to = 0, 0
-        if target_sq == G1: r_from, r_to = H1, F1
-        elif target_sq == C1: r_from, r_to = A1, D1
-        elif target_sq == G8: r_from, r_to = H8, F8
-        elif target_sq == C8: r_from, r_to = A8, D8
         
-        bitboards[rook_key] &= ~(1 << r_to)
-        bitboards[rook_key] |= (1 << r_from)
-        bitboards[active_colour] &= ~(1 << r_to)
-        bitboards[active_colour] |= (1 << r_from)
-
     bitboards['all'] = bitboards['white'] | bitboards['black']

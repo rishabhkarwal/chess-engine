@@ -1,6 +1,6 @@
 import time
 from engine.core.constants import WHITE, BLACK, INFINITY, MASK_FLAG
-from engine.moves.generator import get_legal_moves
+from engine.moves.generator import generate_pseudo_legal_moves
 from engine.board.move_exec import make_move, unmake_move, make_null_move, unmake_null_move, is_threefold_repetition
 from engine.moves.legality import is_in_check
 from engine.search.transposition import TranspositionTable, FLAG_EXACT, FLAG_LOWERBOUND, FLAG_UPPERBOUND
@@ -25,13 +25,18 @@ class SearchEngine:
         self.start_time = time.time()
         self.root_colour = state.player
         
-        moves = get_legal_moves(state)
-        if not moves: return None
+        moves = generate_pseudo_legal_moves(state)
+        legal_moves = []
+        for move in moves:
+            undo = make_move(state, move)
+            if not is_in_check(state, not state.player):
+                legal_moves.append(move)
+            unmake_move(state, move, undo)
+            
+        if not legal_moves: return None
+        moves = legal_moves
         
         # sort logic: high bits for promotions (>=8) or captures (4, 5, >=12)
-        # can approximate "interesting" moves by checking if flag > 0
-        #   is_capture: flag == 4 or flag == 5 or flag >= 12
-        #   is_promo: flag >= 8
         moves.sort(key=lambda m: (m & MASK_FLAG), reverse=True)
         
         best_move_so_far = moves[0]
@@ -86,7 +91,8 @@ class SearchEngine:
                 
                 elapsed = time.time() - self.start_time
                 elapsed = elapsed * 1000
-                if elapsed > self.time_limit / 1.5: break
+                # stop if > 80% of time used to prevent timing out in next depth
+                if elapsed > self.time_limit * 0.8: break
                     
                 current_depth += 1
                 if current_depth > 100: break
@@ -111,7 +117,7 @@ class SearchEngine:
         
         for i, move in enumerate(moves):
             undo_info = make_move(state, move)
-            
+            # root moves are already legal, no check needed here
             if i == 0:
                 value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1)
             else:
@@ -134,8 +140,8 @@ class SearchEngine:
 
     def _alpha_beta(self, state, depth, alpha, beta, ply, allow_null=True):
         self.nodes_searched += 1
-        if (self.nodes_searched & 2047) == 0: # check every 2048 nodes
-            if time.time() - self.start_time > self.time_limit: raise TimeoutError()
+        if (self.nodes_searched & 2047) == 0:
+            if time.time() - self.start_time > self.time_limit / 1000.0: raise TimeoutError() # forgot to convert to ms
         
         if is_threefold_repetition(state): return 0
 
@@ -160,12 +166,8 @@ class SearchEngine:
             finally:
                 unmake_null_move(state, undo_info)
 
-        moves = get_legal_moves(state)
+        moves = generate_pseudo_legal_moves(state)
         
-        if not moves:
-            if in_check: return -INFINITY + ply 
-            return 0 
-
         tt_move = tt_entry.best_move if tt_entry else None
         k1 = self.ordering.killer_moves[depth][0]
         k2 = self.ordering.killer_moves[depth][1]
@@ -175,9 +177,17 @@ class SearchEngine:
         best_value = -INFINITY * 10
         best_move = None
         original_alpha = alpha
+        legal_moves_count = 0
         
         for i, move in enumerate(moves):
             undo_info = make_move(state, move)
+            
+            # check legality AFTER making the move
+            if is_in_check(state, not state.player):
+                unmake_move(state, move, undo_info)
+                continue
+            
+            legal_moves_count += 1
             
             # LMR logic
             flag = (move & MASK_FLAG) >> 12
@@ -215,6 +225,10 @@ class SearchEngine:
                 
             if value > alpha: alpha = value
 
+        if legal_moves_count == 0:
+            if in_check: return -INFINITY + ply # checkmate
+            return 0 # stalemate
+
         flag = FLAG_EXACT
         if best_value <= original_alpha: flag = FLAG_UPPERBOUND
         
@@ -230,20 +244,32 @@ class SearchEngine:
             evaluation = evaluate(state)
             if evaluation >= beta: return beta
             if evaluation > alpha: alpha = evaluation
-
-            moves = get_legal_moves(state, captures_only=True)
+            moves = generate_pseudo_legal_moves(state, captures_only=True)
         else:
-            moves = get_legal_moves(state, captures_only=False)
-            if not moves: return -INFINITY + ply
-
-        moves.sort(key=lambda m: self.ordering._get_mvv_lva_score(state, m), reverse=True)
+            moves = generate_pseudo_legal_moves(state, captures_only=False)
+            
+        moves.sort(key=lambda m: self.ordering.get_move_score(m, None, state, 0, None, None), reverse=True)
+        
+        legal_moves_found = False
         
         for move in moves:
             undo_info = make_move(state, move)
+            
+            # delayed legality check
+            if is_in_check(state, not state.player):
+                unmake_move(state, move, undo_info)
+                continue
+            
+            legal_moves_found = True
+            
             score = -self._quiescence(state, -beta, -alpha, ply + 1)
             unmake_move(state, move, undo_info)
             
             if score >= beta: return beta
             if score > alpha: alpha = score
-                
+        
+        # if we were in check and found no legal moves => checkmate
+        if in_check and not legal_moves_found:
+             return -INFINITY + ply
+
         return alpha
