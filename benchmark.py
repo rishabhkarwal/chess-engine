@@ -108,33 +108,34 @@ if __name__ == '__main__':
 Testing Position: 8/3K4/1k6/8/8/8/7p/8 w - - 0 1
 Time Limit: 60s
 
-    info depth 1 currmove d7e6 score cp -915 nodes 30 nps 11911 time 2 hashfull 712
-    info depth 2 currmove d7e6 score cp -915 nodes 111 nps 6445 time 17 hashfull 712
-    info depth 3 currmove d7d6 score cp -912 nodes 231 nps 6500 time 35 hashfull 712
-    info depth 4 currmove d7d6 score cp -976 nodes 767 nps 11874 time 64 hashfull 712
-    info depth 5 currmove d7c8 score cp -975 nodes 1385 nps 12039 time 115 hashfull 712
-    info depth 6 currmove d7d6 score cp -988 nodes 2766 nps 12548 time 220 hashfull 712
-    info depth 7 currmove d7d6 score cp -990 nodes 4371 nps 12243 time 356 hashfull 712
-    info depth 8 currmove d7d6 score cp -996 nodes 9441 nps 15766 time 598 hashfull 712
-    info depth 9 currmove d7d6 score cp -994 nodes 15404 nps 18245 time 844 hashfull 713
-    info depth 10 currmove d7d6 score cp -998 nodes 27408 nps 23088 time 1187 hashfull 713
-    info depth 11 currmove d7d6 score cp -1000 nodes 40194 nps 27130 time 1481 hashfull 714
-    info depth 12 currmove d7d6 score cp -1000 nodes 59746 nps 31917 time 1871 hashfull 715
-    info depth 13 currmove d7d6 score cp -1000 nodes 95347 nps 38526 time 2474 hashfull 717
-    info depth 14 currmove d7d6 score cp -1001 nodes 157069 nps 46452 time 3381 hashfull 719
-    info depth 15 currmove d7d6 score cp -1001 nodes 226663 nps 53461 time 4239 hashfull 721
-    info depth 16 currmove d7d6 score cp -1016 nodes 350395 nps 58145 time 6026 hashfull 725
-    info depth 17 currmove d7d6 score cp -1016 nodes 517263 nps 64865 time 7974 hashfull 729
-    info depth 18 currmove d7d6 score cp -1033 nodes 873392 nps 73486 time 11885 hashfull 737
-    info depth 19 currmove d7d6 score cp -1033 nodes 1227523 nps 79417 time 15456 hashfull 743
-    info depth 20 currmove d7d6 score cp -1034 nodes 1883917 nps 85227 time 22104 hashfull 751
-    info depth 21 currmove d7d6 score cp -1035 nodes 3037780 nps 92254 time 32928 hashfull 763
-    info depth 22 currmove d7d6 score cp -1037 nodes 4618769 nps 102082 time 45245 hashfull 771
-    info nodes 6821888 nps 113693 time 60002 hashfull 783
+    info depth 1 currmove d7e6 score cp -941 nodes 30 nps 2219 time 13 hashfull 621
+    info depth 2 currmove d7e6 score cp -941 nodes 111 nps 5653 time 19 hashfull 621
+    info depth 3 currmove d7d6 score cp -932 nodes 231 nps 8680 time 26 hashfull 621
+    info depth 4 currmove d7d6 score cp -996 nodes 749 nps 6471 time 115 hashfull 621
+    info depth 5 currmove d7c8 score cp -996 nodes 1376 nps 6751 time 203 hashfull 622
+    info depth 6 currmove d7e6 score cp -1010 nodes 3774 nps 10830 time 348 hashfull 622
+    info depth 7 currmove d7d6 score cp -1018 nodes 5543 nps 10402 time 532 hashfull 622
+    info depth 8 currmove d7d6 score cp -1022 nodes 9050 nps 11961 time 756 hashfull 622
+    info depth 9 currmove d7d6 score cp -1022 nodes 14223 nps 13734 time 1035 hashfull 623
+    info depth 10 currmove d7d6 score cp -1026 nodes 22451 nps 17102 time 1312 hashfull 623
+    info depth 11 currmove d7d6 score cp -1026 nodes 36043 nps 21941 time 1642 hashfull 624
+    info depth 12 currmove d7d6 score cp -1029 nodes 60217 nps 28888 time 2084 hashfull 626
+    info depth 13 currmove d7d6 score cp -1031 nodes 94067 nps 34942 time 2692 hashfull 628
+    info depth 14 currmove d7d6 score cp -1040 nodes 152973 nps 43391 time 3525 hashfull 631
+    info depth 15 currmove d7d6 score cp -1040 nodes 223548 nps 51211 time 4365 hashfull 634
+    info depth 16 currmove d7d6 score cp -1046 nodes 354960 nps 60333 time 5883 hashfull 640
+    info depth 17 currmove d7d6 score cp -1046 nodes 526313 nps 70616 time 7453 hashfull 646
+    info depth 18 currmove d7d6 score cp -1046 nodes 806383 nps 83930 time 9607 hashfull 654
+    info depth 19 currmove d7d6 score cp -1046 nodes 1246460 nps 96598 time 12903 hashfull 664
+    info depth 20 currmove d7d6 score cp -1046 nodes 2056889 nps 109651 time 18758 hashfull 676
+    info depth 21 currmove d7d6 score cp -1047 nodes 2794047 nps 113943 time 24521 hashfull 696
+    info depth 22 currmove d7d6 score cp -1047 nodes 3714276 nps 118163 time 31433 hashfull 711
+    info depth 23 currmove d7d6 score cp -1048 nodes 5121661 nps 122299 time 41877 hashfull 724
+    info nodes 8019968 nps 133609 time 60025 hashfull 745
     bestmove d7d6
 
     Best Move: d7d6
-    Time: 60.0032 seconds
-    Nodes: 6,821,888
-    NPS: 113,692 nodes/sec
+    Time: 60.0259 seconds
+    Nodes: 8,019,968
+    NPS: 133,608 nodes/sec
 """

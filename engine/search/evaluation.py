@@ -1,4 +1,4 @@
-from engine.core.constants import ALL_PIECES, WHITE, BLACK
+from engine.core.constants import ALL_PIECES, WHITE, BLACK, FILE_A, FILE_H, FULL_BOARD
 from engine.core.utils import BitBoard
 
 """PeSTO Evaluation Function"""
@@ -9,7 +9,11 @@ EG_VALUES = {'P': 94, 'N': 281, 'B': 297, 'R': 512, 'Q': 936, 'K': 0}
 
 # game phase increments
 PHASE_INC = {'P': 0, 'N': 1, 'B': 1, 'R': 2, 'Q': 4, 'K': 0}
-MAX_PHASE = 4 * PHASE_INC['N'] + 4 * PHASE_INC['B'] + 4 * PHASE_INC['R'] + 2 * PHASE_INC['Q']
+MAX_PHASE = 24
+
+# passed pawn bonus (scales by rank 0-7)
+# ranks: 1, 2, 3, 4, 5, 6, 7, 8 (0 and 7 are promotion)
+PASSED_PAWN_BONUS = [0, 10, 17, 15, 62, 168, 276, 0] 
 
 MG_PAWN = [
       0,   0,   0,   0,   0,   0,   0,   0,
@@ -152,16 +156,17 @@ PSQTs = {
     'K': (MG_KING, EG_KING)
 }
 
-# piece mappings for fast list indexing
 PIECE_INDICES = {
     'P': 0, 'N': 1, 'B': 2, 'R': 3, 'Q': 4, 'K': 5,
     'p': 6, 'n': 7, 'b': 8, 'r': 9, 'q': 10, 'k': 11
 }
 
-# 12 piece types, 64 squares each
 MG_TABLE = [[0] * 64 for _ in range(12)]
 EG_TABLE = [[0] * 64 for _ in range(12)]
 PHASE_WEIGHTS = [0] * 12
+
+# passed pawn mask tables [colour][square]
+PASSED_PAWN_MASKS = [[0] * 64 for _ in range(2)]
 
 def init_eval_tables():
     """Initialises the pre-calculated tables for both colours"""
@@ -184,6 +189,24 @@ def init_eval_tables():
             # negate values for black so that positive score = white advantage
             MG_TABLE[idx][sq] = -(MG_VALUES[piece] + mg_val[flipped_sq])
             EG_TABLE[idx][sq] = -(EG_VALUES[piece] + eg_val[flipped_sq])
+    
+    # passed pawn masks
+    for sq in range(64):
+        file, rank = sq % 8, sq // 8
+        
+        # white: squares in front (rank + 1 .. 7) on file - 1, file, file + 1
+        w_mask = 0
+        for r in range(rank + 1, 8):
+            for f in range(max(0, file - 1), min(8, file + 2)):
+                w_mask |= (1 << (r * 8 + f))
+        PASSED_PAWN_MASKS[WHITE][sq] = w_mask
+        
+        # black: squares in front (rank - 1 .. 0) on file - 1, file, file + 1
+        b_mask = 0
+        for r in range(rank - 1, -1, -1):
+            for f in range(max(0, file - 1), min(8, file + 2)):
+                b_mask |= (1 << (r * 8 + f))
+        PASSED_PAWN_MASKS[BLACK][sq] = b_mask
 
 init_eval_tables()
 
@@ -211,13 +234,79 @@ def calculate_initial_score(state):
     state.eg_score = eg
     state.phase = phase
 
+def get_mop_up_score(state, winning_colour):
+    """Encourage winning king to close in and losing king to edge"""
+    winning_king_bb = state.bitboards['K' if winning_colour == WHITE else 'k']
+    losing_king_bb = state.bitboards['k' if winning_colour == WHITE else 'K']
+    
+    if not winning_king_bb or not losing_king_bb: return 0
+    
+    # extract squares
+    winning_sq = (winning_king_bb & -winning_king_bb).bit_length() - 1
+    losing_sq = (losing_king_bb & -losing_king_bb).bit_length() - 1
+    
+    # force losing king to edge
+    losing_rank, losing_file = losing_sq // 8, losing_sq % 8
+    
+    centre_dist = max(3 - losing_rank, losing_rank - 4) + max(3 - losing_file, losing_file - 4)
+    # simple integer manhattan from centre (0 to 6)
+    # 0 = centre (e4, d4, e5, d5), 6 = corners
+    
+    mop_up = 4 * centre_dist
+    
+    # force winning king closer
+    winning_rank, winning_file = winning_sq // 8, winning_sq % 8
+    
+    dist_between_kings = abs(winning_rank - losing_rank) + abs(winning_file - losing_file)
+    
+    # closer is better + max dist is 14
+    mop_up += 2 * (14 - dist_between_kings)
+    
+    return mop_up if winning_colour == WHITE else -mop_up
+
 def evaluate(state):
-    """Calculates the score based on the current game phase in O(1)"""
+    """Calculates the score based on the current game phase in O(1) + fast bitwise"""
     mg_phase = state.phase
     if mg_phase > MAX_PHASE: mg_phase = MAX_PHASE
-    
     eg_phase = MAX_PHASE - mg_phase
     
+
     evaluation = (state.mg_score * mg_phase + state.eg_score * eg_phase) // MAX_PHASE
+    
+    # pawns
+    w_pawns = state.bitboards['P']
+    b_pawns = state.bitboards['p']
+
+    if w_pawns: # white
+        temp_w = w_pawns
+        while temp_w:
+            lsb = temp_w & -temp_w
+            sq = lsb.bit_length() - 1
+            # if no black pawns in front span
+            if not (PASSED_PAWN_MASKS[WHITE][sq] & b_pawns):
+                # bonus based on rank
+                rank = sq // 8
+                evaluation += PASSED_PAWN_BONUS[rank]
+            temp_w &= temp_w - 1
+
+    if b_pawns: # black
+        temp_b = b_pawns
+        while temp_b:
+            lsb = temp_b & -temp_b
+            sq = lsb.bit_length() - 1
+            if not (PASSED_PAWN_MASKS[BLACK][sq] & w_pawns):
+                rank = sq // 8
+                # negative because black
+                evaluation -= PASSED_PAWN_BONUS[7 - rank]
+            temp_b &= temp_b - 1
+
+    # mop up evaluation (only in late endgame)
+    # trigger if endgame phase AND one side is clearly winning
+    if mg_phase < int(MAX_PHASE * 0.4): 
+        score_no_mopup = evaluation if state.player == WHITE else -evaluation
+        if score_no_mopup > 200: # winning
+            evaluation += get_mop_up_score(state, state.player)
+        elif score_no_mopup < -200: # losing
+            evaluation += get_mop_up_score(state, not state.player)
     
     return evaluation if state.player == WHITE else -evaluation
