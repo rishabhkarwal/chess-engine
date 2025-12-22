@@ -68,7 +68,7 @@ def benchmark(position='startpos', time_limit=5.0, engine_path='engine.bat'):
             if not line: break
             line = line.strip()
 
-            print(line) # engine -> gui
+            print('\t' + line) # engine -> gui
 
             if line.startswith('info'):
                 parts = line.split()
@@ -100,42 +100,29 @@ def benchmark(position='startpos', time_limit=5.0, engine_path='engine.bat'):
         process.terminate()
 
 if __name__ == '__main__':
-    fen = '8/3K4/1k6/8/8/8/7p/8 w - - 0 1'
+    fen = '5B2/1P2P2P/2P1r3/2b1p3/6p1/2K2P1k/p7/nN5B w - - 0 1'
     time_limit = 60
     benchmark(position=fen, time_limit=time_limit)
 
 """
-Testing Position: 8/3K4/1k6/8/8/8/7p/8 w - - 0 1
+Testing Position: 5B2/1P2P2P/2P1r3/2b1p3/6p1/2K2P1k/p7/nN5B w - - 0 1
 Time Limit: 60s
 
-    info depth 1 currmove d7e6 score cp -941 nodes 30 nps 2219 time 13 hashfull 621
-    info depth 2 currmove d7e6 score cp -941 nodes 111 nps 5653 time 19 hashfull 621
-    info depth 3 currmove d7d6 score cp -932 nodes 231 nps 8680 time 26 hashfull 621
-    info depth 4 currmove d7d6 score cp -996 nodes 749 nps 6471 time 115 hashfull 621
-    info depth 5 currmove d7c8 score cp -996 nodes 1376 nps 6751 time 203 hashfull 622
-    info depth 6 currmove d7e6 score cp -1010 nodes 3774 nps 10830 time 348 hashfull 622
-    info depth 7 currmove d7d6 score cp -1018 nodes 5543 nps 10402 time 532 hashfull 622
-    info depth 8 currmove d7d6 score cp -1022 nodes 9050 nps 11961 time 756 hashfull 622
-    info depth 9 currmove d7d6 score cp -1022 nodes 14223 nps 13734 time 1035 hashfull 623
-    info depth 10 currmove d7d6 score cp -1026 nodes 22451 nps 17102 time 1312 hashfull 623
-    info depth 11 currmove d7d6 score cp -1026 nodes 36043 nps 21941 time 1642 hashfull 624
-    info depth 12 currmove d7d6 score cp -1029 nodes 60217 nps 28888 time 2084 hashfull 626
-    info depth 13 currmove d7d6 score cp -1031 nodes 94067 nps 34942 time 2692 hashfull 628
-    info depth 14 currmove d7d6 score cp -1040 nodes 152973 nps 43391 time 3525 hashfull 631
-    info depth 15 currmove d7d6 score cp -1040 nodes 223548 nps 51211 time 4365 hashfull 634
-    info depth 16 currmove d7d6 score cp -1046 nodes 354960 nps 60333 time 5883 hashfull 640
-    info depth 17 currmove d7d6 score cp -1046 nodes 526313 nps 70616 time 7453 hashfull 646
-    info depth 18 currmove d7d6 score cp -1046 nodes 806383 nps 83930 time 9607 hashfull 654
-    info depth 19 currmove d7d6 score cp -1046 nodes 1246460 nps 96598 time 12903 hashfull 664
-    info depth 20 currmove d7d6 score cp -1046 nodes 2056889 nps 109651 time 18758 hashfull 676
-    info depth 21 currmove d7d6 score cp -1047 nodes 2794047 nps 113943 time 24521 hashfull 696
-    info depth 22 currmove d7d6 score cp -1047 nodes 3714276 nps 118163 time 31433 hashfull 711
-    info depth 23 currmove d7d6 score cp -1048 nodes 5121661 nps 122299 time 41877 hashfull 724
-    info nodes 8019968 nps 133609 time 60025 hashfull 745
-    bestmove d7d6
+        info depth 1 currmove h7h8q score cp 1664 nodes 4528 nps 7385 time 613 hashfull 534
+        info depth 2 currmove h7h8q score cp 1664 nodes 6829 nps 7225 time 945 hashfull 534
+        info depth 3 currmove h7h8q score cp 1664 nodes 9290 nps 8489 time 1094 hashfull 534
+        info depth 4 currmove h7h8q score cp 1664 nodes 23028 nps 11887 time 1937 hashfull 534
+        info depth 5 currmove h7h8q score cp 1594 nodes 115351 nps 17542 time 6575 hashfull 536
+        info depth 6 currmove h7h8q score cp 1594 nodes 175539 nps 20208 time 8686 hashfull 538
+        info depth 7 currmove h7h8q score cp 1594 nodes 254026 nps 22839 time 11122 hashfull 540
+        info depth 8 currmove h7h8q score cp 1594 nodes 605114 nps 26832 time 22551 hashfull 554
+        info depth 9 currmove h7h8q score cp 1717 nodes 1200605 nps 32417 time 37036 hashfull 572
+        info depth 10 currmove h7h8q score cp 1729 nodes 1898586 nps 36559 time 51931 hashfull 599
+        info nodes 2048000 nps 34126 time 60012 hashfull 602
+        bestmove h7h8q
 
-    Best Move: d7d6
-    Time: 60.0259 seconds
-    Nodes: 8,019,968
-    NPS: 133,608 nodes/sec
+    Best Move: h7h8q
+    Time: 60.0196 seconds
+    Nodes: 2,048,000
+    NPS: 34,122 nodes/sec
 """
