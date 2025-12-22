@@ -97,7 +97,11 @@ class SearchEngine:
                 current_depth += 1
                 if current_depth > 100: break
                 
-            except TimeoutError:
+            except TimeoutError: # when run out of time - send a final debug print
+                elapsed = time.time() - self.start_time
+                nps = int(self.nodes_searched / elapsed) if elapsed > 0 else 0
+                hashfull = self.tt.get_hashfull()
+                send_command(f"info nodes {self.nodes_searched} nps {nps} time {int(elapsed * 1000)} hashfull {hashfull}")
                 break
                 
         return best_move_so_far
