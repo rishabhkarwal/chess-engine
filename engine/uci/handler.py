@@ -44,7 +44,9 @@ class UCI:
 
     def handle_new_game(self):
         self.engine = SearchEngine()
-        self._warmup_jit()
+        #self._warmup_jit()
+        # fix: clear the TT after warmup so old positions don't corrupt the new game
+        #self.engine.tt.clear()
 
     def _warmup_jit(self):
         send_info_string("warming up JIT compiler...")

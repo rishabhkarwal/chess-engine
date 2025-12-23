@@ -9,6 +9,7 @@ from engine.search.ordering import MoveOrdering
 from engine.uci.utils import send_command
 from engine.core.move import CAPTURE, PROMOTION_N, EP_CAPTURE, PROMO_CAP_N, move_to_uci
 from engine.search.syzygy import SyzygyHandler
+from engine.uci.utils import send_info_string
 
 class SearchEngine:
     def __init__(self, time_limit=2000, tt_size_mb=64):

@@ -19,7 +19,7 @@ EG_VALUES = {'P': 94, 'N': 281, 'B': 297, 'R': 512, 'Q': 936, 'K': 0}
 PHASE_INC = {'P': 0, 'N': 1, 'B': 1, 'R': 2, 'Q': 4, 'K': 0}
 MAX_PHASE = 24
 
-PASSED_PAWN_BONUS = [0, 3, 5, 7, 25, 48, 94, 0] 
+PASSED_PAWN_BONUS = [0, 10, 17, 15, 62, 168, 276, 0] 
 
 ISOLATED_PAWN_PENALTY = -10
 DOUBLED_PAWN_PENALTY = -12
