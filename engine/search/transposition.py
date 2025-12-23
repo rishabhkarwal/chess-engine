@@ -52,6 +52,7 @@ class TranspositionTable:
     
     def clear(self):
         self.table = [None] * self.size
+        self.entries_count = 0
 
     def get_hashfull(self) -> int:
         """Returns occupancy in permill (0-1000)"""

@@ -74,3 +74,7 @@ class MoveOrdering:
         start = move & MASK_SOURCE
         target = (move & MASK_TARGET) >> 6
         return self.history_table[start][target]
+
+    def clear(self):
+        self.killer_moves = [[None] * 2 for _ in range(102)]
+        self.history_table = [[0] * 64 for _ in range(64)]
