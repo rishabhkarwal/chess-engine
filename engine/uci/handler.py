@@ -8,11 +8,13 @@ from engine.core.constants import WHITE, BLACK, NAME, AUTHOR
 from engine.search.search import SearchEngine
 from engine.uci.utils import send_command, send_info_string
 from engine.core.move import move_to_uci
+from engine.search.book import OpeningBook
 
 class UCI:
     def __init__(self):
         self.engine = SearchEngine()
         self.state = load_from_fen()
+        self.book = OpeningBook()
 
     def run(self):
         while True:
@@ -41,26 +43,21 @@ class UCI:
         send_command('uciok')
 
     def handle_new_game(self):
-        #self.engine = SearchEngine()
+        self.engine = SearchEngine()
         self._warmup_jit()
 
     def _warmup_jit(self):
-        """Runs a short search on a complex position"""
-
         send_info_string("warming up JIT compiler...")
-
         warmup_fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
         warmup_state = load_from_fen(warmup_fen)
-        
         self.engine.time_limit = 3000 # quick 3-second search
         self.engine.get_best_move(warmup_state)
-        
         send_info_string("JIT warm-up complete")
 
     def handle_position(self, args):
         moves_idx = -1
         if args[0] == 'startpos':
-            self.state = load_from_fen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
+            fen_str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
             if 'moves' in args: moves_idx = args.index('moves')
         elif args[0] == 'fen':
             if 'moves' in args:
@@ -68,7 +65,13 @@ class UCI:
                 fen_str = ' '.join(args[1:moves_idx])
             else:
                 fen_str = ' '.join(args[1:])
+        else: return
+
+        try:
             self.state = load_from_fen(fen_str)
+        except ValueError:
+            send_info_string(f"error parsing fen: {fen_str}")
+            return
 
         if moves_idx != -1:
             moves = args[moves_idx + 1:]
@@ -83,6 +86,12 @@ class UCI:
                         break
 
     def handle_go(self, args):
+        book_move = self.book.get_move(self.state)
+        if book_move:
+            send_info_string(f"found book move: {book_move}")
+            send_command(f'bestmove {book_move}')
+            return
+
         w_time = None
         b_time = None
         w_inc = 0
@@ -125,11 +134,18 @@ class UCI:
         try:
             best_move = self.engine.get_best_move(self.state)
             
-            move_str = move_to_uci(best_move) if best_move else '0000'
+            if isinstance(best_move, str):
+                # already a string (from syzygy)
+                move_str = best_move
+            elif best_move is not None:
+                move_str = move_to_uci(best_move)
+            else:
+                move_str = '0000'
+
             send_command(f'bestmove {move_str}')
 
         except Exception as e:
-            send_info_string(f"Error: {e}")
+            send_info_string(f"error: {e}")
             import traceback
             send_info_string(traceback.format_exc())
             send_command(f'bestmove 0000')

@@ -8,11 +8,13 @@ from engine.search.evaluation import evaluate
 from engine.search.ordering import MoveOrdering
 from engine.uci.utils import send_command
 from engine.core.move import CAPTURE, PROMOTION_N, EP_CAPTURE, PROMO_CAP_N, move_to_uci
+from engine.search.syzygy import SyzygyHandler
 
 class SearchEngine:
-    def __init__(self, time_limit=2000, tt_size_mb=32):
+    def __init__(self, time_limit=2000, tt_size_mb=64):
         self.time_limit = time_limit
         self.tt = TranspositionTable(tt_size_mb)
+        self.syzygy = SyzygyHandler()
         self.ordering = MoveOrdering()
         self.nodes_searched = 0
         self.start_time = 0.0
@@ -45,6 +47,12 @@ class SearchEngine:
         return ' '.join(move_to_uci(m) for m in pv_moves)
 
     def get_best_move(self, state):
+        # syzygy root probe
+        syzygy_move = self.syzygy.get_best_move(state)
+        if syzygy_move:
+            send_info_string(f'found syzygy move: {syzygy_move}')
+            return syzygy_move
+
         self.nodes_searched = 0
         self.start_time = time.time()
         self.root_colour = state.player
@@ -96,7 +104,7 @@ class SearchEngine:
                 elapsed = time.time() - self.start_time
                 nps = int(self.nodes_searched / elapsed) if elapsed > 0 else 0
                 
-                if INFINITY - abs(score) < 1000:
+                if INFINITY - abs(score) < 50: # MATE in 25 (max)
                     if score > 0: 
                         ply_to_mate = INFINITY - score
                         mate_in = (ply_to_mate + 1) // 2
@@ -112,6 +120,10 @@ class SearchEngine:
                 pv_string = self._get_pv_line(state, current_depth)
 
                 send_command(f"info depth {current_depth} currmove {move_to_uci(best_move_so_far)} score {score_str} nodes {self.nodes_searched} nps {nps} time {int(elapsed * 1000)} hashfull {hashfull} pv {pv_string}")
+
+                if abs(score) >= INFINITY - 1000: # mate (or VERY good move found)
+                    #self.time_limit *= 0.5 # halve time limit instead to give chance to find faster mate
+                    break # just leave instead
                 
                 elapsed = time.time() - self.start_time
                 elapsed = elapsed * 1000
@@ -174,6 +186,18 @@ class SearchEngine:
         if is_threefold_repetition(state): return 0
         # 50-move rule (draw)
         if state.halfmove_clock >= 100: return 0 # 100 halfmoves = 50 full moves
+
+        # syzygy leaf probe
+        wdl = self.syzygy.probe_wdl(state)
+        if wdl is not None:
+            # convert WDL (-2 to 2) to engine score
+            # print will say M1 / M-1 (can remove by adding a buffer but not necessary)
+            if wdl > 0: score = INFINITY - ply # winning
+            elif wdl < 0: score = -INFINITY + ply # losing
+            else: score = 0 # draw
+
+            self.tt.store(state.hash, depth, score, FLAG_EXACT, None) # save result so don't have to convert / probe again for this position
+            return score
 
         tt_entry = self.tt.probe(state.hash)
         if tt_entry and tt_entry.depth >= depth:
