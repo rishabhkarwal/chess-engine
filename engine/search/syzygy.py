@@ -24,10 +24,7 @@ class SyzygyHandler:
     def get_best_move(self, state):
         if not self.tablebase: return None
 
-        piece_count = 0
-        for piece in ALL_PIECES:
-            piece_count += state.bitboards[piece].bit_count()
-        if piece_count > 5: return None # currently has tablebase for 3-4-5
+        if state.bitboards['all'].bit_count() > 5: return None # currently has tablebase for 3-4-5
 
 
         try: board = state_to_board(state)
@@ -85,15 +82,24 @@ class SyzygyHandler:
     def probe_wdl(self, state):
         if not self.tablebase: return None
         
-        piece_count = 0
-        for piece in ALL_PIECES:
-            piece_count += state.bitboards[piece].bit_count()
-        if piece_count > 5: return None
+        if state.bitboards['all'].bit_count() > 5: return None
 
         try:
             board = state_to_board(state)
             return self.tablebase.probe_wdl(board)
         except: return None
+
+    def probe_dtz(self, state):
+        """Returns DTZ score for the current state"""
+        if not self.tablebase: return None
+        
+        if state.bitboards['all'].bit_count() > 5: return None
+
+        try:
+            board = state_to_board(state)
+            return self.tablebase.probe_dtz(board)
+        except: 
+            return None
 
     def close(self):
         if self.tablebase:

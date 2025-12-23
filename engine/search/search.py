@@ -20,7 +20,7 @@ class SearchEngine:
         self.nodes_searched = 0
         self.start_time = 0.0
         self.root_colour = WHITE
-        self.aspiration_window = 50
+        self.aspiration_window = 40
     
     def _get_pv_line(self, state, max_depth=20):
         """Retrieves the principal variation line from the TT by walking the best moves found so far"""
@@ -191,10 +191,10 @@ class SearchEngine:
         # syzygy leaf probe
         wdl = self.syzygy.probe_wdl(state)
         if wdl is not None:
-            # convert WDL (-2 to 2) to engine score
-            # print will say M1 / M-1 (can remove by adding a buffer but not necessary)
-            if wdl > 0: score = INFINITY - ply # winning
-            elif wdl < 0: score = -INFINITY + ply # losing
+            dtz = self.syzygy.probe_dtz(state) # distance-to-zero: used to find the fastest mate
+
+            if wdl > 0: score = INFINITY - ply - abs(dtz)# winning
+            elif wdl < 0: score = -INFINITY + ply + abs(dtz) # losing
             else: score = 0 # draw
 
             self.tt.store(state.hash, depth, score, FLAG_EXACT, None) # save result so don't have to convert / probe again for this position
