@@ -11,7 +11,7 @@ from engine.core.zobrist import compute_hash
 def load_from_fen(fen_string: str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1') -> State:
     fields = fen_string.split(' ')
     
-    bitboards, board = _parse_pieces(fields[0])
+    bitboards, board, piece_counts = _parse_pieces(fields[0])
     
     state = State(
         bitboards=bitboards,
@@ -22,6 +22,7 @@ def load_from_fen(fen_string: str = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
         halfmove_clock=int(fields[4]),
         fullmove_number=int(fields[5]),
         history=[],
+        piece_counts=piece_counts
     )
     
     state.mg_score, state.eg_score, state.phase = calculate_initial_score(state)
@@ -35,6 +36,7 @@ def _parse_pieces(pieces_fen: str):
     
     bitboards = [0] * 16
     board = [NULL] * 64
+    piece_counts = [0] * 16
     
     for rank in ranks:
         for square in rank:
@@ -45,6 +47,7 @@ def _parse_pieces(pieces_fen: str):
                 piece = CHAR_TO_PIECE[square]
 
                 bitboards[piece] |= SQUARE_TO_BB[index]
+                piece_counts[piece] += 1
 
                 if piece & WHITE: bitboards[WHITE] |= SQUARE_TO_BB[index]
                 else: bitboards[BLACK] |= SQUARE_TO_BB[index]
@@ -52,7 +55,7 @@ def _parse_pieces(pieces_fen: str):
                 board[index] = piece
                 square_count += 1
     
-    return bitboards, board
+    return bitboards, board, piece_counts
 
 def _parse_active_colour(colour_fen: str):
     return colour_fen == 'w'

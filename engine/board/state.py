@@ -12,8 +12,10 @@ class State:
     halfmove_clock: int
     fullmove_number: int
     history: List[int]
-    hash: int = 0
     
+    piece_counts: List[int]
+
+    hash: int = 0
     mg_score: int = 0
     eg_score: int = 0
     phase: int = 0

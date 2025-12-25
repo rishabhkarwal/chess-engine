@@ -18,6 +18,7 @@ from engine.search.evaluation import MG_TABLE, EG_TABLE, PHASE_WEIGHTS
 def is_threefold_repetition(state: State) -> bool:
     if not state.history: return False
     current_hash = state.hash
+
     for i in range(len(state.history) - 2, -1, -2):
         if state.history[i] == current_hash: return True
     return False
@@ -98,6 +99,8 @@ def make_move(state: State, move: int) -> tuple:
             state.mg_score -= MG_TABLE[captured_piece][capture_sq]
             state.eg_score -= EG_TABLE[captured_piece][capture_sq]
             state.phase -= PHASE_WEIGHTS[captured_piece]
+
+            state.piece_counts[captured_piece] -= 1
         else:
             captured_piece = board[target_sq]
             
@@ -109,6 +112,8 @@ def make_move(state: State, move: int) -> tuple:
             state.eg_score -= EG_TABLE[captured_piece][target_sq]
             state.phase -= PHASE_WEIGHTS[captured_piece]
             
+            state.piece_counts[captured_piece] -= 1
+            
     if move & PROMO_FLAG:
         promo_idx = (move >> SHIFT_FLAG) & (SPECIAL_1 | SPECIAL_0)
         promo_types = (KNIGHT, BISHOP, ROOK, QUEEN)
@@ -118,6 +123,9 @@ def make_move(state: State, move: int) -> tuple:
         state.phase -= PHASE_WEIGHTS[moving_piece]
         state.phase += PHASE_WEIGHTS[promoted_piece]
         target_piece = promoted_piece
+        
+        state.piece_counts[moving_piece] -= 1
+        state.piece_counts[promoted_piece] += 1
     else:
         target_piece = moving_piece
         
@@ -235,6 +243,9 @@ def unmake_move(state: State, move: int, undo_info: tuple):
         bitboards[pawn] |= start_mask
         bitboards[active_bb] |= start_mask
         board[start_sq] = pawn
+
+        state.piece_counts[target_piece] -= 1
+        state.piece_counts[pawn] += 1
     else:
         bitboards[target_piece] &= ~target_mask
         bitboards[target_piece] |= start_mask
@@ -262,6 +273,8 @@ def unmake_move(state: State, move: int, undo_info: tuple):
             board[r_from] = rook
 
     if captured_piece != NULL:
+        state.piece_counts[captured_piece] += 1
+        
         if (move >> SHIFT_FLAG) == EP_FLAG >> SHIFT_FLAG:
             ep_offset = SOUTH if state.is_white else NORTH
             capture_sq = target_sq + ep_offset

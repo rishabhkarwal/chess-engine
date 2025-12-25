@@ -3,9 +3,13 @@ from engine.core.constants import (
     WHITE, BLACK, MATE, INFINITY,
     MAX_DEPTH, TIME_CHECK_NODES
 )
+from engine.core.constants import (
+    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING,
+    MASK_SOURCE, MASK_TARGET, NULL, WHITE
+)
 from engine.core.move import (
     CAPTURE_FLAG, PROMO_FLAG, EP_FLAG,
-    move_to_uci
+    move_to_uci, SHIFT_TARGET
 )
 from engine.moves.generator import generate_pseudo_legal_moves
 from engine.board.move_exec import (
@@ -22,6 +26,15 @@ from engine.search.evaluation import evaluate
 from engine.search.ordering import MoveOrdering
 from engine.uci.utils import send_command
 from engine.search.syzygy import SyzygyHandler
+
+PIECE_VALUES = {
+    PAWN >> 1: 100,
+    KNIGHT >> 1: 320,
+    BISHOP >> 1: 330,
+    ROOK >> 1: 500,
+    QUEEN >> 1: 900,
+    KING >> 1: 20000
+}
 
 class SearchEngine:
     def __init__(self, time_limit=2000, tt_size_mb=64):
@@ -320,30 +333,51 @@ class SearchEngine:
 
     def _quiescence(self, state, alpha, beta, ply):
         self.nodes_searched += 1
+        evaluation = evaluate(state)
         
+        if evaluation >= beta: return beta
+        
+        if evaluation > alpha:
+            alpha = evaluation
+            
         in_check = is_in_check(state, state.is_white)
         
-        if not in_check:
-            evaluation = evaluate(state)
-            if evaluation >= beta: return beta
-            if evaluation > alpha: alpha = evaluation
-            moves = generate_pseudo_legal_moves(state, captures_only=True)
-        else:
+        if in_check:
             moves = generate_pseudo_legal_moves(state, captures_only=False)
+        else:
+            moves = generate_pseudo_legal_moves(state, captures_only=True)
             
-        moves.sort(key=lambda m: self.ordering.get_move_score(m, None, state, 0, None, None), reverse=True)
+        scored_moves = []
+        tt_move = None
         
-        legal_moves_found = False
+        for m in moves:
+            score = 0
+            if (m & CAPTURE_FLAG):
+                score = self.ordering.get_move_score(m, None, state, 0, None, None)
+            scored_moves.append((score, m))
+            
+        scored_moves.sort(key=lambda x: x[0], reverse=True)
         
-        for move in moves:
+        for _, move in scored_moves:
+            if not in_check and (move & CAPTURE_FLAG):
+
+                target = (move >> SHIFT_TARGET) & MASK_SOURCE
+                victim = state.board[target]
+                
+                if victim != NULL:
+                    victim_type = victim & ~WHITE
+                    victim_value = PIECE_VALUES.get(victim_type, 0)
+                    
+                    # pruning condition:
+                    # current score + captured piece value + safety margin (200) < alpha
+                    if evaluation + victim_value + 200 < alpha:
+                        continue
+
             undo_info = make_move(state, move)
             
-            # delayed legality check
             if is_in_check(state, not state.is_white):
                 unmake_move(state, move, undo_info)
                 continue
-            
-            legal_moves_found = True
             
             score = -self._quiescence(state, -beta, -alpha, ply + 1)
             unmake_move(state, move, undo_info)
@@ -351,8 +385,4 @@ class SearchEngine:
             if score >= beta: return beta
             if score > alpha: alpha = score
         
-        # if we were in check and found no legal moves => checkmate
-        if in_check and not legal_moves_found:
-             return -INFINITY + ply
-
         return alpha
