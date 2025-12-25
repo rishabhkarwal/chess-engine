@@ -2,7 +2,7 @@ from engine.core.constants import (
     WHITE, BLACK,
     WHITE_PIECES, BLACK_PIECES,
     MASK_SOURCE,
-    WK, BK,
+    WK, BK, SQUARE_TO_BB
 )
 from engine.core.move import SHIFT_TARGET
 from engine.board.state import State
@@ -64,13 +64,13 @@ def is_in_check(state: State, colour: bool) -> bool:
 def is_legal(state: State, move: int) -> bool:
     start_sq = move & MASK_SOURCE
 
-    if (1 << start_sq) & (state.bitboards[WK] | state.bitboards[BK]):
+    if SQUARE_TO_BB[start_sq] & (state.bitboards[WK] | state.bitboards[BK]):
         target_sq = (move >> SHIFT_TARGET) & MASK_SOURCE
         opponent = not state.is_white
         king_idx = WK if state.is_white else BK
-        state.bitboards[king_idx] &= ~(1 << start_sq)
+        state.bitboards[king_idx] &= ~SQUARE_TO_BB[start_sq]
         is_attacked = is_square_attacked(state, target_sq, opponent)
-        state.bitboards[king_idx] |= (1 << start_sq)
+        state.bitboards[king_idx] |= SQUARE_TO_BB[start_sq]
         return not is_attacked
 
     undo_info = make_move(state, move)

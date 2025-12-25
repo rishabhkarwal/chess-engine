@@ -79,6 +79,7 @@ RANK_8 = 0xFF00000000000000
 # board masks
 FULL_BOARD = 0xFFFFFFFFFFFFFFFF
 EMPTY_BOARD = 0x0000000000000000
+SQUARE_TO_BB = [1 << square for square in range(64)]
 
 # square indices
 A1, B1, C1, D1, E1, F1, G1, H1 = 0, 1, 2, 3, 4, 5, 6, 7

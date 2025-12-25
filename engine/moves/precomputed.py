@@ -2,7 +2,7 @@ from typing import List
 from engine.core.constants import (
     WHITE, BLACK,
     FILE_A, FILE_H, FILE_AB, FILE_GH,
-    FULL_BOARD, NORTH
+    FULL_BOARD, NORTH, SQUARE_TO_BB
 )
 from engine.uci.utils import send_info_string
 
@@ -58,7 +58,7 @@ def generate_sliding_masks(deltas: List[tuple]) -> List[int]:
         for d_rank, d_file in deltas:
             r, f = rank + d_rank, file + d_file
             while 0 <= r <= 7 and 0 <= f <= 7:
-                mask |= (1 << (r * 8 + f))
+                mask |= SQUARE_TO_BB[r * 8 + f]
                 r += d_rank
                 f += d_file
         masks.append(mask)
@@ -94,7 +94,7 @@ def init_sliders(table: List[List[int]], masks_list: List[int], deltas: List[tup
             blocker = 0
             for bit_index, pos in enumerate(bit_indices):
                 if (i >> bit_index) & 1:
-                    blocker |= (1 << pos)
+                    blocker |= SQUARE_TO_BB[pos]
             attacks = generate_sliding_attacks(square, blocker, deltas)
             square_table[blocker] = attacks
         

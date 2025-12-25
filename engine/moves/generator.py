@@ -7,7 +7,8 @@ from engine.core.constants import (
     WHITE_PIECES, BLACK_PIECES,
     MASK_SOURCE,
     WP, BP, WN, BN, WB, BB, WR, BR, WQ, BQ, WK, BK,
-    WHITE, BLACK, NORTH, SOUTH
+    WHITE, BLACK, NORTH, SOUTH,
+    SQUARE_TO_BB
 )
 from engine.core.move import SHIFT_TARGET
 from engine.board.state import State
@@ -117,7 +118,7 @@ def _gen_pawn_moves(state: State, moves: List[int], pawn_key: int, colour: bool,
                 moves.append(_pack(from_sq, to_sq, CAPTURE))
         
         if state.en_passant_square != NULL:
-            if attack_table[from_sq] & (1 << state.en_passant_square):
+            if attack_table[from_sq] & SQUARE_TO_BB[state.en_passant_square]:
                 moves.append(_pack(from_sq, state.en_passant_square, EN_PASSANT))
 
 def _add_promotions(moves: List[int], from_sq: int, to_sq: int, is_capture: bool):
@@ -145,7 +146,7 @@ def _gen_knight_moves(pieces: int, moves: List[int], active: int, enemy: int, ca
             t_lsb = targets & -targets
             to_sq = t_lsb.bit_length() - 1
             targets &= targets - 1
-            flag = CAPTURE if (1 << to_sq) & enemy else QUIET
+            flag = CAPTURE if SQUARE_TO_BB[to_sq] & enemy else QUIET
             moves.append(_pack(from_sq, to_sq, flag))
 
 def _gen_king_moves(pieces: int, moves: List[int], active: int, enemy: int, captures_only: bool):
@@ -161,27 +162,27 @@ def _gen_king_moves(pieces: int, moves: List[int], active: int, enemy: int, capt
             t_lsb = targets & -targets
             to_sq = t_lsb.bit_length() - 1
             targets &= targets - 1
-            flag = CAPTURE if (1 << to_sq) & enemy else QUIET
+            flag = CAPTURE if SQUARE_TO_BB[to_sq] & enemy else QUIET
             moves.append(_pack(from_sq, to_sq, flag))
 
 def _gen_castling_moves(state: State, moves: List[int], all_pieces: int):
     opponent = BLACK if state.is_white else WHITE
     if state.is_white:
         if state.castling_rights & CASTLE_WK:
-            if not (all_pieces & ((1 << F1) | (1 << G1))):
+            if not (all_pieces & (SQUARE_TO_BB[F1] | SQUARE_TO_BB[G1])):
                 if not is_square_attacked(state, E1, opponent) and not is_square_attacked(state, F1, opponent) and not is_square_attacked(state, G1, opponent):
                     moves.append(_pack(E1, G1, CASTLE_KS))
         if state.castling_rights & CASTLE_WQ:
-            if not (all_pieces & ((1 << B1) | (1 << C1) | (1 << D1))):
+            if not (all_pieces & (SQUARE_TO_BB[B1] | SQUARE_TO_BB[C1] | SQUARE_TO_BB[D1])):
                 if not is_square_attacked(state, E1, opponent) and not is_square_attacked(state, D1, opponent) and not is_square_attacked(state, C1, opponent):
                     moves.append(_pack(E1, C1, CASTLE_QS))
     else:
         if state.castling_rights & CASTLE_BK:
-            if not (all_pieces & ((1 << F8) | (1 << G8))):
+            if not (all_pieces & (SQUARE_TO_BB[F8] | SQUARE_TO_BB[G8])):
                 if not is_square_attacked(state, E8, opponent) and not is_square_attacked(state, F8, opponent) and not is_square_attacked(state, G8, opponent):
                     moves.append(_pack(E8, G8, CASTLE_KS))
         if state.castling_rights & CASTLE_BQ:
-            if not (all_pieces & ((1 << B8) | (1 << C8) | (1 << D8))):
+            if not (all_pieces & (SQUARE_TO_BB[B8] | SQUARE_TO_BB[C8] | SQUARE_TO_BB[D8])):
                 if not is_square_attacked(state, E8, opponent) and not is_square_attacked(state, D8, opponent) and not is_square_attacked(state, C8, opponent):
                     moves.append(_pack(E8, C8, CASTLE_QS))
 
@@ -199,7 +200,7 @@ def _gen_bishop_moves(pieces: int, moves: List[int], all_pieces: int, active: in
             t_lsb = targets & -targets
             to_sq = t_lsb.bit_length() - 1
             targets &= targets - 1
-            flag = CAPTURE if (1 << to_sq) & enemy else QUIET
+            flag = CAPTURE if SQUARE_TO_BB[to_sq] & enemy else QUIET
             moves.append(_pack(from_sq, to_sq, flag))
 
 def _gen_rook_moves(pieces: int, moves: List[int], all_pieces: int, active: int, enemy: int, captures_only: bool):
@@ -216,7 +217,7 @@ def _gen_rook_moves(pieces: int, moves: List[int], all_pieces: int, active: int,
             t_lsb = targets & -targets
             to_sq = t_lsb.bit_length() - 1
             targets &= targets - 1
-            flag = CAPTURE if (1 << to_sq) & enemy else QUIET
+            flag = CAPTURE if SQUARE_TO_BB[to_sq] & enemy else QUIET
             moves.append(_pack(from_sq, to_sq, flag))
 
 def _gen_queen_moves(pieces: int, moves: List[int], all_pieces: int, active: int, enemy: int, captures_only: bool):
@@ -234,5 +235,5 @@ def _gen_queen_moves(pieces: int, moves: List[int], all_pieces: int, active: int
             t_lsb = targets & -targets
             to_sq = t_lsb.bit_length() - 1
             targets &= targets - 1
-            flag = CAPTURE if (1 << to_sq) & enemy else QUIET
+            flag = CAPTURE if SQUARE_TO_BB[to_sq] & enemy else QUIET
             moves.append(_pack(from_sq, to_sq, flag))

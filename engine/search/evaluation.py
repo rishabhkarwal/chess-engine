@@ -4,7 +4,7 @@ from engine.core.constants import (
     PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING,
     WP, WN, WB, WR, WQ, WK,
     BP, BN, BB, BR, BQ, BK,
-    WHITE, BLACK, FLIP_BOARD
+    WHITE, BLACK, FLIP_BOARD, SQUARE_TO_BB
 )
 from engine.moves.precomputed import (
     KNIGHT_ATTACKS,
@@ -81,13 +81,13 @@ def init_eval_tables():
         w_mask = 0
         for r in range(rank + 1, 8):
             for f_adj in range(max(0, file - 1), min(8, file + 2)):
-                w_mask |= (1 << (r * 8 + f_adj))
+                w_mask |= SQUARE_TO_BB[r * 8 + f_adj]
         PASSED_PAWN_MASKS[WHITE][sq] = w_mask
         
         b_mask = 0
         for r in range(rank - 1, -1, -1):
             for f_adj in range(max(0, file - 1), min(8, file + 2)):
-                b_mask |= (1 << (r * 8 + f_adj))
+                b_mask |= SQUARE_TO_BB[r * 8 + f_adj]
         PASSED_PAWN_MASKS[BLACK][sq] = b_mask
 
 init_eval_tables()
@@ -187,7 +187,7 @@ def evaluate(state):
         if rooks.bit_count() >= 2:
             r1 = (rooks & -rooks).bit_length() - 1
             r2 = (rooks & (rooks - 1)).bit_length() - 1
-            if ROOK_TABLE[r1][all_pieces & ROOK_MASKS[r1]] & (1 << r2): 
+            if ROOK_TABLE[r1][all_pieces & ROOK_MASKS[r1]] & SQUARE_TO_BB[r2]: 
                 score_adj += CONNECTED_ROOKS_BONUS
         
         temp_rooks = rooks

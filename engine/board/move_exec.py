@@ -10,7 +10,7 @@ from engine.core.constants import (
     MASK_SOURCE,
     WP, BP, WR, BR,
     WHITE, BLACK,
-    NORTH, SOUTH
+    NORTH, SOUTH, SQUARE_TO_BB
 )
 from engine.core.zobrist import ZOBRIST_KEYS
 from engine.search.evaluation import MG_TABLE, EG_TABLE, PHASE_WEIGHTS
@@ -139,10 +139,10 @@ def make_move(state: State, move: int) -> tuple:
         elif target_sq == G8: r_from, r_to = H8, F8
         elif target_sq == C8: r_from, r_to = A8, D8
         
-        bitboards[rook] &= ~(1 << r_from)
-        bitboards[rook] |= (1 << r_to)
-        bitboards[active_bb] &= ~(1 << r_from)
-        bitboards[active_bb] |= (1 << r_to)
+        bitboards[rook] &= ~SQUARE_TO_BB[r_from]
+        bitboards[rook] |= SQUARE_TO_BB[r_to]
+        bitboards[active_bb] &= ~SQUARE_TO_BB[r_from]
+        bitboards[active_bb] |= SQUARE_TO_BB[r_to]
         
         state.hash ^= ZOBRIST_KEYS.pieces[rook][r_from]
         state.hash ^= ZOBRIST_KEYS.pieces[rook][r_to]
@@ -253,10 +253,10 @@ def unmake_move(state: State, move: int, undo_info: tuple):
             elif target_sq == G8: r_from, r_to = H8, F8
             elif target_sq == C8: r_from, r_to = A8, D8
             
-            bitboards[rook] &= ~(1 << r_to)
-            bitboards[rook] |= (1 << r_from)
-            bitboards[active_bb] &= ~(1 << r_to)
-            bitboards[active_bb] |= (1 << r_from)
+            bitboards[rook] &= ~SQUARE_TO_BB[r_to]
+            bitboards[rook] |= SQUARE_TO_BB[r_from]
+            bitboards[active_bb] &= ~SQUARE_TO_BB[r_to]
+            bitboards[active_bb] |= SQUARE_TO_BB[r_from]
             
             board[r_to] = NULL
             board[r_from] = rook
@@ -265,8 +265,8 @@ def unmake_move(state: State, move: int, undo_info: tuple):
         if (move >> SHIFT_FLAG) == EP_FLAG >> SHIFT_FLAG:
             ep_offset = SOUTH if state.is_white else NORTH
             capture_sq = target_sq + ep_offset
-            bitboards[captured_piece] |= (1 << capture_sq)
-            bitboards[opponent_bb] |= (1 << capture_sq)
+            bitboards[captured_piece] |= SQUARE_TO_BB[capture_sq]
+            bitboards[opponent_bb] |= SQUARE_TO_BB[capture_sq]
             board[capture_sq] = captured_piece
         else:
             bitboards[captured_piece] |= target_mask

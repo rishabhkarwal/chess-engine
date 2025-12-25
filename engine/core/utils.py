@@ -1,3 +1,5 @@
+from engine.core.constants import SQUARE_TO_BB
+
 def bit_scan(bitboard):
     """Returns a list of square indices where bits are set to 1"""
     squares = []
@@ -12,7 +14,7 @@ def pprint(bitboard, piece='1'):
     for rank in range(7, -1, -1):
         row = []
         for file in range(8):
-            if bitboard & (1 << (rank * 8 + file)):
+            if bitboard & SQUARE_TO_BB[rank * 8 + file]:
                 row.append(f'{piece}  ')
             else:
                 row.append('.  ')
@@ -21,11 +23,11 @@ def pprint(bitboard, piece='1'):
 
 def set_bit(bitboard, square):
     """Sets bit at 'square' to 1"""
-    return bitboard | (1 << square)
+    return bitboard | SQUARE_TO_BB[square]
 
 def clear_bit(bitboard, square):
     """Sets bit at 'square' to 0"""
-    return bitboard & ~(1 << square)
+    return bitboard & ~SQUARE_TO_BB[square]
 
 def check_bit(bitboard, square):
     """Returns True if bit at 'square' is set"""

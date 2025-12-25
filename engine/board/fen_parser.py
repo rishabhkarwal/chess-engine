@@ -3,7 +3,7 @@ from engine.board.state import State
 from engine.core.constants import (
     NULL, WHITE, BLACK, WK, WQ, BK, BQ,
     CASTLE_BK, CASTLE_BQ, CASTLE_WK, CASTLE_WQ,
-    FLIP_BOARD, CHAR_TO_PIECE, PIECE_STR
+    FLIP_BOARD, CHAR_TO_PIECE, PIECE_STR, SQUARE_TO_BB
 )
 from engine.search.evaluation import calculate_initial_score
 from engine.core.zobrist import compute_hash
@@ -44,10 +44,10 @@ def _parse_pieces(pieces_fen: str):
                 index = square_count ^ FLIP_BOARD
                 piece = CHAR_TO_PIECE[square]
 
-                bitboards[piece] |= (1 << index)
+                bitboards[piece] |= SQUARE_TO_BB[index]
 
-                if piece & WHITE: bitboards[WHITE] |= (1 << index)
-                else: bitboards[BLACK] |= (1 << index)
+                if piece & WHITE: bitboards[WHITE] |= SQUARE_TO_BB[index]
+                else: bitboards[BLACK] |= SQUARE_TO_BB[index]
                 
                 board[index] = piece
                 square_count += 1
