@@ -27,6 +27,7 @@ from engine.search.ordering import MoveOrdering
 from engine.uci.utils import send_command
 from engine.search.syzygy import SyzygyHandler
 
+# pruning values for delta pruning
 PIECE_VALUES = {
     PAWN >> 1: 100,
     KNIGHT >> 1: 320,
@@ -45,7 +46,8 @@ class SearchEngine:
         self.nodes_searched = 0
         self.start_time = 0.0
         self.root_colour = WHITE
-        self.aspiration_window = 40
+        self.first_aspiration_window = 10
+        self.second_aspiration_window = 50
     
     def _get_pv_line(self, state, max_depth=20):
         """Retrieves the principal variation line from the TT by walking the best moves found so far"""
@@ -120,8 +122,14 @@ class SearchEngine:
         if not legal_moves: return None
         moves = legal_moves
         
-        # sort captures and promotions to front (inline checks)
-        moves.sort(key=lambda m: ((m & PROMO_FLAG) or (m & CAPTURE_FLAG)), reverse=True)
+        captures = []
+        quiet = []
+        for m in moves:
+            if (m & CAPTURE_FLAG) or (m & PROMO_FLAG):
+                captures.append(m)
+            else:
+                quiet.append(m)
+        moves = captures + quiet
         
         best_move_so_far = moves[0]
         current_depth = 1
@@ -133,22 +141,33 @@ class SearchEngine:
                     moves.remove(best_move_so_far)
                     moves.insert(0, best_move_so_far)
                 
-                alpha = -INFINITY * 10
-                beta = INFINITY * 10
-                window = self.aspiration_window
+                alpha = -INFINITY
+                beta = INFINITY
                 
                 if current_depth > 1:
-                    alpha = current_score - window
-                    beta = current_score + window
+                    # attempt 1: small window
+                    alpha = current_score - self.first_aspiration_window
+                    beta = current_score + self.first_aspiration_window
                     
                     best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                     
+                    # if score falls outside window, re-search
                     if score <= alpha or score >= beta:
-                        alpha = -INFINITY * 10
-                        beta = INFINITY * 10
+                        
+                        # attempt 2: larger window
+                        if score <= alpha: alpha = current_score - self.second_aspiration_window
+                        if score >= beta:  beta = current_score + self.second_aspiration_window
+                        
                         best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
+                        
+                        if score <= alpha or score >= beta:
+                            # attempt 3: full-window
+                            if score <= alpha: alpha = -INFINITY
+                            if score >= beta:  beta = INFINITY
+                            
+                            best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                 else:
-                    best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
+                    best_move, score = self._search_root(state, current_depth, moves, -INFINITY, INFINITY)
 
                 best_move_so_far = best_move
                 current_score = score
@@ -349,7 +368,7 @@ class SearchEngine:
             
         scored_moves = []
         tt_move = None
-        
+
         for m in moves:
             score = 0
             if (m & CAPTURE_FLAG):
@@ -359,8 +378,8 @@ class SearchEngine:
         scored_moves.sort(key=lambda x: x[0], reverse=True)
         
         for _, move in scored_moves:
+            # delta pruning
             if not in_check and (move & CAPTURE_FLAG):
-
                 target = (move >> SHIFT_TARGET) & MASK_SOURCE
                 victim = state.board[target]
                 
@@ -368,8 +387,7 @@ class SearchEngine:
                     victim_type = victim & ~WHITE
                     victim_value = PIECE_VALUES.get(victim_type, 0)
                     
-                    # pruning condition:
-                    # current score + captured piece value + safety margin (200) < alpha
+                    # safety margin = 200
                     if evaluation + victim_value + 200 < alpha:
                         continue
 
