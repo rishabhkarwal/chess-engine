@@ -63,14 +63,23 @@ def is_in_check(state: State, colour: bool) -> bool:
 
 def is_legal(state: State, move: int) -> bool:
     start_sq = move & MASK_SOURCE
+    king_idx = WK if state.is_white else BK
 
-    if SQUARE_TO_BB[start_sq] & (state.bitboards[WK] | state.bitboards[BK]):
+    if SQUARE_TO_BB[start_sq] & state.bitboards[king_idx]:
         target_sq = (move >> SHIFT_TARGET) & MASK_SOURCE
         opponent = not state.is_white
-        king_idx = WK if state.is_white else BK
-        state.bitboards[king_idx] &= ~SQUARE_TO_BB[start_sq]
+        active_bb = WHITE if state.is_white else BLACK
+        
+        mask = ~SQUARE_TO_BB[start_sq]
+        state.bitboards[king_idx] &= mask
+        state.bitboards[active_bb] &= mask
+        
         is_attacked = is_square_attacked(state, target_sq, opponent)
-        state.bitboards[king_idx] |= SQUARE_TO_BB[start_sq]
+
+        restore_mask = SQUARE_TO_BB[start_sq]
+        state.bitboards[king_idx] |= restore_mask
+        state.bitboards[active_bb] |= restore_mask
+
         return not is_attacked
 
     undo_info = make_move(state, move)

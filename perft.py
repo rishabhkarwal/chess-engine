@@ -7,19 +7,16 @@ from engine.board.move_exec import make_move, unmake_move
 from engine.moves.generator import get_legal_moves
 from engine.moves.legality import is_in_check, get_attackers
 from engine.core.constants import WHITE, BLACK, MASK_FLAG, MASK_TARGET, WK, BK
-from engine.core.move import PROMOTION_N
 from engine.core.utils import bit_scan
 from engine.moves.precomputed import init_tables
-
 from engine.core.move import (
     CAPTURE, EN_PASSANT, 
     CASTLE_KS, CASTLE_QS, 
-    PROMO_CAP_N
+    PROMOTION_N, PROMO_CAP_N
 )
 
 @dataclass
 class Stats:
-    """Perft statistics for move generation validation"""
     nodes: int = 0
     captures: int = 0
     ep: int = 0
@@ -52,7 +49,6 @@ class Stats:
             if actual != expected: return False
         return True
 
-"""Tests from: https://www.chessprogramming.org/Perft_Results"""
 TEST_SUITE = [
     {
         "name": "Position 1 (Initial Position)",
@@ -134,11 +130,9 @@ def perft(state: State, depth: int) -> Stats:
         if depth == 1:
             stats.nodes += 1
             
-            # Extract bits using the new masks
             flag = (move & MASK_FLAG) >> 12
             target_sq = (move & MASK_TARGET) >> 6
             
-            # Count Types
             if flag == CAPTURE or flag == EN_PASSANT or flag >= PROMO_CAP_N:
                 stats.captures += 1
             
@@ -151,12 +145,9 @@ def perft(state: State, depth: int) -> Stats:
             if flag >= PROMOTION_N:
                 stats.promotions += 1
             
-            # Check Detection
-            # We must use state.is_white to determine current side
             current_side = WHITE if state.is_white else BLACK
-            previous_side = BLACK if state.is_white else WHITE # Side that just moved
+            previous_side = BLACK if state.is_white else WHITE
             
-            # is_in_check checks if the SIDE ARGUMENT is being attacked
             if is_in_check(state, current_side):
                 stats.checks += 1
                 
@@ -165,7 +156,6 @@ def perft(state: State, depth: int) -> Stats:
                 
                 if king_bb:
                     king_sq = (king_bb & -king_bb).bit_length() - 1
-                    # Get attackers from the previous side (the one that moved)
                     checks_bb = get_attackers(state, king_sq, previous_side)
                     check_count = bin(checks_bb).count('1')
                     
@@ -242,3 +232,59 @@ def run_perft_suite(max_depth: int = 4):
 
 if __name__ == "__main__":
     run_perft_suite(max_depth=4)
+
+"""
+=======================================================================================================================================
+TEST: Position 2 (Kiwipete)
+FEN:  r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1
+=======================================================================================================================================
+Depth  Nodes              Captures     E.P.     Castles  Promo    Checks     Disc +   Double + Mates    Time       Result
+---------------------------------------------------------------------------------------------------------------------------------------
+1      48                 8            0        2        0        0          0        0        0        0.001      PASS  
+2      2039               351          1        91       0        3          0        0        0        0.031      PASS  
+3      97862              17102        45       3162     0        993        0        0        1        1.538      PASS  
+4      4085662(+59)       757163       1929     128013   15172    25523      42       6        24(-19)  70.135     FAIL  
+
+=======================================================================================================================================
+TEST: Position 3
+FEN:  8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1
+=======================================================================================================================================
+Depth  Nodes              Captures     E.P.     Castles  Promo    Checks     Disc +   Double + Mates    Time       Result
+---------------------------------------------------------------------------------------------------------------------------------------
+1      14                 1            0        0        0        2          0        0        0        0.001      PASS
+2      191                14           0        0        0        10         0        0        0        0.006      PASS
+3      2812               209          2        0        0        267        3        0        0        0.134      PASS  
+4      43268(+30)         3349(+1)     123      0        0        1680       106      0        0(-17)   0.982      FAIL
+
+=======================================================================================================================================
+TEST: Position 4
+FEN:  r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1
+=======================================================================================================================================
+Depth  Nodes              Captures     E.P.     Castles  Promo    Checks     Disc +   Double + Mates    Time       Result
+---------------------------------------------------------------------------------------------------------------------------------------
+1      6                  0            0        0        0        0          0(?)     0(?)     0        0.000      PASS
+2      264                87           0        6        48       10         0(?)     0(?)     0        0.009      PASS
+3      9467               1021         4        0        120      38         2(?)     0(?)     22       0.164      PASS
+4      422336(+3)         131393       0        7795     60032    15492      19(?)    0(?)     5        11.827     FAIL
+
+=======================================================================================================================================
+TEST: Position 5
+FEN:  rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8
+=======================================================================================================================================
+Depth  Nodes              Captures     E.P.     Castles  Promo    Checks     Disc +   Double + Mates    Time       Result
+---------------------------------------------------------------------------------------------------------------------------------------
+1      44                 6(?)         0(?)     1(?)     4(?)     0(?)       0(?)     0(?)     0(?)     0.002      PASS
+2      1486               222(?)       0(?)     0(?)     0(?)     117(?)     0(?)     0(?)     0(?)     0.076      PASS
+3      62386(+7)          8517(?)      0(?)     1081(?)  5068(?)  1201(?)    0(?)     0(?)     33(?)    1.376      FAIL
+4      2104319(+832)      296187(?)    0(?)     0(?)     0(?)     158698(?)  11062(?) 1773(?)  20(?)    85.947     FAIL  
+"""
+
+
+"""
+AFTER: 
+
+=======================================================================================================================================
+All tests passed
+=======================================================================================================================================
+
+"""

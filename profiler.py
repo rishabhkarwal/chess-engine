@@ -28,7 +28,7 @@ def test(position='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', ti
 
 
 if __name__ == '__main__':
-        fen = '5B2/1P2P2P/2P1r3/2b1p3/6p1/2K2P1k/p7/nN5B w - - 0 1'
+        fen = 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1' # kiwipete
         time = 60
         test(position=fen, time_limit=time)
         
@@ -37,52 +37,44 @@ pypy3 profiler.py
 """
 
 """
-
 SCENARIO:
 
-    Position:    5B2/1P2P2P/2P1r3/2b1p3/6p1/2K2P1k/p7/nN5B w - - 0 1 
+    Position:    r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1 
 
     Time Limit: 60 seconds
 
 
-Search Depth:   10
-Nodes/Sec:      ~30,597
-Total Time:     60.044s
-Function Calls: 126,800,167
+Search Depth:   7
+Nodes/Sec:      ~17,840
+Total Time:     60.154s
+Function Calls: 99,395,691
 
 
 Search Log:
 
-    info depth 1 currmove h7h8q score cp 1659 nodes 2636 nps 2999 time 878 hashfull 0 pv h7h8q
-    info depth 2 currmove h7h8q score cp 1659 nodes 4930 nps 3678 time 1340 hashfull 0 pv h7h8q h3g3
-    info depth 3 currmove h7h8q score cp 1659 nodes 7462 nps 4218 time 1768 hashfull 0 pv h7h8q h3g3 b7b8q
-    info depth 4 currmove h7h8q score cp 1659 nodes 21038 nps 6193 time 3396 hashfull 0 pv h7h8q h3g3 b7b8q c5e7
-    info depth 5 currmove h7h8q score cp 1584 nodes 65361 nps 9848 time 6636 hashfull 0 pv h7h8q h3g3 b7b8q a1b3 b8e5
-    info depth 6 currmove h7h8q score cp 1584 nodes 118493 nps 11516 time 10288 hashfull 3 pv h7h8q h3g3 b7b8q a1b3 b8e5 e6e5
-    info depth 7 currmove h7h8q score cp 1584 nodes 181402 nps 14498 time 12512 hashfull 5 pv h7h8q h3g3 b7b8q a1b3 b8e5 e6e5 h8e5
-    info depth 8 currmove h7h8q score cp 1584 nodes 432461 nps 19590 time 22074 hashfull 21 pv h7h8q h3g3 b7b8q a1b3 b8e5 e6e5 h8e5 g3h3
-    info depth 9 currmove h7h8q score cp 1722 nodes 739522 nps 23640 time 31282 hashfull 29 pv h7h8q h3g3 b7b8q c5e7 f3g4 e7f8 h8f8 g3g4 f8f2
-    info depth 10 currmove h7h8q score cp 1723 nodes 1344457 nps 27703 time 48529 hashfull 63 pv h7h8q h3g3 b7b8q a1b3 b8e5 e6e5 h8e5 g3h3 e5h5 h3g3
+    info depth 1 currmove e2a6 score cp 42 nodes 1682 nps 2898 time 580 hashfull 0 pv e2a6
+    info depth 2 currmove e2a6 score cp 42 nodes 5019 nps 3780 time 1327 hashfull 0 pv e2a6 h3g2
+    info depth 3 currmove e2a6 score cp 42 nodes 14467 nps 5641 time 2564 hashfull 0 pv e2a6 h3g2 f3g2
+    info depth 4 currmove e2a6 score cp 42 nodes 71499 nps 8502 time 8409 hashfull 2 pv e2a6 h3g2 f3g2 b4c3
+    info depth 5 currmove e2a6 score cp 29 nodes 176855 nps 11543 time 15320 hashfull 3 pv e2a6 b4c3 d2c3 e6d5 e1c1
+    info depth 6 currmove e2a6 score cp 29 nodes 386126 nps 14765 time 26151 hashfull 12 pv e2a6 b4c3 d2c3 e6d5 e1c1 h3g2
+    info depth 7 currmove e2a6 score cp 29 nodes 927669 nps 17972 time 51616 hashfull 20 pv e2a6 b4c3 d2c3 e6d5 e1c1 h3g2 f3g2
 
 
 Profile Stats:
 
      ncalls  tottime  percall  cumtime  percall  filename:lineno(function)
-          1    0.001    0.001   60.044   60.044  engine/search/search.py:76(get_best_move)
-         13    0.002    0.000   60.030    4.618  engine/search/search.py:173(_search_root)
- 352288/283    2.009    0.000   60.022    0.212  engine/search/search.py:209(_alpha_beta)
-1484768/241    6.942    0.000   50.943    0.000  engine/search/search.py:321(_quiescence)
-     593232    2.404    0.000   12.668    0.000  engine/moves/generator.py:34(generate_pseudo_legal_moves)
-    1328643    9.524    0.000   11.243    0.000  engine/search/evaluation.py:137(evaluate)
-    2849564    9.811    0.000   10.013    0.000  engine/board/move_exec.py:45(make_move)
-    2849559    6.493    0.000    6.605    0.000  engine/board/move_exec.py:193(unmake_move)
-    4407858    1.200    0.000    6.146    0.000  engine/moves/legality.py:57(is_in_check)
-    4407858    4.803    0.000    4.803    0.000  engine/moves/legality.py:17(is_square_attacked)
-     593245    2.565    0.000    3.430    0.000  {method 'sort' of 'list' objects}
-     593232    2.227    0.000    2.559    0.000  engine/moves/generator.py:222(_gen_queen_moves)
-     593232    1.673    0.000    1.915    0.000  engine/moves/generator.py:205(_gen_rook_moves)
-     593232    1.509    0.000    1.861    0.000  engine/moves/generator.py:60(_gen_pawn_moves)
-     593232    1.514    0.000    1.686    0.000  engine/moves/generator.py:188(_gen_bishop_moves)
-   34162197    1.183    0.000    1.183    0.000  {method 'bit_length' of 'int' objects}
-
+          1    0.001    0.001   60.153   60.153  engine/search/search.py:76(get_best_move)
+          8    0.004    0.000   60.147    7.518  engine/search/search.py:173(_search_root)
+ 146633/344    1.536    0.000   60.136    0.175  engine/search/search.py:209(_alpha_beta)
+ 926519/112    3.997    0.000   53.087    0.000  engine/search/search.py:321(_quiescence)
+     363683    2.416    0.000   14.363    0.000  engine/moves/generator.py:35(generate_pseudo_legal_moves)
+     843976   11.425    0.000   13.389    0.000  engine/search/evaluation.py:137(evaluate)
+    2191882   12.901    0.000   13.244    0.000  engine/board/move_exec.py:45(make_move)
+    3143377    0.804    0.000    6.423    0.000  engine/moves/legality.py:57(is_in_check)
+    3332530    6.072    0.000    6.072    0.000  engine/moves/legality.py:17(is_square_attacked)
+    2191877    3.380    0.000    3.456    0.000  engine/board/move_exec.py:193(unmake_move)
+     363691    2.312    0.000    3.135    0.000  {method 'sort' of 'list' objects}
+     363683    2.692    0.000    3.015    0.000  engine/moves/generator.py:223(_gen_queen_moves)
+     363683    1.926    0.000    2.299    0.000  engine/moves/generator.py:61(_
 """
