@@ -72,7 +72,7 @@ class SyzygyHandler:
             # winning (WDL > 0)
             if current_wdl > 0:
                 if result_wdl < 0:
-                    is_zeroing = board.is_capture(move) or move.piece_type == chess.PAWN
+                    is_zeroing = board.is_capture(move) or board.piece_at(move.from_square).piece_type == chess.PAWN
 
                     move_dtz = abs(result_dtz)
                     
