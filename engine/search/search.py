@@ -378,6 +378,7 @@ class SearchEngine:
         scored_moves.sort(key=lambda x: x[0], reverse=True)
         
         for _, move in scored_moves:
+            """
             # delta pruning
             if not in_check and (move & CAPTURE_FLAG):
                 target = (move >> SHIFT_TARGET) & MASK_SOURCE
@@ -390,6 +391,7 @@ class SearchEngine:
                     # safety margin = 200
                     if evaluation + victim_value + 200 < alpha:
                         continue
+            """
 
             undo_info = make_move(state, move)
             
