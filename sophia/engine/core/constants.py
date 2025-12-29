@@ -1,4 +1,4 @@
-NAME = 'Indigo'
+NAME = 'Sophia'
 AUTHOR = '@rishabhkarwal'
 
 # null value for empty squares and pieces

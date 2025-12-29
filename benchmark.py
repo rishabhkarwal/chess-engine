@@ -10,7 +10,7 @@ def log(message):
 from subprocess import Popen, PIPE
 from time import time
 
-def benchmark(position='startpos', time_limit=5.0, engine_path='engine.bat'):
+def benchmark(position='startpos', time_limit=5.0, engine_path='sophia\\engine.bat'):
 
     try:
         process = Popen(
