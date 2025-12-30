@@ -18,8 +18,8 @@ class Tournament:
         
         os.system('cls || clear')
 
-        self.engine_1 = Wrapper(self.cfg.engine_1_path, 'v1', console_colour=Colour.BLUE)
-        self.engine_2 = Wrapper(self.cfg.engine_2_path, 'v2', console_colour=Colour.MAGENTA)
+        self.engine_1 = Wrapper(self.cfg.engine_1_path, console_colour=Colour.BLUE)
+        self.engine_2 = Wrapper(self.cfg.engine_2_path, console_colour=Colour.MAGENTA)
 
     def run(self):
         self.engine_1.start()
@@ -140,7 +140,7 @@ class Tournament:
         self._save_pgn(board, white_engine, black_engine, result_text, termination_reason, game_number)
 
         end_time = time.time()
-        while time.time() - end_time < 5: 
+        while time.time() - end_time < 1: 
             self.gui.handle_events()
             self.gui.draw(board, white_engine, black_engine, game_number, self.cfg.total_games, w_time, b_time, result_text)
 
@@ -156,6 +156,7 @@ class Tournament:
             game.headers["Black"] = black.name
             game.headers["Result"] = result
             game.headers["Termination"] = termination
+            game.headers["TimeControl"] = f"{self.cfg.time_control}+{self.cfg.increment}"
 
             game.add_line(board.move_stack)
 
