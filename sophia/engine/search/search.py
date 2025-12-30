@@ -24,7 +24,7 @@ from engine.search.transposition import (
 )
 from engine.search.evaluation import evaluate
 from engine.search.ordering import MoveOrdering
-from engine.uci.utils import send_command
+from engine.uci.utils import send_command, send_info_string
 from engine.search.syzygy import SyzygyHandler
 
 # pruning values for delta pruning
@@ -46,8 +46,8 @@ class SearchEngine:
         self.nodes_searched = 0
         self.start_time = 0.0
         self.root_colour = WHITE
-        self.first_aspiration_window = 10
-        self.second_aspiration_window = 50
+        self.first_aspiration_window = 35
+        self.second_aspiration_window = 150
     
     def _get_pv_line(self, state, max_depth=20):
         """Retrieves the principal variation line from the TT by walking the best moves found so far"""
@@ -153,6 +153,7 @@ class SearchEngine:
                     
                     # if score falls outside window, re-search
                     if score <= alpha or score >= beta:
+                        send_info_string(f'first aspiration failed - {self.first_aspiration_window}')
                         
                         # attempt 2: larger window
                         if score <= alpha: alpha = current_score - self.second_aspiration_window
@@ -161,6 +162,7 @@ class SearchEngine:
                         best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                         
                         if score <= alpha or score >= beta:
+                            send_info_string(f'second aspiration failed - {self.second_aspiration_window}')
                             # attempt 3: full-window
                             if score <= alpha: alpha = -INFINITY
                             if score >= beta:  beta = INFINITY

@@ -98,21 +98,9 @@ if __name__ == '__main__':
         print(f"Error: File '{path}' not found.")
 
 """
-TimeControl: 180+1
-  Games: 20
-    indigo       : 11.0 pts  (W:6  D:10  L:4)
-    sophia       :  9.0 pts  (W:4  D:10  L:6)
-  Winner: indigo
-
 TimeControl: 60+0
-  Games: 20
-    indigo       : 10.5 pts  (W:6  D:9  L:5)
-    sophia       :  9.5 pts  (W:5  D:9  L:6)
-  Winner: indigo
-
-TimeControl: 600+5
-  Games: 20
-    sophia       : 10.0 pts  (W:4  D:12  L:4)
-    indigo       : 10.0 pts  (W:4  D:12  L:4)
-  Tie
+  Games: 30
+    sophia       : 17.5 pts  (W:13  D:9  L:8)
+    indigo       : 12.5 pts  (W:8  D:9  L:13)
+  Winner: sophia
 """

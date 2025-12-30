@@ -119,6 +119,7 @@ class SearchEngine:
                     best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                     
                     if score <= alpha or score >= beta:
+                        send_info_string(f'aspiration failed - {self.aspiration_window}')
                         alpha = -INFINITY * 10
                         beta = INFINITY * 10
                         best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
