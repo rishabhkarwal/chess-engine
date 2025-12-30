@@ -101,7 +101,7 @@ class SearchEngine:
 
             score_str = self._get_cp_score(score)
 
-            send_command(f"info depth {dtz} score {score_str} pv {syzygy_move} string syzygy hit")
+            send_command(f"info depth {abs(dtz)} score {score_str} pv {syzygy_move} string syzygy hit")
 
             self.tt.store(state.hash, MAX_DEPTH, score, FLAG_EXACT, None)
 

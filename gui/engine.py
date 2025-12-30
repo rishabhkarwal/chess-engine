@@ -1,13 +1,17 @@
-from gui.console import log_error
+from gui.console import log_error, log_info, log_engine, log_gui, Colour
 import os, sys, subprocess, time
 
 class Wrapper:
-    def __init__(self, path: str, version : str = ''):
+    def __init__(self, path: str, version : str = '', console_colour=Colour.RESET):
         self.path = os.path.abspath(path)
-        self.name = path.split('/')[0]
+        self.name = path.split('/')[0] # folder name of engine
         if version != '': self.name += '.' + version
         self.process = None
         self.score = 0
+        self.wins = 0
+        self.draws = 0
+        self.losses = 0
+        self.colour = console_colour
 
     def start(self):
         if not os.path.exists(self.path):
@@ -24,8 +28,7 @@ class Wrapper:
                 text=True,
                 bufsize=1
             )
-            
-            time.sleep(0.1) 
+ 
             if self.process.poll() is not None:
                 log_error(f'Error during startup')
                 sys.exit(1)
@@ -50,28 +53,23 @@ class Wrapper:
     def _send_cmd(self, cmd):
         if self.process and self.process.poll() is None:
             try:
+                log_gui(f"{cmd} -> {self.name}")
                 self.process.stdin.write(f'{cmd}\n')
                 self.process.stdin.flush()
             except OSError:
                 log_error(f"Error sending command '{cmd}'")
-        else:
-            pass
 
     def _wait_for(self, target_text):
         if not self.process: return False
-        
         while True:
             try:
                 line = self.process.stdout.readline()
+                if not line: return False
+                if target_text in line: return True
             except OSError:
                 return False
 
-            if not line: return False
-            
-            if target_text in line: return True
-
     def get_best_move(self, fen: str, wtime: int, btime: int, winc: int, binc: int) -> str:
-
         if self.process.poll() is not None: return None
 
         self._send_cmd(f'position fen {fen}')
@@ -86,7 +84,12 @@ class Wrapper:
             if not line: return None
             line = line.strip()
             
+            if line.startswith('info'):
+                log_engine(self.name, line, self.colour)
+
             if line.startswith('bestmove'):
+                log_engine(self.name, line, self.colour + Colour.BOLD)
+                print("") 
                 parts = line.split()
                 if len(parts) >= 2:
                     return parts[1]
