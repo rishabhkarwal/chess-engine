@@ -4,7 +4,6 @@ from collections import defaultdict, Counter
 def parse_games(pgn_text):
     raw_games = re.split(r'(?=\[Event\s)', pgn_text.strip())
     games = []
-    
     header_regex = re.compile(r'^\[([A-Za-z0-9_]+)\s+"([^"]*)"\]\s*$', re.MULTILINE)
 
     for raw in raw_games:
@@ -12,77 +11,100 @@ def parse_games(pgn_text):
         headers = dict(header_regex.findall(raw))
         if headers:
             games.append(headers)
-            
     return games
 
 def get_points(result):
-    """Return (white_points, black_points) from result string."""
     result = result.strip()
-    if result == '1-0': return 1.0, 0.0
-    if result == '0-1': return 0.0, 1.0
-    if result in ('1/2-1/2', '½-½', '1/2–1/2'): return 0.5, 0.5
-    return 0.0, 0.0
+    if result == '1-0': return 1.0, 0.0, 'win'
+    if result == '0-1': return 0.0, 1.0, 'loss'
+    if result in ('1/2-1/2', '½-½', '1/2–1/2'): return 0.5, 0.5, 'draw'
+    return 0.0, 0.0, 'unknown'
 
 def analyse_tournament(games):
-    stats = {}
+    stats = defaultdict(lambda: {
+        'games': 0,
+        'players': defaultdict(lambda: {
+            'score': 0.0, 'wins': 0, 'draws': 0, 'losses': 0,
+            'reasons': defaultdict(Counter) 
+        })
+    })
 
     for g in games:
-        tc = g.get('TimeControl', 'UNKNOWN')
+        tc = g.get('TimeControl', 'Unknown TC')
         white = g.get('White', 'White')
         black = g.get('Black', 'Black')
         result = g.get('Result', '*')
+        termination = g.get('Termination', 'normal')
 
-        if tc not in stats:
-            stats[tc] = {
-                'games': 0,
-                'scores': defaultdict(float),
-                'wins': Counter(),
-                'draws': Counter(),
-                'losses': Counter()
-            }
+        for category in [tc, "Overall"]:
+            s = stats[category]
+            s['games'] += 1
+            
+            w_pts, b_pts, res_type = get_points(result)
 
-        w_pts, b_pts = get_points(result)
-        
-        stats[tc]['games'] += 1
-        stats[tc]['scores'][white] += w_pts
-        stats[tc]['scores'][black] += b_pts
+            p_white = s['players'][white]
+            p_white['score'] += w_pts
 
-        if w_pts == 1.0:
-            stats[tc]['wins'][white] += 1
-            stats[tc]['losses'][black] += 1
-        elif b_pts == 1.0:
-            stats[tc]['wins'][black] += 1
-            stats[tc]['losses'][white] += 1
-        elif w_pts == 0.5:
-            stats[tc]['draws'][white] += 1
-            stats[tc]['draws'][black] += 1
+            p_black = s['players'][black]
+            p_black['score'] += b_pts
+
+            if w_pts == 1.0:
+                p_white['wins'] += 1
+                p_white['reasons']['win'][termination] += 1
+                p_black['losses'] += 1
+                p_black['reasons']['loss'][termination] += 1
+            
+            elif b_pts == 1.0:
+                p_black['wins'] += 1
+                p_black['reasons']['win'][termination] += 1
+                p_white['losses'] += 1
+                p_white['reasons']['loss'][termination] += 1
+            
+            elif w_pts == 0.5:
+                p_white['draws'] += 1
+                p_white['reasons']['draw'][termination] += 1
+                p_black['draws'] += 1
+                p_black['reasons']['draw'][termination] += 1
 
     return stats
 
+def format_reasons(reason_dict):
+    if not reason_dict: return ""
+    items = [f"{k}:{v}" for k, v in reason_dict.items()]
+    return f"[{', '.join(items)}]"
+
 def print_results(stats):
-    for tc, data in sorted(stats.items()):
-        print(f"TimeControl: {tc}")
-        print(f"  Games: {data['games']}")
-
-        ranking = sorted(data['scores'].items(), key=lambda x: x[1], reverse=True)
+    categories = sorted([k for k in stats.keys() if k != "Overall"]) + ["Overall"]
+    
+    for cat in categories:
+        if cat not in stats: continue
+        data = stats[cat]
         
-        for name, score in ranking:
-            w = data['wins'][name]
-            d = data['draws'][name]
-            l = data['losses'][name]
-            print(f"    {name:12s} : {score:4.1f} pts  (W:{w}  D:{d}  L:{l})")
+        print("-" * 60)
+        print(f"TimeControl: {cat} (Games: {data['games']})")
+        print("-" * 60)
 
-        if not ranking:
-            print("  Winner: None")
-        else:
-            top_score = ranking[0][1]
-            winners = [name for name, s in ranking if s == top_score]
-            
+        ranking = sorted(data['players'].items(), key=lambda x: x[1]['score'], reverse=True)
+
+        for name, p_data in ranking:
+            print(f"{name:12s} : {p_data['score']:5.1f} pts  (W:{p_data['wins']} D:{p_data['draws']} L:{p_data['losses']})")
+
+            if p_data['wins'] > 0:
+                print(f"    Wins   : {format_reasons(p_data['reasons']['win'])}")
+            if p_data['draws'] > 0:
+                print(f"    Draws  : {format_reasons(p_data['reasons']['draw'])}")
+            if p_data['losses'] > 0:
+                print(f"    Losses : {format_reasons(p_data['reasons']['loss'])}")
+            print()
+
+        if ranking:
+            top_score = ranking[0][1]['score']
+            winners = [n for n, d in ranking if d['score'] == top_score]
             if len(winners) > 1:
-                print(f"  Tie")
+                print(f">> Result: Tie between {', '.join(winners)}")
             else:
-                print(f"  Winner: {winners[0]}")
-        print()
+                print(f">> Winner: {winners[0]}")
+        print("\n")
 
 if __name__ == '__main__':
     path = 'games.pgn'
@@ -91,16 +113,76 @@ if __name__ == '__main__':
             pgn_content = f.read()
         
         games_list = parse_games(pgn_content)
-        tournament_stats = analyse_tournament(games_list)
-        print_results(tournament_stats)
-        
+        if not games_list:
+            print("No games found in file")
+        else:
+            tournament_stats = analyse_tournament(games_list)
+            print_results(tournament_stats)
+            
     except FileNotFoundError:
-        print(f"Error: File '{path}' not found.")
+        print(f"Error: File '{path}' not found")
 
 """
-TimeControl: 60+0
-  Games: 30
-    sophia       : 17.5 pts  (W:13  D:9  L:8)
-    indigo       : 12.5 pts  (W:8  D:9  L:13)
-  Winner: sophia
+------------------------------------------------------------
+TimeControl: 180+1 (Games: 20)
+------------------------------------------------------------
+indigo       :  12.0 pts  (W:8 D:8 L:4)
+    Wins   : [Checkmate:8]
+    Draws  : [Fivefold Repetition:8]
+    Losses : [Checkmate:4]
+
+sophia       :   8.0 pts  (W:4 D:8 L:8)
+    Wins   : [Checkmate:4]
+    Draws  : [Fivefold Repetition:8]
+    Losses : [Checkmate:8]
+
+>> Winner: indigo
+
+
+------------------------------------------------------------
+TimeControl: 60+0 (Games: 20)
+------------------------------------------------------------
+sophia       :  13.0 pts  (W:9 D:8 L:3)
+    Wins   : [Time Forfeit:7, Checkmate:2]
+    Draws  : [Fivefold Repetition:8]
+    Losses : [Checkmate:3]
+
+indigo       :   7.0 pts  (W:3 D:8 L:9)
+    Wins   : [Checkmate:3]
+    Draws  : [Fivefold Repetition:8]
+    Losses : [Time Forfeit:7, Checkmate:2]
+
+>> Winner: sophia
+
+
+------------------------------------------------------------
+TimeControl: 600+5 (Games: 20)
+------------------------------------------------------------
+indigo       :  12.0 pts  (W:8 D:8 L:4)
+    Wins   : [Checkmate:8]
+    Draws  : [Fivefold Repetition:8]
+    Losses : [Checkmate:2, Time Forfeit:2]
+
+sophia       :   8.0 pts  (W:4 D:8 L:8)
+    Wins   : [Checkmate:2, Time Forfeit:2]
+    Draws  : [Fivefold Repetition:8]
+    Losses : [Checkmate:8]
+
+>> Winner: indigo
+
+
+------------------------------------------------------------
+TimeControl: Overall (Games: 60)
+------------------------------------------------------------
+indigo       :  31.0 pts  (W:19 D:24 L:17)
+    Wins   : [Checkmate:19]
+    Draws  : [Fivefold Repetition:24]
+    Losses : [Time Forfeit:9, Checkmate:8]
+
+sophia       :  29.0 pts  (W:17 D:24 L:19)
+    Wins   : [Time Forfeit:9, Checkmate:8]
+    Draws  : [Fivefold Repetition:24]
+    Losses : [Checkmate:19]
+
+>> Winner: indigo
 """

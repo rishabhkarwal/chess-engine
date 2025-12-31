@@ -1,6 +1,6 @@
 from engine.core.constants import (
     WHITE, BLACK,
-    FILE_A, INFINITY,
+    FILE_A, INFINITY, PIECE_VALUES,
     PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING,
     WP, WN, WB, WR, WQ, WK,
     BP, BN, BB, BR, BQ, BK,
@@ -143,7 +143,7 @@ def evaluate(state, alpha=-INFINITY, beta=INFINITY):
     final_score = base_score if state.is_white else -base_score
 
     # if winning by > 500 cp more than beta, positional factors won't change the result
-    LAZY_MARGIN = 500
+    LAZY_MARGIN = PIECE_VALUES[ROOK]
 
     if final_score - LAZY_MARGIN >= beta:
         return final_score # beta cutoff (too good => other won't allow this)

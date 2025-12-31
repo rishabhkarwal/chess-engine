@@ -123,37 +123,6 @@ if __name__ == '__main__':
 """
 Engine: Previous
 
-Nodes: 3,835,904
-NPS:   38,316
-Time:  100.11s
-Move:  e2a6
-
-====================================================================================================
-Total Function Calls: 230,144,788
-----------------------------------------------------------------------------------------------------
-    n-calls       tot-time   per-call   cum-time   function
-----------------------------------------------------------------------------------------------------
-    5740778        21.927     0.000      22.479    board/move_exec.py:49(make_move)
-    2810604        15.547     0.000      18.463    search/evaluation.py:137(evaluate)
-    5740770        8.047      0.000      8.193     board/move_exec.py:204(unmake_move)
-    7382395        7.773      0.000      7.773     moves/legality.py:18(is_square_attacked)
-2820166/827453     5.401      0.000      73.539    search/search.py:358(_quiescence)
-  1015738/466      5.276      0.000     100.081    search/search.py:246(_alpha_beta)
-    840911         3.849      0.000      4.195     moves/generator.py:206(_gen_rook_moves)
-    840920         3.804      0.000      4.681     {method 'sort' of 'list' objects}
-    840911         3.435      0.000      4.128     moves/generator.py:61(_gen_pawn_moves)
-    840911         3.151      0.000      23.217    moves/generator.py:35(generate_pseudo_legal_moves)
-   78297818        2.491      0.000      2.491     {method 'bit_length' of 'int' objects}
-    840911         2.337      0.000      2.606     moves/generator.py:189(_gen_bishop_moves)
-    840911         2.299      0.000      2.550     moves/generator.py:223(_gen_queen_moves)
-    840911         2.112      0.000      2.458     moves/generator.py:136(_gen_knight_moves)
-    840911         1.987      0.000      2.231     moves/generator.py:152(_gen_king_moves)
-----------------------------------------------------------------------------------------------------
-"""
-
-"""
-Engine: Sophia
-
 Nodes: 4,080,337
 NPS:   44,878
 Time:  90.92s
@@ -180,4 +149,8 @@ Total Function Calls: 254,945,476
     883706         1.829      0.000      2.153     moves/generator.py:136(_gen_knight_moves)
     883706         1.745      0.000      1.969     moves/generator.py:152(_gen_king_moves)
 ----------------------------------------------------------------------------------------------------
+"""
+
+"""
+
 """

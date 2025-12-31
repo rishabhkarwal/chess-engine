@@ -32,6 +32,15 @@ BR = BLACK | ROOK    # 8
 BQ = BLACK | QUEEN   # 10
 BK = BLACK | KING    # 14
 
+PIECE_VALUES = {
+    PAWN: 100,
+    KNIGHT: 305,
+    BISHOP: 333,
+    ROOK: 563,
+    QUEEN: 950,
+    KING: 20000
+}
+
 # pieces stored at their natural indices (2-15)
 # white and black aggregate boards at (0-1)
 
