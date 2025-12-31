@@ -63,14 +63,14 @@ class SearchEngine:
             move = tt_entry.best_move
             pv_moves.append(move)
 
-            undo_info = make_move(state, move)
-            undo_stack.append((move, undo_info))
+            make_move(state, move)
+            undo_stack.append(move)
 
             if state.hash in seen_hashes: break
             seen_hashes.add(state.hash)
 
-        for move, undo_info in reversed(undo_stack):
-            unmake_move(state, move, undo_info)
+        for move in reversed(undo_stack):
+            unmake_move(state, move)
 
         return ' '.join(move_to_uci(m) for m in pv_moves)
 
@@ -212,10 +212,10 @@ class SearchEngine:
         legal_moves_found = 0
         
         for i, move in enumerate(moves):
-            undo_info = make_move(state, move)
+            make_move(state, move)
 
             if is_in_check(state, not state.is_white): # illegal move
-                unmake_move(state, move, undo_info)
+                unmake_move(state, move)
                 continue
 
             legal_moves_found += 1
@@ -228,7 +228,7 @@ class SearchEngine:
                 if alpha < value < beta:
                     value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1)
             
-            unmake_move(state, move, undo_info)
+            unmake_move(state, move)
             
             if value > best_value:
                 best_value = value
@@ -278,14 +278,14 @@ class SearchEngine:
         in_check = is_in_check(state, state.is_white)
 
         if allow_null and depth >= 3 and not in_check:
-            undo_info = make_null_move(state)
+            make_null_move(state)
             try:
                 reduction = 2
                 val = -self._alpha_beta(state, depth - 1 - reduction, -beta, -beta + 1, ply + 1, allow_null=False)
                 if val >= beta: return beta
             except TimeoutError: raise
             except Exception: pass
-            finally: unmake_null_move(state, undo_info)
+            finally: unmake_null_move(state)
 
         moves = generate_pseudo_legal_moves(state)
         
@@ -301,11 +301,11 @@ class SearchEngine:
         legal_moves_count = 0
         
         for i, move in enumerate(moves):
-            undo_info = make_move(state, move)
+            make_move(state, move)
             
             # check legality AFTER making the move
             if is_in_check(state, not state.is_white):
-                unmake_move(state, move, undo_info)
+                unmake_move(state, move)
                 continue
             
             legal_moves_count += 1
@@ -331,7 +331,7 @@ class SearchEngine:
             else:
                 value = val
 
-            unmake_move(state, move, undo_info)
+            unmake_move(state, move)
 
             if value >= beta:
                 self.tt.store(state.hash, depth, beta, FLAG_LOWERBOUND, move)
@@ -408,14 +408,14 @@ class SearchEngine:
                         continue
             """
 
-            undo_info = make_move(state, move)
+            make_move(state, move)
             
             if is_in_check(state, not state.is_white):
-                unmake_move(state, move, undo_info)
+                unmake_move(state, move)
                 continue
             
             score = -self._quiescence(state, -beta, -alpha, ply + 1)
-            unmake_move(state, move, undo_info)
+            unmake_move(state, move)
             
             if score >= beta: return beta
             if score > alpha: alpha = score

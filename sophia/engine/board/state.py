@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 from engine.core.constants import NULL
 
@@ -14,6 +14,8 @@ class State:
     history: List[int]
     
     piece_counts: List[int]
+
+    context_stack: List[tuple] = field(default_factory=list) # stack for undo information
 
     hash: int = 0
     mg_score: int = 0

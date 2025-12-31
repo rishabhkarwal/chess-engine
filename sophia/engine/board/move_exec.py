@@ -30,6 +30,9 @@ def make_null_move(state: State):
     old_ep = state.en_passant_square
     old_hash = state.hash
     
+    # store undo info on stack
+    state.context_stack.append((old_ep, old_hash))
+    
     ep_key = old_ep % 8 if old_ep != NULL else 8
     state.hash ^= ZOBRIST_KEYS.en_passant[ep_key]
     state.en_passant_square = NULL
@@ -37,19 +40,16 @@ def make_null_move(state: State):
     
     state.is_white = not state.is_white
     state.hash ^= ZOBRIST_KEYS.black_to_move
-    
-    return (old_ep, old_hash)
 
-def unmake_null_move(state: State, undo_info):
-    old_ep, old_hash = undo_info
+def unmake_null_move(state: State):
+    # retrieve from stack
+    old_ep, old_hash = state.context_stack.pop()
+    
     state.en_passant_square = old_ep
     state.hash = old_hash
     state.is_white = not state.is_white
 
-def make_move(state: State, move: int) -> tuple:
-    start_sq = move & MASK_SOURCE
-    target_sq = (move >> SHIFT_TARGET) & MASK_SOURCE
-    
+def make_move(state: State, move: int):
     old_hash = state.hash
     old_castling = state.castling_rights
     old_ep = state.en_passant_square
@@ -61,6 +61,9 @@ def make_move(state: State, move: int) -> tuple:
     
     bitboards = state.bitboards
     board = state.board
+
+    start_sq = move & MASK_SOURCE
+    target_sq = (move >> SHIFT_TARGET) & MASK_SOURCE
     
     moving_piece = board[start_sq]
     
@@ -199,9 +202,19 @@ def make_move(state: State, move: int) -> tuple:
     
     state.history.append(old_hash)
     
-    return (captured_piece, old_castling, old_ep, old_halfmove, old_hash, old_mg, old_eg, old_phase)
+    state.context_stack.append((
+        captured_piece, 
+        old_castling, 
+        old_ep, 
+        old_halfmove, 
+        old_hash, 
+        old_mg, 
+        old_eg, 
+        old_phase
+    ))
 
-def unmake_move(state: State, move: int, undo_info: tuple):
+def unmake_move(state: State, move: int):
+    undo_info = state.context_stack.pop()
     captured_piece, old_castling, old_ep, old_halfmove, old_hash, old_mg, old_eg, old_phase = undo_info
     
     if old_hash is None: return

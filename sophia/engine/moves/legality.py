@@ -92,7 +92,7 @@ def is_legal(state: State, move: int) -> bool:
 
         return not is_attacked
 
-    undo_info = make_move(state, move)
+    make_move(state, move)
     in_check = is_in_check(state, not state.is_white)
-    unmake_move(state, move, undo_info)
+    unmake_move(state, move)
     return not in_check

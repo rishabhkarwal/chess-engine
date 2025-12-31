@@ -120,41 +120,8 @@ if __name__ == '__main__':
 
 """pypy3 profiler.py sophia"""
 
-
-
 """
 Engine: Previous
-
-Nodes: 3,190,784
-NPS:   31,906
-Time:  100.01s
-Move:  e2a6
-
-====================================================================================================
-Total Function Calls: 253,099,276
-----------------------------------------------------------------------------------------------------
-    n-calls       tot-time   per-call   cum-time   function
-----------------------------------------------------------------------------------------------------
-    2376081        25.989     0.000      30.451    search/evaluation.py:137(evaluate)
-    4984029        13.558     0.000      13.970    board/move_exec.py:49(make_move)
-2384826/648529     13.212     0.000      81.167    search/search.py:358(_quiescence)
-    6393855        7.597      0.000      7.597     moves/legality.py:18(is_square_attacked)
-    4984022        6.628      0.000      6.744     board/move_exec.py:204(unmake_move)
-   104657674       3.145      0.000      3.145     {method 'bit_length' of 'int' objects}
-    729431         2.875      0.000      3.536     {method 'sort' of 'list' objects}
-    729422         2.852      0.000      3.223     moves/generator.py:223(_gen_queen_moves)
-  805958/444       2.633      0.000      99.980    search/search.py:246(_alpha_beta)
-    729422         2.621      0.000      3.165     moves/generator.py:61(_gen_pawn_moves)
-   37817822        2.248      0.000      2.248     {method 'bit_count' of 'int' objects}
-    729422         2.195      0.000      17.273    moves/generator.py:35(generate_pseudo_legal_moves)
-    729422         1.909      0.000      2.088     moves/generator.py:206(_gen_rook_moves)
-    5719047        1.700      0.000      8.487     moves/legality.py:67(is_in_check)
-    729422         1.542      0.000      1.721     moves/generator.py:189(_gen_bishop_moves)
-----------------------------------------------------------------------------------------------------
-"""
-
-"""
-Engine: Sophia
 
 Nodes: 3,835,904
 NPS:   38,316
@@ -181,5 +148,36 @@ Total Function Calls: 230,144,788
     840911         2.299      0.000      2.550     moves/generator.py:223(_gen_queen_moves)
     840911         2.112      0.000      2.458     moves/generator.py:136(_gen_knight_moves)
     840911         1.987      0.000      2.231     moves/generator.py:152(_gen_king_moves)
+----------------------------------------------------------------------------------------------------
+"""
+
+"""
+Engine: Sophia
+
+Nodes: 4,080,337
+NPS:   44,878
+Time:  90.92s
+Move:  e2a6
+
+====================================================================================================
+Total Function Calls: 254,945,476
+----------------------------------------------------------------------------------------------------
+    n-calls       tot-time   per-call   cum-time   function
+----------------------------------------------------------------------------------------------------
+    6069854        21.094     0.000      21.818    board/move_exec.py:52(make_move)
+    2975706        15.052     0.000      17.906    search/evaluation.py:137(evaluate)
+    6069854        8.001      0.000      8.228     board/move_exec.py:216(unmake_move)
+    7800526        6.551      0.000      6.551     moves/legality.py:18(is_square_attacked)
+2986393/892849     4.082      0.000      67.472    search/search.py:358(_quiescence)
+  1093944/480      3.824      0.000      90.897    search/search.py:246(_alpha_beta)
+    883715         3.502      0.000      4.320     {method 'sort' of 'list' objects}
+    883706         3.267      0.000      3.574     moves/generator.py:206(_gen_rook_moves)
+    883706         3.107      0.000      3.758     moves/generator.py:61(_gen_pawn_moves)
+    883706         2.625      0.000      20.554    moves/generator.py:35(generate_pseudo_legal_moves)
+   82367626        2.402      0.000      2.402     {method 'bit_length' of 'int' objects}
+    883706         2.186      0.000      2.430     moves/generator.py:189(_gen_bishop_moves)
+    883706         1.943      0.000      2.172     moves/generator.py:223(_gen_queen_moves)
+    883706         1.829      0.000      2.153     moves/generator.py:136(_gen_knight_moves)
+    883706         1.745      0.000      1.969     moves/generator.py:152(_gen_king_moves)
 ----------------------------------------------------------------------------------------------------
 """
