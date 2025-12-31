@@ -1,19 +1,32 @@
-import time
+import time, sys, os
 from dataclasses import dataclass
 
-from engine.board.state import State
-from engine.board.fen_parser import load_from_fen
-from engine.board.move_exec import make_move, unmake_move
-from engine.moves.generator import get_legal_moves
-from engine.moves.legality import is_in_check, get_attackers
-from engine.core.constants import WHITE, BLACK, MASK_FLAG, MASK_TARGET, WK, BK
-from engine.core.utils import bit_scan
-from engine.moves.precomputed import init_tables
-from engine.core.move import (
-    CAPTURE, EN_PASSANT, 
-    CASTLE_KS, CASTLE_QS, 
-    PROMOTION_N, PROMO_CAP_N
-)
+engine_name = sys.argv[1] if len(sys.argv) > 1 else 'sophia'
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+target_dir = os.path.join(base_dir, engine_name)
+
+if target_dir not in sys.path: 
+    sys.path.insert(0, target_dir)
+    print(f"Engine Path Added: {target_dir}")
+
+try:
+    from engine.board.state import State
+    from engine.board.fen_parser import load_from_fen
+    from engine.board.move_exec import make_move, unmake_move
+    from engine.moves.generator import get_legal_moves
+    from engine.moves.legality import is_in_check, get_attackers
+    from engine.core.constants import WHITE, BLACK, MASK_FLAG, MASK_TARGET, WK, BK
+    from engine.core.utils import bit_scan
+    from engine.moves.precomputed import init_tables
+    from engine.core.move import (
+        CAPTURE, EN_PASSANT, 
+        CASTLE_KS, CASTLE_QS, 
+        PROMOTION_N, PROMO_CAP_N
+    )
+except ImportError as e:
+    print(f"Error: Could not import engine modules from '{engine_name}' : {e}")
+    sys.exit(1)
 
 @dataclass
 class Stats:
@@ -234,4 +247,5 @@ if __name__ == "__main__":
     run_perft_suite(max_depth=4)
 
 """
+pypy3 perft.py 
 """
