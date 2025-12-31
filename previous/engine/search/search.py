@@ -369,9 +369,7 @@ class SearchEngine:
 
         evaluation = evaluate(state)
         
-        if evaluation >= beta:
-            self.tt.store(state.hash, 0, beta, FLAG_LOWERBOUND, None)
-            return beta
+        if evaluation >= beta: return beta
         
         if evaluation > alpha:
             alpha = evaluation
