@@ -176,12 +176,15 @@ def make_move(state: State, move: int):
 
     state.hash ^= ZOBRIST_KEYS.castling[state.castling_rights]
     
+    # rooks: remove rights if rook moves OR rook square is captured
     if start_sq == A1 or target_sq == A1: state.castling_rights &= ~CASTLE_WQ
     if start_sq == H1 or target_sq == H1: state.castling_rights &= ~CASTLE_WK
     if start_sq == A8 or target_sq == A8: state.castling_rights &= ~CASTLE_BQ
     if start_sq == H8 or target_sq == H8: state.castling_rights &= ~CASTLE_BK
-    if start_sq == E1 or target_sq == E1: state.castling_rights &= ~(CASTLE_WK | CASTLE_WQ)
-    if start_sq == E8 or target_sq == E8: state.castling_rights &= ~(CASTLE_BK | CASTLE_BQ)
+
+    # kings: ONLY if king moves FROM these squares
+    if start_sq == E1: state.castling_rights &= ~(CASTLE_WK | CASTLE_WQ)
+    if start_sq == E8: state.castling_rights &= ~(CASTLE_BK | CASTLE_BQ)
     
     state.hash ^= ZOBRIST_KEYS.castling[state.castling_rights]
     

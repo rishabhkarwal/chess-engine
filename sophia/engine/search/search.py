@@ -331,9 +331,9 @@ class SearchEngine:
             is_interesting = (move & CAPTURE_FLAG) or (move & EP_FLAG) or (move & PROMO_FLAG)
             needs_full = True
 
-            if depth >= 3 and i >= 3 and not is_interesting and not in_check:
+            if depth >= 3 and legal_moves_count >= 3 and not is_interesting and not in_check:
                 reduction = 1
-                if i >= 10: reduction = 2
+                if legal_moves_count >= 10: reduction = 2
                 reduced_depth = max(1, depth - 1 - reduction)
                 val = -self._alpha_beta(state, reduced_depth, -(alpha+1), -alpha, ply + 1, allow_null=True)
                 if val <= alpha: needs_full = False
