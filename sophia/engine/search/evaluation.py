@@ -22,24 +22,24 @@ PHASE_INC = {PAWN: 0, KNIGHT: 1, BISHOP: 1, ROOK: 2, QUEEN: 4, KING: 0}
 MAX_PHASE = 4 * PHASE_INC[KNIGHT] + 4 * PHASE_INC[BISHOP] + 4 * PHASE_INC[ROOK] + 2 * PHASE_INC[QUEEN]
 
 # core features
-BISHOP_PAIR_BONUS = 40
+BISHOP_PAIR_BONUS = 20
 ROOK_OPEN_FILE = 10
 ROOK_SEMI_OPEN_FILE = 4
 
 # mobility bonuses (per legal square)
-KNIGHT_MOBILITY = 3
-BISHOP_MOBILITY = 2
-ROOK_MOBILITY = 2
-QUEEN_MOBILITY = 1
+KNIGHT_MOBILITY = 1.25
+BISHOP_MOBILITY = 1
+ROOK_MOBILITY = 1.5
+QUEEN_MOBILITY = 0.75
 
 # king safety bonuses (pawns in front of king in opening / middlegame)
-KING_PAWN_SHIELD_BONUS = 4 # per pawn in front of king
+KING_PAWN_SHIELD_BONUS = 3 # per pawn in front of king
 
 # trading behaviour parameters
-WINNING_THRESHOLD = 150
+WINNING_THRESHOLD = 200
 LOSING_THRESHOLD = -100
-TRADE_BONUS_PER_PIECE = 8
-TRADE_PENALTY_PER_PIECE = 10
+TRADE_BONUS_PER_PIECE = 10
+TRADE_PENALTY_PER_PIECE = 25
 
 
 MG_TABLE = [[0] * 64 for _ in range(16)]
@@ -204,7 +204,7 @@ def _evaluate_pawn_structure_fast(state, w_pawns, b_pawns):
     return pawn_score
 
 def evaluate_trading_bonus(state, base_eval):
-    if abs(base_eval) < 100:
+    if LOSING_THRESHOLD <= base_eval <= WINNING_THRESHOLD:
         return 0
     
     w_pieces = (state.bitboards[WN].bit_count() + state.bitboards[WB].bit_count() + 
@@ -226,33 +226,41 @@ def evaluate_trading_bonus(state, base_eval):
 
 def evaluate_king_safety(state, king_sq, own_pawns, phase):
     # skip in endgame
-    if phase < int(MAX_PHASE * 0.5):
+    if phase < int(MAX_PHASE * 0.4):
         return 0
     
-    king_file = king_sq % 8
     king_rank = king_sq // 8
-    
+    king_file = king_sq % 8
     safety_score = 0
     
-    # check pawns in front of king (up to 2 ranks ahead)
-    if king_rank < 6: # white king
-        for rank_offset in range(1, 3):
-            check_rank = king_rank + rank_offset
-            if check_rank > 7:
-                break
+    if king_rank <= 1: # white
+        direction = 1
+
+    elif king_rank >= 6: # black
+        direction = -1
+
+    else:
+        return 0
+
+    # check the two ranks in front of the king
+    for rank_offset in range(1, 3):
+        check_rank = king_rank + (rank_offset * direction)
+        
+        if not (0 <= check_rank <= 7): break
+        
+        # check adjacent files (left, centre, right)
+        for file_offset in range(-1, 2):
+            check_file = king_file + file_offset
             
-            # check same file and adjacent files
-            for file_offset in range(-1, 2):
-                check_file = king_file + file_offset
-                if check_file < 0 or check_file > 7:
-                    continue
-                
+            if 0 <= check_file <= 7:
                 check_sq = check_rank * 8 + check_file
+                
+                # if we have a friendly pawn here, add bonus
                 if SQUARE_TO_BB[check_sq] & own_pawns:
                     safety_score += KING_PAWN_SHIELD_BONUS
-    
+                    
     return safety_score
-
+    
 def evaluate(state, pawn_hash_table=None):
     mg_phase = min(state.phase, MAX_PHASE)
     eg_phase = MAX_PHASE - mg_phase
@@ -275,8 +283,8 @@ def evaluate(state, pawn_hash_table=None):
     evaluation += pawn_score
 
     # king safety (pawns in front of king in opening)
-    w_king_sq = (bitboards[WK] & -bitboards[WK]).bit_length() - 1 if bitboards[WK] else -1
-    b_king_sq = (bitboards[BK] & -bitboards[BK]).bit_length() - 1 if bitboards[BK] else -1
+    w_king_sq = (bitboards[WK] & -bitboards[WK]).bit_length() - 1 if bitboards[WK] else NULL
+    b_king_sq = (bitboards[BK] & -bitboards[BK]).bit_length() - 1 if bitboards[BK] else NULL
     
     if w_king_sq >= 0:
         evaluation += evaluate_king_safety(state, w_king_sq, w_pawns, state.phase)
@@ -301,7 +309,7 @@ def evaluate(state, pawn_hash_table=None):
 
     # mobility evaluation (count legal moves per piece)
     # only evaluate in middlegame as unneccesary
-    if mg_phase > int(MAX_PHASE * 0.3):
+    if mg_phase > int(MAX_PHASE * 0.4):
         for colour, pieces in [(WHITE, [(WN, KNIGHT_MOBILITY), (WB, BISHOP_MOBILITY), (WR, ROOK_MOBILITY), (WQ, QUEEN_MOBILITY)]),
                                (BLACK, [(BN, KNIGHT_MOBILITY), (BB, BISHOP_MOBILITY), (BR, ROOK_MOBILITY), (BQ, QUEEN_MOBILITY)])]:
             mobility_score = 0

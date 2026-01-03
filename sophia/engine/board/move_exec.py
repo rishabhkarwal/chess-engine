@@ -92,8 +92,8 @@ def make_move(state: State, move: int):
         ep_offset = NORTH
         enemy_pawn = WP
         
-    start_mask = 1 << start_sq
-    target_mask = 1 << target_sq
+    start_mask = SQUARE_TO_BB[start_sq]
+    target_mask = SQUARE_TO_BB[target_sq]
     
     state.mg_score -= MG_TABLE[moving_piece][start_sq]
     state.eg_score -= EG_TABLE[moving_piece][start_sq]
@@ -109,7 +109,7 @@ def make_move(state: State, move: int):
         if (move >> SHIFT_FLAG) == EP_FLAG >> SHIFT_FLAG: 
             capture_sq = target_sq + ep_offset
             captured_piece = enemy_pawn
-            cap_mask = 1 << capture_sq
+            cap_mask = SQUARE_TO_BB[capture_sq]
             
             bitboards[captured_piece] &= ~cap_mask
             bitboards[opponent_bb] &= ~cap_mask
@@ -300,8 +300,8 @@ def unmake_move(state: State, move: int):
         active_bb = BLACK
         opponent_bb = WHITE
         
-    start_mask = 1 << start_sq
-    target_mask = 1 << target_sq
+    start_mask = SQUARE_TO_BB[start_sq]
+    target_mask = SQUARE_TO_BB[target_sq]
     
     target_piece = board[target_sq]
     

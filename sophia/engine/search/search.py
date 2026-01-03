@@ -41,8 +41,8 @@ class SearchEngine:
         self.root_colour = WHITE
         
         # dynamic aspiration windows
-        self.aspiration_min = 35
-        self.aspiration_max = 135
+        self.aspiration_min = 50
+        self.aspiration_max = 150
         self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 3
         self.aspiration_stability_count = 0
         
