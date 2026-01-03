@@ -22,7 +22,7 @@ from engine.search.transposition import (
 )
 from engine.search.evaluation import evaluate, PawnHashTable
 from engine.search.ordering import MoveOrdering, pick_next_move
-from engine.search.see import see_fast  # SEE for pruning
+from engine.search.see import see_fast
 from engine.uci.utils import send_command, send_info_string
 from engine.search.syzygy import SyzygyHandler
 
@@ -35,22 +35,22 @@ class SearchEngine:
         self.ordering = MoveOrdering()
         self.nodes_searched = 0
         self.depth_reached = 0
+        self.seldepth = 0 # selective depth tracking
+        self.tbhits = 0 # tablebase hits
         self.start_time = 0.0
         self.root_colour = WHITE
         
         # dynamic aspiration windows
-        self.aspiration_min = 35  # minimum window size
-        self.aspiration_max = 135   # maximum window size
-        self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 4  # current window size
-        self.aspiration_stability_count = 0  # tracks stable searches
+        self.aspiration_min = 35
+        self.aspiration_max = 135
+        self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 3
+        self.aspiration_stability_count = 0
         
-        # time management for opponent pressure
         self.opponent_time_ms = 999999
         
         self.stopped = False
     
     def _get_pv_line(self, state, max_depth=20):
-        """Retrieves the principal variation line from the TT"""
         pv_moves = []
         undo_stack = []
         seen_hashes = {state.hash}
@@ -89,7 +89,6 @@ class SearchEngine:
         return score_str
 
     def get_best_move(self, state, opp_time_ms=999999):
-        # syzygy root probe
         syzygy_result = self.syzygy.get_best_move(state)
         if syzygy_result:
             syzygy_move, wdl, dtz = syzygy_result
@@ -100,8 +99,9 @@ class SearchEngine:
             else: score = 0
 
             score_str = self._get_cp_score(score)
+            self.tbhits += 1
 
-            send_command(f"info depth {abs(dtz)} score {score_str} pv {syzygy_move} string syzygy hit")
+            send_command(f"info depth {abs(dtz)} score {score_str} pv {syzygy_move} tbhits {self.tbhits} string syzygy hit")
 
             self.tt.store(state.hash, MAX_DEPTH, score, FLAG_EXACT, None)
 
@@ -110,17 +110,17 @@ class SearchEngine:
         self.opponent_time_ms = opp_time_ms
 
         self.nodes_searched = 0
+        self.seldepth = 0
+        self.tbhits = 0
         self.start_time = time.time()
         self.root_colour = state.is_white
         
         self.stopped = False
         self.depth_reached = 0
         
-        # reset aspiration windows
-        self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 4
+        self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 3
         self.aspiration_stability_count = 0
 
-        # generate legal root moves
         moves = generate_pseudo_legal_moves(state)
         legal_moves = []
         for move in moves:
@@ -133,7 +133,6 @@ class SearchEngine:
 
         moves = legal_moves
 
-        # simple move ordering at root => captures first
         captures = []
         quiet = []
         for m in moves:
@@ -154,7 +153,6 @@ class SearchEngine:
             beta = INFINITY
             
             if current_depth > 1:
-                # dynamic aspiration windows
                 alpha = current_score - self.aspiration_current
                 beta = current_score + self.aspiration_current
                 
@@ -162,14 +160,11 @@ class SearchEngine:
                 
                 if self.stopped: break 
                 
-                # check if we failed the window
                 if score <= alpha or score >= beta:
-                    # window failed - widen it
                     send_info_string(f'aspiration failed: {self.aspiration_current}')
                     self.aspiration_current = min(self.aspiration_current * 2, self.aspiration_max)
                     self.aspiration_stability_count = 0
                     
-                    # re-search with wider window
                     alpha = current_score - self.aspiration_current
                     beta = current_score + self.aspiration_current
                     
@@ -177,7 +172,6 @@ class SearchEngine:
                     
                     if self.stopped: break
                     
-                    # if still failing, go full window
                     if score <= alpha or score >= beta:
                         send_info_string(f'aspiration failed again: {self.aspiration_current}')
                         alpha = -INFINITY
@@ -185,15 +179,12 @@ class SearchEngine:
                         
                         best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                 else:
-                    # window succeeded - tighten it
                     self.aspiration_stability_count += 1
-                    if self.aspiration_stability_count >= 3:  # 3 stable searches
-                        # tighten window
+                    if self.aspiration_stability_count >= 3:
                         self.aspiration_current = max(self.aspiration_min, int(self.aspiration_current * 0.75))
                         self.aspiration_stability_count = 0
                         send_info_string(f'aspiration tightened: {self.aspiration_current}')
             else:
-                # full search at depth 1
                 best_move, score = self._search_root(state, current_depth, moves, -INFINITY, INFINITY)
 
             if self.stopped: break
@@ -211,7 +202,7 @@ class SearchEngine:
             hashfull = self.tt.get_hashfull()
             pv_string = self._get_pv_line(state, current_depth)
 
-            send_command(f"info depth {current_depth} currmove {move_to_uci(best_move_so_far)} score {score_str} nodes {self.nodes_searched} nps {nps} time {int(elapsed * 1000)} hashfull {hashfull} pv {pv_string}")
+            send_command(f"info depth {current_depth} seldepth {self.seldepth} score {score_str} nodes {self.nodes_searched} nps {nps} time {int(elapsed * 1000)} hashfull {hashfull} tbhits {self.tbhits} pv {pv_string}")
 
             if abs(score) >= INFINITY - 1000:
                 break
@@ -238,7 +229,6 @@ class SearchEngine:
         ply = 0
         
         for i in range(len(moves)):
-            # pick next best move incrementally
             pick_next_move(moves, i, state, self.ordering, tt_move, counter, depth, k1, k2)
             move = moves[i]
             
@@ -273,9 +263,10 @@ class SearchEngine:
     def _alpha_beta(self, state, depth, alpha, beta, ply, previous_move=None, allow_null=True):
         if self.stopped: return 0
 
+        if ply > self.seldepth: self.seldepth = ply
+
         self.nodes_searched += 1
 
-        # mate distance pruning
         mating_value = INFINITY - ply
         if mating_value < beta:
             beta = mating_value
@@ -296,17 +287,17 @@ class SearchEngine:
         is_threefold, is_fivefold = is_repetition(state)
 
         if is_threefold or is_fivefold:
-            if alpha >= 100: return -75 # winning
-            elif alpha < -100: return 50 # losing
-            return -5 # drawn
+            if alpha >= 100: return -50  # winning -> avoid draw
+            elif alpha < -100: return 0   # losing -> draw is okay
+            return -10  # equal -> slight penalty
 
         if state.halfmove_clock >= 100: return 0
 
-        # syzygy leaf probe (only when <= 5 pieces) - moved from syzygy class to here
         all_pieces = state.bitboards[WHITE] | state.bitboards[BLACK]
         if all_pieces.bit_count() <= 5:
             wdl = self.syzygy.probe_wdl(state)
             if wdl is not None:
+                self.tbhits += 1
                 dtz = self.syzygy.probe_dtz(state)
                 TB_WIN_SCORE = INFINITY - 1000
 
@@ -328,13 +319,9 @@ class SearchEngine:
 
         in_check = is_in_check(state, state.is_white)
         
-        # internal iterative deepening (IID)
-        # if no TT move at a PV node with sufficient depth, do a reduced search
-        if not in_check and depth >= 4 and tt_entry is None:
-            # do a reduced depth search to get a move to try first
+        if not in_check and depth >= 4 and tt_entry is None: # IID
             reduced_depth = depth - 2
             self._alpha_beta(state, reduced_depth, alpha, beta, ply, previous_move, allow_null=True)
-            # after this search, there SHOULD be a TT entry
             tt_entry = self.tt.probe(state.hash)
 
         # reverse futility pruning
@@ -374,13 +361,9 @@ class SearchEngine:
         best_move = None
         legal_moves_count = 0
         
-        # time pressure tactics
-        # if opponent is low on time and position is equal, boost checking moves
         time_pressure_mode = (self.opponent_time_ms < 10000 and abs(best_value) < 100)
         
-        # incremental move selection
         for i in range(len(moves)):
-            # pick next best move
             pick_next_move(moves, i, state, self.ordering, tt_move, counter, depth, k1, k2)
             move = moves[i]
             
@@ -392,13 +375,10 @@ class SearchEngine:
             
             legal_moves_count += 1
             
-            # check if this move gives check (time pressure tactic)
             gives_check = is_in_check(state, state.is_white)
             
-            # futility pruning - skip quiet moves in hopeless positions
             is_interesting = (move & CAPTURE_FLAG) or (move & EP_FLAG) or (move & PROMO_FLAG)
             
-            # don't prune checking moves in time pressure
             if gives_check and time_pressure_mode:
                 is_interesting = True
             
@@ -406,20 +386,25 @@ class SearchEngine:
                 unmake_move(state, move)
                 continue
             
-            # SEE pruning for bad captures
-            if (move & CAPTURE_FLAG) and depth <= 6 and not gives_check:
-                # don't play obviously losing captures
-                if not see_fast(state, move, threshold=-100):
+            # late move pruning (LMP)
+            # skip quiet moves after trying many moves at low depths
+            if not in_check and not is_interesting and depth <= 4:
+                lmp_threshold = 3 + depth * depth  # depth 1: 4 moves, depth 2: 7 moves, depth 3: 12 moves
+                if legal_moves_count > lmp_threshold:
                     unmake_move(state, move)
                     continue
             
-            # LMR Logic
+            # SEE pruning
+            if (move & CAPTURE_FLAG) and depth <= 6 and not gives_check:
+                if not see_fast(state, move, threshold=0):
+                    unmake_move(state, move)
+                    continue
+            
             needs_full = True
 
             if depth >= 3 and legal_moves_count >= 3 and not is_interesting and not in_check:
                 reduction = 1
                 if legal_moves_count >= 10: reduction = 2
-                # reduce less if move gives check in time pressure
                 if gives_check and time_pressure_mode:
                     reduction = max(0, reduction - 1)
                 
@@ -472,7 +457,8 @@ class SearchEngine:
         self.nodes_searched += 1
         if self.stopped: return 0
 
-        # mate distance pruning
+        if ply > self.seldepth: self.seldepth = ply
+
         mating_value = INFINITY - ply
         if mating_value < beta:
             beta = mating_value
@@ -495,7 +481,6 @@ class SearchEngine:
             
             if evaluation >= beta: return beta
             
-            # delta pruning
             delta = PIECE_VALUES[QUEEN] + PIECE_VALUES[PAWN]
             if evaluation < alpha - delta:
                 return alpha
@@ -508,21 +493,16 @@ class SearchEngine:
         else:
             moves = generate_pseudo_legal_moves(state, captures_only=True)
         
-        # simple MVV-LVA ordering for quiescence
-        scored_moves = []
-        for m in moves:
-            score = 0
-            if (m & CAPTURE_FLAG):
-                score = self.ordering.get_move_score(m, None, None, state, 0, None, None)
-            scored_moves.append((score, m))
-        scored_moves.sort(reverse=True)
+        tt_move = tt_entry.best_move if tt_entry else None
         
         legal_moves_found = False
         
-        for score, move in scored_moves:
-            # SEE pruning in quiescence - skip bad captures
+        for i in range(len(moves)):
+            pick_next_move(moves, i, state, self.ordering, tt_move, None, 0, None, None)
+            move = moves[i]
+            
             if not in_check and (move & CAPTURE_FLAG):
-                if not see_fast(state, move, threshold=-50):
+                if not see_fast(state, move, threshold=0):
                     continue
             
             make_move(state, move)
