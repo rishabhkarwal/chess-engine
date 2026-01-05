@@ -1,0 +1,1872 @@
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.04"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Engine Crash"]
+[TimeControl "180+2"]
+
+1. d4 Na6 2. Nf3 c6 3. Bf4 h6 4. Nbd2 Nf6 5. e3 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.04"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Ne4 Nxe4 11. dxe5 Nxe5 12. Qxe4 Qf6 13. Nxe5 Bxe5 14. Bd3 g6 15. Qb4 Rb8 16. Qa5 Rd8 17. f4 Bd4 18. exd4 Qxd4+ 19. Rf2 Qxd3 20. Be3 a6 21. Qb6 Re8 22. Bd4 Qb5 23. Qc7 Bf5 24. Qd6 Qd3 25. Qf6 Kf8 26. Bc5+ Kg8 27. Bd4 Kf8 28. Qd6+ Kg8 29. Qf6 Kf8 30. Qd6+ Kg8 31. Qf6 Kf8 32. Qd6+ Kg8 33. Qf6 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb5 a6 10. Qd3 Bg4 11. Qe3+ Kd8 12. Ne5 Bd7 13. Nf3 Re8 14. Qd3 Na5 15. h3 Bf5 16. Qd2 Nc4 17. Qc1 Qc6 18. Ne5 Nxe5 19. dxe5 d4 20. Qd2 Bxc3 21. bxc3 Qxc3 22. Rd1 Kc8 23. Rc1 Qxd2+ 24. Kxd2 Rxe5 25. Ra1 Kd7 26. g3 Rae8 27. Rh2 Rb5 28. Kc1 d3 29. e3 Rc5+ 30. Kd1 Rc2 31. Bg2 Be4 32. Bxe4 Rxe4 33. Rb1 Rxa2 34. Rxb7 Rxe3 35. fxe3 Rxh2 36. Rb3 Rxh3 37. Rxd3+ Ke7 38. Rc3 Kd7 39. Rd3+ Ke7 40. Rc3 Kd7 41. Rd3+ Ke7 42. Rc3 Kd7 43. e4 h5 44. Kc2 h4 45. gxh4 Rxh4 46. e5 Rh2+ 47. Kb3 Rh6 48. Rd3+ Ke6 49. Rc3 Kd7 50. Rd3+ Ke7 51. Rc3 Rb6+ 52. Ka4 Kd7 53. Rf3 Ke7 54. Rc3 Kd7 55. Rf3 Ke7 56. Rc3 Rb7 57. Rg3 g6 58. Rc3 Ra7 59. Ka5 Ke6 60. Rf3 Ra8 61. Rf6+ Ke7 62. Rc6 Ra7 63. Rf6 Ra8 64. Rc6 Ra7 65. Rf6 Ra8 66. Rc6 Ra7 67. Rf6 g5 68. Rf5 g4 69. Rg5 Kd7 70. Rxg4 Ke6 71. Re4 Kd5 72. Re3 Ke6 73. Re4 Kd5 74. Re3 Ra8 75. Re2 Kd4 76. Rf2 Kd5 77. Rxf7 Ra7 78. Re7 Ke4 79. Re8 Ke3 80. e6 Ke4 81. e7 Kf5 82. Rd8 Rb7 83. e8=Q Ra7 84. Qe3 Rb7 85. Qf3+ Ke6 86. Qxb7 c5 87. Qxa6+ Ke5 88. Qd6+ Kf5 89. Qxc5+ Kg6 90. Qf5+ Kxf5 91. Re8 Kf6 92. Kb5 Kg6 93. Kc4 Kf6 94. Kd5 Kf5 95. Re4 Kf6 96. Re5 Kf7 97. Re6 Kf8 98. Kd6 Kf7 99. Kd7 Kg8 100. Ke7 Kg7 101. Rd6 Kg8 102. Kf6 Kh8 103. Kg6 Kg8 104. Rd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 b6 5. b3 Bb7 6. Bb2 Bd6 7. Bd3 dxc4 8. bxc4 O-O 9. Nbd2 Nc6 10. d5 Nb4 11. Ne4 Nxd3+ 12. Qxd3 Nxe4 13. Qxe4 exd5 14. Qd4 Qf6 15. Qxf6 gxf6 16. cxd5 Kg7 17. Rd1 Bb4+ 18. Kf1 Rfd8 19. e4 Ba6+ 20. Kg1 Be2 21. Rc1 Bxf3 22. gxf3 Bd6 23. Bc3 Rac8 24. Kg2 Bf4 25. Rc2 Rd7 26. Kh3 Bg5 27. Kg3 Kg6 28. Rd1 Re8 29. Bb4 Red8 30. Rc6 Re8 31. d6 cxd6 32. Rcxd6 Rc7 33. Rd7 Rxd7 34. Rxd7 Ra8 35. f4 Bh6 36. f5+ Kg7 37. Bd6 Kg8 38. Rb7 Bf8 39. Bb8 Bc5 40. Bxa7 Bd6+ 41. Kh3 Be5 42. Kg2 Bf4 43. h4 Bd2 44. Kf3 Kg7 45. Rc7 b5 46. Rd7 Bh6 47. Rb7 b4 48. Kg4 Bd2 49. Rd7 Bh6 50. Rb7 Bd2 51. Rd7 Bh6 52. Rb7 Bd2 53. Rd7 Bc1 54. Rc7 Bh6 55. Rb7 Bd2 56. Rd7 Bc1 57. Rc7 Bh6 58. Rb7 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. c3 d6 6. O-O O-O 7. a4 Na5 8. Bd5 c6 9. Ba2 Bg4 10. Nbd2 d5 11. Qe1 Re8 12. b4 d4 13. cxd4 Bxb4 14. Nxe5 Be6 15. Bxe6 Rxe6 16. Rb1 Bc3 17. Nef3 Bxd4 18. Qe2 Qd6 19. Rd1 Bc3 20. Nc4 Nxc4 21. dxc4 Qc7 22. Qe3 Nxe4 23. Ng5 Rd8 24. Bb2 Nxg5 25. Rxd8+ Qxd8 26. Qxc3 f6 27. Qb3 Qe8 28. Qb4 Nf3+ 29. Kh1 c5 30. Qc3 Re1+ 31. Rxe1 Qxe1+ 32. Qxe1 Nxe1 33. Kg1 Kf7 34. a5 Nd3 35. Bc3 Ke6 36. Bd2 Ne5 37. Be3 Kd6 38. Bf4 Ke6 39. Kf1 Kf5 40. Be3 Ng4 41. Bxc5 Nxh2+ 42. Kg1 Ng4 43. Bxa7 Ne5 44. c5 Ke4 45. Kh2 Nc6 46. Bb6 Ne5 47. Bd8 Kd5 48. Be7 Nd7 49. Kg3 Nxc5 50. Kf4 Kc4 51. Kf5 Kd5 52. Bxc5 Kxc5 53. Ke6 g6 54. a6 bxa6 55. Kxf6 a5 56. Kg7 a4 57. Kxh7 a3 58. Kh6 a2 59. Kg5 a1=Q 60. Kf4 Qf6+ 61. Ke3 Qd4+ 62. Kf3 Qd3+ 63. Kf4 g5+ 64. Ke5 Qe2+ 65. Kf6 Qxf2+ 66. Kg7 g4 67. Kg8 Qxg2 68. Kh7 g3 69. Kg8 Qf2 70. Kh7 g2 71. Kg6 g1=Q+ 72. Kh5 Qfh2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nc3 d6 3. Nge2 a6 4. d4 cxd4 5. Nxd4 Nf6 6. f3 e5 7. Nb3 Be7 8. Be3 O-O 9. g4 Be6 10. g5 Nh5 11. Qd2 Bxb3 12. cxb3 Nf4 13. h4 Nd7 14. O-O-O Rc8 15. Qh2 Rxc3+ 16. bxc3 Qc7 17. Kb2 Rc8 18. Rc1 d5 19. Bxf4 exf4 20. exd5 Qa5 21. Kb1 Rxc3 22. Rd1 Bd6 23. h5 Qd8 24. g6 Qf6 25. Qh3 Nb6 26. gxf7+ Kxf7 27. h6 Qg6+ 28. Bd3 Rxd3 29. Qe6+ Qxe6 30. dxe6+ Kxe6 31. hxg7 Rxd1+ 32. Rxd1 Kf7 33. Rxd6 Nc8 34. Rd7+ Kg8 35. Kc2 a5 36. Kc3 b5 37. Kd4 a4 38. Kc5 h5 39. b4 h4 40. Rc7 h3 41. Rxc8+ Kxg7 42. Kxb5 a3 43. Rc1 Kf7 44. Rh1 Kf6 45. Rxh3 Kg6 46. Ka4 Kf7 47. b5 Ke7 48. b6 Kf6 49. b7 Kg6 50. b8=Q Kf7 51. Qb7+ Kg6 52. Qh7+ Kg5 53. Qh6+ Kf5 54. Rh5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. c4 e5 2. Nc3 Nf6 3. Nf3 Nc6 4. g3 d5 5. cxd5 Nxd5 6. Bg2 Nb6 7. d3 Be7 8. O-O Be6 9. Be3 Qd7 10. Re1 O-O-O 11. Bxb6 cxb6 12. Qa4 g5 13. Nb5 a6 14. Qc2 Kb8 15. Nc3 g4 16. Nh4 b5 17. Qc1 Kc8 18. Bxc6 Qxc6 19. Ne4 Qxc1 20. Rexc1+ Kd7 21. Ng2 Rc8 22. Rd1 Rc2 23. Rd2 Rxd2 24. Nxd2 Bc5 25. Ne3 Bd4 26. Nd1 b4 27. Nb3 Bxb3 28. axb3 Rc8 29. Rb1 e4 30. dxe4 Kd6 31. Ne3 Bxe3 32. fxe3 Rc2 33. Kf2 Ke6 34. Ke1 Ke5 35. Rd1 Rxb2 36. Rd7 Rb1+ 37. Kf2 Rh1 38. Kg2 Re1 39. Kf2 Rh1 40. Rxf7 Rxh2+ 41. Ke1 b6 42. Re7+ Kd6 43. Rb7 Kc6 44. Rg7 Rh6 45. Rxg4 Kd6 46. Rg5 Re6 47. Rd5+ Kc6 48. Rd4 a5 49. Kf2 Rf6+ 50. Kg2 Rf7 51. Rd1 Rf8 52. Rh1 Rh8 53. e5 Kd5 54. Rh6 Kxe5 55. Rxb6 Kd5 56. Ra6 Ke5 57. Kf2 Rf8+ 58. Kg2 Rf7 59. Ra8 Re7 60. Kf3 Rf7+ 61. Kg2 Re7 62. Kf3 Rf7+ 63. Kg2 Kf5 64. Kf3 Ke5+ 65. Kg2 Kf5 66. Kf3 Ke5+ 67. Kg2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. d3 b5 7. Bb3 Bb7 8. Nc3 d6 9. Be3 Na5 10. Nd5 Nxb3 11. Nxf6+ Bxf6 12. cxb3 Kd7 13. Re1 b4 14. Re2 Qf8 15. Rc1 Rd8 16. Qe1 a5 17. Rec2 Rc8 18. Qf1 Qe8 19. g3 d5 20. Qh3+ Qe6 21. Qxe6+ fxe6 22. Rd1 d4 23. Bg5 Bc6 24. Bxf6 gxf6 25. Ra1 Bb5 26. Ne1 a4 27. bxa4 Bxa4 28. Rc4 Rb8 29. Rac1 Rb7 30. b3 Bb5 31. Rxb4 Kd6 32. Nc2 Ra8 33. a4 Bc6 34. Rxb7 Bxb7 35. Ne1 Rb8 36. a5 Ba6 37. Rb1 Rb5 38. b4 Ke7 39. Kf1 c5 40. Nc2 Kf7 41. Kg2 cxb4 42. Nxb4 Bb7 43. Rb2 Rxa5 44. Kf3 Rb5 45. Kg4 Kg6 46. Kf3 Bc6 47. Rb1 f5 48. Rb2 fxe4+ 49. dxe4 Rb7 50. Nd3 Rxb2 51. Nxb2 Bb5 52. Nd1 Kf7 53. Ne3 dxe3 54. Kxe3 Bf1 55. Kd2 Kg6 56. f3 Bg2 57. Ke2 Kf6 58. Kf2 Bh1 59. Ke3 Kg6 60. Ke2 Kf6 61. Ke3 Kg6 62. Ke2 Kf6 63. Ke3 Kg6 64. Ke2 Kf6 65. Ke3 Kg6 66. Ke2 Kf6 67. Ke3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. c3 d5 9. exd5 Nxd5 10. Nxe5 Nxe5 11. Rxe5 c6 12. Re1 Bd6 13. g3 Nf6 14. Na3 Bg4 15. f3 Bf5 16. g4 Bg6 17. Nc2 a5 18. g5 a4 19. Bxf7+ Rxf7 20. gxf6 Qxf6 21. Rf1 Qg5+ 22. Kf2 Qh4+ 23. Ke2 Bd3+ 24. Kxd3 Qc4+ 25. Ke3 Re7+ 26. Kf2 Qh4+ 27. Kg2 Qxh2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. Nf3 d5 2. g3 c6 3. Bg2 Nf6 4. d3 Bf5 5. O-O Nbd7 6. Nbd2 e6 7. Re1 Bg6 8. e4 dxe4 9. Nxe4 Nxe4 10. dxe4 Bc5 11. Re2 Nf6 12. Qxd8+ Rxd8 13. Bg5 Bxe4 14. Bxf6 Bxf3 15. Bxf3 gxf6 16. Ree1 Rd2 17. Re2 Rd8 18. Ree1 Rd2 19. Re2 Rd8 20. Rb1 Ke7 21. Bh1 Bd6 22. Bg2 f5 23. Rbe1 Kf6 24. Bh3 Rhe8 25. Bg2 f4 26. g4 Bb4 27. Rc1 Rd7 28. Be4 Rg8 29. Bf3 Rdd8 30. Re4 Bd6 31. Rce1 h5 32. h3 h4 33. Rc4 Be5 34. Ra4 Ra8 35. Rb4 Rab8 36. Rd1 a5 37. Rb3 Ke7 38. Kg2 Rgc8 39. g5 Rg8 40. Bxc6 bxc6 41. Rb1 a4 42. Rxb8 Rxb8 43. b3 axb3 44. cxb3 Ra8 45. Re1 Bb2 46. Kf3 Rxa2 47. Re2 Kd6 48. Ke4 Kc5 49. Rc2+ Kb5 50. Rd2 Kb4 51. Rd7 Bc3 52. Rxf7 Rxf2 53. Rxf4 Rxf4+ 54. Kxf4 Kxb3 55. g6 Bf6 56. Ke4 Kc4 57. Kf3 Kd4 58. Kg4 Ke3 59. Kh5 Kf3 60. g7 Bxg7 61. Kg6 Kg3 62. Kf7 Bf6 63. Kg6 Kxh3 64. Kh5 Kg3 65. Kg6 h3 66. Kf7 h2 67. Kg6 h1=Q 68. Kf7 Qh7+ 69. Kxf6 c5 70. Kg5 c4 71. Kf6 c3 72. Kxe6 c2 73. Kd6 c1=N 74. Kc6 Qh6+ 75. Kd5 Nb3 76. Ke5 Kf3 77. Kd5 Qb6 78. Ke5 Nd4 79. Kd5 Qc7 80. Kxd4 Qa5 81. Kc4 Ke4 82. Kb3 Kd3 83. Kb2 Qb4+ 84. Kc1 Qb6 85. Kd1 Qb1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 d5 7. Nf3 dxc4 8. Qxc4 b6 9. Bf4 Na6 10. Qc6 Qd5 11. Qc2 Bb7 12. Bg5 Qe4 13. Qc3 Nd5 14. Qc1 h6 15. Bh4 g5 16. Bg3 g4 17. Nd2 Qxd4 18. e4 Nf6 19. e5 Nh5 20. Nb3 Qe4+ 21. Qe3 Qxe3+ 22. fxe3 Nxg3 23. hxg3 Nb8 24. Rxh6 Nc6 25. Rh5 Ne7 26. Kf2 Bd5 27. Nd4 Rab8 28. Nb5 Rb7 29. Nd4 Kg7 30. Be2 Rd8 31. Rd1 Rbb8 32. Rc1 Rd7 33. Bb5 c6 34. Be2 Kg6 35. Rh4 Kg7 36. Rxg4+ Kf8 37. Rh1 Nc8 38. e4 Rc7 39. exd5 exd5 40. Ne6+ fxe6 41. Rh8+ Kf7 42. Rhg8 d4 43. R4g7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 Nbd7 7. e3 h6 8. Bh4 g5 9. Bg3 Ne4 10. Qa4 Bxc3+ 11. bxc3 g4 12. Bh4 Nxc3 13. Qc2 Nf6 14. Qxc3 gxf3 15. Bxf6 Qxf6 16. Qxc7 fxg2 17. Bxg2 Qf5 18. Ke2 Rh7 19. Rac1 f6 20. Qg3 Be6 21. Bf3 h5 22. Rc5 h4 23. Qg2 h3 24. Qg3 Re7 25. Rg1 Rd8 26. Bg4 Qxg4+ 27. Qxg4 Bxg4+ 28. Rxg4 Kf8 29. Rh4 Kg7 30. Rxh3 Red7 31. Kf3 Kg6 32. Kf4 Re8 33. Rg3+ Kf7 34. Rg2 Ke6 35. Rc2 Rh7 36. Rc1 Rh3 37. Rc7 Rb8 38. Kg4 Rbh8 39. Rg3 Rxh2 40. Rc2 Rg8+ 41. Kf4 Rxg3 42. Kxg3 Rh8 43. Rc7 Rb8 44. Kf4 Kd6 45. Rf7 Ke6 46. Rc7 Kd6 47. Rg7 Ke6 48. Rc7 Kd6 49. Rg7 Ke6 50. Rc7 Kd6 51. Rh7 Ke6 52. Rc7 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "60+0"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Ne4 Qc7 11. Nxd6 Qxd6 12. dxe5 Nxe5 13. Rd1 Bf5 14. Qe2 Qc7 15. Bd2 Bc2 16. Re1 Nxf3+ 17. Qxf3 Be4 18. Qh3 Bg6 19. Bc3 Ne4 20. Bd4 Ng5 21. Qh4 Ne4 22. Be2 c5 23. Rac1 Qb6 24. Be5 Qe6 25. Qf4 Rfe8 26. Bh5 Qxe5 27. Bxg6 fxg6 28. Qxe5 Rxe5 29. Rc2 Rc8 30. Rc4 Nd6 31. Ra4 Ra8 32. Rd1 Re4 33. Rxe4 Nxe4 34. Rd7 b6 35. Kf1 Nf6 36. Rd2 Kf7 37. Ke2 Rc8 38. Kf3 c4 39. Rc2 Nd5 40. Rd2 Ke6 41. Rd1 c3 42. bxc3 Rf8+ 43. Kg3 Nxc3 44. Rf1 Ne4+ 45. Kg4 Rxf2 46. Rxf2 Nxf2+ 47. Kf4 Nd1 48. Ke4 Nc3+ 49. Kd3 Nxa2 50. Ke4 Nc3+ 51. Kd4 Na4 52. Ke4 Nc5+ 53. Kd4 Kf6 54. Kd5 Nd3 55. Kc6 Nc5 56. Kd6 Na4 57. Kc7 Nc3 58. Kb7 Ke5 59. Kxa7 Nd5 60. e4 Kxe4 61. Kb7 Ne3 62. Kxb6 Nxg2 63. Kc6 Ne3 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+0"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb3 Be6 10. O-O-O O-O-O 11. Qc2 Bf5 12. Qb3 Be4 13. Rd2 Bxf3 14. gxf3 Qf4 15. Qa4 Qh4 16. e3 Bxc3 17. bxc3 Qf6 18. Bb5 Rd6 19. Qd1 h5 20. Re1 h4 21. h3 Rd7 22. c4 dxc4 23. Bxc4 Re8 24. d5 Qc3+ 25. Qc2 Qa1+ 26. Qb1 Qc3+ 27. Qc2 Qa1+ 28. Qb1 Qc3+ 29. Qc2 Qa1+ 30. Qb1 Qc3+ 31. Qc2 Qa1+ 32. Qb1 Qc3+ 33. Qc2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+0"]
+
+1. Nf3 d5 2. d4 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Nc6 8. Qe2 Bd6 9. dxc5 bxc5 10. Qf1 Kd7 11. O-O-O Qe8 12. Re1 Rd8 13. e4 d4 14. e5 Nxe5 15. Nxe5+ Bxe5 16. Rxe5 Kd6 17. Nc4+ Kc7 18. Rxc5+ Kb8 19. Ne5 Bd5 20. Bxd4 Qf8 21. Ra5 a6 22. Nf3 Bxf3 23. Be5+ Kc8 24. gxf3 Qe7 25. Bxa6+ Qb7 26. Bxb7+ Kd7 27. Qb5+ Ke7 28. Qb4+ Ke8 29. Bxf6 gxf6 30. Bc6+ Rd7 31. Ra8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "60+0"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. Nc3 Bb4 7. O-O Nxe5 8. dxe5 Nxc3 9. bxc3 Bxc3 10. Rb1 O-O 11. Bxh7+ Kxh7 12. Qd3+ Kg8 13. Qxc3 d4 14. Qg3 Bf5 15. Bg5 Qc8 16. Rfc1 Re8 17. Bh6 Bg6 18. Bf4 Be4 19. Rb2 Qe6 20. Rcb1 Rab8 21. Re1 Bd5 22. Qd3 c5 23. Rb5 Bc4 24. Qa3 Bxb5 25. Qxc5 a6 26. Qxd4 Bc4 27. Qe4 Bd5 28. Qd3 Bxa2 29. Qg3 Bd5 30. Rc1 Rbc8 31. Qd3 Qc6 32. Qh3 Qa4 33. Bg3 Rxc2 34. Re1 Be6 35. Qh5 Qc6 36. Bf4 Rc4 37. g3 Bd5 38. Qh3 Qa4 39. Kf1 Rxf4 40. gxf4 Qxf4 41. Qh5 Re6 42. Re3 Rh6 43. Qd1 Bc4+ 44. Ke1 Rxh2 45. Qf3 Qxf3 46. Rxf3 Rh5 47. Re3 Kh7 48. Re4 Bd5 49. Re3 Kg6 50. Ke2 Kf5 51. Kd3 Rh8 52. Rg3 Rg8 53. Kd4 Ke6 54. Re3 Rc8 55. Rg3 g6 56. Re3 Rc2 57. Rg3 Rxf2 58. Ke3 Rg2 59. Rxg2 Bxg2 60. Kf4 Bd5 61. Ke3 Bc6 62. Kd4 Bg2 63. Kc4 Bf3 64. Kd3 Bh1 65. Ke3 Bg2 66. Kf4 Bd5 67. Ke3 Bc6 68. Kd4 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "60+0"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. Bb2 Qf8 10. O-O-O g5 11. Nxg5 h6 12. Ngf3 Qg8 13. g3 Rb8 14. Nb3 Ke7 15. h4 Qe8 16. Bd3 Nh5 17. g4 Ng7 18. g5 hxg5 19. hxg5 Rxh1 20. Rxh1 Nf5 21. Kb1 Nf8 22. Rh8 Bd7 23. Qc1 Ng7 24. Qh1 Ra8 25. Qh4 Nf5 26. Bxf5 exf5 27. g6+ f6 28. g7 Ne6 29. Rxe8+ Rxe8 30. Qh7 Nxg7 31. Qxg7+ Ke6 32. Qh6 Kf7 33. Bc3 Rg8 34. Qh3 Be6 35. Qh7+ Rg7 36. Qh5+ Ke7 37. Na5 f4 38. Nxb7 fxe3 39. fxe3 Kd7 40. Nd6 Bxd6 41. cxd6 Kxd6 42. Qh2+ Kd7 43. Qh6 Bf5+ 44. Kb2 Rf7 45. Kb3 Ke7 46. Qf4 Be4 47. Nd2 Ke6 48. Nxe4 dxe4 49. Qxe4+ Kd6 50. Kc4 f5 51. Qe8 Rc7 52. Qd8+ Rd7 53. Qa5 Rf7 54. Qc5+ Ke6 55. Qxc6+ Ke7 56. Qc7+ Kf6 57. d5+ Kg6 58. Qg3+ Kh7 59. d6 Kh6 60. Be5 Kh7 61. Qg5 f4 62. Bxf4 Rg7 63. Qf5+ Kh8 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+0"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 h4 13. Na5 Qc7 14. Nb3 a5 15. Kf2 a4 16. Nc1 e4 17. Rb1 h3 18. g3 exf3 19. Bxf3 Ne5 20. Nd3 Nxf3 21. Kxf3 Qc4 22. Bg5 Qg4+ 23. Ke3 Qxg5+ 24. Nf4 Bg7 25. c4 a3 26. bxa3 Qe5+ 27. Kf3 Qe4+ 28. Kf2 Ng4+ 29. Kf1 Qxh1+ 30. Ke2 Qe4+ 31. Kf1 Qxb1+ 32. Qe1+ Qxe1+ 33. Kxe1 Rxa3 34. c5 dxc5 35. Ne2 Rxa2 36. Nf4 Bc3+ 37. Kf1 Nxh2+ 38. Kg1 Nf3+ 39. Kf1 h2 40. Ne2 Bg7 41. Kf2 Nd2 42. Nc1 h1=Q 43. Nxa2 Rh2+ 44. Ke3 Qf3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+0"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 Nbd7 7. f4 Qc7 8. Qf3 e5 9. Nb3 Be7 10. O-O-O Qd8 11. Be2 Kf8 12. Bxf6 Nxf6 13. fxe5 Bg4 14. Qf2 Bxe2 15. exf6 Bxd1 16. fxe7+ Kxe7 17. Rxd1 Qf8 18. Nd5+ Kd8 19. Qb6+ Kd7 20. Qxb7+ Ke6 21. Nc7+ Kf6 22. Nxa8 Qxa8 23. Rxd6+ Ke5 24. Qe7+ Kf4 25. Qxf7+ Kxe4 26. Nd2+ Ke3 27. Rd3+ Ke2 28. Qf1# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+0"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. e3 Nbd7 6. Bd3 dxc4 7. Bxc4 b5 8. Bd3 a6 9. e4 c5 10. Be3 c4 11. Bb1 b4 12. Ne2 Bb7 13. e5 Nd5 14. Bd2 Nc7 15. Bg5 Be7 16. Be3 b3 17. Ng3 Bd5 18. Qc1 bxa2 19. Bxa2 Nb6 20. Qd2 h5 21. Qa5 h4 22. Nf5 exf5 23. Qxb6 Rb8 24. Qa7 Rb7 25. Qxb7 Bxb7 26. h3 Bxf3 27. gxf3 f4 28. Bd2 Qxd4 29. O-O-O Qxf2 30. Rhf1 Qc5 31. Rfe1 Ne6 32. Re4 Qf2 33. Rxc4 Nc5 34. Rc3 Qd4 35. e6 fxe6 36. Rc2 Kf7 37. Rc3 Nd3+ 38. Kb1 Nf2 39. Re1 Qxd2 40. Bxe6+ Kf6 41. Rf1 Kxe6 42. Rc2 Qd7 43. Rfxf2 Kf6 44. Rc4 Qf5+ 45. Ka2 Qe6 46. b3 Bd6 47. Rc6 Rc8 48. Rxa6 Rb8 49. Rb2 Rxb3 50. Rxb3 Qe2+ 51. Kb1 Qxa6 52. Kc2 Qe2+ 53. Kc3 Qxf3+ 54. Kc4 Qe4+ 55. Kc3 f3 56. Rb2 Be5+ 57. Kb3 Bxb2 58. Kxb2 f2 59. Kc3 f1=Q 60. Kb3 Qfb1+ 61. Ka3 Qeb4# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+0"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e6 7. f3 b5 8. a3 h5 9. Bd3 Bb7 10. Qd2 Be7 11. Qf2 h4 12. O-O-O Nbd7 13. Bg5 Ng4 14. fxg4 Bxg5+ 15. Kb1 Nf6 16. h3 Qb6 17. Rhe1 Qc5 18. Qf3 Qe5 19. Nb3 Qg3 20. Qf1 Qe5 21. Qf3 Qg3 22. Nxb5 axb5 23. Bxb5+ Ke7 24. Nd4 Qe5 25. Bc6 Rhb8 26. Bxb7 Qg3 27. Bxa8 Rxa8 28. Nf5+ exf5 29. exf5+ Kd8 30. Qxa8+ Kc7 31. Re7+ Kb6 32. Rb7+ Kc5 33. Qc8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+0"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. Bg5 h6 6. Bh4 dxc4 7. e4 g5 8. Bg3 b5 9. e5 Nfd7 10. Ne4 Bb4+ 11. Ke2 g4 12. Ne1 Na6 13. Nc2 h5 14. a3 Ba5 15. Nd6+ Kf8 16. Nxc8 Qxc8 17. Bf4 Nc7 18. Bd2 c3 19. bxc3 c5 20. g3 Nd5 21. Qe1 cxd4 22. Nxd4 Nxc3+ 23. Kd3 Qc4+ 24. Kc2 Qxd4 25. Rc1 h4 26. Bg2 Rc8 27. Bb7 Rc7 28. Bc6 Rxc6 29. Kb3 Qd5+ 30. Kc2 Ne2+ 31. Kb2 Qxe5+ 32. Rc3 Bxc3+ 33. Bxc3 Rxc3 34. Ka2 Rc2+ 35. Kb1 Qb2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "60+0"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. e3 Bf5 8. g4 Be6 9. Qb3 Qd7 10. Nf3 Qc8 11. Bd3 Bxg4 12. Ne5 Nd7 13. Nxg4 Ngf6 14. Nxf6+ Nxf6 15. O-O-O Ke7 16. Rhg1 g6 17. Rde1 Re8 18. Kb1 Rb8 19. Qa3+ Kd7 20. Qxa7 Ra8 21. Qb6 Re7 22. Rg3 Nh5 23. Nxd5 Re6 24. Rf3 cxd5 25. Rxf7+ Ke8 26. Qxb7 Qxb7 27. Rxb7 Nf6 28. Rg1 Kf8 29. Rc7 Rb8 30. Bxg6 hxg6 31. Rxg6 Ra8 32. Rg3 Ne4 33. Rf3+ Kg8 34. Rc2 Rg6 35. Rf5 Rg1+ 36. Rc1 Rg2 37. Rf4 Rxh2 38. Rg1+ Kh8 39. Rf5 Nxf2 40. Rxd5 Nd3 41. Rb5 Rh3 42. Kc2 Nf2 43. a3 Re8 44. Rb3 Rhxe3 45. Rxe3 Rxe3 46. Rf1 Ne4 47. Rg1 Nf6 48. Rg2 Re8 49. Kd2 Nd5 50. Rg5 Nf6 51. Rg2 Nd5 52. Rg5 Nf6 53. Re5 Rd8 54. Kd3 Kg7 55. Kc4 Kg6 56. d5 Kf7 57. Rg5 Rd7 58. Kd4 Rb7 59. Rg2 Rb5 60. Re2 Rxd5+ 61. Kc4 Rd8 62. Re1 Kg6 63. Rf1 Rc8+ 64. Kd4 Rd8+ 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "12"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Engine Crash"]
+[TimeControl "60+0"]
+
+1. e4 c5 2. Nf3 e6 3. Nc3 a6 4. d4 cxd4 5. Nxd4 d6 6. Be3 Nf6 7. Be2 Be7 8. f4 Qc7 9. Qd3 Bd7 10. e5 dxe5 11. fxe5 Qxe5 12. Nf3 Qc7 13. Ne4 Bb5 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Ne4 Qc7 11. Rd1 Be7 12. Nxf6+ gxf6 13. Bd3 Re8 14. Bxh7+ Kh8 15. Qb3 Bd6 16. Qxf7 Rf8 17. Qh5 exd4 18. Bc2+ Kg7 19. Qh7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb3 Be6 10. O-O-O O-O-O 11. Rd2 Bg4 12. Rd1 Bxf3 13. gxf3 Bxc3 14. Qxc3 Kb8 15. Rd2 h5 16. h4 Qd6 17. Bg2 Rde8 18. Qd3 Qf6 19. e3 Re7 20. Rdd1 Rhe8 21. Rd2 Nb4 22. Qb3 Qc6+ 23. Kd1 Qg6 24. Rh2 Qb1+ 25. Ke2 Qg1 26. Rh1 Rxe3+ 27. Qxe3 Rxe3+ 28. Kxe3 Qxg2 29. Ra1 Qg6 30. Ke2 Qa6+ 31. Ke1 Nd3+ 32. Kf1 Nf4+ 33. Ke1 Ng2+ 34. Kd1 Qf1+ 35. Kc2 Qxa1 36. Re2 Ne1+ 37. Kd2 Qxb2+ 38. Kd1 Qb1+ 39. Kd2 Qc2+ 40. Kxe1 Qc1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. Nf3 d5 2. d4 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Nc6 8. Qe2 Bd6 9. dxc5 bxc5 10. h4 g6 11. h5 gxh5 12. O-O-O d4 13. Nc4 Be7 14. c3 Rg8 15. Qf1 Qc7 16. e4 dxc3 17. Bxc3 O-O-O 18. Kb1 Rge8 19. Ne3 Rxd3 20. Rxd3 Nxe4 21. Rxh5 Nxc3+ 22. Rxc3 Na5 23. Qe1 Be4+ 24. Nc2 Bg6 25. Re5 Nc6 26. Rexc5 Bxc2+ 27. Rxc2 Bxc5 28. Rxc5 Qd6 29. Qc3 Kb7 30. Rb5+ Kc7 31. Rc5 Kb7 32. Rb5+ Ka6 33. Rh5 Ne7 34. Qc4+ Kb7 35. Qb5+ Qb6 36. Qxe8 Qxf2 37. Qxe7+ Kb6 38. Re5 Qf1+ 39. Re1 Qd3+ 40. Kb2 Qg6 41. Kc3 Qg7+ 42. Nd4 e5 43. Rxe5 Qg3+ 44. Kc4 Qg6 45. Rb5+ Ka6 46. Qa3# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+1"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. Nc3 Bb4 7. O-O Nxe5 8. dxe5 Nxc3 9. bxc3 Bxc3 10. Rb1 O-O 11. Bxh7+ Kxh7 12. Qd3+ Kg8 13. Qxc3 d4 14. Qg3 Re8 15. Bf4 Qd5 16. Rb2 Be6 17. Re1 Qc6 18. Qd3 Red8 19. Bg5 Rd7 20. Qb5 Qxb5 21. Rxb5 c6 22. Rb2 Rb8 23. Bf4 Kh7 24. Reb1 Kg6 25. Bg3 Kf5 26. Kh1 Kg6 27. Rd1 c5 28. Rb5 c4 29. Ra5 Ra8 30. Ra4 d3 31. c3 Kf5 32. Rd2 Kg6 33. Rd1 Kf5 34. Rd2 Rdd8 35. Rb4 Bd5 36. Rb1 Rac8 37. Kg1 Rd7 38. Rb4 Re8 39. Rb1 Rc8 40. Re1 Re8 41. Rb1 Rc8 42. Re1 Re8 43. Rb1 Kg5 44. Rbd1 Be6 45. Rb2 Bd5 46. Rdb1 Kf5 47. Rd1 Kg5 48. Rdb1 Kf5 49. Rd1 Kg5 50. Rdb1 Kf5 51. Rd1 Kg5 52. Rdb1 Red8 53. Rd2 Re8 54. Rbd1 Be6 55. Rb2 Bd5 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. Bb2 g5 10. Nxg5 Qf8 11. Ngf3 Rg8 12. g3 Rh8 13. Bd3 Ke7 14. h4 h5 15. Nb3 Ne8 16. Bf1 Ndf6 17. O-O-O Bd7 18. Bd3 Rd8 19. Rd2 Qh6 20. Bc3 Ne4 21. Bxe4 dxe4 22. Qxe4 Nf6 23. Qd3 Qh7 24. Qxh7 Rxh7 25. Re2 Ne4 26. Be1 Nf6 27. e4 Rg7 28. e5 Nd5 29. Kb2 Bc8 30. Bd2 Re8 31. Bg5+ Kd7 32. Ka3 Rg6 33. Nbd2 Nc3 34. Ree1 Reg8 35. Nc4 Rf8 36. Kb3 Nd5 37. Nd6 Bb8 38. Re2 Kc7 39. Rhe1 Kd7 40. Rh1 Bc7 41. Rd1 Rfg8 42. b5 cxb5 43. Nxb5 Bb8 44. Bd2 Rxg3 45. fxg3 Rxg3 46. Rf2 Rg6 47. Nd6 f5 48. exf6 Bxd6 49. cxd6 Kxd6 50. Ne5 Rxf6 51. Bb4+ Nxb4 52. Rxf6 Nd5 53. Rf8 Bd7 54. Nxd7 Kxd7 55. Rf7+ Ne7 56. d5 Kd6 57. Re1 e5 58. Kc4 b5+ 59. Kxb5 e4 60. Kc4 Nxd5 61. Rxe4 a6 62. Ra7 Nc7 63. Re1 Kd7 64. Kc5 a5 65. Rd1+ Kc8 66. Kc6 Kb8 67. Rxc7 a4 68. Rd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 h4 13. Na5 Qc7 14. O-O-O O-O-O 15. Nb3 Be7 16. Qa5 Rde8 17. Qxc7+ Kxc7 18. Na5 h3 19. g3 Nb6 20. Bc4 Nxc4 21. Nxc4 Rh5 22. Bb6+ Kd7 23. Na5 Kc8 24. Nc6 Kd7 25. Nxe7 Kxe7 26. g4 Rh7 27. g5 Nh5 28. Be3 Ng7 29. Bf2 Nf5 30. Kd2 Rc8 31. Kc1 Kd7 32. Kd2 Nh4 33. Bxh4 Rxh4 34. Kc1 Ra4 35. Kb1 Rc7 36. Rhe1 Rf4 37. Rd3 Rc8 38. Kc1 Rfc4 39. Re2 Ra4 40. Kb1 Rf4 41. Re4 Rf5 42. Rg4 Rh8 43. Rb3 Rb8 44. Kc1 Kc7 45. Rg3 Rh8 46. Rb4 Rh5 47. Rbg4 Kb6 48. Rb4+ Ka7 49. Rbg4 Kb6 50. Rb4+ Ka7 51. Rbg4 Kb6 52. Rb4+ Ka7 53. Rbg4 Kb6 54. Rb4+ Ka7 55. Rbg4 Kb6 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 Nbd7 7. f4 Qc7 8. Qf3 Qd8 9. Bd3 e6 10. O-O-O Be7 11. Kb1 Kf8 12. g4 Qe8 13. Bh4 e5 14. Nf5 exf4 15. Qxf4 Ne5 16. Nxe7 Qxe7 17. Nd5 Nxd3 18. Rxd3 Qxe4 19. Qxd6+ Kg8 20. Nxf6+ gxf6 21. Qd8+ Qe8 22. Qxe8+ Kg7 23. Qxh8+ Kxh8 24. Bxf6+ Kg8 25. Rd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. e3 Nbd7 6. Bd3 dxc4 7. Bxc4 b5 8. Bd3 a6 9. e4 c5 10. Be3 c4 11. Bb1 b4 12. Ne2 Bb7 13. Kd2 Bd6 14. Ng3 Rc8 15. Qe1 c3+ 16. Kc1 O-O 17. b3 Re8 18. Qf1 Ng4 19. Bg5 Ndf6 20. e5 Bxf3 21. gxf3 Nxe5 22. dxe5 Bxe5 23. Bc2 Qd6 24. Bxf6 Bxf6 25. Kb1 Qc6 26. Be4 c2+ 27. Kc1 Bg5+ 28. f4 Bxf4+ 29. Kb2 Qc3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e6 7. f3 b5 8. a3 h5 9. Bd3 Bb7 10. Qd2 Be7 11. g3 Nc6 12. O-O-O Nxd4 13. Bxd4 Qc7 14. Qg5 Kf8 15. e5 Ne8 16. Qf4 g5 17. exd6 Bxd6 18. Qe3 Rg8 19. Bh7 Rg7 20. Bxg7+ Kxg7 21. Be4 Kf6 22. Bxb7 Qxb7 23. Ne4+ Ke7 24. Nxd6 Nxd6 25. Qxg5+ f6 26. Qxh5 b4 27. axb4 Qxb4 28. Qh7+ Nf7 29. Rd7+ Kxd7 30. Qxf7+ Kd6 31. Rd1+ Ke5 32. Qc7+ Kf5 33. Qh7+ Kg5 34. Qg7+ Kf5 35. Qh7+ Ke5 36. f4+ Qxf4+ 37. gxf4+ Kxf4 38. Rd4+ Kf3 39. Qe4+ Kf2 40. Rd2+ Kf1 41. Qh1# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. Bg5 h6 6. Bh4 dxc4 7. e4 g5 8. Bg3 b5 9. e5 Nh5 10. Be2 Nd7 11. Qc1 g4 12. Nd2 Rg8 13. Qd1 Bb4 14. Nde4 Nxg3 15. hxg3 Bxc3+ 16. Nxc3 b4 17. Na4 Ba6 18. Rc1 Qa5 19. Ra1 O-O-O 20. d5 cxd5 21. Rxh6 Bb5 22. b3 Bxa4 23. Rh7 Nxe5 24. bxa4 b3+ 25. Qd2 b2 26. Rb1 c3 27. Qc2 Kd7 28. Bb5+ Ke7 29. Kf1 Nc4 30. Rxb2 Nxb2 31. Rh1 d4 32. Qe4 Nxa4 33. Qb7+ Kf6 34. Rh7 Rgf8 35. Rh6+ Kg5 36. Rh1 Qb4 37. Kg1 Qb1+ 38. Bf1 Qxb7 39. Bd3 Rh8 40. Rh7 Rxh7 41. Bxh7 Qd5 42. Bb1 d3 43. f4+ gxf3 44. gxf3 c2 45. Bxc2 dxc2 46. g4 c1=Q+ 47. Kf2 Qxa2+ 48. Kg3 Qe1+ 49. Kh3 Rh8# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. e3 Bf5 8. g4 Be6 9. Qb3 Qc7 10. Nf3 Bxg4 11. Ne5 Be6 12. Rg1 Nd7 13. Rxg7 Ngf6 14. Be2 Nb6 15. Nf3 Kf8 16. Rg3 Ke7 17. Qc2 Qc8 18. O-O-O Rg8 19. Bd3 Rxg3 20. hxg3 Bg4 21. Qe2 Bxf3 22. Qxf3 Qh8 23. Ne2 Nc4 24. Nf4 Nd6 25. Rh1 Kd7 26. Nh5 Nxh5 27. Rxh5 Qf8 28. Rxh7 Re8 29. Rh1 Kc7 30. Kd2 Kb6 31. Be2 Ne4+ 32. Kc2 Re6 33. Qg2 Rf6 34. Bf3 Qc8 35. Kd3 Qf5 36. Bxe4 dxe4+ 37. Qxe4 Qxf2 38. Qe7 Re6 39. Qc5+ Ka6 40. Qa3+ Kb6 41. Qc5+ Ka6 42. Qc4+ Kb6 43. Qc5+ Ka6 44. d5 cxd5 45. Qa3+ Kb6 46. Qb4+ Ka6 47. Qa4+ Kb6 48. Qb4+ Kc7 49. Rc1+ Kd8 50. Qf8+ Kd7 51. Qc8+ Ke7 52. Qxb7+ Kf6 53. Qxa7 Kg6 54. Rc2 Qxg3 55. Kd2 Qd6 56. Qd4 Re7 57. Qg4+ Kf6 58. Qf3+ Kg5 59. Qg2+ Kh6 60. Qf2 Ra7 61. Kc1 Qe6 62. Qh4+ Kg7 63. Rg2+ Kf8 64. Qd8+ Qe8 65. Rg8+ Kxg8 66. Qxe8+ Kh7 67. Kd2 d4 68. Qe4+ Kg8 69. Qd5 dxe3+ 70. Kxe3 Kh7 71. Kf4 Kg6 72. Qg2+ Kf6 73. Qg5+ Ke6 74. Qe5+ Kd7 75. Qd4+ Kc6 76. Qxa7 f6 77. Kf5 Kd5 78. Kxf6 Kd6 79. a3 Kc6 80. a4 Kd6 81. b3 Kd5 82. a5 Kc6 83. b4 Kd6 84. a6 Kd5 85. b5 Ke4 86. b6 Kd3 87. b7 Ke4 88. b8=Q Kd5 89. Qab6 Kc4 90. a7 Kd3 91. a8=Q Kc2 92. Qd4 Kc1 93. Qbb2# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "12"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5 Nf5 8. Qxd8+ Kxd8 9. Nc3 Bb4 10. Ne4 Be6 11. Rd1+ Ke7 12. Bg5+ Kf8 13. Bd2 Be7 14. Bf4 Bd5 15. Re1 Bb4 16. c3 Be7 17. Neg5 Bxg5 18. Nxg5 Nh4 19. e6 Nxg2 20. Nxf7 Nxe1 21. Rxe1 Rg8 22. Ng5 Ke7 23. Nxh7 Rh8 24. Ng5 Bxa2 25. Bxc7 Rh6 26. Bd6+ Kxd6 27. Nf7+ Ke7 28. Nxh6 gxh6 29. f4 Rg8+ 30. Kf1 Bc4+ 31. Kf2 Bd5 32. Kf1 Rg2 33. c4 Bf3 34. Re3 Rxb2 35. Rxf3 Kxe6 36. Kg1 Kf5 37. Ra3 a6 38. Rh3 Kxf4 39. Rxh6 Kg5 40. Rd6 Kf5 41. Rd1 Ke4 42. Kh1 Kf3 43. Rc1 Ke3 44. Rd1 Ke2 45. Rd7 Kf2 46. Rf7+ Ke3 47. Rd7 Kf2 48. Rf7+ Ke3 49. Rd7 Kf2 50. Rf7+ Ke3 51. Rd7 Kf2 52. Rf7+ Ke3 53. Rd7 Kf2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "13"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. d4 d5 2. c4 c6 3. e3 Nf6 4. Nf3 Bf5 5. Nc3 e6 6. Nh4 Bb4 7. Nxf5 Bxc3+ 8. bxc3 exf5 9. Rb1 Nbd7 10. Rxb7 Qa5 11. Qb3 O-O-O 12. cxd5 Nxd5 13. Bb2 N5b6 14. Rxb6 Nxb6 15. Qxf7 f4 16. exf4 Na4 17. Qe6+ Kc7 18. Qe7+ Rd7 19. Qe2 Rb8 20. Qe5+ Qxe5+ 21. fxe5 Rxb2 22. Bd3 Nxc3 23. O-O Ne2+ 24. Kh1 Nxd4 25. Bb1 g6 26. Kg1 Re7 27. Kh1 Rxe5 28. h3 Ne2 29. Kh2 Rc5 30. Bd3 Rxa2 31. Be4 Kb6 32. Rb1+ Rb5 33. Re1 Rbb2 34. Rb1 Nc3 35. Rxb2+ Rxb2 36. Bf3 Rxf2 37. Kg3 Rd2 38. Kf4 Rd8 39. Ke5 Nd5 40. Kd4 Kc7 41. Kc4 Nf4 42. h4 Rd2 43. Be4 Rxg2 44. Bxg2 Nxg2 45. Kc5 Nxh4 46. Kd4 Kd6 47. Kc4 Nf3 48. Kd3 Ke6 49. Ke3 Ne5 50. Ke4 Kd6 51. Kf4 Ke6 52. Kg5 Nd7 53. Kh6 Nf6 54. Kg7 c5 55. Kf8 c4 56. Kg7 c3 57. Kh8 c2 58. Kg7 c1=Q 59. Kh8 Ne8 60. Kxh7 Kf7 61. Kh8 Qh6# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "14"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. h3 Bb7 9. Nc3 Na5 10. Nd5 Re8 11. c3 Nxb3 12. Qxb3 Bxd5 13. exd5 e4 14. Ne5 Bd6 15. Ng4 Nxg4 16. hxg4 Qh4 17. Qd1 Qh2+ 18. Kf1 Qh1+ 19. Ke2 Qxg2 20. Rg1 Qf3+ 21. Ke1 Bh2 22. Rf1 Qf6 23. g5 Qxg5 24. Rh1 Bd6 25. Kf1 Qxd5 26. Rh3 Rad8 27. Qe1 Kh8 28. Re3 b4 29. cxb4 Bxb4 30. Kg1 Qg5+ 31. Kh2 Bd6+ 32. Kh3 Qh5+ 33. Kg2 Qh2+ 34. Kf1 Re7 35. Ke2 Qh5+ 36. Kf1 Rde8 37. Rb3 a5 38. Rc3 a4 39. Rc2 Qh1+ 40. Ke2 Qf3+ 41. Kf1 Qd3+ 42. Kg2 Qxc2 43. a3 Be5 44. Kg1 Rb8 45. Kf1 Bxb2 46. Bxb2 Rxb2 47. Rd1 e3 48. dxe3 Rxe3 49. Qxe3 Qxd1+ 50. Kg2 Qg4+ 51. Kh2 Qe2 52. Qxe2 Rxe2 53. Kg2 Ra2 54. Kf1 Rxa3 55. Ke1 Ra2 56. f3 a3 57. Kd1 Rg2 58. Ke1 a2 59. Kf1 Rb2 60. Kg1 a1=Q# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "15"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. a4 Bb7 9. axb5 axb5 10. Rxa8 Bxa8 11. Nc3 b4 12. Nd5 Re8 13. Re2 Bd6 14. Qe1 Nd4 15. Nxd4 exd4 16. e5 Bxd5 17. Bxd5 Nxd5 18. exd6 Rxe2 19. Qxe2 c6 20. Qf3 Qe8 21. Qd1 b3 22. cxb3 d3 23. g3 Qb8 24. Qf1 Qxb3 25. f4 Qb6+ 26. Qf2 Qb4 27. Kg2 Nf6 28. Kh3 Qc4 29. Qf1 Ne4 30. f5 Nxd6 31. Qe1 Qe4 32. Qxe4 Nxe4 33. Kg4 Nc5 34. f6 gxf6 35. Kf5 Kg7 36. Kg4 Nb3 37. Kf5 Nxc1 38. Kf4 Kg6 39. Ke4 Kg5 40. Ke3 Kg4 41. Kd4 Kh3 42. Ke4 Kxh2 43. Kf5 Nb3 44. Kxf6 Nxd2 45. Kg7 Nc4 46. b3 Ne5 47. Kf6 d2 48. Kxe5 d1=Q 49. Kf6 Qxb3 50. Kg7 Qxg3+ 51. Kf8 Qe5 52. Kg8 Kg2 53. Kf8 Kf3 54. Kg8 Kf4 55. Kf8 Kg5 56. Kg8 Qe8+ 57. Kg7 Qc8 58. Kxf7 Qf8+ 59. Kxf8 c5 60. Ke8 d5 61. Kf8 h5 62. Ke8 d4 63. Kf8 d3 64. Ke7 d2 65. Kd6 c4 66. Ke5 d1=N 67. Ke6 h4 68. Ke5 c3 69. Kd5 c2 70. Kc4 h3 71. Kc5 h2 72. Kd5 h1=B+ 73. Kd4 c1=N 74. Kc4 Nb3 75. Kxb3 Be4 76. Kc4 Kf6 77. Kd4 Kf5 78. Kc4 Ke5 79. Kb3 Kd4 80. Ka2 Kc3 81. Ka1 Ne3 82. Ka2 Nc2 83. Kb1 Bd5 84. Kc1 Ba2 85. Kd1 Nd4 86. Ke1 Bd5 87. Kf2 Nf5 88. Ke2 Kc2 89. Ke1 Bf3 90. Kf2 Bh5 91. Ke1 Kc3 92. Kf2 Kd3 93. Ke1 Be2 94. Kf2 Kd2 95. Kg1 Ke1 96. Kg2 Bg4 97. Kg1 Ne3 98. Kh2 Kf2 99. Kh1 Be6 100. Kh2 Nf1+ 101. Kh1 Bd5# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "16"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+1"]
+
+1. d4 d5 2. c4 e6 3. Nf3 Nf6 4. e3 b6 5. Bd3 Bb7 6. O-O dxc4 7. Bxc4 a6 8. Bd3 Nbd7 9. Nc3 Bd6 10. Re1 b5 11. Ne2 Bxf3 12. gxf3 Ke7 13. e4 Bb4 14. Bd2 Bxd2 15. Qxd2 e5 16. Qb4+ Ke8 17. d5 h5 18. h4 Qe7 19. Qa5 Nb6 20. Qd2 Kd7 21. Qg5 Na4 22. Qc1 Nb6 23. Qg5 g6 24. f4 exf4 25. Nxf4 Rhe8 26. Rad1 Ng4 27. Qxe7+ Rxe7 28. d6 cxd6 29. Kg2 Rae8 30. Kg3 Nc4 31. Re2 Nf6 32. Kg2 Ne5 33. Nd5 Nxd5 34. Bxb5+ axb5 35. exd5 Ra8 36. b3 Rae8 37. Kg3 Ng4 38. Rc2 Nf6 39. Rdc1 Nxd5 40. Rd1 Nf6 41. Kf3 Re1 42. Rd3 R1e4 43. Rcd2 R4e6 44. Rd1 Ne4 45. Kg2 Rf6 46. f3 Ra8 47. fxe4 Rxa2+ 48. Kg3 Re2 49. Rf3 Rxf3+ 50. Kxf3 Rb2 51. e5 Rxb3+ 52. Ke4 Rb4+ 53. Kf3 d5 54. Rxd5+ Ke7 55. Ke3 Rb2 56. Kd3 Ke6 57. Rc5 b4 58. Rb5 Rb1 59. Kc2 Rg1 60. Rxb4 Rg4 61. Rb1 Kxe5 62. Rh1 Rd4 63. Kc3 Rd7 64. Re1+ Kf6 65. Rf1+ Ke6 66. Re1+ Kf6 67. Rf1+ Ke5 68. Kb3 Rc7 69. Rd1 Kf5 70. Kb4 Ke5 71. Kb5 Ke6 72. Kb4 Ke5 73. Kb5 Rc8 74. Kb4 Rc7 75. Kb5 Rc8 76. Kb4 Rc7 77. Kb5 Rc8 78. Kb4 Rc7 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "17"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Nf3 b6 5. e3 O-O 6. Bd2 d5 7. cxd5 exd5 8. Rc1 Bg4 9. Nb5 Bxd2+ 10. Kxd2 Na6 11. Bd3 c6 12. Rxc6 Nb4 13. Rc7 Nxd3 14. Kxd3 a6 15. Ra7 axb5 16. Rxa8 Qxa8 17. Qb3 Bxf3 18. gxf3 Qc6 19. Kd2 Ra8 20. Ra1 Qd6 21. Qxb5 Qxh2 22. Qe2 Qh5 23. Kc3 Qf5 24. Kb3 Rc8 25. Re1 Ra8 26. Qd1 Rc8 27. Rh1 Qg6 28. Qe2 Rc7 29. Re1 Qf5 30. Rd1 Kf8 31. Rh1 Ke7 32. Ra1 Kd7 33. Rg1 g6 34. Re1 Ke7 35. Rd1 Rc8 36. Rg1 Kd7 37. Re1 Ke7 38. Rg1 Qd7 39. Qd3 Qc7 40. Rd1 Qc4+ 41. Qxc4 dxc4+ 42. Kc2 c3 43. bxc3 Nd5 44. Rh1 Nxc3 45. Rxh7 Kf6 46. d5 Nxa2+ 47. Kd3 Rc5 48. e4 Rc3+ 49. Kd4 Rxf3 50. e5+ Ke7 51. Rh2 Nb4 52. Ke4 Rf5 53. f3 Rh5 54. d6+ Kd7 55. Rd2 Rh1 56. f4 Rh4 57. Kf3 Na6 58. Ra2 Nc5 59. Ra7+ Ke8 60. Ra8+ Kd7 61. Ra7+ Ke8 62. Kg3 Rh5 63. Ra8+ Kd7 64. Ra7+ Ke8 65. Ra8+ Kd7 66. Ra7+ Ke8 67. Rc7 Rh1 68. Rc8+ Kd7 69. Rc7+ Ke8 70. Rc8+ Kd7 71. Rc7+ Ke8 72. Rc8+ Kd7 73. Rc7+ Ke8 74. Rc8+ Kd7 75. Rc7+ Ke8 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "18"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. c4 e5 2. Nc3 Nf6 3. Nf3 Nc6 4. g3 d5 5. cxd5 Nxd5 6. Bg2 Nb6 7. d3 Be7 8. O-O Be6 9. Be3 Kd7 10. Bxb6 axb6 11. d4 exd4 12. Nxd4 Nxd4 13. Bxb7 Bc5 14. Bxa8 Qxa8 15. e3 Bh3 16. f3 Bxf1 17. exd4 Bb4 18. Qb3 Bxc3 19. Qxf7+ Kd6 20. bxc3 Be2 21. Qf4+ Kd7 22. Qg4+ Kd6 23. Qf4+ Kd7 24. Qf5+ Kd8 25. Qg5+ Kc8 26. Qxg7 Re8 27. Qf7 Qc6 28. d5 Qc5+ 29. Kg2 Re3 30. Qxh7 Bxf3+ 31. Kf1 Qxc3 32. Qf5+ Kb7 33. Qb1 Bxd5 34. Qd1 Rf3+ 35. Kg1 Qe3+ 36. Kg2 Rxg3+ 37. Kf1 Bg2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "19"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "60+1"]
+
+1. c4 c5 2. Nf3 Nc6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 e6 6. a3 Be7 7. e4 O-O 8. Nf3 b6 9. Bf4 Bb7 10. Bd3 e5 11. Nxe5 Nxe5 12. Bxe5 Bc5 13. Qf3 Re8 14. Bxf6 Qxf6 15. Qxf6 gxf6 16. Kf1 Bd4 17. Rc1 Rad8 18. Rc2 Bxc3 19. Rxc3 Bxe4 20. Bxe4 Rxe4 21. c5 Rde8 22. g3 bxc5 23. Rxc5 Re2 24. Rb5 Re1+ 25. Kg2 Rxh1 26. Kxh1 a6 27. Rb6 Kg7 28. Kg2 Re2 29. Kf3 Rc2 30. Rb4 Kg6 31. Rb6 Kg7 32. Ke3 Kg6 33. Rb7 Kg7 34. Rb6 Kg6 35. Rb4 Rc7 36. Rg4+ Kh6 37. Rb4 Kg6 38. Rg4+ Kh6 39. Kd3 Rb7 40. Kc2 Rb8 41. Rd4 Rc8+ 42. Kb3 Rb8+ 43. Ka2 Rb7 44. Rd6 Ra7 45. Rxf6+ Kg7 46. Rb6 a5 47. Kb3 a4+ 48. Kc4 Ra5 49. Rd6 Ra7 50. Rd2 Kg6 51. Kb5 Rb7+ 52. Kxa4 Rb6 53. Ka5 Rb8 54. Ka6 Kg7 55. a4 Kf6 56. a5 Rb4 57. Ka7 Rb5 58. a6 Rh5 59. Kb6 Kg7 60. a7 Rh6+ 61. Kb7 Rxh2 62. a8=Q Rh5 63. Kc7 d5 64. Rxd5 Rxd5 65. Qxd5 Kf6 66. Qh5 Kg7 67. Qg5+ Kf8 68. f3 f6 69. Qxf6+ Kg8 70. Qh6 Kf7 71. Qxh7+ Kf6 72. Qe7+ Kg6 73. Qf6+ Kh7 74. Qg7+ Kxg7 75. b3 Kh7 76. g4 Kh6 77. g5+ Kh5 78. g6 Kxg6 79. b4 Kf7 80. f4 Kf8 81. f5 Kg7 82. f6+ Kg6 83. b5 Kxf6 84. b6 Ke7 85. b7 Ke6 86. b8=R Ke5 87. Rb1 Kd4 88. Kd6 Ke4 89. Rb4+ Ke3 90. Kd5 Kf3 91. Re4 Kg2 92. Re3 Kf1 93. Kd4 Kg2 94. Kd3 Kf1 95. Re2 Kg1 96. Ra2 Kf1 97. Ke3 Kg1 98. Kf3 Kh1 99. Kg3 Kg1 100. Ra1# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "20"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "60+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. Nbd2 O-O 6. O-O d6 7. c3 a5 8. Re1 Be6 9. Bxe6 fxe6 10. Nb3 Bb6 11. Bg5 a4 12. Nbd2 a3 13. bxa3 Rxa3 14. Qc1 Ra8 15. Re2 Rf7 16. Bxf6 Qxf6 17. Nc4 Bc5 18. Qe1 Qg6 19. Kh1 Qh5 20. Ncd2 Bb6 21. Kg1 Qg6 22. Kh1 Qh5 23. Kg1 Qg6 24. Kh1 Qh5 25. Qf1 Qh6 26. Nc4 Bc5 27. Rb1 Rb8 28. Reb2 d5 29. Ncxe5 Nxe5 30. Nxe5 Bd6 31. d4 c6 32. Ng4 Qf4 33. e5 Ba3 34. Rb3 Qxg4 35. Rxa3 Qh4 36. Rb2 Qh6 37. Qb1 g6 38. Rab3 Qg7 39. Qe1 Qf8 40. Re2 Kh8 41. Rbb2 h6 42. Rbd2 Re8 43. Rd3 Rf5 44. Rg3 Qf7 45. Qc1 Kh7 46. Qe3 Rd8 47. Rf3 Rxf3 48. Qxf3 Qxf3 49. gxf3 Kg7 50. Kg2 Kf7 51. Rc2 Rc8 52. Rb2 Rc7 53. Kg3 Rd7 54. Kg2 Rc7 55. Kg3 Rd7 56. Kg2 Rc7 57. Kg3 Rd7 58. Kg2 Rc7 59. Kg3 Rd7 60. Kg2 Kf8 61. Rc2 Ke7 62. Kg3 Kf7 63. Kg2 Kf8 64. Kg3 Ke7 65. Rb2 Rc7 66. Rc2 Kf7 67. Rb2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Ne4 Nxe4 11. dxe5 Nxe5 12. Nxe5 Bxe5 13. Qxe4 Qd6 14. Bd3 Bxh2+ 15. Kh1 g6 16. Qf3 Qxd3 17. Rd1 Qf5 18. Kxh2 Qxf3 19. gxf3 Be6 20. Re1 Rfe8 21. e4 Red8 22. Bg5 Rd4 23. Kg3 Ra4 24. a3 Rc4 25. Be3 Rc2 26. Reb1 Bc4 27. Bd4 Rd2 28. Bc3 Rd7 29. Rc1 Be6 30. Bb4 Rc7 31. Bd6 Rd7 32. Bf4 Kg7 33. Be5+ Kg8 34. Bf4 Rdd8 35. Re1 Bc4 36. Rac1 Bb3 37. Re2 Rd1 38. Rc3 Ba4 39. Rce3 Rg1+ 40. Kh2 Rd1 41. Kg3 Rg1+ 42. Kh2 Rd1 43. Kg2 Bb5 44. Rc2 Rad8 45. e5 R1d2 46. Rxd2 Rxd2 47. Rb3 Rd3 48. Rb4 Kg7 49. Kg3 Kf8 50. Bh6+ Ke7 51. Be3 b6 52. Rh4 Rb3 53. Bd4 Rd3 54. Bc3 c5 55. Rxh7 Bc6 56. Rh2 Rxf3+ 57. Kg4 Ke6 58. Kg5 Bd5 59. Kg4 Bb7 60. Kh4 Kf5 61. e6 Kxe6 62. Kg4 c4 63. Bb4 Rd3 64. Bc3 Rf3 65. a4 Rxc3 66. bxc3 Bc6 67. Rh8 Kf6 68. Rb8 Ke5 69. Rf8 Ke6 70. Rd8 Ke5 71. Kg3 Ke6 72. Kf4 Bd5 73. Ke3 Bc6 74. a5 bxa5 75. Kd4 Bb5 76. Rd5 a6 77. Re5+ Kf6 78. Re3 a4 79. Re1 Kf5 80. Re7 Kf6 81. Re1 Kf5 82. Re7 Kf6 83. Re1 Kf5 84. Re7 Kf6 85. Re1 Kf5 86. Re7 Kf6 87. Re1 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb5 a6 10. Qd3 Bg4 11. Qe3+ Kf8 12. Ne5 h5 13. O-O-O Rd8 14. g3 Ne7 15. h3 Be6 16. Nf3 Nf5 17. Qf4 h4 18. g4 Nd6 19. Qe3 Bxc3 20. Qxc3 Ke7 21. Bg2 Rd7 22. Qe1 g5 23. Rd2 Kd8 24. Rc2 Re7 25. Rd2 Kc8 26. Rc2 Bd7 27. e3 Bc6 28. Ne5 Ba4 29. b3 Bb5 30. Bxd5 Kb8 31. Bg2 Rhe8 32. Rd2 a5 33. Kb1 a4 34. b4 Kc8 35. Qc1 Kd8 36. Rhd1 Kc8 37. Rc2 Kb8 38. Kb2 Nc8 39. Nf3 Nb6 40. e4 Qd6 41. Ka3 Rxe4 42. Nxg5 Rxd4 43. Rxd4 Qxd4 44. Rxc7 Nc4+ 45. Rxc4 Bxc4 46. Ne4 Rxe4 47. Bxe4 Qxe4 48. Qb2 Qf3+ 49. Kxa4 b5+ 50. Ka5 Qa8+ 51. Kb6 Qa7+ 52. Kc6 Qc7# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. Nf3 d5 2. d4 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Nc6 8. Qe2 Bd6 9. dxc5 bxc5 10. O-O-O Kd7 11. Qf1 Qe8 12. h4 h5 13. Kb1 e5 14. g3 e4 15. Qh3+ Ng4 16. Bxg7 Rh7 17. Bxe4 dxe4 18. Nc4 exf3 19. Nxd6 Qg8 20. Rd2 Ba6 21. Nxf7+ Kc7 22. Ng5 Rxg7 23. Re1 Be2 24. Rdxe2 fxe2 25. Rxe2 c4 26. f3 cxb3 27. cxb3 Qd5 28. Kc1 Rxg5 29. hxg5 Qxf3 30. Qg2 Qf5 31. Rc2 Ne5 32. Rc3 Rd8 33. Rc2 Qxg5 34. Qe4 Qxg3 35. Kb2 Nd3+ 36. Ka3 Qd6+ 37. Ka4 Nc5+ 38. Rxc5 Qxc5 39. b4 Rd4 40. Qxd4 Qc2+ 41. Ka3 Nxd4 42. exd4 Kb6 43. d5 Kb5 44. d6 Qc3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. Nc3 Bb4 7. O-O Nxe5 8. dxe5 Nxc3 9. bxc3 Bxc3 10. Rb1 O-O 11. Bxh7+ Kxh7 12. Qd3+ Kg8 13. Qxc3 d4 14. Qg3 Kh8 15. Re1 Qd5 16. e6 Bxe6 17. Qxc7 Rfc8 18. Qxb7 Qxa2 19. Rb2 Qa5 20. Qb4 Qxb4 21. Rxb4 Rxc2 22. Rxd4 Kh7 23. Red1 Rcc8 24. Be3 Kg6 25. Ra4 a6 26. Rd6 Rd8 27. Rad4 Rxd6 28. Rxd6 Rb8 29. Rd1 a5 30. Ra1 a4 31. Bf4 Rb6 32. Bc1 Rb8 33. Bf4 Rb6 34. Bc1 Rb8 35. Ba3 Kf5 36. Re1 Bc4 37. Bc5 Rc8 38. Bb4 Bd3 39. Ra1 Be4 40. Ba3 Rc6 41. Kh1 Rg6 42. Rg1 Bd5 43. Bb4 Ke4 44. Rd1 Ke5 45. Rg1 Ke4 46. Rd1 Ke5 47. Rg1 Ke4 48. Rd1 Ke5 49. Rg1 Ke4 50. Rd1 Ke5 51. Rg1 Ke4 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. Bb2 Qf8 10. Bd3 Bb8 11. O-O-O g5 12. Nxg5 Qg8 13. h4 h6 14. Nh3 e5 15. Bc3 e4 16. Be2 Nf8 17. b5 Ke7 18. bxc6 bxc6 19. Qa4 Bd7 20. h5 N8h7 21. Qb3 Qxg2 22. Rdg1 Qh2 23. Rxh2 Bxh2 24. Rh1 Bc7 25. Qa4 Rhg8 26. Qa6 Nf8 27. Nb3 Ne6 28. Na5 Nd8 29. Bd1 Bc8 30. Qf1 Bxa5 31. Bxa5 Ne6 32. Be2 Bb7 33. Rg1 Rxg1 34. Qxg1 Re8 35. Qg3 Kf8 36. Bc7 Ng8 37. Bd6+ Ne7 38. Qe5 Kg8 39. Nf4 Bc8 40. Bxe7 Rxe7 41. Qb8 Nxf4 42. Qxc8+ Kg7 43. Qg4+ Ng6 44. Kc2 Re6 45. Kd2 Kh7 46. hxg6+ Rxg6 47. Qf4 Kg7 48. Bh5 Rf6 49. Qg4+ Kf8 50. Qc8+ Kg7 51. Ke2 a5 52. Qg4+ Kf8 53. Qd7 Kg7 54. Bxf7 Rxf7 55. Qxc6 Rf5 56. Qc7+ Kf6 57. Qb6+ Kg7 58. c6 a4 59. Qb7+ Kg6 60. c7 Rf8 61. Qxd5 a3 62. Qd6+ Kg7 63. Qxa3 Re8 64. Qd6 Rg8 65. Qg3+ Kh8 66. Qxg8+ Kxg8 67. c8=Q+ Kf7 68. Qf5+ Ke7 69. d5 Kd6 70. Qe6+ Kc5 71. Qc6+ Kb4 72. Qxh6 Ka3 73. Qc6 Kxa2 74. Qc2+ Ka3 75. Qxe4 Kb3 76. Qb4+ Kc2 77. Qc4+ Kb2 78. Kd3 Ka3 79. Ke4 Kb2 80. Kd3 Ka3 81. Ke4 Kb2 82. Kd3 Ka3 83. Ke4 Kb2 84. Kd3 Ka3 85. Ke4 Kb2 86. Kd3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 a5 13. Qd3 Bg7 14. O-O-O a4 15. Nd2 a3 16. bxa3 h4 17. Ne4 Ke7 18. Bg5 Qc8 19. Qe3 Qf8 20. Bb5 Qd8 21. Qe1 Rxa3 22. Qb4 Rxa2 23. Qxd6+ Ke8 24. Bxf6 Ra1+ 25. Kb2 Ra2+ 26. Kb3 Ra3+ 27. Kc4 Qc8+ 28. Nc5 Bxf6 29. Bxd7+ Qxd7 30. Nxd7 Bg5 31. Nxe5 Ra4+ 32. Kb3 Rf4 33. Ra1 Bd8 34. Ra8 h3 35. Rxd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 Nbd7 7. f4 Qc7 8. Qf3 e6 9. O-O-O Be7 10. Be2 O-O 11. f5 h6 12. Bh4 Nb6 13. Qh3 exf5 14. exf5 Re8 15. Bf2 Bd7 16. Rde1 d5 17. g4 Bb4 18. Nf3 Na4 19. Bg3 Qc8 20. Be5 Nxc3 21. bxc3 Bxc3 22. Bxc3 Qxc3 23. Kb1 Bb5 24. Bd1 Qb4+ 25. Kc1 Bc4 26. Ne5 Bxa2 27. Bf3 Ne4 28. Bxe4 Rxe5 29. f6 Rxe4 30. Rxe4 dxe4 31. fxg7 Rd8 32. Qb3 Bxb3 33. cxb3 Qxb3 34. g5 e3 35. gxh6 Rc8# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. b3 Bb4+ 6. Bd2 Be7 7. Bg2 O-O 8. O-O d5 9. g4 Nbd7 10. g5 Ne4 11. cxd5 exd5 12. Re1 Nxg5 13. Nxg5 Bxg5 14. Bxd5 Bxd2 15. Qxd2 Rb8 16. Nc3 Nf6 17. Bf3 Re8 18. d5 Re7 19. Rad1 Qe8 20. d6 cxd6 21. Qxd6 Rc8 22. Qd2 Rc5 23. Kg2 Rec7 24. Nd5 Nxd5 25. b4 Nxb4 26. Qxb4 Rc2 27. Qa4 Qc8 28. Qxa6 R2c4 29. Kg1 Kh8 30. Qb5 Rf4 31. Qd5 Qf8 32. Qd8 Rc8 33. Qd7 a5 34. Rd6 Rb4 35. Bd5 f6 36. Qh3 Rd4 37. Bg8 Qxg8 38. Rxd4 Rc2 39. Qd3 Rxa2 40. Rd8 Rxe2 41. Rxe2 g5 42. Re7 f5 43. Qc3# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. Nf3 Nf6 2. d4 d5 3. c4 c6 4. g3 Bf5 5. Bg2 e6 6. O-O Be7 7. Nc3 h6 8. b3 Nbd7 9. Re1 Bb4 10. Bb2 Ke7 11. e3 Qa5 12. Qd2 Ne4 13. Qc1 Bxc3 14. Bxc3 Nxc3 15. Qb2 Qb4 16. a3 Na4 17. Qa2 Qa5 18. bxa4 Be4 19. cxd5 Bxd5 20. Qb2 Bxf3 21. Bxf3 Rab8 22. d5 cxd5 23. Qxg7 Nf6 24. Rac1 Rh7 25. Qxh7 Nxh7 26. Re2 Ng5 27. Bg2 Kf6 28. Ree1 Qxa4 29. Ra1 Kg6 30. Red1 Nh7 31. Bf1 Nf6 32. Rd2 e5 33. Rb2 Qe8 34. Rab1 Qc6 35. Bb5 Qd6 36. a4 h5 37. a5 Ra8 38. Be2 Qc7 39. Rxb7 Qxa5 40. R1b2 Qc5 41. Kg2 d4 42. exd4 Qxd4 43. Kg1 e4 44. R2b4 Qd2 45. Bc4 Rf8 46. Rb3 Ng4 47. Rb2 Qc1+ 48. Bf1 e3 49. fxe3 Rd8 50. Rb1 Qxe3+ 51. Kh1 Qf3+ 52. Bg2 Rd1+ 53. Rxd1 Qxd1+ 54. Bf1 Qxf1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. Bg5 h6 6. Bh4 dxc4 7. e4 g5 8. Bg3 b5 9. e5 Nh5 10. Be2 Nd7 11. Ne4 Nxg3 12. hxg3 Bb4+ 13. Kf1 g4 14. Ne1 Qa5 15. Qc1 Bb7 16. Nc2 Be7 17. Rxh6 O-O-O 18. Bxg4 b4 19. Rxh8 Rxh8 20. Kg1 c3 21. b3 Kc7 22. Qf4 Rh7 23. Nf6 Nxf6 24. exf6+ Bd6 25. Qe3 Kd7 26. Be2 Rh8 27. Qf3 Qd8 28. Ne3 Kc8 29. Ba6 Qe8 30. Bxb7+ Kxb7 31. Re1 Bc7 32. Rd1 a5 33. Qe4 Bd8 34. Qf4 Rh7 35. g4 Qh8 36. Kf1 Bxf6 37. Ke2 Qg7 38. Nc4 c2 39. Re1 a4 40. Nd6+ Ka8 41. Ne8 Bg5 42. Qe4 Qg6 43. Qxc6+ Ka7 44. Nd6 c1=N+ 45. Rxc1 Qe4+ 46. Qxe4 f5 47. gxf5 axb3 48. fxe6 Re7 49. Nc8+ Kb8 50. Qe5+ Ka8 51. Qa5+ Kb8 52. Qe5+ Ka8 53. Qa5+ Kb8 54. Qe5+ Ka8 55. Qa5+ Kb8 56. Nxe7 Bxc1 57. Qb6+ Ka8 58. Nc6 bxa2 59. Qa7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. e3 Bf5 8. g4 Be6 9. Qb3 Qc7 10. g5 Ne7 11. Nf3 Bg4 12. Qd1 Nd7 13. h3 Bxf3 14. Qxf3 Ng6 15. h4 h5 16. Bd3 Qd6 17. O-O-O Qe6 18. Bf5 Qd6 19. Bd3 Ke7 20. Ne2 Rae8 21. Ng3 Qe6 22. Rde1 Rhg8 23. Nxh5 Qd6 24. Ng3 Qe6 25. h5 Nde5 26. dxe5 Nxe5 27. Qd1 Qg4 28. h6 Qxd1+ 29. Rxd1 Nxd3+ 30. Rxd3 Kf8 31. h7 Rh8 32. Ra3 Ra8 33. Ra4 g6 34. Rb4 Rb8 35. Rbh4 Kg7 36. Kc2 Rhd8 37. Kb3 c5 38. Kc3 c4 39. R4h2 Ra8 40. Ne2 Kh8 41. Nd4 Rac8 42. Nb5 Ra8 43. Kd4 Kg7 44. h8=Q+ Rxh8 45. Rxh8 Rxh8 46. Rxh8 Kxh8 47. Nxa7 Kg7 48. Nb5 Kf8 49. Nd6 b6 50. Kxd5 c3 51. bxc3 Kg8 52. Nc8 b5 53. Na7 Kh8 54. Nxb5 Kg7 55. Ke5 Kf8 56. Kf6 Ke8 57. Nd6+ Kd7 58. Nxf7 Kc6 59. Kxg6 Kc5 60. Kf5 Kc4 61. g6 Kxc3 62. g7 Kb2 63. g8=Q Kc3 64. Qg4 Kd2 65. e4 Kc3 66. e5 Kd2 67. Qf3 Kc2 68. Qe2+ Kb1 69. e6 Kc1 70. Ne5 Kb1 71. Nf7 Kc1 72. Ne5 Kb1 73. Nf7 Kc1 74. Ne5 Kb1 75. Nf7 Kc1 76. Ne5 Kb1 77. Nf7 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "12"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nf3 e6 3. Nc3 a6 4. d4 cxd4 5. Nxd4 d6 6. Be3 Nf6 7. Be2 Be7 8. f4 Qb6 9. Qc1 Qa5 10. e5 dxe5 11. fxe5 Qxe5 12. Nf3 Qh5 13. Ng5 Qg6 14. Bd3 Qh5 15. Be2 Qg6 16. h4 Nc6 17. h5 Qf5 18. Nf3 Bb4 19. Bd3 Bxc3+ 20. bxc3 Qa5 21. Kd2 Bd7 22. h6 gxh6 23. Rxh6 Ng4 24. Rxh7 Rxh7 25. Bxh7 Nxe3 26. Kxe3 Qxc3+ 27. Kf2 Ne5 28. Be4 O-O-O 29. Rb1 Bb5 30. Qf4 Nxf3 31. Qxf3 Qd4+ 32. Kg3 Qg7+ 33. Qg4 Qc3+ 34. Qf3 Rg8+ 35. Kh2 Qxf3 36. Bxf3 Kc7 37. Ra1 Bc6 38. Bxc6 Kxc6 39. Rf1 Rg7 40. Kg1 Rh7 41. Rf2 Kb6 42. Rf1 Kc6 43. Rf2 a5 44. Rf3 a4 45. Kf2 Kb6 46. Rc3 Rh1 47. Ke2 Rh8 48. Rg3 Rc8 49. Kd2 Kb5 50. Rf3 Rf8 51. Kc1 Kc6 52. Kb2 Rg8 53. Rxf7 Rxg2 54. Rf3 Rh2 55. Rc3+ Kb6 56. Ra3 Kb5 57. Re3 Rh6 58. Ka3 Kc4 59. Re4+ Kc3 60. Rb4 Rh7 61. Rh4 Re7 62. Rh2 Re8 63. Rh7 Kxc2 64. Rxb7 Kc3 65. Rc7+ Kd3 66. Kxa4 Ra8+ 67. Kb3 Rb8+ 68. Ka3 Kd4 69. Rc1 Kd5 70. Re1 Kd4 71. Rd1+ Kc4 72. Rc1+ Kd3 73. Rc7 Kd2 74. Rf7 Kc2 75. Rf2+ Kc3 76. Rf3+ Kd2 77. Rf2+ Kc3 78. Rf3+ Kd2 79. Rf2+ Kc3 80. Rf3+ Kd2 81. Rf2+ Kc3 82. Rf3+ Kd2 83. Rf2+ Kc3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "13"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. Qb3 Qh6 8. Nf3 Nf6 9. g3 g5 10. g4 b6 11. h4 Bxg4 12. Bg2 Bxf3 13. hxg5 Qxg5 14. Bxf3 Qf5 15. Qa4 b5 16. Qa3 b4 17. Qxb4 Nbd7 18. Qd6 Rb8 19. O-O-O Rc8 20. Rhg1 Kd8 21. Rd2 Rc7 22. Qh2 Kc8 23. Nd1 Nb6 24. Ne3 Qe6 25. Ng4 Ne4 26. Rd3 Nd6 27. Ne3 Nd7 28. Bg4 Qe7 29. Kb1 Kb8 30. Bf3 Nf6 31. Rg3 Nde4 32. Rg1 Nd6 33. Rd2 Qe6 34. Qe5 Nde4 35. Rc2 Nxf2 36. Rf1 Qxe5 37. dxe5 N6e4 38. Rfc1 Re7 39. Nf5 Rxe5 40. Nd4 Kb7 41. Nxc6 Rf5 42. Ne7 Rg5 43. Nc8 Rxc8 44. Rxc8 Nd2+ 45. Ka1 f6 46. R8c7+ Kb6 47. Rxh7 Nxf3 48. exf3 Nd3 49. Rb1 Rf5 50. Rf1 Ne5 51. Rh3 d4 52. Kb1 d3 53. Rd1 Kc5 54. Kc1 Rf4 55. Kd2 Kd4 56. Ke1 Nxf3+ 57. Rxf3 Rxf3 58. Ra1 Rh3 59. Rd1 Ke3 60. Rxd3+ Kxd3 61. b3 Rh2 62. Kf1 Rxa2 63. b4 Rb2 64. Kg1 Rxb4 65. Kg2 a6 66. Kh3 a5 67. Kg3 f5 68. Kf3 f4 69. Kg2 f3+ 70. Kh3 a4 71. Kg3 f2 72. Kg2 f1=B+ 73. Kh1 a3 74. Kh2 a2 75. Kh1 a1=Q 76. Kh2 Qg7 77. Kh1 Qg2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "14"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 h4 13. Kf2 a5 14. Qe1 Be7 15. Nd2 Qc7 16. Bd3 O-O-O 17. Ne4 Nxd5 18. Rd1 Nxe3 19. Qxe3 d5 20. Bb5 dxe4 21. Bxd7+ Rxd7 22. Rxd7 Kxd7 23. Rd1+ Ke8 24. Qb3 Bc5+ 25. Kf1 e3 26. Qc3 Qe7 27. Rd5 h3 28. Rxe5 hxg2+ 29. Kxg2 Rh5 30. Rxe7+ Kxe7 31. Qb3 b6 32. Qd3 Kf6 33. f4 a4 34. Qd8+ Kg7 35. Qd3 Rf5 36. Kf3 Kf6 37. Kg3 Kg7 38. Kf3 Kf6 39. Kg3 g5 40. Qc3+ Kg6 41. Qd3 Kf6 42. Qc3+ Kg6 43. Qd3 Kf6 44. Qc3+ Kg6 45. Qd3 Kf6 46. Qc3+ Kg6 47. Qd3 Kf6 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "15"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. d3 d6 9. a3 Bg4 10. Bg5 Bxf3 11. gxf3 Nd4 12. Nd2 Qe8 13. Bxf6 Bxf6 14. Rc1 Bg5 15. Kg2 Rb8 16. Bd5 a5 17. c3 Ne6 18. Kh1 Nf4 19. Qc2 Bh4 20. Kg1 a4 21. Kf1 Nh3 22. Re2 Nf4 23. Ree1 Nh3 24. Re2 Nf4 25. Ree1 Nh3 26. Re2 Nf4 27. Ree1 Qc8 28. Rcd1 Qh3+ 29. Kg1 Qg2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "16"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. Nf3 Nf6 2. d4 e6 3. c4 b6 4. g3 Ba6 5. b3 Bb4+ 6. Bd2 Be7 7. Bg2 O-O 8. O-O d5 9. g4 dxc4 10. g5 Ne4 11. bxc4 Bxc4 12. Bf4 Nc6 13. h4 Bd6 14. Be3 e5 15. Ne1 exd4 16. Bxe4 dxe3 17. Qc2 exf2+ 18. Rxf2 Bg3 19. e3 Bxf2+ 20. Qxf2 Bd5 21. Nc3 Bxe4 22. Nxe4 Re8 23. Nd2 Ne5 24. Qe2 Rc8 25. Rd1 Qe7 26. Rb1 Nf3+ 27. Ndxf3 Qxe3+ 28. Qxe3 Rxe3 29. Kf2 Rce8 30. Ra1 Re2+ 31. Kg1 g6 32. Ng2 Rb2 33. Nge1 Ree2 34. a3 Ra2 35. Rc1 Kg7 36. Rxc7 Rxa3 37. Rc1 Rae3 38. Rd1 Re7 39. Nd3 Rd7 40. Kf1 Re3 41. Nfe1 Rh3 42. Rd2 Rxh4 43. Kf2 Rhd4 44. Kg3 Kg8 45. Kf3 Kf8 46. Ke3 R4d6 47. Rc2 Re7+ 48. Kf3 Kg7 49. Rc1 Red7 50. Ne5 Re7 51. N1d3 Rd5 52. Kf4 b5 53. Nc6 Rf5+ 54. Kg3 Re3+ 55. Kg2 Rxd3 56. Nxa7 b4 57. Rb1 Rc5 58. Kf2 Rc2+ 59. Kf1 b3 60. Nb5 b2 61. Nc7 Rd8 62. Re1 Rxc7 63. Kg2 Rc1 64. Re5 b1=Q 65. Kf2 Qa1 66. Re4 Qa5 67. Re3 Rc2+ 68. Kg3 Qxg5+ 69. Kf3 Qf5+ 70. Kg3 Qf2+ 71. Kh3 Qxe3+ 72. Kg4 Rc4# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "17"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nf3 Nc6 3. Bb5 g6 4. Bxc6 bxc6 5. O-O Bg7 6. Re1 Nf6 7. e5 Nd5 8. c4 Nc7 9. d4 cxd4 10. Qxd4 Bb7 11. Nc3 Ne6 12. Qe4 Rb8 13. Bf4 c5 14. Nd5 Nxf4 15. Qxf4 Bxd5 16. cxd5 Rxb2 17. e6 O-O 18. Qc4 Rb7 19. Rab1 Rxb1 20. Rxb1 Bd4 21. Rb7 dxe6 22. dxe6 Qd6 23. exf7+ Rxf7 24. Rxa7 Bf6 25. Qa4 Bd4 26. Qc4 g5 27. Qe2 Bxf2+ 28. Qxf2 g4 29. Ra8+ Kg7 30. Qb2+ Rf6 31. Nd2 g3 32. hxg3 Qxg3 33. Nf3 c4 34. Ra3 Qd6 35. Re3 Qc5 36. Kf2 Kf8 37. Qb8+ Kg7 38. Qb2 Kg8 39. Qb8+ Kg7 40. Qg3+ Rg6 41. Qe5+ Qxe5 42. Rxe5 Kf8 43. Ng5 Rh6 44. Re3 Rh5 45. Rg3 Ke8 46. Ne4 Ra5 47. Nc3 Kf7 48. Ke3 Ra8 49. Kd4 Rc8 50. Rf3+ Kg7 51. Nd5 Rb8 52. Re3 e6 53. Nc7 Rc8 54. Nxe6+ Kf6 55. Nf4 Kf5 56. Nd5 Ra8 57. Re2 Rc8 58. Ne7+ Kg5 59. Nxc8 c3 60. Nd6 Kg6 61. Kxc3 Kf6 62. Kd4 Kg6 63. Re7 h5 64. Re6+ Kg5 65. Ke5 h4 66. Nf7+ Kh5 67. Rh6+ Kg4 68. Rg6+ Kh5 69. Rg5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "18"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3 a5 6. O-O d6 7. Re1 O-O 8. Nbd2 Bb6 9. Bd5 Ne7 10. Nc4 Nexd5 11. exd5 Bf5 12. Nxb6 cxb6 13. Bg5 a4 14. Nh4 h6 15. Bxf6 Qxf6 16. Nxf5 Qxf5 17. Rb1 a3 18. Qe2 Rfd8 19. bxa3 Rxa3 20. Rec1 Ra6 21. Rc2 Re8 22. Rb4 Rea8 23. Rcb2 Qf6 24. Rxb6 Rxb6 25. Rxb6 Ra7 26. Rb2 e4 27. Rc2 exd3 28. Qxd3 Ra8 29. Rb2 Rb8 30. Qc4 Qg5 31. Rb1 Qe7 32. Qd3 Ra8 33. Qe3 Qxe3 34. fxe3 Rxa2 35. Rxb7 Rd2 36. c4 Re2 37. c5 dxc5 38. d6 Rd2 39. d7 Kh7 40. Ra7 c4 41. Rc7 Kg6 42. Rxc4 Rxd7 43. Rc2 Kf5 44. Kf2 Ke4 45. Rb2 Kd3 46. Rb8 Rd6 47. Re8 Rf6+ 48. Kg3 Ke2 49. Re7 Rg6+ 50. Kh3 f6 51. e4 Kf2 52. Rb7 Rg5 53. Rb2+ Ke3 54. Rb4 Kf2 55. Rb2+ Ke3 56. Rb4 Kf2 57. Rb2+ Ke3 58. Rb4 Kf2 59. Rb2+ Ke3 60. Rb4 Kf2 61. Rb2+ 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "19"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. e4 c5 2. Nf3 Nc6 3. Bb5 g6 4. Bxc6 dxc6 5. d3 Bg7 6. h3 b6 7. O-O Nf6 8. Re1 O-O 9. Nc3 Bb7 10. e5 Nd5 11. Bd2 Re8 12. Qc1 b5 13. Ne4 c4 14. dxc4 bxc4 15. Bh6 c3 16. Bxg7 Kxg7 17. Nxc3 Nxc3 18. bxc3 Qa5 19. e6 Qxc3 20. Rb1 Ba6 21. exf7 Kxf7 22. Re3 Qc5 23. Reb3 Kg8 24. R3b2 Be2 25. Rb3 Rad8 26. Qb2 Bxf3 27. Rxf3 Rd7 28. Qc1 Red8 29. Re3 Rd1+ 30. Qxd1 Rxd1+ 31. Rxd1 Qxc2 32. Rd7 Qb1+ 33. Kh2 Qb8+ 34. Kh1 Qb1+ 35. Kh2 Qb8+ 36. Kh1 Qb1+ 37. Kh2 Qxa2 38. Rexe7 Kf8 39. Rxh7 Kg8 40. Rdg7+ Kf8 41. Rd7 Kg8 42. Rdg7+ Kf8 43. Rd7 Kg8 44. Rdg7+ Kf8 45. Rxa7 Qxa7 46. Rxa7 c5 47. Kg3 c4 48. Rc7 c3 49. Rxc3 Ke7 50. Rc6 g5 51. Kg4 Kf7 52. h4 Ke7 53. h5 Ke8 54. h6 Kf7 55. Rc7+ Ke6 56. h7 Kd5 57. h8=Q Ke6 58. Qc3 Kd5 59. Qe3 Kd6 60. Rc1 Kd7 61. Qe5 Kd8 62. Rd1+ Kc8 63. Qe7 Kb8 64. Rd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "20"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+2"]
+
+1. d4 d5 2. c4 e6 3. Nf3 Nf6 4. e3 c6 5. Nbd2 Be7 6. Bd3 Nbd7 7. O-O c5 8. Qe2 O-O 9. Qe1 Nb6 10. dxc5 Bxc5 11. cxd5 Qxd5 12. Nb3 Qxd3 13. Nxc5 Qc2 14. Nb3 e5 15. Nxe5 Qc7 16. Nf3 Be6 17. Bd2 Bxb3 18. axb3 Rfc8 19. Bc3 Nbd5 20. Bd4 Qc2 21. Qb1 Qxb3 22. Bxa7 Kh8 23. e4 Nf4 24. e5 N6d5 25. Ng5 Rc2 26. g3 Ne2+ 27. Kh1 Kg8 28. Rd1 h6 29. Ra3 Qxb2 30. Qxb2 Rxb2 31. Rxd5 hxg5 32. e6 fxe6 33. Rxg5 Rd2 34. Rc5 Nd4 35. Kg1 b6 36. Rc4 Nb5 37. Rb3 Nxa7 38. Rxb6 Rf8 39. Rf4 Rxf4 40. gxf4 Re2 41. Kg2 Nc8 42. Rc6 Ne7 43. Rc1 Kf7 44. Rc7 Kf6 45. Kf3 Rb2 46. Rc4 Kf5 47. Rc7 Kf6 48. Rc4 Kf5 49. Rc7 Rb3+ 50. Kg2 Kf6 51. Rc4 Nd5 52. Re4 Rc3 53. f3 Rb3 54. Kg3 Ne3 55. Kf2 Nf5 56. Re5 Nd4 57. Re3 Rb2+ 58. Kg1 Rd2 59. h3 Kf5 60. Kf1 Kxf4 61. Rc3 Kg3 62. f4+ Nf3 63. Rxf3+ Kxf3 64. Kg1 Rd1+ 65. Kh2 Rh1+ 66. Kxh1 Kxf4 67. h4 e5 68. Kg1 g6 69. Kh1 e4 70. Kh2 e3 71. Kg2 e2 72. Kh1 e1=N 73. Kh2 Kg4 74. Kh1 Kxh4 75. Kh2 g5 76. Kh1 g4 77. Kh2 g3+ 78. Kh1 g2+ 79. Kh2 Kg4 80. Kg1 Kf3 81. Kh2 Kf2 82. Kh3 g1=Q 83. Kh4 Nf3+ 84. Kh5 Qg5# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. dxe5 Nxe5 11. Nxe5 Bxe5 12. Rd1 Qe8 13. Bd2 Bg4 14. Ne2 Be6 15. Nd4 Bxd4 16. exd4 Qc8 17. Bg5 Bxc4 18. Qxc4 Qf5 19. Bxf6 Qxf6 20. Qb3 Rfe8 21. Re1 Rab8 22. Rxe8+ Rxe8 23. Qxb7 Qxd4 24. Qxc6 Qe5 25. Qc1 Rd8 26. Qc2 Re8 27. Qd2 Qe6 28. Qa5 Qe2 29. Qc3 Re7 30. Rb1 Kh8 31. Qb4 Re8 32. Ra1 Qe5 33. Rb1 Kg8 34. Qc4 Kh8 35. Rd1 Kg8 36. Qc1 Qe2 37. Qb1 Qe5 38. Qc1 Qe2 39. Qa1 Kf8 40. Rf1 Rb8 41. Rb1 Re8 42. Rf1 Rb8 43. Rb1 Re8 44. Rd1 Rb8 45. Qc1 Rxb2 46. Qc5+ Ke8 47. Qc6+ Ke7 48. Qd6+ Ke8 49. Qd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "600+0"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb5 Bxc3+ 10. bxc3 Rb8 11. Qxd5 Be6 12. Qc5 g5 13. Ne5 Bd7 14. Rb1 g4 15. Nxc6 Bxc6 16. d5 Qe5 17. Qxa7 Qxc3+ 18. Kd1 Rd8 19. Qe3+ Qxe3 20. fxe3 Bxd5 21. Ke1 Kd7 22. Ra1 Ra8 23. a3 Ra7 24. Rd1 Ke6 25. Rc1 Rc8 26. Rc3 c6 27. Kf2 Rca8 28. Rd3 Rxa3 29. Rd4 Kf5 30. Rf4+ Kg5 31. Rd4 R3a7 32. Rd3 h5 33. Rd4 h4 34. Rg1 Ra3 35. Rb4 g3+ 36. hxg3 hxg3+ 37. Kxg3 Rxe3+ 38. Kf2 Re7 39. Rh1 Rd8 40. Kg3 Kg6 41. Rg4+ Kf6 42. Rf4+ Ke6 43. Kf2 Red7 44. Kg3 Ke7 45. Kf2 Kd6 46. Ra4 Ke5 47. Ra1 Be4 48. Rh3 Kf6 49. Rh6+ Kg7 50. Rh2 Kf6 51. Rh4 Bf5 52. Rh1 Kg6 53. Kg3 Be6 54. Kf2 Bd5 55. Kg3 Be6 56. Kf2 Bd5 57. Kg3 Be6 58. Kf2 Bd5 59. Kg3 Be6 60. Kf2 c5 61. Rc1 c4 62. Rc3 Rc8 63. Kg3 Rdc7 64. e3 Rg8 65. Kf2 Kf6 66. Rh4 Rgc8 67. Be2 Bd5 68. Rh5 Be6 69. Rh4 Bd5 70. Rh5 Be6 71. Rh4 Rc5 72. Bf3 R8c7 73. Rd4 Bf5 74. Rd1 Kg5 75. Kg3 Kf6 76. Kf2 Ke6 77. Rd2 Ke5 78. Rd4 Kf6 79. Rd6+ Ke5 80. Rd4 Be6 81. Rd2 Bd5 82. Bxd5 Rxd5 83. Rdc2 Rdc5 84. Rc1 Ke4 85. Re1 R5c6 86. Kg3 Rg6+ 87. Kf2 Rg8 88. Rd1 Rgc8 89. Rd2 Ke5 90. Kg3 Rg8+ 91. Kf3 Rg6 92. Rd1 Rf6+ 93. Kg4 Rg6+ 94. Kf3 Rf6+ 95. Kg4 Rg6+ 96. Kf3 Rcc6 97. Kf2 Rg7 98. Rb1 Rc7 99. Rd1 Rc6 100. Rb1 Rc7 101. Rc2 Rh7 102. Rcb2 f6 103. Rc2 Kd5 104. Rd1+ Ke5 105. Rd4 b5 106. Rc3 Rc8 107. Kg3 Rg7+ 108. Kf3 Rgc7 109. Kg3 b4 110. Rc1 b3 111. Rb1 Rb8 112. Rbd1 c3 113. Kf3 c2 114. Re4+ Kf5 115. Rf4+ Kg6 116. Rg4+ Kf7 117. Rc1 b2 118. Rxc2 Rxc2 119. Rg7+ Kxg7 120. Kg3 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. Nf3 d5 2. d4 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Nc6 8. Qe2 Bd6 9. dxc5 bxc5 10. O-O-O Kd7 11. Qf1 e5 12. g4 h6 13. Bf5+ Ke7 14. h4 g6 15. Bd3 Nxg4 16. Kb1 Nf6 17. Qe1 Re8 18. h5 g5 19. e4 d4 20. Nc4 Rc8 21. Rd2 g4 22. Nh4 Bb8 23. Nf5+ Kf8 24. Nxh6 g3 25. fxg3 Nb4 26. Nf5 Nxd3 27. cxd3 Kg8 28. h6 Kh7 29. Rf2 Kg6 30. Nh4+ Kxh6 31. Nf5+ Kg6 32. Rh6+ Kg5 33. Qc1+ Kg4 34. Rh4# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. Nc3 Bb4 7. O-O Nxe5 8. dxe5 Nxc3 9. bxc3 Bxc3 10. Rb1 O-O 11. Bxh7+ Kxh7 12. Qd3+ Kg8 13. Qxc3 d4 14. Qg3 Re8 15. Bg5 Qd5 16. Bf6 g6 17. Qh4 Qxg2+ 18. Kxg2 Bh3+ 19. Kxh3 d3 20. Qh8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "600+0"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. h4 e5 10. Bb2 e4 11. Ng1 O-O 12. Be2 Re8 13. O-O-O Nf8 14. b5 Bd7 15. bxc6 Bxc6 16. g4 h6 17. g5 hxg5 18. hxg5 N6h7 19. g6 Nxg6 20. Nh3 Ng5 21. Ng1 Qf6 22. Rf1 Ba5 23. Nb3 Ba4 24. Bg4 Nf4 25. Kb1 Nd3 26. Ba3 Be1 27. f4 Ne6 28. Qh2 Qh6 29. Qxh6 gxh6 30. f5 Ng7 31. Rxh6 Bf2 32. Rh3 Bd7 33. Ne2 Bxf5 34. Rfh1 f6 35. Bxf5 Nxf5 36. Rh8+ Kf7 37. R8h7+ Ng7 38. R7h3 Nf5 39. Rh7+ Ng7 40. R7h3 Nf5 41. Rh7+ Ng7 42. R7h3 Nf5 43. Rh7+ Ng7 44. R7h3 Nf5 45. Rh7+ 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 h4 13. O-O-O a5 14. Qe1 a4 15. Nd2 Nxd5 16. Bf2 Nf4 17. Bf1 a3 18. b3 Qg5 19. Ne4 Qh6 20. Be3 g5 21. Qb4 O-O-O 22. Rxd6 Qg7 23. Ba6 Ne2+ 24. Kd2 Nb6 25. Bxb7+ Kxb7 26. Qxb6+ Ka8 27. Rxd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "75 Moves Rule"]
+[TimeControl "600+0"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 Nbd7 7. f4 Qc7 8. Qf3 e5 9. fxe5 dxe5 10. Nf5 h6 11. Nxh6 Bb4 12. Nf5 O-O 13. O-O-O Bxc3 14. Ne7+ Kh8 15. bxc3 Nh7 16. Nd5 Qd6 17. Be7 Qh6+ 18. Rd2 Rg8 19. Bc4 Ndf6 20. Qe3 Qxe3 21. Nxe3 Be6 22. Bxe6 fxe6 23. Rd6 Ng5 24. Ng4 Nfxe4 25. Rd7 Nf7 26. Rf1 Nh6 27. Nxh6 gxh6 28. Bf6+ Nxf6 29. Rxf6 Rxg2 30. Rxh6+ Kg8 31. Rxb7 Re8 32. Rbh7 Rg1+ 33. Kb2 Rb8+ 34. Ka3 Rbb1 35. Rd7 Rg2 36. Rxe6 Rb8 37. Rh6 Rxc2 38. Rh3 Rbb2 39. Rg3+ Kf8 40. h3 Rxa2+ 41. Kb4 e4 42. Kb3 Rcb2+ 43. Kc4 Ra4+ 44. Kd5 Rd2+ 45. Ke6 Rxd7 46. Kxd7 Ra1 47. Re3 Rd1+ 48. Ke6 Rd3 49. Rxe4 Rxc3 50. Rh4 Rc6+ 51. Kd5 Rb6 52. Rh7 Kg8 53. Rc7 Rb8 54. Kd6 Kf8 55. Rh7 Rb6+ 56. Kc5 Rb5+ 57. Kd6 Rg5 58. Ke6 Rg6+ 59. Ke5 Rb6 60. Kf5 Rc6 61. Ke5 Kg8 62. Rh4 Kg7 63. Kd4 Rc7 64. Re4 Ra7 65. Re6 Kf7 66. Rd6 Kg7 67. Kd5 a5 68. Kc5 a4 69. Kb6 Ra8 70. Kb7 Re8 71. Rd3 Kf6 72. Kc6 Ra8 73. Ra3 Rb8 74. Rxa4 Kg6 75. Kd6 Kg7 76. Ke5 Rb5+ 77. Ke4 Kh8 78. Kd4 Rb1 79. Ke4 Kh7 80. Ra8 Rb6 81. Ra5 Rh6 82. Rc5 Rb6 83. Rc1 Kh8 84. h4 Rg6 85. Rf1 Kg7 86. Rf4 Kh6 87. Kd3 Kg7 88. Rf5 Rg2 89. Ke3 Kh6 90. Rf3 Rh2 91. h5 Kh7 92. Kf4 Rc2 93. Ke4 Rc5 94. Rf6 Rxh5 95. Kd3 Rh4 96. Re6 Rf4 97. Kc3 Rh4 98. Re1 Kh6 99. Re5 Rh1 100. Re6+ Kh5 101. Kc2 Rh4 102. Ra6 Rc4+ 103. Kb1 Rf4 104. Rd6 Rh4 105. Rd5+ Kh6 106. Rc5 Rh1+ 107. Kb2 Rh2+ 108. Kb1 Kg6 109. Ka1 Rh6 110. Rc3 Rh4 111. Rc5 Rg4 112. Rc8 Kf5 113. Rc7 Rg2 114. Rc3 Kf6 115. Rc4 Rh2 116. Rd4 Ke5 117. Rd8 Ke4 118. Rd1 Kf4 119. Rb1 Rf2 120. Rc1 Ke5 121. Rc7 Kd6 122. Rc8 Kd5 123. Rg8 Rh2 124. Rd8+ Ke4 125. Rc8 Kd4 126. Rg8 Ke3 127. Rg5 Rh8 128. Rc5 Kf4 129. Kb2 Rh1 130. Rd5 Rh3 131. Rd2 Kg4 132. Rd6 Kf3 133. Ka3 Kg2+ 134. Ka2 Rh7 135. Rf6 Rh2 136. Rg6+ Kh3+ 137. Kb3 Re2 138. Ka4 Re1 139. Rc6 Re8 140. Rc5 Rf8 141. Rc1 Kg3 142. Kb5 Kg2 143. Kb6 Rf2 144. Rc6 Kh3 145. Ka6 Rg2 146. Rc8 Rh2 147. Ka7 Rb2 148. Rf8 Rd2 149. Re8 Rd3 150. Kb7 Rd6 151. Kb8 Rh6 152. Rd8 Rh4 153. Rc8 Rf4 154. Rg8 Rf7 155. Rd8 Rf1 156. Ka7 Rc1 157. Kb7 Re1 158. Rd3+ Kg2 159. Ra3 Rg1 160. Kc7 Rh1 161. Ra7 Kh2 162. Rb7 Kh3 163. Rb8 Kh2 164. Kc6 Kg3 165. Rg8+ Kf3 166. Rc8 Rg1 167. Rc7 Rd1 168. Rh7 Rf1 169. Kd6 Ke3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. c3 d5 9. exd5 Nxd5 10. Nxe5 Nxe5 11. Rxe5 c6 12. d3 Bf6 13. Re1 b4 14. d4 Bf5 15. Bxd5 Qxd5 16. cxb4 Bxd4 17. Nc3 Qc4 18. Qf3 Rfe8 19. Bf4 Qxb4 20. Qxc6 Bxf2+ 21. Kxf2 Qxf4+ 22. Kg1 Rec8 23. Qd5 Be6 24. Rxe6 fxe6 25. Qxe6+ Qf7 26. Qh3 Rf8 27. Qe3 Rab8 28. b3 Rbe8 29. Qg3 Qa7+ 30. Kh1 Re3 31. Qd6 Rxc3 32. Qe6+ Kh8 33. Qe2 Qf2 34. Qxf2 Rxf2 35. Kg1 Rcc2 36. Rd1 Rxg2+ 37. Kf1 Kg8 38. Rd8+ Kf7 39. h3 Rcf2+ 40. Ke1 Rxa2 41. Kf1 Rgd2 42. Rxd2 Rxd2 43. h4 Kg6 44. Ke1 Rb2 45. Kf1 Kh5 46. Ke1 Rb1+ 47. Kd2 Rxb3 48. Ke2 a5 49. Kf2 a4 50. Kg2 a3 51. Kh2 a2 52. Kg2 a1=Q 53. Kf2 Qa2+ 54. Kf1 Rb1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Be2 Nbd7 10. Kf2 Bxb3 11. cxb3 Be7 12. Nd5 h4 13. Rc1 Kf8 14. Qd2 Kg8 15. Nxe7+ Qxe7 16. Rc7 h3 17. gxh3 b5 18. Rhc1 Qe6 19. Rc8+ Rxc8 20. Rxc8+ Nf8 21. Rc1 Rxh3 22. Rc6 Ng6 23. Kg1 Ne8 24. Bf2 Nf4 25. Rxa6 Nxe2+ 26. Qxe2 Rh6 27. Qxb5 Nc7 28. Qb8+ Ne8 29. Ra8 Kf8 30. Bg3 Qe7 31. Kf2 Qe6 32. b4 Qd7 33. b5 Rg6 34. Ke2 Rh6 35. Kf2 Rg6 36. Ke2 Rf6 37. Kf2 Rg6 38. Ke2 Rh6 39. Kf2 Rg6 40. Bh4 Rh6 41. Ra7 Qh3 42. Be7+ Kg8 43. Qxe8+ Kh7 44. Ke3 Qxh2 45. Kd3 Qxb2 46. Ra4 Rh2 47. Qc6 Qb1+ 48. Ke3 Qd1 49. Qc2 Rxc2 50. f4 Qe2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "600+0"]
+
+1. e4 c5 2. Nf3 e6 3. Nc3 a6 4. Be2 b5 5. O-O Bb7 6. d4 cxd4 7. Qxd4 Nc6 8. Qe3 b4 9. Na4 Qa5 10. Qb6 Nf6 11. Qxb7 Qd8 12. e5 Ra7 13. Qb6 Nd5 14. Qxd8+ Nxd8 15. Bd2 Be7 16. Bc4 Rc7 17. Bb3 Rf8 18. Rfd1 Rh8 19. Rac1 Rb7 20. Bxd5 exd5 21. Be3 Ne6 22. Rxd5 Rc7 23. Ra5 Rc6 24. Nb6 Nc5 25. Nd5 Ne6 26. Bb6 Bc5 27. Rxa6 Rc8 28. Ra5 Bxb6 29. Nxb6 Rb8 30. Rb5 Rb7 31. Rxb4 Ra7 32. Ra1 Rc7 33. Rc4 Rc6 34. Rxc6 dxc6 35. Rd1 Rg8 36. Rd6 c5 37. Rxe6+ fxe6 38. Ng5 Ke7 39. Nxh7 Rd8 40. Kf1 Rd2 41. Na4 Rxc2 42. Ng5 Rc4 43. Nc3 Rb4 44. Nd1 Ra4 45. Nc3 Rb4 46. Nd1 Rd4 47. Nc3 Rb4 48. Nd1 Rd4 49. Nc3 Rb4 50. Nd1 Rd4 51. Nc3 Rb4 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Bg5 h6 5. Bxf6 Qxf6 6. Nc3 c6 7. e3 Nd7 8. Be2 g6 9. c5 e5 10. Qd3 e4 11. Nxe4 dxe4 12. Qxe4+ Be7 13. O-O-O Qg7 14. Qc2 Nf6 15. Qb3 O-O 16. Rhe1 Ng4 17. Rf1 Re8 18. Bc4 Qh7 19. Bd3 h5 20. d5 cxd5 21. Bb5 Rf8 22. c6 Nf6 23. Rfe1 a6 24. Qa4 h4 25. Nxh4 Ne4 26. Nf3 Nxf2 27. Rxd5 Ng4 28. Bd3 Nf6 29. Rg5 bxc6 30. Re5 Be6 31. Rxe6 fxe6 32. Be4 Nxe4 33. Qxe4 Qf7 34. Ne5 Qf5 35. Qxf5 gxf5 36. Ng6 Rfe8 37. Nxe7+ Rxe7 38. Kc2 Rh7 39. Rh1 Kf7 40. h3 Rg8 41. Rh2 Rg3 42. h4 Rhg7 43. h5 Rxg2+ 44. Rxg2 Rxg2+ 45. Kc3 Rh2 46. e4 fxe4 47. h6 Rxh6 48. a3 Rh2 49. Kd4 Rxb2 50. Kxe4 Ra2 51. a4 e5 52. Ke3 Rxa4 53. Kd3 e4+ 54. Ke3 Ra3+ 55. Kd2 e3+ 56. Kc1 e2 57. Kb2 e1=Q 58. Kxa3 a5 59. Ka2 a4 60. Ka3 c5 61. Kxa4 Qb4# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "12"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. Re1 Nd6 6. Nxe5 Nxe5 7. Rxe5+ Be7 8. Bf1 O-O 9. Re2 b6 10. Qe1 Bf6 11. Nc3 Bxc3 12. dxc3 Ba6 13. Re5 f6 14. Rd5 Bb7 15. Rd1 Re8 16. Be3 Nf5 17. Bb5 Re7 18. Bxd7 Rxd7 19. Bxb6 Bd5 20. Ba5 Rc8 21. Rd2 Rb8 22. Rad1 Rxb2 23. Rxd5 Rxd5 24. Rxd5 Nd6 25. Rc5 Qb8 26. Bxc7 Rb1 27. Qf1 Rxf1+ 28. Kxf1 Qb1+ 29. Ke2 Qxc2+ 30. Ke3 Qe4+ 31. Kd2 Nc4+ 32. Rxc4 Qxc4 33. Bg3 Qxa2+ 34. Ke3 Qd5 35. Bb8 Qc5+ 36. Ke4 Qc4+ 37. Kf5 Kf7 38. Bxa7 g6# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "13"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. c3 d5 9. exd5 Nxd5 10. Nxe5 Nxe5 11. Rxe5 c6 12. Re1 Bd6 13. g3 Be6 14. Na3 Bxa3 15. bxa3 Qf6 16. Bb2 Nc7 17. Bxe6 Nxe6 18. Re2 Rfe8 19. Qf1 Rad8 20. Qh3 Ng5 21. Rxe8+ Rxe8 22. Qg4 Nf3+ 23. Kg2 Nxd2 24. Re1 Rf8 25. Re2 Nc4 26. Qf3 Qh6 27. Qd3 Qf6 28. Qf3 Qh6 29. Qe4 Qd6 30. Bc1 Rc8 31. a4 Qc5 32. axb5 Nd6 33. Qd3 Qxb5 34. Qxb5 Nxb5 35. Bb2 Rd8 36. Kf3 Kf8 37. Kg4 Rd7 38. c4 Nc7 39. Ba3+ Kg8 40. Rb2 Ne6 41. Rb8+ Rd8 42. Rxd8+ Nxd8 43. Kf4 Ne6+ 44. Ke4 Ng5+ 45. Ke3 Ne6 46. Kf3 Nd4+ 47. Ke4 Nc2 48. Bc5 a5 49. Kf5 a4 50. Ke5 a3 51. Kd6 Kh8 52. Kxc6 Kg8 53. Kd5 Kh8 54. Bd6 Kg8 55. Ke4 Ne1 56. c5 Nc2 57. c6 Kh8 58. c7 g6 59. c8=Q+ Kg7 60. Bf8+ Kf6 61. Qd8+ Ke6 62. Qd6# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "14"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "600+0"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. Nf3 Nf6 8. Qb3 b6 9. O-O-O Bf5 10. h3 Nbd7 11. e3 Be4 12. Be2 b5 13. Nxe4 dxe4 14. Nd2 O-O 15. Qc2 Rfe8 16. h4 h5 17. Kb1 Nb6 18. Qc5 Qe6 19. Bxh5 Re7 20. Be2 g6 21. Qg5 Kf8 22. h5 gxh5 23. Bxh5 Rc8 24. Bg4 Ke8 25. Bxe6 Rxe6 26. Rh8+ Kd7 27. Rxc8 Kxc8 28. Qg7 Nbd5 29. Qxf7 Re7 30. Qg6 Re6 31. Nb3 Re7 32. Na5 Kd7 33. Rc1 Re6 34. Rxc6 Rxc6 35. Qf7+ Ne7 36. Nxc6 Nd5 37. Nxe7 Nxe7 38. d5 b4 39. Qe6+ Kd8 40. d6 Nc6 41. Qf7 b3 42. Qc7+ Ke8 43. axb3 Kf8 44. Qxc6 Kf7 45. d7 Ke7 46. Qc8 Kf7 47. Qe8+ Kg7 48. d8=Q 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "15"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Illegal Move (g7h6)"]
+[TimeControl "600+0"]
+
+0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "16"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Illegal Move (e2e4)"]
+[TimeControl "600+0"]
+
+1. d4 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "17"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. Nf3 Nf6 8. Qb3 b6 9. O-O-O Bg4 10. h3 Bxf3 11. gxf3 Nbd7 12. Bg2 Qe6 13. Qa3 Qe7 14. Qa6 Nb8 15. Qc8+ Qd8 16. Qb7 Nbd7 17. Qxc6 Rc8 18. Qb5 Ke7 19. Kb1 Qe8 20. Nxd5+ Nxd5 21. Qxd5 Rc7 22. Qg5+ Nf6 23. d5 Rd7 24. Rhe1 Rg8 25. e4 h6 26. Qe5+ Kf8 27. Qh2 Re7 28. d6 Re6 29. e5 g6 30. f4 b5 31. Re3 Qd7 32. Bf3 Ne8 33. Bg4 Ng7 34. Bxe6 Nxe6 35. Rc3 Kg7 36. Qg3 Kh8 37. Kc2 Rb8 38. Kb1 Qb7 39. d7 Rd8 40. f5 gxf5 41. Qh4 h5 42. Qxh5+ Kg7 43. Rg3+ Kf8 44. Qh6+ Ke7 45. Qh4+ Ng5 46. Qxg5+ Ke6 47. Qf6# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "18"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. c3 d5 9. exd5 Nxd5 10. Nxe5 Nxe5 11. Rxe5 c6 12. Re1 Bd6 13. d4 Qh4 14. g3 Qh3 15. Be3 Bg4 16. Qc1 Bf3 17. Nd2 Qg2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "19"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "600+0"]
+
+1. e4 c5 2. Nf3 e6 3. Nc3 a6 4. d4 cxd4 5. Nxd4 d6 6. Be3 Nf6 7. f3 b5 8. Qd2 Nbd7 9. O-O-O Bb7 10. Bd3 Nc5 11. Qe1 Be7 12. Qg3 b4 13. Nce2 Kf8 14. Nf4 e5 15. Nf5 g6 16. Nxe7 exf4 17. Nxg6+ hxg6 18. Bxf4 Nh5 19. Bxd6+ Kg8 20. Qe5 b3 21. cxb3 Nxd3+ 22. Rxd3 Rh6 23. Rc3 Rh7 24. Qe7 Qxe7 25. Bxe7 Ng3 26. Re1 Rxh2 27. Rc7 Rc8 28. Rxc8+ Bxc8 29. Rd1 Ne2+ 30. Kb1 Kg7 31. Rd8 Be6 32. g4 Rh3 33. Rd2 Nf4 34. Rf2 Nd3 35. Rd2 Rh1+ 36. Kc2 Ne1+ 37. Kc3 Nxf3 38. Rd8 Rc1+ 39. Kb4 Ne5 40. Ka3 Bxg4 41. Rd6 Nc6 42. Bf6+ Kf8 43. Rd2 Rc5 44. Rd5 Rc1 45. Rd2 Rc5 46. Bc3 Bf3 47. e5 Rd5 48. Rxd5 Bxd5 49. Bb4+ Kg7 50. Bd6 Nd4 51. Kb4 Be4 52. Kc4 Nf5 53. Kb4 Nd4 54. Kc4 Nc6 55. Kc5 Kh6 56. e6 fxe6 57. Kb6 a5 58. Kc5 Nb4 59. Kd4 Bf5 60. Bf8+ Kg5 61. Be7+ Kf4 62. Bd6+ Kf3 63. a3 Nd3 64. Kc3 Be4 65. Bc7 Nxb2 66. Kxb2 a4 67. bxa4 Bc6 68. a5 Ke4 69. a6 Bb5 70. a7 Bc6 71. Kc3 Ba8 72. Bd6 Bb7 73. Kb4 Kf5 74. Kc4 Kf6 75. Kd4 Bd5 76. Bg3 Kg7 77. Ke5 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "20"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "600+0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. O-O d6 6. c3 O-O 7. h3 a5 8. Re1 h6 9. d4 Ba7 10. Be3 exd4 11. cxd4 Nxe4 12. d5 Ne5 13. Nxe5 Bxe3 14. Rxe3 Nxf2 15. Kxf2 dxe5 16. Nd2 Qf6+ 17. Nf3 Re8 18. Bd3 e4 19. Bxe4 Qxb2+ 20. Kg3 Qf6 21. Bh7+ Kf8 22. Rxe8+ Kxe8 23. Rc1 a4 24. Qd4 Qd6+ 25. Qf4 Qxf4+ 26. Kxf4 Kd8 27. Ne5 Ra6 28. Nxf7+ Ke8 29. Rxc7 Bxh3 30. gxh3 Rf6+ 31. Kg3 Rf1 32. d6 Rg1+ 33. Kf3 Rf1+ 34. Ke2 Rxf7 35. Bg6 b6 36. Bxf7+ Kd8 37. Be6 g6 38. Rc8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Ne4 Nxe4 11. Qxe4 Nf6 12. Qh4 exd4 13. exd4 Bf5 14. Bg5 Rc8 15. Rfe1 h6 16. Bxf6 Qxf6 17. Qxf6 gxf6 18. d5 Rfd8 19. Rad1 Bg4 20. Re3 Bxf3 21. Rxf3 Be5 22. Ra3 Ra8 23. Rad3 Bxb2 24. Rb1 cxd5 25. Bxd5 Rac8 26. g3 Kg7 27. Rxb2 Rc7 28. Rbd2 Rcd7 29. Be4 Rxd3 30. Rxd3 Rxd3 31. Bxd3 b6 32. Kg2 Kf8 33. Kf3 Kg7 34. Kg4 a5 35. Kf5 b5 36. Bxb5 h5 37. Ba4 h4 38. gxh4 Kh6 39. Bd1 Kg7 40. Bb3 Kh6 41. Bxf7 Kg7 42. Bb3 Kh6 43. Bd1 Kg7 44. h5 Kh6 45. Kxf6 Kh7 46. Kg5 a4 47. Bxa4 Kg7 48. h6+ Kf8 49. Bb3 Ke7 50. h7 Kd6 51. h8=Q Kc5 52. Qe5+ Kb6 53. Ba4 Kb7 54. Qb5+ Kc7 55. Qd7+ Kb6 56. Qc6+ Ka7 57. Qc7+ Ka6 58. Bd1 Kb5 59. Be2+ Kb4 60. Qc4+ Ka3 61. Qb3# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb5 a6 10. O-O-O axb5 11. Nxd5 Qd6 12. Ne3 Rxa2 13. Kb1 Ra8 14. h3 Qg6+ 15. Rd3 Bf5 16. Nxf5 Qxf5 17. e3 Bd6 18. Be2 Nb4 19. Rd1 Qe4 20. h4 Nxd3 21. Bxd3 Qg4 22. Bxb5+ Ke7 23. Bf1 Qg6+ 24. Rd3 Ra5 25. Kc2 Ra1 26. h5 Qg4 27. Rd1 Rxd1 28. Kxd1 Qxh5 29. Bd3 Qh1+ 30. Ke2 Qxg2 31. Nd2 Bg3 32. Ne4 Bh4 33. Bc2 f5 34. Nc5 Bxf2 35. Bxf5 Bg1+ 36. Kd3 Qxb2 37. Be4 Qa3+ 38. Kc2 b6 39. Nb3 Qb4 40. Bd5 Bxe3 41. Bf3 Rf8 42. Bd1 Qc4+ 43. Kb2 Rf2+ 44. Be2 Rxe2+ 45. Ka3 Bxd4 46. Nd2 Re3+ 47. Nb3 Qxb3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. Nf3 d5 2. d4 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Nc6 8. Qe2 Bd6 9. dxc5 bxc5 10. O-O-O Kd7 11. Qf1 Qe8 12. h3 Rd8 13. g3 Kc8 14. Kb1 d4 15. Ne4 Nxe4 16. Bxe4 Ne5 17. Bxb7+ Kxb7 18. Ng5 dxe3 19. fxe3 Qe7 20. Bxe5 Bxe5 21. Rxd8 Rxd8 22. Nxf7 Rd5 23. e4 Rd1+ 24. Qxd1 Qxf7 25. Qd3 Kb6 26. g4 Qf6 27. Rg1 Ba1 28. Kc1 Kc7 29. Qc4 Qg5+ 30. Kb1 Qe5 31. Kc1 Qg5+ 32. Kb1 Qe5 33. Kc1 Bb2+ 34. Kb1 Ba3 35. c3 Qh2 36. Qxc5+ Bxc5 37. Rf1 Ba3 38. Rf2 Qxf2 39. e5 Qb2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. Nc3 Bb4 7. O-O Nxe5 8. dxe5 Nxc3 9. bxc3 Bxc3 10. Rb1 O-O 11. Bxh7+ Kxh7 12. Qd3+ Kg8 13. Qxc3 d4 14. Qg3 Re8 15. Bg5 Qd5 16. Bf6 g6 17. Rb2 Bf5 18. Qb3 Qxb3 19. Rxb3 Reb8 20. Rc1 Be6 21. Rb2 Bf5 22. Rd1 Kh7 23. Rxd4 Kg8 24. Rh4 c6 25. Rh8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. Bb2 g5 10. h3 Qf8 11. Bd3 Qh6 12. O-O-O Nf8 13. b5 Ng6 14. Qb3 Ke7 15. b6 Bb8 16. Kb1 Bd7 17. Bc3 Nh4 18. Ne1 a6 19. Ndf3 a5 20. Qa3 a4 21. g4 Nxf3 22. Nxf3 Ne4 23. Bxe4 dxe4 24. Nd2 Re8 25. Nxe4 Qg6 26. f3 Kd8 27. Kc1 Re7 28. h4 gxh4 29. Rxh4 Re8 30. Rdh1 Rh8 31. Rh6 Qg8 32. Nd6 Bxd6 33. cxd6 Qg7 34. d5 e5 35. R6h5 f6 36. dxc6 Bxc6 37. R5h3 Ra6 38. Rg3 Kd7 39. Rh2 Rxb6 40. Rd2 Rc8 41. g5 Bb5 42. Qb4 Rcc6 43. Kb2 Bc4 44. Rdg2 Rxd6 45. gxf6 Qxf6 46. Rh2 Rxb4+ 47. Bxb4 e4+ 48. Bc3 a3+ 49. Kc2 Bd3+ 50. Kd2 Bb1+ 51. Bd4 Rxd4+ 52. exd4 Qf4+ 53. Kc3 Qxg3 54. Rxh7+ Kc6 55. d5+ Kc5 56. Kd2 e3+ 57. Kxe3 Bxh7 58. Ke2 Bg8 59. f4 Qxf4 60. Ke1 Qd2+ 61. Kf1 Bxd5 62. Kg1 Qg2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 h4 13. Kf2 a5 14. Qe1 Be7 15. Nd2 Nxd5 16. Ne4 Nxe3 17. Kxe3 Qb6+ 18. Kd2 h3 19. gxh3 Qxb2 20. Qf2 O-O-O 21. Rhb1 Qd4+ 22. Qxd4 exd4 23. Nf2 Bg5+ 24. Ke1 Bh4 25. Bb5 Bxf2+ 26. Kxf2 Rxh3 27. Kg2 Rh5 28. Kg3 Rg5+ 29. Kf2 Nb6 30. Bd3 Kc7 31. Rb2 Rh8 32. Rh1 Rgh5 33. Rhb1 Rxh2+ 34. Kg3 Rh1 35. Rxb6 Rxb1 36. Rxb1 Rh5 37. Rb5 Rxb5 38. Bxb5 d3 39. Bxd3 Kc6 40. Bc4 d5 41. Bb3 b5 42. Kf4 a4 43. Ke5 axb3 44. axb3 Kc5 45. f4 Kb4 46. Kxd5 Kc3 47. Kc5 Kxc2 48. b4 Kd3 49. Kxb5 f5 50. Kc5 Ke4 51. b5 Kd3 52. b6 Ke4 53. b7 Kf3 54. b8=Q Kg4 55. Qg8 Kh5 56. Qh7+ Kg4 57. Qxg6+ Kxf4 58. Kd5 Ke3 59. Qxf5 Kd2 60. Qf3 Kc2 61. Kc4 Kb1 62. Qf2 Kc1 63. Kc3 Kb1 64. Qb2# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. c4 c5 2. Nf3 Nc6 3. g3 Nf6 4. Nc3 d5 5. d4 e6 6. cxd5 exd5 7. Bg2 Be7 8. O-O Bf5 9. Be3 c4 10. Bg5 Qd7 11. Ne5 Qd6 12. Nxc6 bxc6 13. e3 Qb4 14. Na4 c3 15. bxc3 Qc4 16. Re1 Ne4 17. Bxe7 Kxe7 18. g4 Bg6 19. Re2 Nxc3 20. Nxc3 Qxc3 21. Rc1 Qa3 22. Rxc6 Rab8 23. g5 Rb1 24. Qxb1 Bxb1 25. Bxd5 Rd8 26. Bb3 Bd3 27. Rd2 Bf5 28. d5 Qa5 29. Rd4 Bh3 30. Rc1 Rd6 31. Rcd1 Qc7 32. Ba4 Qd8 33. Bc2 g6 34. Kh1 Kf8 35. Be4 Qxg5 36. R1d2 Qf6 37. Kg1 Qg5+ 38. Kh1 Qf6 39. Kg1 Qg5+ 40. Kh1 Qf6 41. Kg1 Qg5+ 42. Kh1 Qg4 43. Rc2 f5 44. f3 Qg5 45. Rc8+ Kg7 46. Rc7+ Kf6 47. f4 Qg4 48. Rc2 fxe4 49. Rf2 Rb6 50. d6 Rb1+ 51. Rd1 Rxd1+ 52. Rf1 Rxf1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Insufficient Material"]
+[TimeControl "120+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Nf3 b6 5. Bg5 Bb7 6. e3 h6 7. Bh4 g5 8. Bg3 Ne4 9. Nd2 Nxc3 10. bxc3 Bxc3 11. Rc1 Bxd2+ 12. Kxd2 Nc6 13. d5 Ne7 14. Be2 exd5 15. Bf3 Rc8 16. Ke2 g4 17. Bxd5 Nc6 18. Rb1 Qf6 19. c5 Nd4+ 20. exd4 Bxd5 21. cxb6 cxb6 22. Re1 Bxg2 23. Kd2+ Kd8 24. Qxg4 Qg5+ 25. Qxg5+ hxg5 26. Rb5 Rg8 27. Rf5 Re8 28. Rxe8+ Kxe8 29. Re5+ Kd8 30. Rxg5 Rc4 31. Bb8 Rxd4+ 32. Kc3 Ra4 33. Bd6 Kc8 34. Rg8+ Kb7 35. Rxg2 Rxa2 36. Bb4 Kc6 37. Kd3 Kd5 38. Rg5+ Ke6 39. Rg2 Ra4 40. Kc3 Ra2 41. Kd3 Ra4 42. Kc3 Ra2 43. Kd3 Ra4 44. Bc3 Rh4 45. Kd2 Kf5 46. Rg7 Rxh2 47. Rxf7+ Ke6 48. Rf4 Kd5 49. Ke2 Rh6 50. Ra4 Rc6 51. Rxa7 Rxc3 52. Rxd7+ Ke4 53. Rd2 Rc6 54. Rb2 Rf6 55. Rc2 Rf8 56. Rc4+ Kd5 57. Rb4 Rf6 58. Rb2 Ke4 59. Rb4+ Ke5 60. Rb1 Kd4 61. Rc1 Ke4 62. Rh1 Kf4 63. Rc1 Rd6 64. Rc4+ Kf5 65. Kf3 Rd3+ 66. Kg2 Rb3 67. Rc1 Ke4 68. Kf1 Rb2 69. Kg2 Rb3 70. Re1+ Kf4 71. Rd1 Rb2 72. Rc1 Rb4 73. Kh2 Kf3 74. Kg1 Ke2 75. Rc2+ Kd3 76. Rc1 Kd2 77. Ra1 Ke2 78. Ra2+ Kf3 79. Ra3+ Kf4 80. Ra1 Rc4 81. Kf1 Re4 82. Kg2 Rb4 83. Kg1 Rc4 84. Kg2 Rb4 85. Ra3 Rb5 86. Rf3+ Kg4 87. Rg3+ Kf4 88. Rf3+ Kg4 89. Rg3+ Kf4 90. Rf3+ Kg5 91. Kg3 Rb2 92. Re3 Kf5 93. Re1 Rb3+ 94. Kg2 Kf4 95. Rd1 b5 96. Rd4+ Kf5 97. Rd5+ Kf4 98. Rd4+ Kf5 99. Kf1 b4 100. Rd1 Ra3 101. Kg2 b3 102. Rd3 Kf4 103. Rf3+ Kg5 104. Kg3 Kg6 105. Kg2 Kg5 106. Kg3 Kg6 107. Kg2 Kh6 108. Kg3 Kg7 109. Kg2 Kg6 110. Kh2 Kh6 111. Rg3 Kh5 112. Kh3 b2 113. Rxa3 b1=Q 114. Kg2 Qc2 115. Rg3 Qd1 116. Kh2 Qd4 117. Re3 Qa7 118. Kh3 Qb7 119. Re5+ Kh6 120. Re3 Qc7 121. Rb3 Kh7 122. Rg3 Qf4 123. Kg2 Qb4 124. Kf3 Qb6 125. Kg2 Qb1 126. Ra3 Qe4+ 127. Kf1 Qh1+ 128. Ke2 Kg6 129. Rg3+ Kh7 130. Rf3 Qa1 131. Rf7+ Kh8 132. Rf3 Qe5+ 133. Kd1 Qe6 134. Kd2 Qg6 135. Ke3 Qg4 136. Rg3 Qh4 137. Rf3 Qd8 138. Rh3+ Kg7 139. Rg3+ Kh8 140. Rg2 Qb8 141. Rg1 Qb3+ 142. Kf4 Qc2 143. Rg2 Qb2 144. Rh2+ Kg7 145. Kf3 Qb4 146. Kg2 Qe7 147. Kg3 Qe8 148. Kf3 Qc6+ 149. Ke2 Qf6 150. Rh3 Qg5 151. Rb3 Kh8 152. Rf3 Qe7+ 153. Re3 Qa7 154. Re8+ Kh7 155. Re3 Qf7 156. Rf3 Qg6 157. Ke3 Kg7 158. Kf4 Qc6 159. Rh3 Qc8 160. Re3 Qd8 161. Rf3 Qb6 162. Kg4 Kh6 163. Kg3 Qb1 164. Kf4 Qa2 165. Ke3 Qe6+ 166. Kf4 Qd6+ 167. Ke3 Qb6+ 168. Kd2 Qa5+ 169. Ke3 Qa3+ 170. Ke2 Qa7 171. Re3 Qd7 172. Ke1 Kg5 173. Re5+ Qf5 174. f4+ Kg4 175. Rxf5 Kxf5 176. Kd2 Ke4 177. Kc1 Kd5 178. f5 Kc6 179. Kd1 Kc5 180. Kc2 Kd6 181. Kb3 Ke5 182. Kc4 Kf6 183. Kd3 Ke5 184. Kc2 Kd6 185. Kd1 Ke5 186. Kc2 Kd6 187. Kd2 Kc7 188. Kc3 Kc6 189. Kd2 Kd5 190. Ke3 Kd6 191. Kf4 Ke7 192. Ke3 Ke8 193. Ke2 Kf7 194. Kd2 Ke8 195. Kc1 Kd7 196. f6 Kd8 197. Kb2 Kd7 198. Kb3 Kd6 199. Kc2 Kd7 200. Kb3 Ke6 201. Kc4 Kd6 202. Kc3 Ke6 203. Kc2 Kd6 204. Kc1 Ke6 205. Kb1 Kd6 206. Kc2 Kd7 207. Kb2 Ke6 208. f7 Ke7 209. Ka1 Kxf7 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. e4 c5 2. Nf3 Nc6 3. Bb5 g6 4. Bxc6 dxc6 5. d3 Bg7 6. O-O Nf6 7. a4 O-O 8. Nc3 Be6 9. e5 Nd5 10. Nxd5 Bxd5 11. Re1 Qc8 12. Bf4 Qg4 13. Bg3 Rfd8 14. a5 c4 15. a6 bxa6 16. d4 Bxf3 17. gxf3 Qc8 18. c3 c5 19. Rc1 Bh6 20. Rc2 Qe6 21. Re4 Rab8 22. Kh1 cxd4 23. Rxd4 Rxd4 24. Qxd4 Ra8 25. Kg1 a5 26. Qc5 Qf5 27. Qd5 Rf8 28. Qd1 Qd3 29. Qe2 Qxe2 30. Rxe2 e6 31. Kg2 a4 32. Rc2 Re8 33. Kh3 Bf8 34. Kg4 a3 35. bxa3 Bxa3 36. Ra2 Bc5 37. Ra4 Bb6 38. Rxc4 Rd8 39. Bh4 Rd1 40. Rc8+ Kg7 41. Bf6+ Kh6 42. Bg5+ Kg7 43. Bf6+ Kh6 44. Bg5+ Kg7 45. Bf6+ Kh6 46. Bg5+ Kg7 47. Bf6+ Kh6 48. Bg5+ Kg7 49. Bf6+ 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. Nf3 Nf6 2. d4 d5 3. c4 c6 4. g3 g6 5. Bg2 Bg7 6. O-O O-O 7. b3 Bf5 8. Bb2 Nbd7 9. cxd5 cxd5 10. Re1 Rc8 11. Nbd2 Re8 12. h3 Rc2 13. g4 Rxb2 14. gxf5 Qa5 15. fxg6 hxg6 16. a4 Ne4 17. Nb1 Qb4 18. Qc1 Bxd4 19. Nxd4 Qxd4 20. Bxe4 dxe4 21. Rd1 Qf6 22. Nd2 Nc5 23. Qxc5 Rxd2 24. Qxa7 Red8 25. Re1 Rxe2 26. Rxe2 Qxa1+ 27. Kg2 Qd1 28. Qe3 Rd7 29. Re1 Qd5 30. Qxe4 Qxe4+ 31. Rxe4 Kg7 32. a5 Kf6 33. Ra4 Kf5 34. a6 bxa6 35. Ra5+ Ke4 36. Rxa6 Rc7 37. Ra2 Kf4 38. Re2 Kf5 39. Re3 Ra7 40. Kg3 Rc7 41. Rf3+ Ke6 42. Kg2 Rc5 43. Kg3 Rc1 44. Re3+ Kf6 45. Rf3+ Kg7 46. Re3 Rc7 47. Rf3 Rc5 48. Kg2 Rc8 49. Kg3 Rc5 50. Kg2 Rc7 51. Rd3 Rc2 52. Rd7 Kf6 53. Rd3 Rc7 54. Rf3+ Kg7 55. Rd3 Kf6 56. Rf3+ Kg7 57. Rd3 Ra7 58. Kg3 Rc7 59. Kg2 Ra7 60. Kg3 Rc7 61. Kg2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. O-O Nxe5 7. dxe5 Nc5 8. f4 Bg4 9. Qxg4 Nxd3 10. cxd3 g6 11. Nc3 Bc5+ 12. Kh1 d4 13. Ne4 Be7 14. f5 Qc8 15. Nf6+ Bxf6 16. exf6 O-O 17. Bf4 Kh8 18. Qg3 Rg8 19. Bxc7 gxf5 20. Qd6 Rg6 21. Rae1 h6 22. Rf2 h5 23. Qe7 Kg8 24. Rf4 Rg4 25. Qe5 Qd7 26. Rxf5 Rc8 27. Rg5+ Kh7 28. Rxg4 hxg4 29. Qh5+ Kg8 30. Qg5+ Kh8 31. Qg7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "12"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. c3 a5 6. O-O d6 7. a4 O-O 8. Re1 h6 9. Nbd2 Bg4 10. h3 h5 11. hxg4 hxg4 12. d4 exd4 13. Nxd4 Nxd4 14. cxd4 Bxd4 15. g3 Re8 16. Re2 Ba7 17. Qb3 d5 18. exd5 Bb6 19. Bb5 Rxe2 20. Bxe2 Qe7 21. Qc4 Re8 22. Kf1 Qe5 23. Qd3 Qh5 24. Kg2 Rxe2 25. Qxe2 Qh3+ 26. Kg1 Qxg3+ 27. Kf1 Qh3+ 28. Ke1 g3 29. fxg3 Qxg3+ 30. Kd1 Qg1+ 31. Kc2 Qf2 32. Qxf2 Bxf2 33. d6 Bg3 34. dxc7 Bxc7 35. Nc4 Ne4 36. Kd3 Nc5+ 37. Kc2 Ne4 38. Kb3 Kf8 39. Be3 f6 40. Rd1 Ke7 41. Rd5 Bd8 42. Rb5 Ke6 43. Rxb7 Be7 44. Bb6 Bf8 45. Rc7 Ng5 46. Bxa5 Kd5 47. Bc3 Ke4 48. Rc8 Nh7 49. a5 Kf5 50. a6 Ba3 51. a7 Be7 52. a8=Q Ng5 53. Re8 Bf8 54. Re1 Bb4 55. Qd5+ Kg4 56. Bxb4 Kh5 57. Qg8 Kg6 58. Re7 Kf5 59. Qxg7 Kg4 60. Qxf6 Nf3 61. Bd6 Ng5 62. Ne3+ Kh5 63. Rg7 Nf7 64. Rh7+ Nh6 65. Rxh6# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "13"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. d3 b5 6. Bb3 Bc5 7. O-O d6 8. c3 h6 9. d4 exd4 10. cxd4 Nxd4 11. Nxd4 Bxd4 12. Qxd4 c5 13. Qc3 Bg4 14. Be3 Be2 15. Re1 Bh5 16. Nd2 c4 17. Bc2 Kd7 18. Bd4 Bg4 19. e5 dxe5 20. Bxe5 Rc8 21. Qd4+ Kc6 22. Be4+ Nxe4 23. Qxe4+ Qd5 24. Qxg4 Qxd2 25. Qxg7 Qd7 26. Qf6+ Kb7 27. Qf3+ Ka7 28. Rad1 Qb7 29. Qxb7+ Kxb7 30. Bxh8 Rxh8 31. Rd6 Rh7 32. Re7+ Kc8 33. Rxa6 Kb8 34. Raa7 b4 35. Rab7+ Ka8 36. Rxb4 Rh8 37. Re5 Rh7 38. Ra5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "14"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. d4 d5 2. c4 e6 3. Nf3 Nf6 4. g3 Bb4+ 5. Bd2 Be7 6. Bg2 O-O 7. O-O c6 8. Qc2 Nbd7 9. c5 Ne4 10. Be3 Ndf6 11. Re1 Bd7 12. Nbd2 Nxd2 13. Qxd2 Re8 14. Rad1 h6 15. Kh1 g5 16. h3 Qc7 17. h4 g4 18. Bf4 Qc8 19. Ne5 h5 20. Bg5 Rf8 21. Qf4 Kg7 22. Bh6+ Kh7 23. Bxf8 Qxf8 24. Nxd7 Nxd7 25. Qc7 Qc8 26. Qxc8 Rxc8 27. Kg1 Kg6 28. Rd3 Bf6 29. Rb3 Rb8 30. Rd3 Bg7 31. Red1 Nf6 32. Re1 Rd8 33. Kf1 Re8 34. Ra3 Ra8 35. Rb3 Rb8 36. Rd1 Bh6 37. Rdd3 Bc1 38. Rd1 Bh6 39. Ra3 Ra8 40. Rb3 Rb8 41. Ra3 Ra8 42. Rb3 Rb8 43. Ra3 Ra8 44. Rb3 Rb8 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "15"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nf6 3. Nxe5 d6 4. Nf3 Nxe4 5. Nc3 Nxc3 6. dxc3 Be7 7. Be3 O-O 8. Qd2 Bg4 9. Be2 Nd7 10. O-O-O Nf6 11. h3 Bxf3 12. Bxf3 Qb8 13. g4 h6 14. h4 Nd7 15. Qe1 Ne5 16. Be2 Qc8 17. g5 hxg5 18. hxg5 Qe6 19. Kb1 Rfd8 20. Qg1 d5 21. Qh2 Ng6 22. Qh7+ Kf8 23. Qh8+ Nxh8 24. Rxh8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "16"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5 Nf5 8. Qxd8+ Kxd8 9. Nc3 Be6 10. Rd1+ Kc8 11. Bf4 Be7 12. Ng5 Bc4 13. Nge4 Rb8 14. Nd6+ cxd6 15. exd6 Nxd6 16. Bxd6 Bxd6 17. Rxd6 Rd8 18. Rxd8+ Kxd8 19. Re1 Kc7 20. Re3 Kd6 21. Rg3 Re8 22. f3 Re1+ 23. Kf2 Rc1 24. Rxg7 Rxc2+ 25. Kg1 Rxb2 26. Rxh7 Ke6 27. Rh4 Ba6 28. Ra4 Rc2 29. Ne4 f5 30. Ng5+ Ke7 31. Nh3 Kf6 32. Ra3 Rc4 33. f4 Rc2 34. Ra4 c5 35. Ng5 c4 36. Nh7+ Ke7 37. Ng5 c3 38. h3 Rc1+ 39. Kf2 c2 40. Rxa6 bxa6 41. h4 Rb1 42. h5 c1=Q 43. Kg3 Qe1+ 44. Kh3 Qh1+ 45. Kg3 Rb2 46. Kf3 Qxg2+ 47. Ke3 Qd2+ 48. Kf3 Qf2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "17"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. Bb2 g5 10. Nxg5 Qf8 11. Ngf3 Qg8 12. Bd3 Ke7 13. g3 Qe8 14. Nb3 Rb8 15. O-O-O Ra8 16. h4 h5 17. Bc3 Ne4 18. Bxe4 dxe4 19. Qxe4 Nf6 20. Qd3 Bd7 21. Rhe1 Qg8 22. e4 Ng4 23. Re2 Nxf2 24. Rxf2 Bxg3 25. Re2 Bf4+ 26. Kc2 Rh7 27. d5 cxd5 28. exd5 Qg6 29. d6+ Kf8 30. Qxg6 fxg6 31. Re4 Rf7 32. Ng5 Bxg5 33. hxg5 Rf5 34. Rg1 Rf2+ 35. Kb1 Re8 36. Ree1 Bc6 37. Na5 Bd5 38. Nxb7 Bxb7 39. Ref1 Be4+ 40. Kc1 Rxf1+ 41. Rxf1+ Kg8 42. b5 Rd8 43. Rd1 Bd5 44. c6 Bxa2 45. c7 Rf8 46. d7 Bb3 47. c8=Q Bxd1 48. Qe8 Bc2 49. Qxe6+ Kh7 50. Qe7+ Kg8 51. Qg7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "18"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. d4 d5 2. Nf3 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Be7 8. dxc5 bxc5 9. O-O Nc6 10. Bb5 Qa5 11. Bxc6+ Bxc6 12. Re1 O-O-O 13. Ne5 Be8 14. Nef3 Bc6 15. Ne5 Be8 16. Ndf3 c4 17. Qd2 Bb4 18. c3 Bd6 19. Qd4 Qc7 20. bxc4 dxc4 21. Qxc4 Bxe5 22. Nxe5 Qxc4 23. Nxc4 Rg8 24. Rac1 Kb7 25. Ba3 Ra8 26. Rb1+ Ka6 27. Bb4 Rc8 28. Nd6 Rc7 29. e4 Bc6 30. c4 e5 31. Bc3 Re7 32. Nf5 Re6 33. Ng3 Ree8 34. Rb2 Bd7 35. Bxe5 Rxe5 36. f4 Re7 37. e5 Ng4 38. c5 Rc8 39. Rc1 Nh6 40. Nh5 Nf5 41. g4 Nh4 42. Rc3 Ba4 43. Nxg7 Ng6 44. g5 Nxf4 45. Rc4 Nh3+ 46. Kg2 Bb5 47. Rc3 Nxg5 48. Ra3+ Kb7 49. Nf5 Rxc5 50. Nxe7 Rxe5 51. Rab3 Ka6 52. Ra3+ Kb7 53. Rab3 Ka6 54. Ra3+ Kb7 55. Kg3 Rc5 56. Rab3 Ka6 57. Re3 Ne6 58. Rf2 Rg5+ 59. Kh4 Rg7 60. Nf5 Rg6 61. Nd6 Rh6+ 62. Kg3 Rg6+ 63. Kh4 Rh6+ 64. Kg3 Rg6+ 65. Kh4 Rh6+ 66. Kg3 Rg6+ 67. Kh4 Rh6+ 68. Kg3 Rg6+ 69. Kh4 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "19"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 c5 2. c3 Nf6 3. e5 Nd5 4. Nf3 Nc6 5. Bc4 Nb6 6. Bb3 d6 7. exd6 Qxd6 8. d4 cxd4 9. cxd4 Be6 10. Be3 Bxb3 11. Qxb3 Na5 12. Qb5+ Nc6 13. Nc3 Qb4 14. Qe2 Na4 15. Rc1 Qa5 16. O-O Nxc3 17. Rxc3 Qd5 18. Ra1 e6 19. Qf1 Bd6 20. Rc2 Nb4 21. Rc4 Nxa2 22. Ra4 Nb4 23. Ra5 Qc6 24. Rxa7 Rxa7 25. Rxa7 O-O 26. Ra1 Nc2 27. Rc1 Nxe3 28. fxe3 Qe4 29. Qe1 Re8 30. Kh1 Qf5 31. e4 Qg6 32. e5 Bb8 33. Qb4 Qe4 34. Qb5 Kf8 35. Re1 Qd5 36. Qd3 Qa2 37. Qxh7 Qxb2 38. Rb1 Qc3 39. Rxb7 Qc1+ 40. Ng1 Bc7 41. Qh8+ Ke7 42. Qxg7 Qc3 43. Qf6+ Kf8 44. Qh8+ Ke7 45. Qh4+ Kd7 46. Nf3 Kc8 47. Rb1 Qd3 48. Rc1 Kb7 49. Qf4 Re7 50. d5 Qxd5 51. Qb4+ Kc8 52. Qxe7 Qd7 53. Qxd7+ Kxd7 54. Ng5 Bxe5 55. Nxf7 Bb2 56. Rb1 Bf6 57. Kg1 Ke7 58. Rb7+ Kf8 59. Kf1 Bh4 60. Ne5 Bd8 61. Rb8 Ke7 62. Nc6+ Kd6 63. Rxd8+ Kc5 64. Nb8 Kb6 65. Nc6 Ka6 66. Rb8 e5 67. Ke2 e4 68. Nb4+ Ka5 69. Ke3 Ka4 70. Nd5 Ka3 71. Rb3+ Ka4 72. Nb6+ Ka5 73. Nc4+ Ka6 74. Rb7 Kxb7 75. Kxe4 Kb8 76. g4 Ka8 77. h4 Ka7 78. h5 Ka6 79. g5 Kb5 80. g6 Kb4 81. g7 Kb3 82. g8=R Ka4 83. h6 Kb4 84. h7 Kc3 85. h8=N Kxc4 86. Nf7 Kb4 87. Nd6 Ka3 88. Nc4+ Kb3 89. Kd4 Kb4 90. Na3 Ka4 91. Kc4 Ka5 92. Rg6 Ka4 93. Ra6# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "20"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. Nf3 Nf6 2. d4 e6 3. c4 d5 4. Bg5 h6 5. Bxf6 Qxf6 6. Nc3 c6 7. e3 Nd7 8. Be2 g6 9. c5 Be7 10. Qd2 h5 11. e4 Kf8 12. e5 Qg7 13. O-O-O g5 14. Ne1 g4 15. Qd3 h4 16. Kb1 h3 17. g3 Rh6 18. Qd2 Bg5 19. Qc2 Bd8 20. Qc1 Bg5 21. Qc2 Bd8 22. Qd2 Rg6 23. Bd3 Bg5 24. Qe2 Be7 25. Bxg6 Qxg6+ 26. Qd3 Qxd3+ 27. Nxd3 Bg5 28. Kc2 Be7 29. Rhe1 Bg5 30. Ne2 Kg7 31. Nef4 Rb8 32. Kb3 Bd8 33. Re2 Bg5 34. Ree1 Be7 35. Rd2 Bd8 36. Rc2 Ba5 37. Ree2 Kh6 38. Rc1 Nf8 39. Rd1 Ng6 40. Nxg6 Kxg6 41. Nf4+ Kg5 42. Rc2 Bd7 43. Ka4 Bd8 44. Kb3 Kf5 45. Nd3 Rc8 46. Re2 Ra8 47. Rdd2 Ba5 48. Rd1 Rb8 49. Nb4 Bd8 50. Nc2 Kg6 51. Ne3 Kg5 52. Rc1 Be8 53. Rd1 Bd7 54. Rc1 Bc7 55. Rcc2 Rc8 56. Re1 Rd8 57. Rd1 Be8 58. Re2 Bd7 59. Ree1 Ba5 60. Re2 Rb8 61. Ka4 Bd8 62. Kb3 Be8 63. Rc1 Ba5 64. Ka4 Bc7 65. Rcc2 Ra8 66. Kb3 Rc8 67. Re1 Ba5 68. Rd1 Rb8 69. Ka4 Bc7 70. Kb3 Bd7 71. Rdd2 Bd8 72. Re2 Be8 73. Re1 Ba5 74. Ree2 Rc8 75. Ka4 Bd8 76. Re1 Bc7 77. Kb3 Ba5 78. Rd1 Bd8 79. Re2 Bd7 80. Rc2 Ra8 81. Rcc1 Be7 82. Rc2 Rf8 83. Ka4 Kh5 84. Rdd2 Ra8 85. Kb3 Kg5 86. Re2 Kh5 87. Re1 Rd8 88. Rd2 Kg5 89. Rc2 Kh5 90. Rd2 Kg5 91. a3 Be8 92. Ka4 Rb8 93. Rc2 Bd7 94. Kb3 Rd8 95. Rd2 Rb8 96. Rb1 Ra8 97. Re1 Bf8 98. Ree2 Be7 99. Re1 Be8 100. Rc2 Bf8 101. Rce2 Rb8 102. Rd2 Bd7 103. Rde2 Re8 104. Rd2 Be7 105. Rc2 Rg8 106. Ka4 Rc8 107. Kb3 Be8 108. Ree2 Kh5 109. Red2 Bf8 110. Re2 Be7 111. Red2 Bd8 112. Rc3 Ba5 113. Rcc2 Bxd2 114. Rxd2 Rc7 115. Re2 Rd7 116. Kc3 Kg5 117. Re1 Rd8 118. Re2 Bd7 119. Kb3 Rh8 120. Kc3 Bc8 121. Re1 Re8 122. Re2 Bd7 123. Rd2 Bc8 124. Rc2 Rg8 125. Re2 Bd7 126. Rd2 Re8 127. Re2 Rd8 128. Rd2 Rg8 129. Kb3 Rc8 130. Rc2 Re8 131. Re2 Rf8 132. Rd2 Rd8 133. Re2 Kh5 134. Kc3 Rf8 135. Re1 Kg5 136. Rd1 Rd8 137. Rd2 Ra8 138. Rd1 Be8 139. Re1 Rd8 140. Re2 Rb8 141. Re1 Kh5 142. Rh1 Rc8 143. Re1 Bd7 144. Kb3 Rg8 145. Rg1 Kh6 146. Kc3 Kh7 147. Rd1 Kh6 148. Kd2 Kh5 149. Kc2 Be8 150. Rd3 Kg5 151. Rb3 a6 152. Rxb7 Rg7 153. Ra7 Rg6 154. Rxa6 Rg8 155. Ra8 Rh8 156. Kc3 Kh5 157. Rb8 Kg5 158. Rb3 Rf8 159. Kb4 Bd7 160. Rd3 Bc8 161. Rd1 Ba6 162. Rc1 Re8 163. Kc3 Bb5 164. Rc2 Kh5 165. Kb4 Kg5 166. Rd2 Ba6 167. Ka5 Bb5 168. Kb4 Rb8 169. Kc3 Ba4 170. Kd3 Rb3+ 171. Ke2 Bb5+ 172. Ke1 Ba6 173. Rc2 Rd3 174. Rd2 Rb3 175. Rc2 Rd3 176. Rd2 Rb3 177. Rc2 Rb8 178. Kd2 Rb3 179. Kc1 Rb8 180. Kd2 Rb3 181. Kc1 Bd3 182. Rc3 Rxc3+ 183. bxc3 Be2 184. Kd2 Bb5 185. Kc2 Kh5 186. Kd2 Kg5 187. Kc2 Be2 188. Kd2 Ba6 189. Kc2 Be2 190. Kd2 Ba6 191. Kc2 Be2 192. Kd2 Bb5 193. Kc2 Be2 194. Kd2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "21"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. d3 Bc5 5. c3 O-O 6. O-O d5 7. exd5 Qxd5 8. Bc4 Qd8 9. Nbd2 Bg4 10. Nb3 Bb6 11. Be3 Bxe3 12. fxe3 Qd6 13. Rf2 Rad8 14. h3 Bxf3 15. Qxf3 Rfe8 16. Re1 Rd7 17. Kh1 Qf8 18. Bb5 Re6 19. h4 g6 20. Rfe2 Qh6 21. h5 Qxh5+ 22. Qxh5 Nxh5 23. Kh2 Rf6 24. Na5 Rd5 25. Nxc6 bxc6 26. Bc4 Rd7 27. Ba6 Rfd6 28. Kh3 Re7 29. Bc4 Nf6 30. e4 Red7 31. Kh2 Rxd3 32. Bxd3 Rxd3 33. Kg1 Ng4 34. Rc2 Re3 35. Rd1 Kg7 36. Rcd2 Nf6 37. Kf2 Rxc3 38. bxc3 Nxe4+ 39. Kf3 Nxd2+ 40. Rxd2 e4+ 41. Kxe4 Kf8 42. Rd7 Kg7 43. Rxc7 a5 44. Rxc6 a4 45. Ra6 a3 46. Kf4 Kf8 47. Ra8+ Ke7 48. Rxa3 Kf6 49. Ra6+ Ke7 50. Rb6 Ke8 51. Rb7 Kf8 52. Ke5 Kg7 53. Rd7 h6 54. Rd1 h5 55. Rd4 Kg8 56. Kf6 h4 57. Rd8+ Kh7 58. Kxf7 g5 59. Kf6 g4 60. Kf5 h3 61. Rd2 h2 62. Rd7+ Kh6 63. Rd6+ Kg7 64. Rd7+ Kh6 65. Rd6+ Kh5 66. Rd1 g3 67. Kf4 Kg6 68. Kxg3 Kf6 69. Rh1 Kf5 70. Rxh2 Ke4 71. Rh1 Kf5 72. Re1 Kf6 73. Kf4 Kf7 74. Kf5 Kf8 75. Re7 Kg8 76. Rf7 Kxf7 77. a3 Kg8 78. a4 Kh7 79. c4 Kh8 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "22"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. O-O d6 6. c3 Bb6 7. b4 O-O 8. a4 a5 9. b5 Ne7 10. Bb2 Be6 11. Bxe6 fxe6 12. Qe1 Qe8 13. Na3 Rf7 14. Ng5 Ng6 15. Nxf7 Kxf7 16. Rd1 Bc5 17. Nc4 Qf8 18. d4 exd4 19. cxd4 Bb4 20. Nd2 Bxd2 21. Rxd2 Qh8 22. Rc2 Qb8 23. Bc3 Qd8 24. Bxa5 b6 25. Bc3 Rxa4 26. e5 Nd5 27. Bd2 Rxd4 28. exd6 Qxd6 29. Be3 Rd3 30. Kh1 Qd7 31. Qb1 Kg8 32. Qc1 Qxb5 33. Re1 Qe8 34. Rxc7 Nxc7 35. Qxc7 b5 36. Rb1 Ne7 37. Qc2 Rd5 38. Qc1 Nf5 39. Bf4 Rd4 40. Be5 Re4 41. Bc3 Ra4 42. Qf1 Rc4 43. Qe1 Qc6 44. Ba5 Nh4 45. f3 Nxf3 46. Qd1 Nh4 47. Qf1 Rf4 48. Qe2 Rf5 49. Kg1 Rg5 50. g3 Nf3+ 51. Kf2 Nxh2 52. Bd2 Rf5+ 53. Bf4 g5 54. Qh5 Qc2+ 55. Qe2 Qxb1 56. Qxe6+ Kg7 57. Qe7+ Rf7 58. Qxg5+ Qg6 59. Qh4 Ng4+ 60. Kf3 Nf6 61. Be5 Qf5+ 62. Qf4 Qxf4+ 63. gxf4 b4 64. Bd4 b3 65. f5 Re7 66. Bc5 b2 67. Kf4 Re4+ 68. Kg3 b1=Q 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "23"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. O-O Nf6 5. Re1 Ng4 6. Rf1 Nf6 7. Nc3 d6 8. d3 a5 9. h3 Nd4 10. Be3 c6 11. a4 Bd7 12. Re1 Ke7 13. Bg5 Qe8 14. h4 Bg4 15. Bxf6+ gxf6 16. Kh1 Rg8 17. Rg1 Bh5 18. Ra2 Nxf3 19. gxf3 Bxf2 20. Rf1 Bxh4 21. Qc1 Qd7 22. Kh2 Rg3 23. Nd5+ cxd5 24. Bb5 Qh3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "24"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. a4 b4 9. d3 Nd4 10. Nbd2 Bb7 11. Nc4 Nxb3 12. cxb3 Re8 13. a5 d5 14. exd5 h6 15. Ncxe5 Bxd5 16. Be3 g5 17. h3 Kg7 18. Ng4 Bxf3 19. gxf3 Qd6 20. d4 Qd7 21. Rc1 Bd6 22. Nxf6 Kxf6 23. Kg2 Qb5 24. d5 Kg6 25. Ra1 Qd7 26. Qd3+ Qf5 27. Qxf5+ Kxf5 28. Rab1 Rab8 29. Red1 Rb5 30. Rbc1 Re5 31. Bb6 cxb6 32. Rc6 Bc5 33. d6 Re2 34. d7 Be7 35. Rb1 Rd5 36. Kf1 Rdd2 37. axb6 Rxf2+ 38. Kg1 Rxf3 39. b7 Rg3+ 40. Kf1 Rxh3 41. Kg1 Rg3+ 42. Kf1 Rh3 43. Kg1 Rg3+ 44. Kf1 Rh3 45. Kg1 Rg3+ 46. Kf1 Rh3 47. Kg1 Rg3+ 48. Kf1 Rh3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "25"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "120+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Na5 Qc7 13. O-O-O Be7 14. Qb4 O-O-O 15. Be2 Rde8 16. h4 Nc5 17. Nb3 Nxb3+ 18. Qxb3 Qd7 19. Qd3 Kb8 20. Bf2 Rd8 21. Qb3 Kc8 22. Qc3+ Kb8 23. Qb3 Kc8 24. Ba7 Qe8 25. Qc3+ Kd7 26. Bxa6 Nxd5 27. Bb5+ Ke6 28. Qb3 Qf8 29. Qxd5+ Kf6 30. Qxb7 Ra8 31. Be3 Kg7 32. Qd5 Bf6 33. Qxd6 Qxd6 34. Rxd6 Rxa2 35. Rhd1 e4 36. Rxf6 Ra1+ 37. Kd2 Rd8+ 38. Bd3 Rxd1+ 39. Kxd1 exd3 40. Rf4 dxc2+ 41. Kxc2 Re8 42. Kd3 Re7 43. Bc5 Rd7+ 44. Bd4+ Kh6 45. Ke4 Re7+ 46. Kd5 Rc7 47. Kd6 Rc2 48. Rxf7 Rxg2 49. Be3+ g5 50. hxg5+ Kg6 51. Rf6+ Kh7 52. Bc1 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "26"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "120+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5 Nf5 8. Qxd8+ Kxd8 9. h3 Be7 10. Rd1+ Bd7 11. g4 Nh4 12. Ng5 Ke8 13. Nc3 Bxg5 14. f4 Be7 15. Be3 h5 16. f5 hxg4 17. e6 fxe6 18. hxg4 exf5 19. Kf2 Bf6 20. g5 Bxc3 21. bxc3 Ng6 22. Bd4 Rh2+ 23. Kg1 Rxc2 24. Rdb1 b6 25. Bxg7 Be6 26. a3 Ra2 27. Rxa2 Bxa2 28. Ra1 Bd5 29. Rc1 Nf4 30. Rf1 Ne6 31. Bh6 Kf7 32. Rxf5+ Kg6 33. Rf6+ Kh5 34. Rf2 Nxg5 35. Rh2+ Kg6 36. Bxg5 Kxg5 37. Rh7 Rc8 38. Re7 Kf6 39. Re3 Rh8 40. Kf1 Rh2 41. Re8 Ra2 42. Rc8 Ke5 43. Rxc7 Rxa3 44. Rg7 Ra2 45. Re7+ Kd6 46. Re1 Bc4+ 47. Kg1 Kd5 48. Rc1 Ke4 49. Rd1 Bd3 50. Kh1 Rb2 51. Re1+ Kd5 52. Re3 Bb5 53. Rg3 Ke4 54. Rg7 Ra2 55. Kg1 Kd5 56. Rg4 Ba6 57. Rf4 Bb5 58. Rd4+ Kc5 59. Rd1 Ba6 60. Re1 Bd3 61. Re7 Bc4 62. Re5+ Kd6 63. Re1 Kd5 64. Rc1 Bd3 65. Rd1 Kc4 66. Re1 Kc5 67. Rc1 Rb2 68. Re1 Bc4 69. Re5+ Kd6 70. Rg5 Ra2 71. Rh5 Ke6 72. Rh6+ Kd5 73. Rh5+ Kd6 74. Rg5 Ke6 75. Rg6+ Kd5 76. Rg5+ Kd6 77. Rh5 Bd3 78. Rg5 Bc4 79. Rg6+ Kd5 80. Rg5+ Ke6 81. Rg6+ Kd5 82. Rg5+ Kd6 83. Rg6+ Kd5 84. Rg5+ Kd6 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "27"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "120+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Nf3 b6 5. e3 O-O 6. Bd2 d5 7. cxd5 exd5 8. Ne5 Bb7 9. Bd3 Bd6 10. Nf3 Nc6 11. Ke2 Nb4 12. Bb5 c6 13. Bd3 Qc8 14. g3 Ba6 15. Ne1 Bxd3+ 16. Nxd3 Qa6 17. Qb1 Rfe8 18. Rg1 Qc4 19. a3 Nxd3 20. Qxd3 Re7 21. Rge1 Rc8 22. Rad1 Rec7 23. Rh1 Rd8 24. Rde1 Be7 25. Rhg1 Re8 26. Rh1 Bd6 27. Rd1 Rd7 28. Rb1 Rb8 29. Rhc1 Rbd8 30. Rh1 Rc8 31. Rbc1 Re8 32. Be1 Kf8 33. Rb1 Ke7 34. Bd2 Kf8 35. Rhg1 Ng4 36. Rg2 Nf6 37. Rgg1 Ng4 38. Rg2 Nf6 39. Rgg1 Ng4 40. Rg2 Nf6 41. Rgg1 Ng4 42. Rg2 Nf6 43. Rd1 Kg8 44. g4 Qxd3+ 45. Kxd3 Nxg4 46. Rxg4 Bxh2 47. Ke2 Bd6 48. Rdg1 g6 49. Kf3 Be7 50. R4g2 Bd6 51. Na4 b5 52. Nc5 Rc7 53. Nd3 Kh8 54. Nb4 Bxb4 55. Bxb4 Rd8 56. Ba5 Rdc8 57. Bxc7 Rxc7 58. Rh1 Kg7 59. Rgh2 h5 60. Kf4 Kf6 61. Rb1 Rc8 62. Re1 Rc7 63. Reh1 Rb7 64. Rd1 b4 65. Rc1 b3 66. Rxc6+ Ke7 67. Ke5 Rd7 68. a4 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "28"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "120+1"]
+
+1. c4 e5 2. Nc3 Nf6 3. Nf3 Nc6 4. e4 Bb4 5. d3 d6 6. a3 Bc5 7. b4 Bb6 8. Be3 Bg4 9. Be2 Bxe3 10. fxe3 Kf8 11. Kf2 Qe8 12. c5 dxc5 13. bxc5 h6 14. Nb5 Rc8 15. Qe1 Kg8 16. Rb1 a6 17. Nc3 Bxf3 18. Bxf3 Rb8 19. Nd5 Qd8 20. Kg3 g6 21. Rf1 Rh7 22. Rf2 Nd7 23. Nb4 Qg5+ 24. Kh3 Qe7 25. Qc3 Nxc5 26. Rc1 Nxb4 27. axb4 Ne6 28. Qe1 Rd8 29. Rd2 h5 30. Kg3 h4+ 31. Kh3 Qd7 32. g4 Ng5+ 33. Kg2 h3+ 34. Kg3 Qe7 35. Bh1 Ne6 36. Kf3 Qh4 37. Qxh4 Rxh4 38. Kg3 Rh8 39. Rb1 Rd6 40. Rbb2 Rb6 41. Rb3 Kg7 42. Bf3 Kf6 43. Rf2 Kg5 44. Be2 Rh7 45. Rb1 Rc6 46. Rbf1 Rc2 47. Rb1 c6 48. Ra1 Nc7 49. Rb1 Nb5 50. Rbf1 Nc3 51. Bf3 Rxf2 52. Rxf2 Rh8 53. Bh1 Rh7 54. Bf3 Rh8 55. Bh1 Rh7 56. Bf3 Rh4 57. Rc2 Na4 58. Bd1 Nb6 59. Rf2 Rh7 60. Bb3 f6 61. Bd1 Nc8 62. Be2 Na7 63. Bf1 Nc8 64. Bxh3 Rh8 65. Rd2 Nd6 66. Bg2 Rd8 67. Rf2 Ne8 68. Rd2 Nd6 69. Rf2 Ne8 70. Bf1 Rd6 71. Rd2 Nc7 72. Bg2 Nb5 73. Bf3 Rd7 74. Bg2 Nd6 75. Rf2 Rh7 76. Bf3 Nb5 77. Be2 Rh8 78. Bf3 Rd8 79. Rd2 Rd7 80. Rd1 Nd6 81. Re1 Nb5 82. Be2 Nc3 83. Bf1 Nb5 84. Be2 Rd8 85. Rd1 Nc3 86. h4+ Kh6 87. g5+ fxg5 88. hxg5+ Kxg5 89. Re1 Rd6 90. Bf1 Nb5 91. Rc1 Kf6 92. Be2 Rd8 93. Rf1+ Ke6 94. Bg4+ Ke7 95. Rd1 Kf6 96. Bf3 Na3 97. Bg4 Nc2 98. Rf1+ Ke7 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "29"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. c4 c5 2. Nf3 Nc6 3. g3 Nf6 4. Nc3 d5 5. d4 e6 6. cxd5 exd5 7. Bg2 cxd4 8. Nxd4 Bc5 9. Nxc6 bxc6 10. Bf4 Bb7 11. Qd2 d4 12. Ne4 Bb6 13. Nd6+ Ke7 14. Nxb7 Qc8 15. Nd6 Qd7 16. Rc1 Nd5 17. Be5 Qe6 18. Qg5+ Nf6 19. Bxc6 Rad8 20. Nf5+ Qxf5 21. Qxf5 Rc8 22. Bxf6+ gxf6 23. Qd7+ Kf8 24. Qxc8+ Kg7 25. Qg4+ Kf8 26. Qf3 Ke7 27. Kd2 Ke6 28. Bd5+ Ke7 29. Rc6 f5 30. Qa3+ Kd7 31. Qd6+ Ke8 32. Rc8+ Bd8 33. Rxd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "30"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "120+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. b3 Bb4+ 6. Bd2 Be7 7. Bg2 c6 8. Bc3 d5 9. O-O Nbd7 10. Nbd2 Qc7 11. g4 Nxg4 12. Qc2 Ngf6 13. Rfe1 O-O-O 14. Ng5 Rdf8 15. Ngf3 Rd8 16. Ng5 Rdf8 17. Ngf3 Rd8 18. Rad1 h5 19. Ne5 h4 20. Nxf7 h3 21. Bf3 dxc4 22. Nxc4 Bxc4 23. bxc4 Bd6 24. Qg6 Rh7 25. Nxd8 Bxh2+ 26. Kh1 Kxd8 27. Qf7 Bd6 28. c5 h2 29. Qxe6 Be7 30. Qxc6 Qxc6 31. Bxc6 Kc7 32. Bxd7 Ne4 33. Rc1 Kxd7 34. cxb6 Nxf2+ 35. Kg2 axb6 36. Kxf2 Bg5 37. Ra1 Bh4+ 38. Kg2 Bxe1 39. Rxe1 Ke7 40. Rh1 Kd6 41. Rxh2 Rxh2+ 42. Kxh2 Kc6 43. d5+ Kxd5 44. Bxg7 Ke4 45. a4 Kf4 46. Bd4 Ke4 47. Bxb6 Kf5 48. a5 Ke6 49. a6 Ke5 50. e3 Ke6 51. e4 Ke5 52. a7 Kd6 53. a8=Q Ke5 54. Qa2 Kxe4 55. Be3 Kxe3 56. Qc4 Kd2 57. Kh3 Kd1 58. Kg3 Kd2 59. Kf3 Kd1 60. Ke3 Ke1 61. Qe2# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Qd3 exd4 11. exd4 b5 12. Bb3 Nc5 13. Qd1 Nxb3 14. Qxb3 b4 15. Ne2 Be6 16. Qc2 b3 17. axb3 Qb6 18. Bf4 Rfd8 19. Bxd6 Rxd6 20. Qc5 Qb8 21. Nf4 Bxb3 22. Rfe1 Rd8 23. Qe5 Bd5 24. Nxd5 Nxd5 25. Rab1 Qc8 26. Ra1 Kf8 27. Qh5 Qb7 28. Qxh7 Nf6 29. Qh8+ Ng8 30. Ng5 f6 31. Ne6+ Ke8 32. Nxd8+ Kxd8 33. Qxg8+ Kd7 34. Qxg7+ Kd6 35. Qxb7 Re8 36. Qb4+ c5 37. Qxc5+ Kd7 38. Rxa7+ Kd8 39. Qc7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb5 Bxc3+ 10. bxc3 Rb8 11. Qxd5 Be6 12. Qe5 Nxe5 13. dxe5 Qf5 14. c4 Bxc4 15. Rc1 Bxa2 16. Rc5 Qb1+ 17. Kd2 Qb4+ 18. Rc3 Rd8+ 19. Ke3 Qxc3+ 20. Kf4 Qc1+ 21. e3 Bc4 22. Bxc4 Qxh1 23. e6 fxe6 24. Kg3 Qd1 25. Bb5+ Ke7 26. Nh4 Qc2 27. Bf1 Rd2 28. Bc4 Rxf2 29. Ng6+ Qxg6+ 30. Kxf2 Rf8+ 31. Ke1 Qxg2 32. Kd1 Rd8+ 33. Kc1 Qd2+ 34. Kb1 Qb4+ 35. Ka1 Rd1+ 36. Ka2 Rd2+ 37. Ka1 Qb2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "3"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. Nf3 d5 2. d4 e6 3. e3 Nf6 4. Nbd2 c5 5. b3 b6 6. Bd3 Bb7 7. Bb2 Nc6 8. Qe2 Bd6 9. dxc5 bxc5 10. O-O-O Kd7 11. Qe1 Qg8 12. Kb1 e5 13. e4 Nd4 14. exd5 Bxd5 15. Ne4 Nxf3 16. gxf3 Bxe4 17. Bxe4 Re8 18. Qa5 Ke6 19. Rxd6+ Kxd6 20. Rd1+ Nd5 21. Rxd5+ Ke7 22. Qxc5+ Kf6 23. Rxe5 Re6 24. Rg5+ Re5 25. Qxe5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "4"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nf6 3. d4 Nxe4 4. Bd3 d5 5. Nxe5 Nd7 6. Nc3 Bb4 7. O-O Nxe5 8. dxe5 Nxc3 9. bxc3 Bxc3 10. Rb1 O-O 11. Bxh7+ Kxh7 12. Qd3+ Kg8 13. Qxc3 d4 14. Qg3 Kh8 15. Re1 Qd5 16. Rb2 Be6 17. Bf4 Rfe8 18. Reb1 Qe4 19. Rxb7 Bxa2 20. f3 Qc6 21. R1b2 Be6 22. Qh4+ Kg8 23. Qe1 Qc3 24. Qd1 Bd5 25. R7b4 c5 26. Rb5 Rac8 27. Qa1 d3 28. Qc1 dxc2 29. Rxc2 Qd4+ 30. Be3 Qxe5 31. Rbxc5 Rcd8 32. R5c3 Rd7 33. Rd2 Red8 34. Kh1 Qe6 35. Qg1 Qe5 36. Ra3 a5 37. Rxa5 Re8 38. Ra7 Qxe3 39. Qxe3 Rxe3 40. Ra1 Bc6 41. Rxd7 Bxd7 42. Kg1 Re2 43. Rd1 Bf5 44. Rd5 Be6 45. Rd1 Kh7 46. Rc1 Rd2 47. Rc7 Kg6 48. Rc5 Bd5 49. Rc3 Kf5 50. Rc1 Kf4 51. Rc3 Ke5 52. Rc1 Kf5 53. Re1 Kf4 54. Rc1 Ke3 55. Re1+ Re2 56. Rc1 Rd2 57. Re1+ Re2 58. Rc1 Ra2 59. Re1+ Re2 60. Rc1 Ra2 61. Re1+ Re2 62. Rc1 Ra2 63. Re1+ Re2 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "5"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Bd6 6. c5 Bc7 7. Nbd2 Nbd7 8. b4 Qe7 9. Bb2 g5 10. Nxg5 Kd8 11. Ngf3 Qf8 12. Bd3 Qe8 13. O-O-O Bb8 14. h4 h5 15. Nb3 e5 16. e4 dxe4 17. Bxe4 exd4 18. Bxd4 Bf4+ 19. Kb1 Nxe4 20. Bxh8 Nxf2 21. Qxf2 Qxh8 22. Rhe1 Qh7+ 23. Ka1 Qg7+ 24. Qb2 Qg6 25. Rxd7+ Bxd7 26. Qh8+ Kc7 27. Qxa8 Qc2 28. Re7 Qxg2 29. Rxd7+ Kxd7 30. Qxb7+ Ke8 31. Qxc6+ Kf8 32. b5 Be3 33. Qd6+ Kg8 34. Qd1 Qg7+ 35. Kb1 Qg6+ 36. Kb2 Qf6+ 37. Nbd4 Qf4 38. c6 Bf2 39. Qa4 Qc7 40. Qc2 Bxd4+ 41. Nxd4 Kg7 42. Qg2+ Kh7 43. Qg5 Qh2+ 44. Kb3 Qh3+ 45. Kb4 Qh2 46. Kb3 Qh3+ 47. Kb4 Qh2 48. Kb3 Qh3+ 49. Kb4 Qh2 50. Kb3 Qh3+ 51. Kb4 Qh2 52. Kb3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "6"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Nd5 Bxd5 10. exd5 Nbd7 11. Qd2 g6 12. Be2 h4 13. Kf2 a5 14. Qe1 a4 15. Nd2 Nxd5 16. Nc4 h3 17. gxh3 Be7 18. Bg5 Bxg5 19. Nxd6+ Ke7 20. Nxb7 Qb6+ 21. Kg2 Bh4 22. Qxh4+ Rxh4 23. Rab1 Nf4+ 24. Kf1 Qxb7 25. Kf2 Rxh3 26. Ke3 Nxe2 27. Kd2 Qxf3 28. Rbf1 Qe3+ 29. Kd1 Qc1+ 30. Kxe2 Qxc2+ 31. Ke1 Re3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "7"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 Nbd7 7. f4 Qc7 8. Qf3 Qd8 9. O-O-O e6 10. Bc4 h6 11. Bxf6 Qxf6 12. Qg3 h5 13. h4 Be7 14. Nf3 Qh6 15. Kb1 e5 16. fxe5 Nxe5 17. Nxe5 dxe5 18. Qxe5 Be6 19. Bxe6 fxe6 20. Qc7 Qe3 21. Qxb7 Rd8 22. Rxd8+ Bxd8 23. Qxg7 Qh6 24. Qg3 Bb6 25. Qd6 Be3 26. Qxa6 Kf7 27. Rf1+ Kg8 28. Qc8+ Kh7 29. Rf7+ Qg7 30. Rxg7+ Kxg7 31. Qd7+ Kg8 32. Qxe6+ Kf8 33. Qd6+ Kf7 34. Qc7+ Kf6 35. Nd5+ Kg6 36. Qc6+ Kg7 37. Qf6+ Kh7 38. Qf7+ Kh6 39. Nxe3 Rf8 40. Nf5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "8"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. e3 Nbd7 6. Bd3 dxc4 7. Bxc4 b5 8. Bd3 a6 9. e4 c5 10. Be3 cxd4 11. Bxd4 Bc5 12. Bxf6 Qxf6 13. Qe2 Bb7 14. O-O-O Bb4 15. Bxb5 Rd8 16. Rxd7 Rxd7 17. Bxd7+ Kxd7 18. Qd3+ Ke7 19. Rd1 Qf4+ 20. Kc2 Bxc3 21. Qd7+ Kf6 22. Qxb7 Rb8 23. Qxa6 Qxe4+ 24. Kxc3 Qb4+ 25. Kd3 Rd8+ 26. Ke3 Rxd1 27. b3 Qc5+ 28. Ke2 Ra1 29. Nd2 Qe5+ 30. Kf3 Qh5+ 31. g4 Qh3+ 32. Ke2 Qxg4+ 33. Kd3 Qf5+ 34. Ne4+ Kg6 35. Qa8 Qf3+ 36. Kc4 Qe2+ 37. Kd4 Rxa2 38. Qb8 Qd1+ 39. Ke3 Re2+ 40. Kf4 Qd4 41. f3 Rxh2 42. Kg3 Qg1+ 43. Kf4 Rh4+ 44. Ke5 Qh2+ 45. Kd4 Qxb8 46. Ke3 Qxb3+ 47. Kf2 Rh3 48. Ng3 Qa2+ 49. Ne2 Rh2+ 50. Ke3 Rxe2+ 51. Kd3 e5 52. Kc3 Rc2+ 53. Kb4 Qb1+ 54. Ka4 Ra2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "9"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e6 7. f3 b5 8. a3 h5 9. Bd3 Bb7 10. Kd2 Nbd7 11. Qe1 Be7 12. Nb3 h4 13. Na5 Qxa5 14. Bd4 O-O-O 15. Kc1 b4 16. Nd1 Qg5+ 17. Ne3 Ne5 18. axb4 h3 19. Bxe5 dxe5 20. gxh3 Bxb4 21. Qf2 Bc5 22. Re1 Rxh3 23. Ra5 Bb4 24. Rg1 Qh6 25. Rxg7 Rxh2 26. Qg1 Rh1 27. Qxh1 Qxh1+ 28. Nd1 Bxa5 29. Rxf7 Qxf3 30. b3 Qg2 31. Ne3 Bd2+ 32. Kb1 Qg6 33. Nc4 Qxf7 34. Nxd2 Qh7 35. Kb2 Kc7 36. Nf3 Kd6 37. Bc4 Nxe4 38. b4 Qh3 39. Be2 Qg2 40. Bd1 Qf1 41. Nh4 Qxd1 42. Ng6 Qh5 43. Nf8 Rxf8 44. Ka3 Qh3+ 45. Ka4 Qc3 46. Ka5 Kc6 47. Ka4 Qa1+ 48. Kb3 Nd2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "10"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. Bg5 h6 6. Bh4 dxc4 7. e4 g5 8. Bg3 b5 9. e5 Nh5 10. Be2 Nd7 11. Kd2 b4 12. Ne4 c3+ 13. bxc3 g4 14. Bh4 bxc3+ 15. Kxc3 Qa5+ 16. Kc2 gxf3 17. Bxf3 Qa4+ 18. Kc3 Bb4+ 19. Kb2 Ba3+ 20. Kc3 Qb4+ 21. Kd3 Nf4+ 22. Ke3 Nd5+ 23. Ke2 Ba6+ 24. Qd3 Qb2+ 25. Ke1 Bb4+ 26. Nd2 Qxa1+ 27. Ke2 Bxd3+ 28. Kxd3 Qc3+ 29. Ke2 Qxd2+ 30. Kf1 Qe1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "11"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. e3 Bf5 8. g4 Be6 9. Qb3 Qc7 10. Nf3 Bxg4 11. Ne5 Be6 12. Bd3 Nd7 13. Rg1 Ngf6 14. Rxg7 Kf8 15. Rg3 Nxe5 16. dxe5 Nd7 17. Qa3+ Ke8 18. f4 Nb6 19. O-O-O Qc8 20. Rdg1 Rf8 21. Bxh7 Nc4 22. Qc5 Nb6 23. Bd3 Nd7 24. Qd6 Qb8 25. Rg8 d4 26. Rxf8+ Nxf8 27. Qxd4 Bh3 28. f5 Qc7 29. Rg3 Bxf5 30. Bxf5 Qd8 31. Qf4 Qc7 32. Ne4 Ke7 33. Qg5+ Ke8 34. Nf6+ Kd8 35. Nd5+ f6 36. Qxf6+ Qe7 37. Qxe7# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "12"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 e6 3. Nc3 a6 4. d4 cxd4 5. Nxd4 d6 6. Be3 Nf6 7. Be2 Be7 8. f4 Qc7 9. g4 e5 10. g5 exd4 11. Bxd4 Nc6 12. gxf6 Bxf6 13. Nd5 Qa5+ 14. Bc3 Bxc3+ 15. Nxc3 Bh3 16. Bf3 Qb6 17. Nd5 Qxb2 18. Nc7+ Kd7 19. Nxa8 Rxa8 20. e5 Nd4 21. Kf2 Nxf3 22. Kxf3 Qa3+ 23. Kf2 Bf5 24. exd6 Re8 25. Rb1 Qe3+ 26. Kf1 Bh3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "13"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. cxd5 exd5 4. Nc3 c6 5. Bf4 Bd6 6. Bxd6 Qxd6 7. Qb3 Ke7 8. e3 Nf6 9. Bd3 Qc7 10. Nf3 Bg4 11. Qb4+ Kd8 12. Ng5 Bh5 13. Be2 h6 14. Nf3 Nbd7 15. Bd3 Kc8 16. Ke2 Re8 17. Qa3 Nb6 18. Rae1 Qd8 19. Bf5+ Kb8 20. Na4 Bxf3+ 21. Kxf3 Nc4 22. Qc3 Nd6 23. Qc2 h5 24. Nc3 h4 25. Re2 g6 26. Bh3 Re7 27. Qc1 Qh8 28. g3 g5 29. Qf1 Nde4 30. Rc2 Qh7 31. Qc1 g4+ 32. Bxg4 Nxc3 33. Rxc3 Qe4+ 34. Ke2 Qxg4+ 35. f3 Qg7 36. Rg1 h3 37. g4 Nd7 38. Qf1 Qxd4 39. Qxh3 Qb6 40. Kd1 Rxe3 41. Rxe3 Qxe3 42. Qg3+ Kc8 43. Re1 Qd4+ 44. Kc2 Qc5+ 45. Kd2 Kd8 46. Qh4+ Kc7 47. Qe7 Qc4 48. Qa3 Qf4+ 49. Qe3 Qxh2+ 50. Kc3 Qh8+ 51. Qd4 Qxd4+ 52. Kxd4 Kd6 53. f4 Nc5 54. Rf1 Re8 55. g5 Re2 56. Rf3 Rxb2 57. Ra3 Rb4+ 58. Ke3 d4+ 59. Kd2 Ra4 60. Rxa4 Nxa4 61. Kd3 Ke6 62. f5+ Kxf5 63. Kxd4 Kxg5 64. Kd3 Nb6 65. Ke4 Na4 66. Kd4 Nb6 67. Ke4 Kf6 68. Kd4 Nd5 69. Kc4 Kf5 70. Kb3 Kg5 71. Kc4 Kf6 72. Kd4 Nb4 73. Kc5 Nxa2 74. Kd6 Nb4 75. Kc7 b6 76. Kb7 Nd3 77. Kxa7 Nf4 78. Kb7 Ne6 79. Ka8 Nd4 80. Kb7 Ne6 81. Ka8 c5 82. Kb7 c4 83. Kc6 c3 84. Kd5 c2 85. Kd6 c1=Q 86. Kd5 Qc6+ 87. Kxc6 b5 88. Kxb5 Kg5 89. Kc4 f6 90. Kb5 f5 91. Ka5 f4 92. Kb6 f3 93. Ka5 f2 94. Ka4 f1=B 95. Ka5 Kf4 96. Kb4 Ke3 97. Ka4 Kd3 98. Kb3 Nd4+ 99. Kb2 Kd2 100. Ka3 Bc4 101. Kb2 Nc2 102. Kb1 Kc3 103. Kc1 Ba2 104. Kd1 Nd4 105. Ke1 Kd3 106. Kf2 Ne2 107. Kg2 Be6 108. Kf3 Bc8 109. Kf2 Bg4 110. Ke1 Nc3 111. Kf2 Ne4+ 112. Ke1 Kc3 113. Kf1 Kd2 114. Kg2 Ke1 115. Kg1 Bh3 116. Kh2 Bf1 117. Kh1 Kf2 118. Kh2 Nd2 119. Kh1 Bg2+ 120. Kh2 Nf3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "14"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. Bg5 h6 6. Bxf6 Qxf6 7. e3 Nd7 8. Be2 g6 9. c5 e5 10. dxe5 Nxe5 11. Nxe5 Qxe5 12. Qd4 Qxd4 13. exd4 Bf5 14. O-O-O Be7 15. Bd3 Bg4 16. Be2 Bxe2 17. Nxe2 Bh4 18. Ng3 Ke7 19. Rd3 Kd7 20. Re1 Bg5+ 21. Kd1 Bf6 22. Rf3 Bxd4 23. Rxf7+ Kd8 24. Re2 Rb8 25. Rc2 Be5 26. Rd2 h5 27. Ne4 Ke8 28. Ng5 Bxh2 29. Re2+ Kd8 30. Rg7 Kc8 31. Nf3 Bc7 32. Rxg6 h4 33. Ng5 d4 34. Rd2 h3 35. gxh3 Bf4 36. Rxd4 Bxg5 37. Rxg5 Rxh3 38. Rg8+ Kc7 39. Rxb8 Kxb8 40. Rd8+ Kc7 41. Ra8 Rh1+ 42. Kd2 Rf1 43. Rxa7 Rxf2+ 44. Kc3 Rf3+ 45. Kb4 Rf4+ 46. Kb3 Rf3+ 47. Ka4 Rf5 48. Kb4 Rf2 49. Kc3 Rf3+ 50. Kb4 Rf4+ 51. Kb3 Rf3+ 52. Ka4 Rf5 53. Kb4 Rf2 54. Kc3 Rf3+ 55. Kb4 Rf4+ 56. Kb3 Rf3+ 57. Ka4 Rf5 58. Kb4 Rf2 59. Kc3 Rf3+ 60. Kb4 Rf4+ 61. Kb3 Rf3+ 62. Ka4 Rf5 63. Kb4 Rf2 64. Kc3 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "15"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Illegal Move (0000)"]
+[TimeControl "180+1"]
+
+1. Nf3 c5 2. e4 Nc6 3. Bb5 g6 4. O-O Bg7 5. Re1 Nf6 6. c3 O-O 7. h3 e5 8. d3 d6 9. Be3 Bd7 10. Na3 Re8 11. Nc2 Qb6 12. c4 Nd4 13. Bxd7 Nxd7 14. Qc1 Rab8 15. Bg5 Nf6 16. Ncxd4 cxd4 17. Re2 Nd7 18. h4 Qc6 19. h5 gxh5 20. Kh1 Qa4 21. g3 Qc6 22. Rb1 Nc5 23. Qd2 Qa4 24. Ra1 Qd7 25. Bh4 Qg4 26. Ne1 Nd7 27. Kg1 Bf6 28. Bxf6 Nxf6 29. Ng2 Qg7 30. Qe1 Rbd8 31. Nh4 Qg4 32. Rd1 Rd7 33. Nf5 Qg6 34. Rdd2 Rdd8 35. Nh4 Qg4 36. Rc2 Kh8 37. Qa5 Qd7 38. c5 dxc5 39. Qxa7 c4 40. Rxc4 Qb5 41. Qa4 Qxa4 42. Rxa4 Ra8 43. Rxa8 Rxa8 44. a3 Re8 45. Nf5 Rc8 46. Kh2 Rc1 47. Kg2 Rc7 48. Kh3 Nd7 49. Kh4 Rc6 50. Kxh5 Nc5 51. Rd2 Na4 52. Nh6 Kg7 53. Nf5+ Kf8 54. Kg5 Rb6 55. Rc2 Ke8 56. Rc8+ Kd7 57. Rf8 f6+ 58. Rxf6 Rxf6 59. Kxf6 Nxb2 60. Kxe5 Nxd3+ 61. Kxd4 Nxf2 62. e5 Ke6 63. Nd6 Ng4 64. Nxb7 Nxe5 65. Ke4 Nc4 66. a4 Kf6 67. a5 Na3 68. Nd6 Nb1 69. a6 Nc3+ 70. Kd4 Na4 71. Nc4 Kf7 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "16"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. Nf3 d5 5. cxd5 Nxd5 6. e4 Nxc3 7. bxc3 c5 8. Be3 Qa5 9. Bd2 Nc6 10. d5 Ne5 11. Nxe5 Bxe5 12. Qf3 h5 13. h3 Qa4 14. Be2 h4 15. O-O Bd7 16. Rfb1 Rb8 17. Bf4 Rh5 18. Qe3 Rf5 19. exf5 Bxf4 20. Qxc5 b6 21. Qb4 g5 22. Qxa4 Bxa4 23. Bb5+ Bxb5 24. Rxb5 Kd7 25. Rb3 Kd6 26. Rd1 Ke5 27. Re1+ Kf6 28. Rb2 Be5 29. Rc1 Rd8 30. Rd1 Bxc3 31. Rb3 Be5 32. Ra3 Bb8 33. Ra4 Rd7 34. Rad4 Bf4 35. Kf1 Rc7 36. Re1 Kxf5 37. Re2 Kf6 38. Rd1 Kf5 39. Rde1 Bd6 40. Re3 Kf6 41. Rd1 Rc2 42. Re2 Rc7 43. Ree1 Kf5 44. Rd4 Rc2 45. Re2 Rc7 46. Re1 Kf6 47. Rdd1 Rc2 48. Re2 Rc7 49. Ke1 Bf4 50. Kf1 Bd6 51. Rde1 Bb4 52. Ra1 Bc5 53. Rc2 Ke5 54. Rd1 Kd6 55. Rd3 Ke5 56. Rf3 f6 57. Rd3 Rd7 58. Re2+ Kf5 59. Red2 Ke4 60. Rd1 Rc7 61. R3d2 Bd6 62. Ke2 Rc4 63. Rd3 Bf4 64. Ra3 Rc2+ 65. Kf1 Rc7 66. Rad3 Kf5 67. Re1 g4 68. hxg4+ Kxg4 69. Rd4 h3 70. gxh3+ Kf5 71. Rdd1 Be5 72. Ke2 Ke4 73. Rd2 Bf4 74. Rdd1 Be5 75. Rd2 Rc3 76. Rh1 Kf5 77. Kf1 Rc1+ 78. Kg2 Rxh1 79. Kxh1 Ke4 80. Kg2 Bd6 81. Rd1 Bc5 82. Kg3 Kf5 83. Re1 Kg5 84. Re4 Kf5 85. Ra4 Bd6+ 86. Kf3 Bb8 87. Re4 Be5 88. Ra4 Bb8 89. Rh4 Ke5 90. Re4+ Kd6 91. Re2 Kd7 92. Re4 Bd6 93. Ra4 Bb8 94. Re4 Bc7 95. Ra4 Bb8 96. Re4 Bc7 97. Ra4 Bb8 98. Re4 Bd6 99. Ra4 Bb8 100. Re4 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "17"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3 d6 6. O-O a5 7. h3 O-O 8. Re1 Ba7 9. Bg5 Bb6 10. Nbd2 Qe8 11. Bxf6 gxf6 12. Bd5 a4 13. d4 a3 14. bxa3 Ba5 15. Qc2 exd4 16. cxd4 Be6 17. Rab1 Bb6 18. Nb3 Rxa3 19. Qb2 Rxa2 20. Qxa2 Qd7 21. Bxc6 Bxb3 22. Qxb3 Qxc6 23. Qb2 Qe8 24. Qd2 Kg7 25. Ra1 Qd8 26. h4 Kg6 27. Qd3 Re8 28. d5 Qc8 29. e5+ f5 30. exd6 cxd6 31. h5+ Kxh5 32. Rxe8 Qxe8 33. Qxf5+ Kh6 34. Qg5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "18"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. Nf3 d5 2. d4 Nf6 3. c4 c6 4. e3 Bf5 5. Nc3 e6 6. Nh4 Bb4 7. Bd2 Nbd7 8. Be2 Bg6 9. Nf3 dxc4 10. Kf1 Nb6 11. Qe1 Ke7 12. Kg1 Bd3 13. Nd5+ Nbxd5 14. Bxb4+ Ke8 15. Kf1 Nxb4 16. Qxb4 Rb8 17. Bxd3 cxd3 18. Qa3 g5 19. h3 Qb6 20. Rd1 Qb5 21. Rxd3 Rf8 22. Kg1 a5 23. Nxg5 Qxg5 24. Qd6 Rd8 25. Qh2 Qg6 26. Rd1 Qc2 27. Rf1 Qxb2 28. Qe5 Nd5 29. Qe4 Rd7 30. Qxh7 Qxa2 31. Qh6 a4 32. Qg5 a3 33. Rc1 Qd2 34. Rf1 a2 35. Kh2 Ne7 36. Rd1 Qxf2 37. Qg3 Qb2 38. Rc1 Rg8 39. Qf3 Nf5 40. Rhg1 Nh4 41. Qe4 Rxg2+ 42. Rxg2 Nxg2 43. Qxg2 Qxc1 44. Qxa2 Qxe3 45. Qb1 Rxd4 46. Kh1 Qxh3+ 47. Kg1 Rg4+ 48. Kf2 Rg2+ 49. Kf1 Qh1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "19"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "180+1"]
+
+1. Nf3 c5 2. c4 Nf6 3. d4 cxd4 4. Nxd4 e6 5. Nc3 Nc6 6. g3 Qb6 7. Nb3 Ne5 8. e4 Bb4 9. Qe2 d6 10. Be3 Bxc3+ 11. bxc3 Qa6 12. Bg2 Bd7 13. c5 Bb5 14. Qc2 Bd3 15. Qd1 Bxe4 16. f3 Bd5 17. cxd6 O-O-O 18. Bd4 Qxd6 19. Bxa7 Qc6 20. Kf2 Nfg4+ 21. fxg4 Bxg2 22. Nd4 Qe4 23. Re1 Nd3+ 24. Kg1 Nxe1 25. Qxe1 Qxe1+ 26. Rxe1 Bd5 27. c4 Bc6 28. Bb6 Rd6 29. Kf2 Re8 30. Bc5 Rd7 31. Bb6 e5 32. Nxc6 Rd2+ 33. Ke3 Rxa2 34. Rf1 f6 35. Na7+ Kb8 36. g5 fxg5 37. Nb5 Rxh2 38. Ba7+ Kc8 39. Nd6+ Kd8 40. Nxe8 Kxe8 41. Rb1 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "20"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d4 exd4 6. e5 d5 7. Bb5 Ne4 8. cxd4 Bb6 9. Nbd2 Bd7 10. Be2 Nxd4 11. Nxd4 Nxf2 12. Kxf2 Qh4+ 13. Kf3 Qg4+ 14. Kf2 Qxd4+ 15. Kg3 Qf2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "21"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. h3 e5 7. Nb3 Be6 8. f4 Nbd7 9. Bd3 Be7 10. Be3 Bxb3 11. cxb3 exf4 12. Bxf4 Qa5 13. Kf2 g5 14. Be3 Qe5 15. Qg1 O-O-O 16. Bc4 Rhf8 17. Kf3 Qa5 18. g3 Ne5+ 19. Kf2 Nxc4 20. bxc4 Nxe4+ 21. Nxe4 Qf5+ 22. Ke2 Qxe4 23. Qc1 Rfe8 24. Rf1 Qe6 25. Qc3 h5 26. Qg7 Qxe3+ 27. Kxe3 Bf6+ 28. Kd3 Bxg7 29. Rxf7 Bxb2 30. Rb1 Rf8 31. Rxf8 Rxf8 32. Rxb2 Rf3+ 33. Kd4 Rxg3 34. Rh2 g4 35. hxg4 hxg4 36. Rc2 Rg1 37. c5 dxc5+ 38. Kxc5 g3 39. Kd4+ Kd7 40. Ke3 Rf1 41. Rg2 Rf2 42. Rxg3 Rxa2 43. Kd4 Rf2 44. Ke5 Rf8 45. Rd3+ Kc7 46. Rc3+ Kd7 47. Rd3+ Kc7 48. Rc3+ Kd7 49. Kd5 Rc8 50. Rf3 Re8 51. Rg3 Kc7 52. Rg2 Kd7 53. Rg3 Re7 54. Rb3 Ke8 55. Kd6 Rd7+ 56. Ke6 Re7+ 57. Kd6 Rd7+ 58. Ke6 Re7+ 59. Kd6 Rd7+ 60. Ke6 Re7+ 61. Kd6 Rd7+ 62. Ke6 Re7+ 63. Kd6 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "22"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nc3 g6 3. Nf3 Nc6 4. d4 cxd4 5. Nxd4 Bg7 6. Be3 Nf6 7. Bc4 O-O 8. Bb3 d6 9. Nxc6 bxc6 10. O-O Bg4 11. Qe1 Qc8 12. Bg5 Re8 13. h3 Be6 14. Rd1 Bxb3 15. cxb3 Qe6 16. Qe3 Nh5 17. Rfe1 Be5 18. Rd2 Nf6 19. Rc2 Kh8 20. Kh1 Kg8 21. Bh4 Bxc3 22. Rxc3 Qe5 23. Kg1 d5 24. Bxf6 exf6 25. exd5 cxd5 26. Qxe5 fxe5 27. Rce3 e4 28. Kh2 Kg7 29. R3e2 Kf6 30. Kg3 Kf5 31. Rd2 Ke5 32. Rde2 Kf5 33. Rd2 Rad8 34. Red1 Re5 35. Kh2 Kf4 36. Rd4 Rf5 37. Rc1 Rd6 38. Rc7 Ke5 39. Ra4 Rxf2 40. Kg3 e3 41. Re7+ Re6 42. Raxa7 Rxe7 43. Rxe7+ Kd4 44. Ra7 Kd3 45. Rc7 d4 46. Rd7 h6 47. Ra7 Rxb2 48. Rxf7 Rxa2 49. Rb7 e2 50. Kf2 Ra1 51. Re7 Rf1+ 52. Kg3 e1=Q+ 53. Rxe1 Rxe1 54. Kf2 Rb1 55. h4 Rxb3 56. Kf1 Ke3 57. g4 d3 58. g5 d2 59. gxh6 d1=Q+ 60. Kg2 Rb2+ 61. Kg3 Qf3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "23"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. Nf3 Nf6 2. d4 d5 3. c4 c6 4. g3 Bf5 5. Bg2 e6 6. Qb3 Qb6 7. Nc3 h6 8. c5 Qxb3 9. axb3 Be7 10. Be3 Nbd7 11. O-O Ne4 12. Na2 Nef6 13. Nc3 O-O 14. Rfc1 Rfe8 15. Nh4 Be4 16. Nf3 Bf5 17. Re1 Nf8 18. Ra2 Ng6 19. Rea1 a6 20. Rc1 Ng4 21. Bd2 Nf6 22. Be3 Ng4 23. Bd2 Nf6 24. Be3 Ng4 25. Bd2 Nf6 26. Nd1 Be4 27. Ne3 Bxf3 28. Bxf3 e5 29. dxe5 Nxe5 30. Nf5 Nxf3+ 31. exf3 Kh7 32. Kf1 Kg6 33. Nh4+ Kh5 34. Nf5 Kg6 35. Nh4+ Kh5 36. Nf5 Kg6 37. Nh4+ Kh7 38. Nf5 Kg6 39. Nh4+ Kh7 40. Nf5 Kg6 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "24"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. c3 d5 3. exd5 Qxd5 4. d4 Nf6 5. Nf3 Nc6 6. Be2 e6 7. Na3 cxd4 8. Nb5 Bd6 9. Bg5 Bd7 10. O-O Ne4 11. c4 Qc5 12. Qc1 h6 13. Bh4 g5 14. Qc2 Nf6 15. Nxd6+ Qxd6 16. Bg3 Qc5 17. h3 O-O-O 18. Rfd1 h5 19. Nxg5 Qxg5 20. h4 Qg7 21. Re1 Qh6 22. Qc1 Qg7 23. Qg5 Qxg5 24. hxg5 Ne4 25. Bf4 h4 26. Bf3 Nc5 27. Rad1 Rhg8 28. g6 Rxg6 29. Bh5 Rg7 30. Kh2 Be8 31. Kh3 d3 32. Be3 Nd4 33. b4 Nc2 34. Bxc5 Nxe1 35. Rxe1 d2 36. Ra1 Rd3+ 37. Kxh4 Rxg2 38. Be2 Ra3 39. b5 Ra4 40. b6 axb6 41. Bxb6 Ra3 42. Bd4 Bc6 43. Bd1 Rg1 44. Bb2 Rxa2 45. Rxa2 Rxd1 46. Ra8+ Kd7 47. Bf6 Rh1+ 48. Kg3 Kd6 49. c5+ Kxc5 50. Rd8 Bd5 51. Rc8+ Kb5 52. Rc7 d1=Q 53. Kf4 Qf3+ 54. Ke5 Re1+ 55. Kd6 Qxf6 56. Rc5+ Kb4 57. Rc2 Qd8# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "25"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5 Nf5 8. Qxd8+ Kxd8 9. Nc3 Be6 10. Bg5+ Be7 11. Rfd1+ Kc8 12. Bxe7 Nxe7 13. Ne4 Bd5 14. Neg5 h6 15. Rxd5 hxg5 16. Rd2 g4 17. Ng5 g3 18. hxg3 Rf8 19. Rad1 Nd5 20. c4 Ne7 21. Nxf7 Nf5 22. Rd8+ Rxd8 23. Rxd8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "26"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "180+1"]
+
+1. Nf3 c5 2. e4 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 e6 7. f4 Nbd7 8. Qe2 e5 9. Nf3 h6 10. Bxf6 Nxf6 11. O-O-O Bd7 12. fxe5 dxe5 13. Nxe5 Bb4 14. Qc4 Qe7 15. Rxd7 Nxd7 16. Nxf7 Nb6 17. Qb3 Rf8 18. Ne5 O-O-O 19. Nf3 Qc5 20. Bd3 Bxc3 21. Qxc3 Qxc3 22. bxc3 Nd7 23. e5 Rxf3 24. gxf3 Nxe5 25. Bf5+ Kc7 26. Rg1 Rg8 27. Be4 Kb8 28. f4 Nd7 29. Bd5 Rf8 30. Rxg7 Nc5 31. Rf7 Rxf7 32. Bxf7 Kc7 33. Kd2 Ne4+ 34. Kd3 Nf2+ 35. Kd4 Ng4 36. h3 Nf2 37. Be6 Kd6 38. Bd5 b6 39. Bg2 Ke6 40. Ke3 Nd1+ 41. Kd2 Nb2 42. Be4 Kf6 43. Bd5 Na4 44. Bc6 Nc5 45. Ke3 Kf5 46. Bf3 Ke6 47. Be4 Kf6 48. Bh7 a5 49. Be4 a4 50. a3 Ne6 51. Bd5 Nc5 52. Kf3 Kf5 53. Kg3 Nd7 54. Kf3 Nc5 55. Kg3 Kg6 56. Kf3 Kf5 57. Ke3 Kf6 58. Kf3 Ke7 59. f5 Kd6 60. Ba8 Ke5 61. Kg4 Nd7 62. Kh5 Kxf5 63. Kxh6 Ne5 64. Bd5 Kf4 65. Be6 Nf3 66. Kg6 Ke3 67. Kf6 Kd2 68. c4 Kxc2 69. Kf5 Kd3 70. Kf4 Nd4 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "27"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. e3 Nbd7 6. Bd3 dxc4 7. Bxc4 b5 8. Bd3 a6 9. e4 c5 10. Be3 c4 11. e5 cxd3 12. exf6 Nxf6 13. Qxd3 Bb7 14. d5 b4 15. Na4 Bxd5 16. Qf1 Qa5 17. b3 Rb8 18. Bf4 Rc8 19. Rd1 Kd7 20. Be5 Bd6 21. Bxd6 Kxd6 22. h3 Ke7 23. Qd3 Rhd8 24. Ke2 Bc4 25. bxc4 Rxd3 26. Rxd3 Qxa4 27. Rc1 Qxa2+ 28. Rd2 Qa5 29. Rd3 Rd8 30. Rxd8 Kxd8 31. Nd2 Qf5 32. Rd1 Qg6 33. Rg1 Kc7 34. c5 Qc2 35. Ke3 b3 36. Nxb3 Qxb3+ 37. Ke2 Ne4 38. Rh1 Qb2+ 39. Ke3 Qxf2+ 40. Kxe4 Qxg2+ 41. Kf4 Qxh1 42. Ke5 Qxh3 43. Kf4 Kc6 44. Ke4 Kxc5 45. Kf4 Kd4 46. Kg5 h6+ 47. Kf4 e5# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "28"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 e6 3. d4 cxd4 4. Nxd4 Nc6 5. Nc3 Qc7 6. Be3 a6 7. Be2 Nf6 8. O-O Bb4 9. Qe1 Nxe4 10. Bd3 Bxc3 11. bxc3 Nf6 12. Nf3 Ne5 13. Nxe5 Qxe5 14. Bd4 Qxe1 15. Rfxe1 Ke7 16. Rab1 a5 17. Red1 a4 18. a3 Ra5 19. Bb5 d6 20. c4 Ne8 21. Bc3 Ra8 22. Bxe8 Rxe8 23. Bxg7 Ra6 24. Bd4 Ra8 25. c5 dxc5 26. Be3 c4 27. Rb4 e5 28. Rd2 c3 29. Rd3 Kf6 30. Rb6+ Re6 31. Rb1 Rc6 32. Rdd1 Bg4 33. f3 Bf5 34. Rbc1 e4 35. Kf2 exf3 36. Bd4+ Kg6 37. Kxf3 Rd8 38. Kg3 Rcd6 39. Re1 Rxd4 40. Re3 Rg4+ 41. Kf3 Rd2 42. g3 Rc4 43. Re2 Bg4+ 44. Ke3 Bxe2 45. Rb1 Rc7 46. Rc1 Re7+ 47. Kf4 Rd4# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "29"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Time Forfeit"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5 Nf5 8. Qxd8+ Kxd8 9. Nc3 Be6 10. Rd1+ Kc8 11. Bf4 Bb4 12. Ne4 Be7 13. Bg5 Bd5 14. Re1 Bxg5 15. Nexg5 Kd7 16. Ne4 Ke7 17. Nfd2 Nd4 18. c4 Bxe4 19. Rxe4 Ne6 20. Nf3 Rad8 21. Rc1 Nc5 22. Re2 Rhe8 23. Rb1 Kf8 24. Kh1 Ne6 25. Ree1 Nd4 26. Ng5 Kg8 27. Rbd1 Ne6 28. Ne4 Nf4 29. Nf6+ gxf6 30. exf6 Nd3 31. Rxe8+ Rxe8 32. Rb1 Re2 33. Kg1 Rxb2 34. Rxb2 Nxb2 35. Kf1 Nxc4 36. Ke2 Ne5 37. f3 Nd7 38. f4 Nxf6 39. f5 Nd5 40. f6 Nc3+ 41. Kd3 Nxa2 42. Kc4 Kf8 43. h3 Nc1 44. Kd4 Ne2+ 45. Ke3 Nc3 46. Kd4 Nd5 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "30"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Illegal Move (d4e5)"]
+[TimeControl "180+1"]
+
+1. Nf3 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "31"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Illegal Move (c7c5)"]
+[TimeControl "180+1"]
+
+0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "32"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. d3 Bc5 6. O-O d6 7. c3 O-O 8. Nbd2 h6 9. Bxc6 bxc6 10. d4 exd4 11. cxd4 Bb6 12. e5 Nd5 13. exd6 Bg4 14. dxc7 Qxc7 15. Nc4 Bxf3 16. gxf3 Rfd8 17. Bd2 Bxd4 18. Ba5 Bb6 19. Nxb6 Nxb6 20. Qb3 Rab8 21. Rfe1 c5 22. Qc3 c4 23. Rad1 Rxd1 24. Rxd1 Qc6 25. Qe5 Re8 26. Qd6 Qxf3 27. Bxb6 Qg4+ 28. Kh1 Qf3+ 29. Kg1 Qg4+ 30. Kh1 Qf3+ 31. Kg1 Qg4+ 32. Kh1 Qf3+ 33. Kg1 Qg4+ 34. Kh1 Qf3+ 35. Kg1 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "33"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. h3 e6 7. g4 h6 8. Bg2 Be7 9. Ke2 Nbd7 10. Qe1 Qb6 11. Nb3 Qd8 12. Qg1 Ne5 13. Be3 Nc4 14. Qc1 Kf8 15. Bd4 e5 16. Be3 Be6 17. Bf3 Qe8 18. Nd5 Bxd5 19. exd5 e4 20. Bg2 Kg8 21. Bd4 Qb5 22. Rb1 Na3+ 23. c4 Nxc4 24. Bxf6 Nxb2+ 25. Ke3 Qd3+ 26. Kf4 g5+ 27. Bxg5 hxg5+ 28. Kf5 Qxd5# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "34"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 c6 4. e4 dxe4 5. Nxe4 Bb4+ 6. Bd2 Qxd4 7. Bxb4 Qxe4+ 8. Be2 Na6 9. Ba5 Bd7 10. f3 Qg6 11. Kf2 Nf6 12. h4 Qf5 13. Be1 Nc5 14. Nh3 O-O-O 15. Qc1 Nd3+ 16. Bxd3 Qxd3 17. Nf4 Qf5 18. g4 Qc5+ 19. Ke2 Qf8 20. g5 e5 21. Ng2 Ne8 22. Ne3 Nd6 23. h5 Nf5 24. h6 Be6 25. Nxf5 Bxf5 26. Bc3 Bd3+ 27. Ke1 gxh6 28. gxh6 Qc5 29. a3 Rhg8 30. Kd1 Be4+ 31. Ke1 Rg1+ 32. Rxg1 Qxg1+ 33. Ke2 Bd3+ 34. Kd2 Qf2+ 35. Kd1 Bc2# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "35"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. e3 c6 5. Qc2 Nbd7 6. b3 Bd6 7. Bb2 b6 8. Nc3 Bb7 9. Bd3 Ke7 10. O-O-O Qe8 11. Kb1 Rc8 12. Qc1 Rc7 13. Ba3 g6 14. Bxd6+ Kxd6 15. Qa3+ c5 16. Nb5+ Kc6 17. dxc5 Nxc5 18. Ne5# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "36"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. e3 Nbd7 6. Qc2 Bd6 7. b3 O-O 8. Be2 b6 9. Bb2 Bb7 10. O-O-O Re8 11. Bd3 Rc8 12. Rhe1 Rc7 13. Re2 Re7 14. g3 c5 15. cxd5 cxd4 16. Nxd4 exd5 17. Nf5 Re6 18. Nd4 Re8 19. Ndb5 Ne5 20. Bxh7+ Nxh7 21. Nxc7 Bxc7 22. Nxd5 Bxd5 23. e4 Qg5+ 24. f4 Bxb3 25. axb3 Qe7 26. fxe5 Bxe5 27. Bxe5 Qxe5 28. Qb2 Qb5 29. e5 Nf6 30. Rde1 Nd5 31. Kb1 Nb4 32. Rd1 Nd3 33. Qc3 Nxe5 34. Rde1 f6 35. Rd2 Re7 36. Rd8+ Kf7 37. Qc2 Nc4 38. Rxe7+ Kxe7 39. Qd3 g6 40. Rd4 Na3+ 41. Kc1 Qxd3 42. Rxd3 Nb5 43. Kd2 Ke6 44. Ke2 Ke5 45. Rd7 Ke4 46. Kf2 g5 47. Re7+ Kf5 48. Kf3 Nd4+ 49. Ke3 Nb5 50. Kd3 g4 51. Kc4 Nd6+ 52. Kb4 a6 53. Rc7 Kg5 54. Rc6 Nf5 55. Rxb6 Nxg3 56. hxg3 a5+ 57. Kxa5 Kg6 58. Rxf6+ Kg5 59. Rf4 Kg6 60. Rxg4+ Kh7 61. b4 Kh8 62. b5 Kh7 63. b6 Kh8 64. b7 Kh7 65. b8=R Kh6 66. Rh8# 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "37"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. c4 c5 2. Nf3 Nc6 3. g3 g6 4. Nc3 Bg7 5. Bg2 e5 6. a3 Nge7 7. O-O d6 8. b4 O-O 9. Rb1 cxb4 10. axb4 Nd4 11. Ba3 Re8 12. Re1 Bf5 13. Ra1 Bc2 14. Qc1 Bf5 15. Ra2 Qc8 16. c5 d5 17. Nxd4 exd4 18. Nxd5 Nxd5 19. Bxd5 d3 20. exd3 Rxe1+ 21. Qxe1 Qd7 22. Be4 Re8 23. Qb1 Bxe4 24. dxe4 Qb5 25. Qc2 Qc6 26. b5 Qxb5 27. Bb2 Bxb2 28. Qxb2 Qxb2 29. Rxb2 Re7 30. Ra2 Rxe4 31. Rxa7 Re1+ 32. Kg2 Rb1 33. Ra2 Re1 34. Kf3 Kf8 35. Ra3 Re6 36. Ra1 Ke8 37. Rb1 Re7 38. Rb4 Rd7 39. Rh4 Rxd2 40. c6 bxc6 41. Rxh7 Rd3+ 42. Ke4 Rd7 43. Rh4 Ke7 44. Rf4 Rd8 45. Rh4 Kf6 46. Ke3 Kg7 47. Kf3 Rd3+ 48. Ke4 Ra3 49. Rf4 Rb3 50. Ke5 Rd3 51. Rd4 Ra3 52. Kd6 Ra2 53. Rf4 Ra6 54. Rf3 Kf8 55. Kc7 c5 56. Kd7 g5 57. Rb3 Rh6 58. Rb2 Rxh2 59. Rb8+ Kg7 60. Rb2 c4 61. Rc2 c3 62. Kc6 Rh6+ 63. Kd5 Rf6 64. Ra2 g4 65. Kd4 Rf3 66. Ke4 Kg6 67. Ra6+ Kg7 68. Ra2 Kg6 69. Ra6+ Kg5 70. Ra2 Kf6 71. Ra6+ Ke7 72. Ra2 Ke6 73. Ra6+ Kd7 74. Ra7+ Kd6 75. Ra2 Kc5 76. Rc2 Kb4 77. Re2 Kb3 78. Re1 Rxf2 79. Kd4 c2 80. Ke3 Rf3+ 81. Kd2 Kb2 82. Rc1 Rf2+ 83. Ke1 Rg2 84. Kf1 Rxg3 85. Kf2 Kxc1 86. Ke1 Kb2 87. Kf2 c1=Q 88. Kxg3 f6 89. Kh2 g3+ 90. Kg2 f5 91. Kf3 g2 92. Kxg2 f4 93. Kf3 Qf1+ 94. Kg4 f3 95. Kf4 f2 96. Kg4 Qh3+ 97. Kf4 f1=Q+ 98. Ke4 Qd7 99. Ke5 Qff5# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "38"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 h5 9. Be2 Nbd7 10. Nd5 h4 11. Bc4 Qc8 12. Qd3 h3 13. g3 Rh7 14. Rd1 Rb8 15. Nxf6+ Nxf6 16. Bxe6 Qxe6 17. g4 Be7 18. g5 Nh5 19. Qd2 Kf8 20. Ke2 Re8 21. g6 Qxg6 22. Rde1 Qe6 23. Kd1 Qc8 24. Re2 g6 25. Qe1 Kg8 26. Bf2 Nf4 27. Rd2 Qc6 28. Na5 Qa4 29. Nxb7 Qxa2 30. Kc1 Qa1# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "39"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1-0"]
+[Termination "Time Forfeit"]
+[TimeControl "180+1"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. Nbd2 O-O 6. O-O d6 7. a4 a5 8. c3 h6 9. Nb3 Bg4 10. Nxc5 dxc5 11. Qb3 Bxf3 12. gxf3 Qc8 13. Be3 Nd7 14. Bb5 Re8 15. Rfd1 Re6 16. Bc4 Re7 17. Bd5 Ra6 18. Qc4 Nf6 19. Bxc5 Rd7 20. Qxa6 Rd8 21. Qc4 Qd7 22. Ba3 Qe8 23. Qb5 Rb8 24. Bxc6 Qxc6 25. Qxc6 bxc6 26. Kf1 Re8 27. Ke2 Rb8 28. Ke3 Re8 29. Rac1 Rb8 30. d4 Re8 31. d5 cxd5 32. exd5 e4 33. d6 cxd6 34. Bxd6 Kh7 35. Rd4 Re6 36. fxe4 Kg6 37. Rg1+ 1-0
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "40"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "0-1"]
+[Termination "Checkmate"]
+[TimeControl "180+1"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Nf3 b6 5. e3 O-O 6. Bd3 d5 7. O-O c5 8. cxd5 exd5 9. Bd2 Nc6 10. Re1 Be6 11. Re2 c4 12. Bb1 Bd6 13. Qa4 Rc8 14. Nb5 Bb8 15. Bc3 Re8 16. Qd1 Bg4 17. Qe1 Re7 18. h3 Bxf3 19. gxf3 g6 20. Na3 Qd7 21. Qf1 Qe8 22. h4 Bf4 23. Qe1 Kh8 24. h5 Nxh5 25. Qf1 Bxe3 26. Rxe3 Rxe3 27. fxe3 Qxe3+ 28. Kg2 Nf4+ 29. Kh1 Ne2 30. Be1 Ncxd4 31. Bf2 Qxf3+ 32. Kh2 Qh5+ 33. Kg2 Nf4+ 34. Kg3 Nde2+ 35. Qxe2 Nxe2+ 36. Kg2 c3 37. b3 Qg4+ 38. Kf1 Nd4 39. Bxd4+ Qxd4 40. Nc2 Qf6+ 41. Kg2 Qe7 42. Kf3 Qf6+ 43. Ke3 g5 44. Nd4 Qf4+ 45. Ke2 Qxd4 46. Bxh7 Re8+ 47. Kf3 g4+ 48. Kg3 Re3+ 49. Kg2 Kxh7 50. Kh2 g3+ 51. Kh3 c2 52. Rf1 Kg6 53. Rh1 Qb2 54. Rg1 Qxa2 55. Kh4 Qxb3 56. Rxg3+ Kf5 57. Rg5+ Kf6 58. Rg1 Re4+ 59. Rg4 c1=Q 60. Rf4+ Rxf4+ 61. Kh5 Qh3# 0-1
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "1"]
+[White "sophia"]
+[Black "benchmark"]
+[Result "1/2-1/2"]
+[Termination "Fivefold Repetition"]
+[TimeControl "300+5"]
+
+1. d4 d5 2. Nf3 c6 3. c4 e6 4. e3 Nf6 5. Bd3 Nbd7 6. O-O dxc4 7. Bxc4 Bd6 8. Nc3 O-O 9. Qc2 e5 10. Ne4 Nxe4 11. dxe5 Nxe5 12. Nxe5 Bxe5 13. Qxe4 Qd6 14. h3 Be6 15. Bxe6 Qxe6 16. Qb4 Rab8 17. Qa4 Ra8 18. Qb4 Rab8 19. Qa3 Ra8 20. Rd1 Rfd8 21. Bd2 Rd7 22. Ba5 Bf6 23. Rxd7 Qxd7 24. Bc3 Qe7 25. Qxe7 Bxe7 26. Kf1 Rd8 27. Ke2 Bc5 28. Kf3 Rd5 29. Kf4 Be7 30. Bd4 Bd6+ 31. Kg4 Bc5 32. Bc3 Kf8 33. Rc1 Bb6 34. Rc2 Rd1 35. Rd2 Rxd2 36. Bxd2 Bc5 37. Bc3 Kg8 38. Be5 Kh8 39. Bc3 Kg8 40. Be5 Kh8 41. Kf5 Kg8 42. Kg4 Kh8 43. Kf5 Kg8 44. Kg5 Kf8 45. Bc3 Bb6 46. Kf5 Kg8 47. Ke4 Bc5 48. Ke5 Be7 49. Kf5 Bc5 50. Ke4 Kf8 51. Kf5 Kg8 52. Ke4 Kf8 53. Kf5 Kg8 54. Ke4 Kf8 55. Kf5 Kg8 56. Ke4 Kf8 57. Kf5 Kg8 1/2-1/2
+
+[Event "Engine Tournament"]
+[Site "Local"]
+[Date "2026.01.05"]
+[Round "2"]
+[White "benchmark"]
+[Black "sophia"]
+[Result "1-0"]
+[Termination "Checkmate"]
+[TimeControl "300+5"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. cxd5 exd5 6. Bg5 h6 7. Bxf6 Qxf6 8. Qa4+ Nc6 9. Qb5 a6 10. Qd3 Bg4 11. Qe3+ Ne7 12. Qe5 Bxc3+ 13. bxc3 Qc6 14. Qe3 O-O-O 15. Ne5 Qe8 16. Nxg4 h5 17. Ne5 Nf5 18. Qf4 Qe6 19. h4 Rhe8 20. g3 f6 21. Nd3 Qe4 22. Qxe4 dxe4 23. Bh3 Kb8 24. Bxf5 exd3 25. Bxd3 Rd6 26. Bg6 Rh8 27. Be4 a5 28. Rb1 c6 29. d5 cxd5 30. Bg2 a4 31. Rb4 a3 32. O-O Re8 33. Bf3 Ra6 34. Bxd5 Ra5 35. Bxb7 Kc7 36. Bf3 Rg8 37. Rd1 Rc5 38. Rb7+ Kc8 39. Rdb1 Kd8 40. Bxh5 Rxc3 41. Rb8+ Rc8 42. Bg4 Rxb8 43. Rxb8+ Ke7 44. Rxg8 f5 45. Bxf5 Kf7 46. Ra8 Kf6 47. Bh3 Ke5 48. Ra6 Kd4 49. Rg6 Ke5 50. h5 Kd4 51. Rxg7 Kc3 52. h6 Kd4 53. h7 Kc5 54. h8=Q Kb6 55. Rg6+ Kb7 56. Qc8+ Ka7 57. Ra6# 1-0
+

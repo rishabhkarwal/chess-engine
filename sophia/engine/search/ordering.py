@@ -1,7 +1,8 @@
 from engine.core.constants import (
     WHITE, INFINITY, NULL,
     PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING,
-    MAX_DEPTH, MASK_SOURCE, PIECE_VALUES
+    MAX_DEPTH, MASK_SOURCE, PIECE_VALUES,
+    HISTORY_MAX, HISTORY_GRAVITY
 )
 from engine.core.move import (
     CAPTURE, EN_PASSANT, PROMOTION, 
@@ -34,7 +35,24 @@ class MoveOrdering:
 
         start = move & MASK_SOURCE
         target = (move >> SHIFT_TARGET) & MASK_SOURCE
-        self.history_table[start][target] += depth * depth
+        
+        # butterfly history with aging
+        bonus = depth * depth
+        self.history_table[start][target] += bonus
+        
+        # cap at max and apply gravity
+        if self.history_table[start][target] > HISTORY_MAX:
+            self.history_table[start][target] = HISTORY_MAX
+        
+        # age all history entries periodically
+        self._age_history()
+    
+    def _age_history(self):
+        """Apply gravity to history scores to prevent saturation"""
+        for from_sq in range(64):
+            for to_sq in range(64):
+                if self.history_table[from_sq][to_sq] > 0:
+                    self.history_table[from_sq][to_sq] = max(0, self.history_table[from_sq][to_sq] - HISTORY_GRAVITY)
     
     def store_countermove(self, previous_move, current_move: int):
         """Store countermove: after opponent plays previous move, we play current move"""
@@ -97,8 +115,7 @@ class MoveOrdering:
         
         base_score = self.history_table[start][target]
         
-        # repetition penalty - discourage moving the same piece repeatedly
-        # (except kings, which should be moving around)
+        # repetition penalty - discourage moving the same piece repeatedly (except kings)
         if state.last_moved_piece_sq >= 0 and state.last_moved_piece_sq == start:
             piece = state.board[start]
             if piece != NULL:
@@ -128,7 +145,7 @@ def pick_next_move(moves, start_index, state, ordering, tt_move, counter, depth,
             best_score = score
             best_idx = i
     
-    # Swap best move to current position
+    # swap best move to current position
     if best_idx != start_index:
         moves[start_index], moves[best_idx] = moves[best_idx], moves[start_index]
     

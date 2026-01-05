@@ -27,7 +27,9 @@ class Tournament:
         log_info('Initialised engines')
 
         try:
-            for i in range(1, self.cfg.total_games + 1): self._play_game(i)
+            for i in range(1, self.cfg.total_games + 1):
+                self._play_game(i)
+                time.sleep(5)
         except KeyboardInterrupt:
             log_info('Tournament stopped')
         finally:
@@ -97,7 +99,7 @@ class Tournament:
                     game_number, self.cfg.total_games, 
                     w_disp, b_disp, result_text
                 )
-                time.sleep(0.03) 
+                time.sleep(0.05) 
 
             if game_over: break
 

@@ -67,6 +67,93 @@ CASTLE_BQ = 0b1000
 INFINITY = 100_000
 MATE = 100_000
 
+# pawn structure
+DOUBLED_PAWN_PENALTY = 10
+ISOLATED_PAWN_PENALTY = 15
+PASSED_PAWN_BONUS = [0, 10, 17, 15, 62, 168, 276, 0]
+
+# knight positioning
+KNIGHT_OUTPOST_BONUS = 10
+
+# rook positioning
+ROOK_ON_SEVENTH_RANK = 12
+ROOK_BEHIND_PASSED_PAWN = 10
+
+# piece mobility
+TRAPPED_PIECE_PENALTY = 50
+
+# piece coordination
+ROOK_BATTERY_BONUS = 15
+QUEEN_ROOK_BATTERY_BONUS = 15
+
+# king safety
+KING_PAWN_SHIELD_BONUS = 5
+
+# king activity (endgame)
+KING_TO_CENTRE_BONUS = 15
+KING_TO_ENEMY_PAWNS_BONUS = 15
+
+# core features
+BISHOP_PAIR_BONUS = 20
+ROOK_OPEN_FILE = 15
+ROOK_SEMI_OPEN_FILE = 4
+
+# mobility bonuses (per legal square)
+KNIGHT_MOBILITY = 2
+BISHOP_MOBILITY = 3
+ROOK_MOBILITY = 3
+QUEEN_MOBILITY = 1
+
+# trading behaviour
+WINNING_THRESHOLD = 200
+LOSING_THRESHOLD = -100
+TRADE_BONUS_PER_PIECE = 20
+TRADE_PENALTY_PER_PIECE = 25
+
+# base contempt: engine prefers to play on rather than draw
+CONTEMPT = 100  # centipawns - higher = more aggressive
+
+# repetition penalties based on position evaluation
+REPETITION_PENALTY_WINNING = 500 # MASSIVE penalty when winning
+REPETITION_PENALTY_EQUAL = 100 # strong penalty when equal
+REPETITION_PENALTY_SLIGHT = 150 # when slightly better
+
+# thresholds for different contempt levels
+SLIGHTLY_BETTER_THRESHOLD = 100 # eval > this = prefer to play on
+CLEARLY_WINNING_THRESHOLD = 300 # eval > this = fight hard for win
+CLEARLY_LOSING_THRESHOLD = -300 # eval < this = draw is acceptable
+
+# 50-move rule contempt
+FIFTY_MOVE_CONTEMPT_BASE = 50 # Base contempt at 50 moves
+FIFTY_MOVE_SCALE_START = 90 # Start scaling contempt
+
+# pruning margins
+RAZOR_MARGIN = [0, 240, 280, 300]
+STATIC_NULL_MARGIN = 120
+FUTILITY_MARGIN = [0, 100, 180, 270] # per depth
+
+# late move reductions
+LMR_BASE_REDUCTION = 1
+LMR_MOVE_THRESHOLD = 3 # start LMR after this many moves
+
+# late move pruning
+LMP_BASE = 3
+LMP_MULTIPLIER = 2  # threshold = base + depth * depth * multiplier
+
+# null move pruning
+NMP_BASE_REDUCTION = 2
+NMP_DEPTH_REDUCTION = 3  # use R=3 when depth >= 6
+NMP_EVAL_MARGIN = 200  # extra reduction when eval > beta + margin
+
+# extensions
+CHECK_EXTENSION = 1
+SINGULAR_EXTENSION = 0  # too slow so removed
+SINGULAR_MARGIN = 50
+
+# history
+HISTORY_MAX = 16384
+HISTORY_GRAVITY = 16 # for aging
+
 # file masks
 FILE_A = 0x0101010101010101
 FILE_B = 0x0202020202020202
@@ -116,4 +203,4 @@ WEST  = -EAST
 
 # search configuration
 MAX_DEPTH = 100
-TIME_CHECK_NODES = 2047
+TIME_CHECK_NODES = 1023

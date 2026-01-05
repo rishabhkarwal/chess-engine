@@ -152,10 +152,10 @@ class UCI:
             
             # estimate remaining moves
             moves_played = self.state.fullmove_number
-            remaining_moves_est = max(20, 60 - moves_played)
+            remaining_moves_est = max(20, 50 - moves_played)
             
             # time allocation
-            time_limit = (my_time / remaining_moves_est) + (my_inc * 0.7)
+            time_limit = (my_time / remaining_moves_est) + (my_inc * 0.5)
             
             # panic mode: if we have less than 10 seconds, play much faster
             if my_time < 10000:
@@ -163,7 +163,7 @@ class UCI:
                 
             # network / execution overhead
             overhead = 200
-            time_limit = max(30, time_limit - overhead)
+            time_limit = max(overhead, time_limit - overhead)
 
         self.engine.time_limit = int(time_limit)
         

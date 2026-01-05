@@ -3,7 +3,16 @@ from engine.core.constants import (
     WHITE, BLACK, INFINITY,
     MAX_DEPTH, TIME_CHECK_NODES,
     PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING,
-    MASK_SOURCE, NULL, PIECE_VALUES
+    MASK_SOURCE, NULL, PIECE_VALUES,
+    RAZOR_MARGIN, STATIC_NULL_MARGIN, FUTILITY_MARGIN,
+    LMR_BASE_REDUCTION, LMR_MOVE_THRESHOLD,
+    LMP_BASE, LMP_MULTIPLIER,
+    NMP_BASE_REDUCTION, NMP_DEPTH_REDUCTION, NMP_EVAL_MARGIN,
+    CHECK_EXTENSION,
+    CONTEMPT, REPETITION_PENALTY_WINNING, REPETITION_PENALTY_EQUAL, 
+    REPETITION_PENALTY_SLIGHT, SLIGHTLY_BETTER_THRESHOLD,
+    CLEARLY_WINNING_THRESHOLD, CLEARLY_LOSING_THRESHOLD, 
+    FIFTY_MOVE_CONTEMPT_BASE, FIFTY_MOVE_SCALE_START
 )
 from engine.core.move import (
     CAPTURE_FLAG, PROMO_FLAG, EP_FLAG,
@@ -13,7 +22,7 @@ from engine.moves.generator import generate_pseudo_legal_moves
 from engine.board.move_exec import (
     make_move, unmake_move,
     make_null_move, unmake_null_move,
-    is_repetition
+    is_repetition, has_insufficient_material
 )
 from engine.moves.legality import is_in_check
 from engine.search.transposition import (
@@ -36,15 +45,15 @@ class SearchEngine:
         self.ordering = MoveOrdering()
         self.nodes_searched = 0
         self.depth_reached = 0
-        self.seldepth = 0 # selective depth tracking
-        self.tbhits = 0 # tablebase hits
+        self.seldepth = 0
+        self.tbhits = 0
         self.start_time = 0.0
         self.root_colour = WHITE
         
         # dynamic aspiration windows
-        self.aspiration_min = 50
-        self.aspiration_max = 150
-        self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 3
+        self.aspiration_min = 35
+        self.aspiration_max = 500
+        self.aspiration_current = int((self.aspiration_min + self.aspiration_max) * 0.8)
         self.aspiration_stability_count = 0
         
         self.opponent_time_ms = 999999
@@ -105,8 +114,8 @@ class SearchEngine:
         self.stopped = False
         self.depth_reached = 0
         
-        self.aspiration_current = (self.aspiration_min + self.aspiration_max) // 3
-        self.aspiration_stability_count = 0
+        #self.aspiration_current = int((self.aspiration_min + self.aspiration_max) * 0.8)
+        #self.aspiration_stability_count = 0
 
         moves = generate_pseudo_legal_moves(state)
         legal_moves = []
@@ -139,7 +148,7 @@ class SearchEngine:
             alpha = -INFINITY
             beta = INFINITY
             
-            if current_depth > 1:
+            if current_depth > 2:
                 alpha = current_score - self.aspiration_current
                 beta = current_score + self.aspiration_current
                 
@@ -161,16 +170,16 @@ class SearchEngine:
                     
                     if score <= alpha or score >= beta:
                         send_info_string(f'aspiration failed again: {self.aspiration_current}')
+                        self.aspiration_stability_count = 0
                         alpha = -INFINITY
                         beta = INFINITY
-                        
                         best_move, score = self._search_root(state, current_depth, moves, alpha, beta)
                 else:
                     self.aspiration_stability_count += 1
                     if self.aspiration_stability_count >= 3:
-                        self.aspiration_current = max(self.aspiration_min, int(self.aspiration_current * 0.75))
-                        self.aspiration_stability_count = 0
-                        send_info_string(f'aspiration tightened: {self.aspiration_current}')
+                        self.aspiration_current = max(self.aspiration_min, int(self.aspiration_current * 0.8))
+                        #self.aspiration_stability_count = 0
+                        if self.aspiration_current > self.aspiration_min: send_info_string(f'aspiration tightened: {self.aspiration_current}')
             else:
                 best_move, score = self._search_root(state, current_depth, moves, -INFINITY, INFINITY)
 
@@ -196,7 +205,7 @@ class SearchEngine:
             
             elapsed = time.time() - self.start_time
             elapsed = elapsed * 1000
-            if elapsed > self.time_limit * 0.9: break
+            if elapsed > self.time_limit * 0.8: break
                 
             current_depth += 1
             if current_depth > MAX_DEPTH: break
@@ -222,11 +231,11 @@ class SearchEngine:
             make_move(state, move)
 
             if i == 0:
-                value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move)
+                value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move, is_pv=True)
             else:
-                value = -self._alpha_beta(state, depth - 1, -(alpha + 1), -alpha, ply + 1, move)
+                value = -self._alpha_beta(state, depth - 1, -(alpha + 1), -alpha, ply + 1, move, is_pv=False)
                 if alpha < value < beta:
-                    value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move)
+                    value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move, is_pv=True)
             
             if self.stopped:
                 unmake_move(state, move)
@@ -247,7 +256,7 @@ class SearchEngine:
             
         return best_move, best_value
 
-    def _alpha_beta(self, state, depth, alpha, beta, ply, previous_move=None, allow_null=True):
+    def _alpha_beta(self, state, depth, alpha, beta, ply, previous_move=None, allow_null=True, is_pv=False):
         if self.stopped: return 0
 
         if ply > self.seldepth: self.seldepth = ply
@@ -274,11 +283,62 @@ class SearchEngine:
         is_threefold, is_fivefold = is_repetition(state)
 
         if is_threefold or is_fivefold:
-            if alpha >= 100: return -50  # winning -> avoid draw
-            elif alpha < -100: return 0   # losing -> draw is okay
-            return -10  # equal -> slight penalty
+            static_eval = evaluate(state, self.pawn_hash)
+            
+            # fivefold is automatic draw by FIDE rules
+            if is_fivefold:
+                if static_eval > CLEARLY_WINNING_THRESHOLD:
+                    return -REPETITION_PENALTY_WINNING
+                elif static_eval > SLIGHTLY_BETTER_THRESHOLD:
+                    return -REPETITION_PENALTY_SLIGHT
+                elif static_eval < CLEARLY_LOSING_THRESHOLD:
+                    return 0
+                else:
+                    return -CONTEMPT
+            
+            # threefold repetition (can be claimed)
+            if static_eval > CLEARLY_WINNING_THRESHOLD:
+                return -REPETITION_PENALTY_WINNING
+            elif static_eval > SLIGHTLY_BETTER_THRESHOLD:
+                return -REPETITION_PENALTY_SLIGHT
+            elif static_eval >= -SLIGHTLY_BETTER_THRESHOLD:
+                return -REPETITION_PENALTY_EQUAL
+            elif static_eval < CLEARLY_LOSING_THRESHOLD:
+                return 0
+            else:
+                return -CONTEMPT
 
-        if state.halfmove_clock >= 100: return 0
+        # 50-move rule with SCALED contempt
+        if state.halfmove_clock >= FIFTY_MOVE_SCALE_START:
+            static_eval = evaluate(state, self.pawn_hash)
+            
+            if state.halfmove_clock >= 100:
+                # at 100 moves, respect the rule
+                if static_eval > CLEARLY_WINNING_THRESHOLD:
+                    # still winning - small penalty to keep playing
+                    return static_eval - FIFTY_MOVE_CONTEMPT_BASE
+                elif static_eval < CLEARLY_LOSING_THRESHOLD:
+                    return 0
+                else:
+                    return -CONTEMPT
+            else:
+                # between 90 - 99, scale the contempt
+                progress = (state.halfmove_clock - FIFTY_MOVE_SCALE_START) / (100 - FIFTY_MOVE_SCALE_START)
+                scaled_contempt = int(FIFTY_MOVE_CONTEMPT_BASE * progress)
+                
+                if static_eval > CLEARLY_WINNING_THRESHOLD:
+                    return static_eval - scaled_contempt
+                elif static_eval < CLEARLY_LOSING_THRESHOLD:
+                    return -scaled_contempt // 2
+                else:
+                    return -scaled_contempt
+
+        # insufficient material
+        if has_insufficient_material(state):
+            static_eval = evaluate(state, self.pawn_hash)
+            if static_eval > SLIGHTLY_BETTER_THRESHOLD:
+                return -CONTEMPT
+            return 0
 
         all_pieces = state.bitboards[WHITE] | state.bitboards[BLACK]
         if all_pieces.bit_count() <= 5:
@@ -306,24 +366,47 @@ class SearchEngine:
 
         in_check = is_in_check(state, state.is_white)
         
-        if not in_check and depth >= 4 and tt_entry is None: # IID
+        # check extension
+        if in_check:
+            depth += CHECK_EXTENSION
+
+        # IID
+        if is_pv and depth >= 4 and tt_entry is None:
             reduced_depth = depth - 2
-            self._alpha_beta(state, reduced_depth, alpha, beta, ply, previous_move, allow_null=True)
+            self._alpha_beta(state, reduced_depth, alpha, beta, ply, previous_move, allow_null=True, is_pv=True)
             tt_entry = self.tt.probe(state.hash)
 
+        # get static eval for pruning decisions
+        static_eval = evaluate(state, self.pawn_hash) if not in_check else 0
+
+        # razoring (depth 1-3)
+        if not is_pv and not in_check and depth <= 3 and allow_null:
+            if depth < len(RAZOR_MARGIN) and static_eval + RAZOR_MARGIN[depth] < alpha:
+                razor_score = self._quiescence(state, alpha - 1, alpha, ply)
+                if razor_score < alpha:
+                    return razor_score
+
         # reverse futility pruning
-        if not in_check and depth <= 3 and allow_null:
-            static_eval = evaluate(state, self.pawn_hash)
+        if not is_pv and not in_check and depth <= 3 and allow_null:
             rfp_margin = 120 * depth
             if static_eval - rfp_margin >= beta:
                 return static_eval - rfp_margin
 
-        # null move pruning
-        if allow_null and depth >= 3 and not in_check:
+        # static null move pruning
+        if not is_pv and not in_check and depth <= 3 and allow_null:
+            if static_eval - STATIC_NULL_MARGIN >= beta:
+                return static_eval
+
+        # adaptive null move pruning
+        if allow_null and depth >= 3 and not in_check and not is_pv:
             make_null_move(state)
 
-            reduction = 2
-            val = -self._alpha_beta(state, depth - 1 - reduction, -beta, -beta + 1, ply + 1, None, allow_null=False)
+            # adaptive reduction
+            reduction = NMP_BASE_REDUCTION
+            if depth >= 6: reduction = NMP_DEPTH_REDUCTION
+            if static_eval > beta + NMP_EVAL_MARGIN: reduction += 1
+
+            val = -self._alpha_beta(state, depth - 1 - reduction, -beta, -beta + 1, ply + 1, None, allow_null=False, is_pv=False)
             unmake_null_move(state)
             
             if self.stopped: return 0
@@ -331,11 +414,11 @@ class SearchEngine:
 
         # futility pruning
         do_futility = False
-        if not in_check and depth <= 3 and allow_null:
-            static_eval = evaluate(state, self.pawn_hash)
-            futility_margin = 150 * depth
-            if static_eval + futility_margin < alpha:
-                do_futility = True
+        if not is_pv and not in_check and depth <= 3 and allow_null:
+            if depth < len(FUTILITY_MARGIN):
+                futility_margin = FUTILITY_MARGIN[depth]
+                if static_eval + futility_margin < alpha:
+                    do_futility = True
 
         moves = generate_pseudo_legal_moves(state)
 
@@ -369,14 +452,13 @@ class SearchEngine:
             if gives_check and time_pressure_mode:
                 is_interesting = True
             
-            if do_futility and not is_interesting:
+            if do_futility and not is_interesting and not gives_check:
                 unmake_move(state, move)
                 continue
             
-            # late move pruning (LMP)
-            # skip quiet moves after trying many moves at low depths
-            if not in_check and not is_interesting and depth <= 4:
-                lmp_threshold = 3 + depth * depth  # depth 1: 4 moves, depth 2: 7 moves, depth 3: 12 moves
+            # late move pruning
+            if not is_pv and not in_check and not is_interesting and depth <= 4:
+                lmp_threshold = LMP_BASE + depth * depth * LMP_MULTIPLIER
                 if legal_moves_count > lmp_threshold:
                     unmake_move(state, move)
                     continue
@@ -389,23 +471,25 @@ class SearchEngine:
             
             needs_full = True
 
-            if depth >= 3 and legal_moves_count >= 3 and not is_interesting and not in_check:
-                reduction = 1
+            # late move reduction
+            if depth >= 3 and legal_moves_count >= LMR_MOVE_THRESHOLD and not is_interesting and not in_check and not gives_check:
+                reduction = LMR_BASE_REDUCTION
                 if legal_moves_count >= 10: reduction = 2
+                if not is_pv: reduction += 1
                 if gives_check and time_pressure_mode:
                     reduction = max(0, reduction - 1)
                 
                 reduced_depth = max(1, depth - 1 - reduction)
-                val = -self._alpha_beta(state, reduced_depth, -(alpha+1), -alpha, ply + 1, move, allow_null=True)
+                val = -self._alpha_beta(state, reduced_depth, -(alpha+1), -alpha, ply + 1, move, allow_null=True, is_pv=False)
                 if val <= alpha: needs_full = False
             
             if needs_full:
                 if legal_moves_count == 1:
-                    value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move, allow_null=True)
+                    value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move, allow_null=True, is_pv=is_pv)
                 else:
-                    value = -self._alpha_beta(state, depth - 1, -(alpha + 1), -alpha, ply + 1, move, allow_null=True)
+                    value = -self._alpha_beta(state, depth - 1, -(alpha + 1), -alpha, ply + 1, move, allow_null=True, is_pv=False)
                     if alpha < value < beta:
-                        value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move, allow_null=True)
+                        value = -self._alpha_beta(state, depth - 1, -beta, -alpha, ply + 1, move, allow_null=True, is_pv=is_pv)
             else:
                 value = val
 

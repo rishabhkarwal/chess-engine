@@ -17,24 +17,66 @@ from engine.search.evaluation import MG_TABLE, EG_TABLE, PHASE_WEIGHTS
 
 
 def is_repetition(state: State):
-    if not state.history: return False, False
+    if not state.history: 
+        return False, False
+    
+    # an only check positions since last irreversible move (capture / pawn move)
+    search_limit = min(state.halfmove_clock, len(state.history))
+    
+    if search_limit < 4:  # need at least 4 ply for threefold
+        return False, False
+    
     current_hash = state.hash
     count = 0
-    threefold, fivefold = False, False
-    for i in range(len(state.history) - 2, -1, -2):
-        if state.history[i] == current_hash:
-            count += 1
-            if count >= 2: # found 2 previous + 1 current = 3
-                threefold = True
-            if count >= 4: # found 4 previous + 1 current = 5
-                fivefold = True
-                break
+    
+    for i in range(len(state.history) - 2, max(len(state.history) - search_limit - 1, -1), -2):
+        if state.history[i] == current_hash: count += 1
+    
+    # count is number of previous occurrences, current position is + 1
+    threefold = count >= 2 - 1 # taking away 1 to help detect draw
+    fivefold = count >= 4 - 1
+    
     return threefold, fivefold
+
+def has_insufficient_material(state: State):
+    bitboards = state.bitboards
+    
+    # if there are pawns, rooks, or queens, there's sufficient material
+    if bitboards[WP] or bitboards[BP] or bitboards[WR] or bitboards[BR] or bitboards[WQ] or bitboards[BQ]: return False
+    
+    # count pieces
+    w_knights = bitboards[WN].bit_count()
+    w_bishops = bitboards[WB].bit_count()
+    b_knights = bitboards[BN].bit_count()
+    b_bishops = bitboards[BB].bit_count()
+    
+    total_minors = w_knights + w_bishops + b_knights + b_bishops
+    
+    # king vs king
+    if total_minors == 0:
+        return True
+    
+    # king + minor vs king
+    if total_minors == 1:
+        return True
+    
+    # king + bishop vs king + bishop (same colour bishops)
+    if w_bishops == 1 and b_bishops == 1 and w_knights == 0 and b_knights == 0:
+        # check if bishops are on same colour squares
+        w_bishop_sq = (bitboards[WB] & -bitboards[WB]).bit_length() - 1
+        b_bishop_sq = (bitboards[BB] & -bitboards[BB]).bit_length() - 1
+        
+        w_bishop_colour = (w_bishop_sq // 8 + w_bishop_sq % 8) % 2
+        b_bishop_colour = (b_bishop_sq // 8 + b_bishop_sq % 8) % 2
+        
+        if w_bishop_colour == b_bishop_colour: return True
+    
+    return False
 
 def make_null_move(state: State):
     old_ep = state.en_passant_square
     old_hash = state.hash
-    old_last_moved = state.last_moved_piece_sq  # save last moved piece
+    old_last_moved = state.last_moved_piece_sq
     
     # store undo info on stack
     state.context_stack.append((old_ep, old_hash, old_last_moved))
@@ -47,7 +89,7 @@ def make_null_move(state: State):
     state.is_white = not state.is_white
     state.hash ^= ZOBRIST_KEYS.black_to_move
     
-    state.last_moved_piece_sq = NULL  # reset last moved piece
+    state.last_moved_piece_sq = NULL
 
 def unmake_null_move(state: State):
     # retrieve from stack
@@ -56,7 +98,7 @@ def unmake_null_move(state: State):
     state.en_passant_square = old_ep
     state.hash = old_hash
     state.is_white = not state.is_white
-    state.last_moved_piece_sq = old_last_moved  # restore
+    state.last_moved_piece_sq = old_last_moved
 
 def make_move(state: State, move: int):
     old_hash = state.hash
@@ -258,7 +300,7 @@ def make_move(state: State, move: int):
         old_mg, 
         old_eg, 
         old_phase,
-        old_w_passed,  # store passed pawn state
+        old_w_passed,
         old_b_passed,
         old_last_moved
     ))

@@ -126,49 +126,49 @@ if __name__ == '__main__':
 Position: r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1
 Time: 120s
 
-info depth 1 seldepth 23 score cp 11 nodes 3706 nps 1190 time 3111 hashfull 0 tbhits 0 pv e2a6
-info depth 2 seldepth 23 score cp 11 nodes 7499 nps 1904 time 3937 hashfull 0 tbhits 0 pv e2a6 b4c3
-info depth 3 seldepth 23 score cp 11 nodes 10949 nps 2492 time 4392 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3
-info string aspiration tightened: 42
-info depth 4 seldepth 31 score cp 11 nodes 55975 nps 5909 time 9472 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3 h3g2
-info depth 5 seldepth 31 score cp 11 nodes 115216 nps 7851 time 14674 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3 h3g2 f3g2
-info string aspiration failed: 42
-info depth 6 seldepth 31 score cp -37 nodes 276404 nps 12229 time 22601 hashfull 2 tbhits 0 pv e2a6 e6d5 c3d5 f6d5 e4d5 e7e5
-info depth 7 seldepth 34 score cp 11 nodes 419492 nps 13796 time 30405 hashfull 4 tbhits 0 pv e2a6 b4c3 d2c3 h3g2 f3g2 e6d5 e4d5
-info depth 8 seldepth 34 score cp 11 nodes 637485 nps 16334 time 39027 hashfull 9 tbhits 0 pv e2a6 b4c3 d2c3 h3g2 f3g2 e6d5 e4d5 b6d5
-info string aspiration tightened: 63
-info depth 9 seldepth 34 score cp -71 nodes 1416982 nps 20394 time 69477 hashfull 28 tbhits 0 pv d5e6 e7e6 e2a6 e6e5 d2f4 e5d4 c3d1 h3g2 f3g2
-info depth 10 seldepth 34 score cp -66 nodes 2929291 nps 24363 time 120230 hashfull 55 tbhits 0 pv e2a6 b4c3 d2c3 e6d5 e5g4 d5e4 g4f6 g7f6 f3f6 e7f6
+info depth 1 seldepth 23 score cp -13 nodes 7571 nps 2958 time 2558 hashfull 0 tbhits 0 pv d5e6
+info depth 2 seldepth 23 score cp -13 nodes 15546 nps 4119 time 3774 hashfull 0 tbhits 0 pv d5e6 e7e6
+info depth 3 seldepth 23 score cp -21 nodes 22486 nps 4751 time 4731 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3
+info depth 4 seldepth 31 score cp -21 nodes 53317 nps 6187 time 8617 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3 h3g2
+info string aspiration tightened: 50
+info depth 5 seldepth 31 score cp -21 nodes 114304 nps 7748 time 14751 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3 h3g2 f3g2
+info depth 6 seldepth 31 score cp -21 nodes 191655 nps 8812 time 21747 hashfull 0 tbhits 0 pv e2a6 b4c3 d2c3 h3g2 f3g2 e6d5
+info depth 7 seldepth 31 score cp -21 nodes 261233 nps 9261 time 28206 hashfull 1 tbhits 0 pv e2a6 b4c3 d2c3 e6d5 e4d5 h3g2 f3g2
+info string aspiration tightened: 50
+info depth 8 seldepth 33 score cp -21 nodes 413892 nps 10907 time 37946 hashfull 4 tbhits 0 pv e2a6 b4c3 d2c3 e6d5 e4d5 h3g2 f3g2 b6d5
+info depth 9 seldepth 33 score cp -70 nodes 685335 nps 12795 time 53560 hashfull 7 tbhits 0 pv e2a6 b4c3 d2c3 e6d5 e5g6 f7g6 c3f6 g7f6 f3f6
+info string aspiration failed: 50
+info depth 10 seldepth 33 score cp -120 nodes 1249922 nps 15651 time 79859 hashfull 19 tbhits 0 pv e2a6 b4c3 d2c3 e6d5 e5g4 d5e4 g4f6 e7f6
 
 ====================================================================================================
 
 Engine: Sophia
 
-Nodes: 2,929,291
-NPS:   24,355
-Time:  120.27s
+Nodes: 2,134,016
+NPS:   17,735
+Time:  120.33s
 Depth: 10
 Move:  e2a6
 
 ====================================================================================================
-Total Function Calls: 418,224,888
+Total Function Calls: 369,971,004
 ----------------------------------------------------------------------------------------------------
     n-calls       tot-time   per-call   cum-time   function
 ----------------------------------------------------------------------------------------------------
-    7357232        23.610     0.000      24.379    board/move_exec.py:61(make_move)
-    2540002        18.252     0.000      25.860    search/evaluation.py:256(evaluate)
-2623797/120668     9.979      0.000     103.896    search/search.py:453(_quiescence)
-   10975217        9.866      0.000      10.193    moves/legality.py:67(is_in_check)
-    7357232        9.207      0.000      9.516     board/move_exec.py:266(unmake_move)
-    7357129        7.549      0.000      10.848    search/ordering.py:117(pick_next_move)
-    1321842        4.465      0.000      4.894     moves/generator.py:207(_gen_rook_moves)
-    1321842        3.935      0.000      24.643    moves/generator.py:35(generate_pseudo_legal_moves)
-  305494/530       3.127      0.000     120.184    search/search.py:263(_alpha_beta)
-    1321842        3.060      0.000      3.794     moves/generator.py:62(_gen_pawn_moves)
-    1321842        2.600      0.000      2.936     moves/generator.py:224(_gen_queen_moves)
-   80539415        2.494      0.000      2.494     {method 'bit_length' of 'int' objects}
-   126917967       2.479      0.000      3.142     search/ordering.py:82(get_move_score)
-    1321842        2.449      0.000      2.730     moves/generator.py:190(_gen_bishop_moves)
-    1321842        2.396      0.000      2.735     moves/generator.py:153(_gen_king_moves)
+    1842319        21.412     0.000      33.718    search/evaluation.py:327(evaluate)
+    5561083        20.021     0.000      20.738    board/move_exec.py:103(make_move)
+    8032266        9.207      0.000      9.502     moves/legality.py:67(is_in_check)
+ 1882438/86098     8.958      0.000     103.402    search/search.py:526(_quiescence)
+    5561083        8.361      0.000      8.654     board/move_exec.py:308(unmake_move)
+    5560982        6.787      0.000      10.199    search/ordering.py:134(pick_next_move)
+    956053         4.688      0.000      5.323     moves/generator.py:224(_gen_queen_moves)
+  251578/571       4.124      0.000     120.286    search/search.py:258(_alpha_beta)
+    956053         3.481      0.000      22.738    moves/generator.py:35(generate_pseudo_legal_moves)
+    1842319        3.231      0.000      3.901     search/evaluation.py:159(get_pawn_hash)
+   84693156        2.849      0.000      2.849     {method 'bit_length' of 'int' objects}
+    956053         2.787      0.000      3.469     moves/generator.py:62(_gen_pawn_moves)
+    956053         2.553      0.000      2.799     moves/generator.py:207(_gen_rook_moves)
+   98467167        2.540      0.000      3.259     search/ordering.py:100(get_move_score)
+    2861656        2.345      0.000      2.345     search/evaluation.py:276(evaluate_king_safety_simple)
 ----------------------------------------------------------------------------------------------------
 """
